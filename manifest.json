@@ -1,0 +1,15 @@
+{
+  "name": "ДЕЗЩИТ 360",
+  "short_name": "ДЕЗ360",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#00B3A4",
+  "theme_color": "#00B3A4",
+  "icons": [
+    {
+      "src": "media/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}
