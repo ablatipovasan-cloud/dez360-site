@@ -39,97 +39,59 @@
   </style>
 </head>
 <body>
-   <!-- COOKIE NOTICE -->
-  <div id="cookie-banner" style="
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 179, 164, 0.95);
-    color: white;
-    padding: 14px 20px;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-    display: none;
-    z-index: 9999;
-    max-width: 420px;
-    text-align: center;
-    font-size: 15px;
-    line-height: 1.4;
-  ">
-    Этот сайт использует файлы cookie для улучшения работы.
-    <br />
-    <button id="accept-cookie" style="
-      margin-top: 8px;
-      background: white;
-      color: #007F6C;
-      border: none;
-      font-weight: 600;
-      padding: 6px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-    ">ОК</button>
+  <header>
+    <div class="container top">
+      <img class="logo" src="media/mascot1.png" alt="ДЕЗЩИТ 360">
+      <div class="brand">ДЕЗЩИТ 360</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>Безопасность на каждом уровне</h1>
+        <p>Комплексные обработки для квартир, ресторанов, складов и медицинских объектов. Документы и акты — в день работ.</p>
+        <a class="cta" href="examples.html">Смотреть примеры наших работ</a>
+      </div>
+      <img class="hero-img" src="media/restaurant-banner.jpg" alt="Дезинфекция кухни ресторана">
+    </section>
+
+    <!-- УСЛУГИ -->
+    <section class="card">
+      <h2>Наши услуги</h2>
+      <ul class="services">
+        <li>🦠 Дезинфекция вирусов и микроорганизмов</li>
+        <li>🐜 Дезинсекция (уничтожение насекомых)</li>
+        <li>🐭 Дератизация (борьба с грызунами)</li>
+        <li>🌿 Удаление плесени и дезодорация</li>
+        <li>🚗 Дезинфекция автотранспорта</li>
+        <li>🌬️ Дезинфекция систем вентиляции</li>
+      </ul>
+    </section>
+
+    <!-- ГАЛЕРЕЯ (реальные фото) -->
+    <section class="gallery">
+      <img src="media/worker.jpg" alt="Специалист в работе">
+      <img src="media/disinfector.jpg" alt="Обработка помещения">
+      <img src="media/restaurant-banner.jpg" alt="Кухня ресторана">
+    </section>
+  </main>
+
+  <footer>© 2025 ДЕЗЩИТ 360. Все права защищены.</footer>
+
+  <!-- Кнопка звука -->
+  <div class="sound" title="Звук-входа (по клику)">
+    <button id="play">Звук входа</button>
+    <small>вкл. по клику</small>
+    <audio id="sfx" src="media/login-sound.mp3" preload="auto"></audio>
   </div>
-
   <script>
-    // Показываем баннер, если пользователь ещё не согласился
-    if (!localStorage.getItem('cookieAccepted')) {
-      document.getElementById('cookie-banner').style.display = 'block';
-    }
-
-    // При нажатии — сохраняем согласие и скрываем баннер
-    document.getElementById('accept-cookie').addEventListener('click', () => {
-      localStorage.setItem('cookieAccepted', 'true');
-      document.getElementById('cookie-banner').style.display = 'none';
-    });
+    document.getElementById('play').onclick = () => {
+      document.getElementById('sfx').currentTime = 0;
+      document.getElementById('sfx').play();
+    };
   </script>
-    <!-- COOKIE NOTICE -->
-  <div id="cookie-banner" style="
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 179, 164, 0.95);
-    color: white;
-    padding: 14px 20px;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-    display: none;
-    z-index: 9999;
-    max-width: 420px;
-    text-align: center;
-    font-size: 15px;
-    line-height: 1.4;
-  ">
-    Этот сайт использует файлы cookie для улучшения работы.
-    <br />
-    <button id="accept-cookie" style="
-      margin-top: 8px;
-      background: white;
-      color: #007F6C;
-      border: none;
-      font-weight: 600;
-      padding: 6px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-    ">ОК</button>
-  </div>
-
-  <script>
-    // Показываем баннер, если пользователь ещё не согласился
-    if (!localStorage.getItem('cookieAccepted')) {
-      document.getElementById('cookie-banner').style.display = 'block';
-    }
-
-    // При нажатии — сохраняем согласие и скрываем баннер
-    document.getElementById('accept-cookie').addEventListener('click', () => {
-      localStorage.setItem('cookieAccepted', 'true');
-      document.getElementById('cookie-banner').style.display = 'none';
-    });
-  </script>
-
 </body>
 </html>
 
