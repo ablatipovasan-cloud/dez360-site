@@ -2,56 +2,95 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ДЕЗЩИТ 360 — Безопасность на каждом уровне</title>
-
-  <meta name="title" content="ДЕЗЩИТ 360 — Безопасность на каждом уровне" />
-  <meta name="description" content="Профессиональная дезинфекция, дезинсекция, дератизация, обработка систем вентиляции и дезинфекция автотранспорта в Крыму." />
-  <meta name="keywords" content="дезинфекция, дезинсекция, дератизация, Крым, Симферополь, Севастополь, ДЕЗЩИТ 360, удаление запахов, вентиляция, вирусы, санитарная служба" />
-  <meta property="og:title" content="ДЕЗЩИТ 360 — Безопасность на каждом уровне" />
-  <meta property="og:description" content="Профессиональная защита вашего дома, бизнеса и здоровья." />
-  <meta property="og:image" content="media/mascot.png" />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#00B3A4" />
-  <link rel="icon" href="media/favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Дезинфекция, дезинсекция, дератизация, обработка вентиляции и автотранспорта по всему Крыму." />
+  <link rel="icon" href="media/favicon.ico">
+  <style>
+    :root{--c1:#00B3A4;--c2:#007F6C;--text:#083a34}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Inter,Arial,sans-serif;color:#fff;background:linear-gradient(135deg,var(--c1),var(--c2));}
+    a{color:inherit}
+    .container{max-width:1100px;margin:0 auto;padding:16px}
+    header{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.08);backdrop-filter:blur(6px)}
+    .top{display:flex;align-items:center;gap:12px;padding:10px 8px}
+    .logo{height:48px;width:auto;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+    .brand{font-weight:800;letter-spacing:.3px}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;padding:28px 0}
+    .hero h1{margin:8px 0 6px;font-size:40px;line-height:1.1}
+    .hero p{margin:0 0 18px;opacity:.95}
+    .cta{display:inline-block;padding:12px 20px;background:#00B3A4;border-radius:10px;font-weight:700;text-decoration:none;box-shadow:0 6px 16px rgba(0,0,0,.18);transition:.2s}
+    .cta:hover{transform:translateY(-2px);background:#009c90}
+    .hero-img{width:100%;border-radius:16px;box-shadow:0 12px 28px rgba(0,0,0,.28)}
+    .card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:18px 20px}
+    h2{margin:4px 0 14px}
+    .services{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
+    .services li{margin:0;line-height:1.55}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .gallery img{width:100%;height:220px;object-fit:cover;border-radius:14px;box-shadow:0 10px 22px rgba(0,0,0,.25);transition:.25s}
+    .gallery img:hover{transform:translateY(-3px)}
+    footer{padding:18px 0;text-align:center;opacity:.9}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}.gallery{grid-template-columns:1fr 1fr}.hero h1{font-size:32px}}
+    @media(max-width:560px){.gallery{grid-template-columns:1fr}}
+    /* звук-кнопка */
+    .sound{position:fixed;right:14px;bottom:14px;background:#ffffffcc;color:var(--text);border-radius:12px;padding:10px 12px;backdrop-filter:blur(6px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+    .sound button{background:#00B3A4;border:none;color:#fff;font-weight:700;padding:10px 14px;border-radius:8px;cursor:pointer}
+    .sound small{display:block;margin-top:6px;color:#366;opacity:.8}
+  </style>
 </head>
-
-<body style="margin:0; font-family:'Montserrat', sans-serif; background:linear-gradient(135deg,#00B3A4,#007F6C); color:#fff; text-align:center;">
-  <header style="padding:20px;">
-    <img src="media/mascot1.png" alt="ДЕЗЩИТ 360">
-<a href="examples.html">Смотреть примеры наших работ</a>
-    <p>Безопасность на каждом уровне</p>
+<body>
+  <header>
+    <div class="container top">
+      <img class="logo" src="media/mascot1.png" alt="ДЕЗЩИТ 360">
+      <div class="brand">ДЕЗЩИТ 360</div>
+    </div>
   </header>
 
-  <main style="padding:40px 20px;">
-    <h2>Наши услуги</h2>
-    <ul style="list-style:none; padding:0; font-size:18px; line-height:1.8;">
-      <li>🦠 Дезинфекция вирусов и микроорганизмов</li>
-      <li>🐜 Дезинсекция (уничтожение насекомых)</li>
-      <li>🐭 Дератизация (борьба с грызунами)</li>
-      <li>🌿 Удаление плесени и дезодорация</li>
-      <li>🚗 Дезинфекция автотранспорта</li>
-      <li>🌬️ Дезинфекция систем вентиляции</li>
-    </ul>
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>Безопасность на каждом уровне</h1>
+        <p>Комплексные обработки для квартир, ресторанов, складов и медицинских объектов. Документы и акты — в день работ.</p>
+        <a class="cta" href="examples.html">Смотреть примеры наших работ</a>
+      </div>
+      <img class="hero-img" src="media/restaurant-banner.jpg" alt="Дезинфекция кухни ресторана">
+    </section>
 
-    <a href="examples.html" style="display:inline-block; margin-top:40px; padding:14px 28px; background:#00B3A4; color:#fff; font-weight:600; text-decoration:none; border-radius:8px; transition:0.3s;">Смотреть примеры наших работ</a>
+    <!-- УСЛУГИ -->
+    <section class="card">
+      <h2>Наши услуги</h2>
+      <ul class="services">
+        <li>🦠 Дезинфекция вирусов и микроорганизмов</li>
+        <li>🐜 Дезинсекция (уничтожение насекомых)</li>
+        <li>🐭 Дератизация (борьба с грызунами)</li>
+        <li>🌿 Удаление плесени и дезодорация</li>
+        <li>🚗 Дезинфекция автотранспорта</li>
+        <li>🌬️ Дезинфекция систем вентиляции</li>
+      </ul>
+    </section>
+
+    <!-- ГАЛЕРЕЯ (реальные фото) -->
+    <section class="gallery">
+      <img src="media/worker.jpg" alt="Специалист в работе">
+      <img src="media/disinfector.jpg" alt="Обработка помещения">
+      <img src="media/restaurant-banner.jpg" alt="Кухня ресторана">
+    </section>
   </main>
 
-  <footer style="margin-top:60px; font-size:14px; opacity:0.8;">
-    © 2025 ДЕЗЩИТ 360. Все права защищены.
-  </footer>
+  <footer>© 2025 ДЕЗЩИТ 360. Все права защищены.</footer>
 
-  <!-- Яндекс.Метрика -->
-  <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();
-    for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; }}
-    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-    ym(104546460, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
+  <!-- Кнопка звука -->
+  <div class="sound" title="Звук-входа (по клику)">
+    <button id="play">Звук входа</button>
+    <small>вкл. по клику</small>
+    <audio id="sfx" src="media/login-sound.mp3" preload="auto"></audio>
+  </div>
+  <script>
+    document.getElementById('play').onclick = () => {
+      document.getElementById('sfx').currentTime = 0;
+      document.getElementById('sfx').play();
+    };
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/104546460" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 </body>
 </html>
-
