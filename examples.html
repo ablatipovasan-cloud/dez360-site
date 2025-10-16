@@ -23,5 +23,51 @@
     <p>Реальная обработка помещений специалистами ДЕЗЩИТ 360</p>
     <a class="btn" href="index.html">На главную</a>
   </div>
+  <!-- COOKIE NOTICE -->
+  <div id="cookie-banner" style="
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 179, 164, 0.95);
+    color: white;
+    padding: 14px 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    display: none;
+    z-index: 9999;
+    max-width: 420px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.4;
+  ">
+    Этот сайт использует файлы cookie для улучшения работы.
+    <br />
+    <button id="accept-cookie" style="
+      margin-top: 8px;
+      background: white;
+      color: #007F6C;
+      border: none;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    ">ОК</button>
+  </div>
+
+  <script>
+    // Показываем баннер, если пользователь ещё не согласился
+    if (!localStorage.getItem('cookieAccepted')) {
+      document.getElementById('cookie-banner').style.display = 'block';
+    }
+
+    // При нажатии — сохраняем согласие и скрываем баннер
+    document.getElementById('accept-cookie').addEventListener('click', () => {
+      localStorage.setItem('cookieAccepted', 'true');
+      document.getElementById('cookie-banner').style.display = 'none';
+    });
+  </script>
 </body>
 </html>
+
