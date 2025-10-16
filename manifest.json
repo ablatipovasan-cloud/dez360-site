@@ -8,8 +8,9 @@
   "icons": [
     {
       "src": "media/favicon.ico",
-      "sizes": "64x64",
+      "sizes": "74x64",
       "type": "image/x-icon"
     }
   ]
 }
+
