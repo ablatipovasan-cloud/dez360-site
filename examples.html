@@ -12,8 +12,34 @@
     video{width:100%;max-width:560px;border-radius:14px;box-shadow:0 10px 26px rgba(0,0,0,.18)}
     .btn{display:inline-block;margin:22px auto;padding:12px 22px;background:#00B3A4;color:#fff;text-decoration:none;border-radius:10px;font-weight:700}
     .btn:hover{background:#007F6C}
-  </style>
+  .shield-cta{
+  display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:12px;
+  background:linear-gradient(135deg,#00B3A4,#007F6C);box-shadow:0 6px 16px rgba(0,0,0,.2);font-weight:800
+}
+.shield-cta:hover{transform:translateY(-2px)}
+</style>
+<a href="dezshit360.html" class="shield-cta" onclick="trackShield('header_shield')">
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" style="width:18px;height:18px">
+    <path d="M12 2l7 3v6c0 5-3.5 9-7 11-3.5-2-7-6-7-11V5l7-3z" stroke="#fff" stroke-width="2" fill="url(#g)"/>
+    <defs><linearGradient id="g" x1="0" y1="0" x2="24" y2="24">
+      <stop offset="0" stop-color="#00B3A4"/><stop offset="1" stop-color="#007F6C"/></linearGradient>
+    </defs>
+  </svg>
+  ДезЩит 360
+</a>
 </head>
+<script>
+  function trackShield(action){
+    try{window.gtag && gtag('event','click',{element:action,page:location.pathname});}catch(e){}
+    try{window.ym && ym(104546460,'reachGoal',action);}catch(e){}
+  }
+</script>
+<script>
+  function trackShield(action){
+    try{window.gtag && gtag('event','click',{element:action,page:location.pathname});}catch(e){}
+    try{window.ym && ym(104546460,'reachGoal',action);}catch(e){}
+  }
+</script>
 <body>
   <div class="wrap">
     <h1>Примеры наших работ</h1>
@@ -71,5 +97,6 @@
 | <a href="policy.html">Политика конфиденциальности</a>
 </body>
 </html>
+
 
 
