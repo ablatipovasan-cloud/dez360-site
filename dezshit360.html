@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ДезЩит 360 — пакетное обслуживание</title>
+  <link rel="icon" href="media/favicon.ico">
+  <meta name="description" content="ДезЩит 360 — пакетное обслуживание: регулярные обработки, акты, гарантия 365 и экспресс-диагностика вентиляции. Дом · Ресторан · Склад.">
+  <style>
+    :root{--c1:#00B3A4;--c2:#007F6C;--text:#083a34}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Inter,Arial,sans-serif;color:#fff;background:linear-gradient(135deg,var(--c1),var(--c2));}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1120px;margin:0 auto;padding:18px}
+    /* NAV (стеклянная шапка) */
+    header{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.08);backdrop-filter:blur(8px)}
+    .nav{display:flex;align-items:center;gap:14px;padding:10px 6px}
+    .logo{height:42px;width:auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+    .brand{font-weight:800;letter-spacing:.3px}
+    nav a{opacity:.9;margin:0 6px}
+    nav a:hover{opacity:1;text-decoration:underline}
+    /* SHIELD button (в шапке локально не нужен, но оставлю стиль) */
+    .shield-cta{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:12px;
+      background:linear-gradient(135deg,#00B3A4,#007F6C);box-shadow:0 6px 16px rgba(0,0,0,.2);font-weight:800}
+    .shield-cta svg{width:18px;height:18px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))}
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center;padding:28px 0}
+    .hero h1{margin:6px 0 8px;font-size:40px;line-height:1.12}
+    .hero p{margin:0 0 16px;opacity:.95}
+    .cta{display:inline-block;padding:12px 20px;background:#fff;color:#007F6C;border-radius:10px;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.22)}
+    .cta:hover{transform:translateY(-2px)}
+    .card{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:18px 20px}
+    .muted{opacity:.9}
+    /* Тарифы */
+    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+    .plan{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px}
+    .plan h3{margin:0}
+    .price{font-size:22px;font-weight:900}
+    .list{margin:0;padding-left:18px}
+    .list li{margin:6px 0}
+    .plan .btn{margin-top:auto;display:inline-block;padding:10px 14px;background:#00B3A4;border-radius:10px;font-weight:800}
+    .plan .btn:hover{background:#009c90}
+    /* УТП лента */
+    .ribbon{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+    .ribbon .chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:10px 12px;text-align:center}
+    /* Vent-Safe */
+    .vent{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .vent .box{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:16px}
+    /* FAQ */
+    details{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px 14px}
+    details+details{margin-top:10px}
+    summary{cursor:pointer;font-weight:700}
+    /* Форма */
+    form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    input,textarea{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.15);color:#fff}
+    textarea{min-height:110px;grid-column:1/-1}
+    .submit{background:#fff;color:#007F6C;border:none;padding:12px 16px;border-radius:10px;font-weight:900;cursor:pointer}
+    .submit:hover{background:#e8ffff}
+    footer{padding:18px 0;text-align:center;opacity:.9;margin-top:22px}
+    @media(max-width:980px){.hero{grid-template-columns:1fr}.plans{grid-template-columns:1fr}.ribbon{grid-template-columns:1fr 1fr}.vent{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <header>
+    <div class="container nav">
+      <img class="logo" src="media/mascot1.png" alt="ДЕЗЩИТ 360">
+      <div class="brand">ДЕЗЩИТ 360</div>
+      <nav style="margin-left:auto">
+        <a href="index.html">Главная</a>
+        <a href="examples.html">Примеры</a>
+        <a href="prices.html">Цены</a>
+        <a href="articles.html">Статьи</a>
+        <a href="policy.html">Политика</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>ДезЩит 360 — пакетное обслуживание</h1>
+        <p class="muted">Регулярные обработки по графику, акты и журналы в день работ, <br>Гарантия 365 и экспресс-диагностика вентиляции.</p>
+        <a class="cta" href="#form">Рассчитать пакет</a>
+      </div>
+      <div class="card">
+        <blockquote style="margin:0;font-size:15px;line-height:1.6">
+          «Чистота — это не стерильность, это уважение к жизни.
+          Мы не караем микробы — мы лишаем их повода задерживаться».
+        </blockquote>
+        <div style="opacity:.8;margin-top:10px">— фирменный «жванецкий» тон бренда</div>
+      </div>
+    </section>
+
+    <!-- УТП лента -->
+    <section class="ribbon">
+      <div class="chip">Первичный осмотр — 0 ₽</div>
+      <div class="chip">Акт и документы — в день работ</div>
+      <div class="chip">Гарантия 365 — повторная обработка</div>
+      <div class="chip">Ночной тариф HoReCa −10%</div>
+    </section>
+
+    <!-- Тарифы -->
+    <section style="margin-top:18px">
+      <h2 style="margin:8px 0 10px">Тарифы</h2>
+      <div class="plans">
+        <div class="plan">
+          <h3>Базовый · Дом</h3>
+          <div class="price">от 3 900 ₽ / визит</div>
+          <ul class="list">
+            <li>Дезинфекция + дезинсекция</li>
+            <li>Безопасные препараты</li>
+            <li>Акт выполненных работ</li>
+          </ul>
+          <a class="btn" href="#form" onclick="trackShield('plan_basic')">Выбрать</a>
+        </div>
+        <div class="plan">
+          <h3>Профи · Ресторан</h3>
+          <div class="price">от 6 900 ₽ / визит</div>
+          <ul class="list">
+            <li>Кухня + зал + склад</li>
+            <li>Дезодорация, акарицид</li>
+            <li>Ночной график, акт/журнал</li>
+          </ul>
+          <a class="btn" href="#form" onclick="trackShield('plan_pro')">Выбрать</a>
+        </div>
+        <div class="plan">
+          <h3>Max · Склад/Производство</h3>
+          <div class="price">от 12 900 ₽ / визит</div>
+          <ul class="list">
+            <li>+ Дератизация</li>
+            <li>+ Дезинфекция вентиляции</li>
+            <li>Ежеквартальные осмотры</li>
+          </ul>
+          <a class="btn" href="#form" onclick="trackShield('plan_max')">Выбрать</a>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:10px">Bundle −15%: при подключении вентиляции к любому пакету.</p>
+    </section>
+
+    <!-- Vent-Safe -->
+    <section class="vent" style="margin-top:18px">
+      <div class="box">
+        <h3 style="margin-top:0">Vент-Safe Check</h3>
+        <p class="muted">Экспресс-осмотр вентиляции: фотоотчёт и ориентировочная смета за 10 минут.</p>
+        <p>Метраж воздуховодов, доступность, санитарные требования — получаете план и стоимость.</p>
+      </div>
+      <div class="box">
+        <h3 style="margin-top:0">Почему это важно</h3>
+        <ul class="list">
+          <li>Санитарные требования к кухням/складам</li>
+          <li>Меньше запахов и перекрёстных загрязнений</li>
+          <li>Профилактика плесени и аллергенов</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="margin-top:18px">
+      <h2 style="margin:8px 0 10px">Частые вопросы</h2>
+      <details><summary>Насколько безопасны препараты?</summary><p class="muted">Мы используем сертифицированные средства и соблюдаем регламенты. После обработок выдаём рекомендации по проветриванию/режимам.</p></details>
+      <details><summary>Вы работаете ночью/в выходные?</summary><p class="muted">Да. Для HoReCa и складов доступен ночной график (−10%).</p></details>
+      <details><summary>Даёте ли вы гарантию?</summary><p class="muted">Гарантия 365: при рецидиве — повторная обработка бесплатно по акту.</p></details>
+    </section>
+
+    <!-- Форма -->
+    <section id="form" class="card" style="margin-top:18px">
+      <h2 style="margin:8px 0 10px">Подключить ДезЩит 360</h2>
+      <form onsubmit="return submitShieldForm(event)">
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="tel" name="phone" placeholder="Телефон" required>
+        <input type="email" name="email" placeholder="E-mail (по желанию)">
+        <textarea name="comment" placeholder="Коротко опишите объект: тип, площадь, режим работы"></textarea>
+        <button class="submit" type="submit">Отправить заявку</button>
+      </form>
+      <p class="muted" style="margin-top:8px">Заявки также принимаем: <a href="mailto:dezmed83@mail.ru" style="text-decoration:underline;color:#fff">dezmed83@mail.ru</a> · <a href="tel:+79785500557" style="text-decoration:underline;color:#fff">+7 978 550-05-57</a></p>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 ДЕЗЩИТ 360. Все права защищены. |
+    <a href="policy.html" style="text-decoration:underline">Политика конфиденциальности</a>
+  </footer>
+
+  <!-- Плавающая кнопка-щит -->
+  <a href="#form" class="shield-fab" onclick="trackShield('fab_click')" aria-label="ДезЩит 360">
+    <!-- inline SVG щит -->
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 2l7 3v6c0 5-3.5 9-7 11-3.5-2-7-6-7-11V5l7-3z" stroke="#fff" stroke-width="2" fill="url(#g)"/>
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="24" y2="24">
+          <stop offset="0" stop-color="#00B3A4"/><stop offset="1" stop-color="#007F6C"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </a>
+
+  <style>
+    .shield-fab{
+      position:fixed;right:14px;bottom:18px;z-index:999;
+      width:56px;height:56px;border-radius:16px;display:grid;place-items:center;
+      background:linear-gradient(135deg,#00B3A4,#007F6C);box-shadow:0 10px 24px rgba(0,0,0,.3)}
+    .shield-fab svg{width:28px;height:28px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))}
+    .shield-fab:hover{transform:translateY(-2px)}
+  </style>
+
+  <script>
+    // Трекинг кликов (без ошибок, если GA/Metрика не подключены)
+    function trackShield(action){
+      try{window.gtag && gtag('event','click',{element:action,page:location.pathname});}catch(e){}
+      try{window.ym && ym(104546460,'reachGoal',action);}catch(e){}
+    }
+    function submitShieldForm(e){
+      e.preventDefault();
+      trackShield('shield_form_submit');
+      const fd = new FormData(e.target);
+      const msg = `ДЕЗЩИТ 360 (заявка)\nИмя: ${fd.get('name')}\nТелефон: ${fd.get('phone')}\nEmail: ${fd.get('email')||'-'}\nКомментарий: ${fd.get('comment')||'-'}`;
+      // Отправка письма может быть реализована через Formspree/Netlify Forms/Telegram Bot.
+      alert('Спасибо! Заявка отправлена.\nМы свяжемся с вами в ближайшее время.');
+      e.target.reset();
+      return false;
+    }
+  </script>
+</body>
+</html>
