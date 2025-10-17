@@ -36,10 +36,42 @@
     .sound{position:fixed;right:14px;bottom:14px;background:#ffffffcc;color:var(--text);border-radius:12px;padding:10px 12px;backdrop-filter:blur(6px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
     .sound button{background:#00B3A4;border:none;color:#fff;font-weight:700;padding:10px 14px;border-radius:8px;cursor:pointer}
     .sound small{display:block;margin-top:6px;color:#366;opacity:.8}
-  </style>
+ .shield-cta{
+  display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:12px;
+  background:linear-gradient(135deg,#00B3A4,#007F6C);box-shadow:0 6px 16px rgba(0,0,0,.2);font-weight:800
+}
+.shield-cta:hover{transform:translateY(-2px)}
+ </style>
 </head>
+<script>
+  function trackShield(action){
+    try{window.gtag && gtag('event','click',{element:action,page:location.pathname});}catch(e){}
+    try{window.ym && ym(104546460,'reachGoal',action);}catch(e){}
+  }
+</script>
+<a href="dezshit360.html" class="shield-fab" onclick="trackShield('fab_to_page')" aria-label="ДезЩит 360">
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M12 2l7 3v6c0 5-3.5 9-7 11-3.5-2-7-6-7-11V5l7-3z" stroke="#fff" stroke-width="2" fill="url(#g)"/>
+    <defs><linearGradient id="g" x1="0" y1="0" x2="24" y2="24">
+      <stop offset="0" stop-color="#00B3A4"/><stop offset="1" stop-color="#007F6C"/></linearGradient></defs>
+  </svg>
+</a>
+<style>
+  .shield-fab{position:fixed;right:14px;bottom:18px;z-index:999;width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,#00B3A4,#007F6C);box-shadow:0 10px 24px rgba(0,0,0,.3)}
+  .shield-fab svg{width:28px;height:28px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))}
+  .shield-fab:hover{transform:translateY(-2px)}
+</style>
 <body>
-  <header>
+ <a href="dezshit360.html" class="shield-cta" onclick="trackShield('header_shield')">
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" style="width:18px;height:18px">
+    <path d="M12 2l7 3v6c0 5-3.5 9-7 11-3.5-2-7-6-7-11V5l7-3z" stroke="#fff" stroke-width="2" fill="url(#g)"/>
+    <defs><linearGradient id="g" x1="0" y1="0" x2="24" y2="24">
+      <stop offset="0" stop-color="#00B3A4"/><stop offset="1" stop-color="#007F6C"/></linearGradient>
+    </defs>
+  </svg>
+  ДезЩит 360
+</a>
+ <header>
     <div class="container top">
       <img class="logo" src="media/mascot1.png" alt="ДЕЗЩИТ 360">
       <div class="brand">ДЕЗЩИТ 360</div>
@@ -143,6 +175,7 @@
 </footer>
 </body>
 </html>
+
 
 
 
