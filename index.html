@@ -56,6 +56,29 @@
 .cta.secondary{background:#fff;color:#007F6C}
 .hero-visual{position:relative}
 .hero-visual img{width:100%;height:360px;object-fit:cover;border-radius:18px;box-shadow:0 16px 36px rgba(0,0,0,.28)}
+/* ====== СЕТКА РАБОТ (фото работ, специалистов, клиентов) ====== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin: 40px auto;
+  max-width: 1100px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  transition: transform .3s ease, box-shadow .3s ease;
+  cursor: pointer;
+}
+
+.gallery img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 14px 32px rgba(0,0,0,.28);
+}
 
     /* РИББОН УТП */
     .ribbon{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
@@ -114,7 +137,7 @@
 </section>                        
 <!-- КОМАНДА -->
 <section class="card" style="margin-top:18px">
-  <h2 style="margin:4px 0 12px">Наши специалисты</h2>
+ <h2 style="margin:4px 0 12px">Наши специалисты</h2>
   <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">
     <article class="card reveal" style="background:var(--glass);border:1px solid var(--glass-b)">
       <div style="display:flex;gap:14px;align-items:center">
@@ -136,7 +159,14 @@
     </article>
   </div>
 </section>
-
+<section class="gallery">
+  <img src="media/ops-spray-1.jpg" alt="Дезинфекция помещений">
+  <img src="media/ops-vent-1.jpg" alt="Очистка вентиляции">
+  <img src="media/ops-vehicle-1.jpg" alt="Обработка автотранспорта">
+  <img src="media/team-tech-1.jpg" alt="Наши специалисты за работой">
+  <img src="media/client-happy-1.jpg" alt="Довольный клиент">
+  <img src="media/client-happy-2.jpg" alt="Результат обработки">
+</section>
 <section class="hero container">
   <div class="hero-copy">
     <h1>Безопасность на каждом уровне</h1>
@@ -245,6 +275,7 @@
 </script>
 </body>
 </html>
+
 
 
 
