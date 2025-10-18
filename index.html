@@ -79,6 +79,36 @@
   transform: scale(1.04);
   box-shadow: 0 14px 32px rgba(0,0,0,.28);
 }
+/* ====== МОДАЛЬНОЕ УВЕЛИЧЕНИЕ ИЗОБРАЖЕНИЙ ====== */
+#img-modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#img-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+  cursor: zoom-out;
+}
+
+#img-modal.show {
+  display: flex;
+  animation: fadeIn .3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
     /* РИББОН УТП */
     .ribbon{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
@@ -273,8 +303,32 @@
   }
 })();
 </script>
+<!-- МОДАЛЬНОЕ ОКНО ДЛЯ УВЕЛИЧЕНИЯ ФОТО -->
+<div id="img-modal">
+  <img src="" alt="Фото">
+</div>
+<script>
+  // Модальное увеличение фото из галереи
+  const modal = document.getElementById('img-modal');
+  const modalImg = modal.querySelector('img');
+  const galleryImgs = document.querySelectorAll('.gallery img');
+
+  galleryImgs.forEach(img => {
+    img.addEventListener('click', () => {
+      modalImg.src = img.src;
+      modal.classList.add('show');
+    });
+  });
+
+  // Закрытие по клику или клавише Esc
+  modal.addEventListener('click', () => modal.classList.remove('show'));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') modal.classList.remove('show');
+  });
+</script>
 </body>
 </html>
+
 
 
 
