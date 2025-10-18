@@ -79,25 +79,17 @@
   transform: scale(1.04);
   box-shadow: 0 14px 32px rgba(0,0,0,.28);
 }
-/* ====== МОДАЛЬНОЕ УВЕЛИЧЕНИЕ ИЗОБРАЖЕНИЙ ====== */
+/* ====== МОДАЛЬНОЕ УВЕЛИЧЕНИЕ ФОТО С ПОДПИСЬЮ ====== */
 #img-modal {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
   display: none;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   z-index: 9999;
-}
-
-#img-modal img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 18px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease;
-  cursor: zoom-out;
 }
 
 #img-modal.show {
@@ -105,9 +97,27 @@
   animation: fadeIn .3s ease;
 }
 
+#img-modal img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 18px;
+  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.6);
+  transition: transform .3s ease;
+  cursor: zoom-out;
+}
+
+#img-modal .caption {
+  color: #fff;
+  font-size: 18px;
+  margin-top: 16px;
+  text-align: center;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
 }
 
     /* РИББОН УТП */
@@ -160,11 +170,15 @@
   <main class="container">
     <!-- HERO -->
    <!-- ФОТОГАЛЕРЕЯ РАБОТ -->
-<section class="gallery" style="margin-top:24px">
-  <img class="reveal" src="media/ops-spray-1.jpg" alt="Процесс дезинфекции (распыл)">
-  <img class="reveal" src="media/ops-vent-1.jpg" alt="Дезинфекция систем вентиляции">
-  <img class="reveal" src="media/ops-vehicle-1.jpg" alt="Дезинфекция автотранспорта">
-</section>                        
+<section class="gallery">
+  <img src="media/ops-spray-1.jpg" alt="Дезинфекция помещений — безопасно и эффективно">
+  <img src="media/ops-vent-1.jpg" alt="Очистка и дезинфекция систем вентиляции">
+  <img src="media/ops-vehicle-1.jpg" alt="Обработка автотранспорта по стандартам СЭС">
+  <img src="media/team-tech-1.jpg" alt="Наши специалисты в работе">
+  <img src="media/client-happy-1.jpg" alt="Довольные клиенты после обработки">
+  <img src="media/client-happy-2.jpg" alt="Результаты, которые говорят сами за себя">
+</section>
+                      
 <!-- КОМАНДА -->
 <section class="card" style="margin-top:18px">
  <h2 style="margin:4px 0 12px">Наши специалисты</h2>
@@ -326,8 +340,34 @@
     if (e.key === 'Escape') modal.classList.remove('show');
   });
 </script>
+<!-- МОДАЛЬНОЕ ОКНО С ПОДПИСЬЮ -->
+<div id="img-modal">
+  <img src="" alt="Фото">
+  <div class="caption"></div>
+<script>
+  const modal = document.getElementById('img-modal');
+  const modalImg = modal.querySelector('img');
+  const modalCaption = modal.querySelector('.caption');
+  const galleryImgs = document.querySelectorAll('.gallery img');
+
+  galleryImgs.forEach(img => {
+    img.addEventListener('click', () => {
+      modalImg.src = img.src;
+      modalCaption.textContent = img.alt || '';
+      modal.classList.add('show');
+    });
+  });
+
+  // Закрытие по клику или клавише Esc
+  modal.addEventListener('click', () => modal.classList.remove('show'));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') modal.classList.remove('show');
+  });
+</script>
+</div>
 </body>
 </html>
+
 
 
 
