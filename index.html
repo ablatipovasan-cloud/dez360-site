@@ -211,8 +211,41 @@
 
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
+<!-- Reveal on scroll + надёжный фолбэк -->
+<script>
+(function () {
+  function revealRun() {
+    const nodes = document.querySelectorAll('.reveal');
+    if (!nodes.length) return;
+
+    // Фолбэк: если нет IntersectionObserver — просто показать всё
+    if (!('IntersectionObserver' in window)) {
+      nodes.forEach(n => n.classList.add('visible'));
+      return;
+    }
+
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -10% 0px" });
+
+    nodes.forEach(n => io.observe(n));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', revealRun);
+  } else {
+    revealRun();
+  }
+})();
+</script>
 </body>
 </html>
+
 
 
 
