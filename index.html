@@ -46,15 +46,16 @@
 
     .container{max-width:1100px;margin:0 auto;padding:16px}
 
-    /* HERO блок как у Greenix: крупный заголовок, 2 CTA и визуал справа */
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center;padding:28px 0}
-    .hero h1{margin:8px 0 10px;font-size:42px;line-height:1.1}
-    .hero p{margin:0 0 18px;opacity:.95}
-    .cta{display:inline-block;padding:12px 20px;background:#00B3A4;border-radius:10px;font-weight:700;box-shadow:0 6px 16px rgba(0,0,0,.18);transition:.2s}
-    .cta:hover{transform:translateY(-2px);background:#009c90}
-    .cta.secondary{background:#fff;color:#007F6C}
-    .hero-visual{position:relative}
-    .hero-visual img{width:100%;border-radius:18px;box-shadow:0 16px 36px rgba(0,0,0,.28)}
+    /* HERO блок как у Greenix */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center;padding:28px 0}
+.hero h1{margin:8px 0 10px;font-size:42px;line-height:1.1}
+.hero p{margin:0 0 18px;opacity:.95}
+.cta{display:inline-block;padding:12px 20px;background:#00B3A4;border-radius:10px;font-weight:700;
+     box-shadow:0 6px 16px rgba(0,0,0,.18);transition:.2s}
+.cta:hover{transform:translateY(-2px);background:#009c90}
+.cta.secondary{background:#fff;color:#007F6C}
+.hero-visual{position:relative}
+.hero-visual img{width:100%;height:360px;object-fit:cover;border-radius:18px;box-shadow:0 16px 36px rgba(0,0,0,.28)}
 
     /* РИББОН УТП */
     .ribbon{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
@@ -136,19 +137,19 @@
   </div>
 </section>
 
- <section class="hero">
-      <div>
-        <h1>Безопасность на каждом уровне</h1>
-        <p>Профильные обработки для дома и бизнеса: дезинфекция, дезинсекция, дератизация, вентиляция. Акты и документы — в день работ.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <a class="cta" href="dezshit360.html">Рассчитать пакет ДезЩит 360</a>
-          <a class="cta secondary" href="examples.html">Смотреть примеры</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <img src="media/restaurant-banner.jpg" alt="Дезинфекция кухни ресторана">
-      </div>
-    </section>
+<section class="hero container">
+  <div class="hero-copy">
+    <h1>Безопасность на каждом уровне</h1>
+    <p>Комплексные обработки для квартир, ресторанов, складов и медучреждений. Документы в день работ.</p>
+    <a class="cta" href="examples.html">Смотреть примеры</a>
+    <a class="cta secondary" href="prices.html">Узнать цены</a>
+  </div>
+
+  <div class="hero-visual">
+    <img src="media/restaurant-banner.jpg" alt="Чистая кухня ресторана">
+  </div>
+</section>
+
 
     <!-- УТП (короткая лента) -->
     <section class="ribbon">
@@ -198,6 +199,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
