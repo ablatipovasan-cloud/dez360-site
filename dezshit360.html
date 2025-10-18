@@ -7,6 +7,8 @@
   <link rel="icon" href="media/favicon.ico">
   <meta name="description" content="ДезЩит 360 — пакетное обслуживание: регулярные обработки, акты, гарантия 365 и экспресс-диагностика вентиляции. Дом · Ресторан · Склад.">
   <style>
+    .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s ease, transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
     :root
   /* База бренда */
   --c1:#00B3A4;   /* Бирюзовый (primary) */
@@ -215,6 +217,9 @@
   </a>
 
   <style>
+    .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s ease, transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
     .shield-fab{
       position:fixed;right:14px;bottom:18px;z-index:999;
       width:56px;height:56px;border-radius:16px;display:grid;place-items:center;
