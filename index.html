@@ -4,432 +4,377 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ДЕЗЩИТ 360 — Безопасность на каждом уровне</title>
-  <meta name="description" content="Дезинфекция, дезинсекция, дератизация, вентиляция и пакет-сервис «ДезЩит 360» по всему Крыму. Акты и документы в день работ." />
-  <link rel="icon" href="media/favicon.ico">
+  <meta name="description" content="Дезинфекция, дезинсекция, дератизация, вентиляция и пакет-сервис «ДезЩит 360» по всему Крыму. Акты и документы в день работ. Тел. +7 (978) 550-05-57" />
+  <link rel="icon" href="media/mascot1.png">
   <style>
-    .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s ease, transform .6s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-
     :root{
-  /* База бренда */
-  --c1:#00B3A4;   /* Бирюзовый (primary) */
-  --c2:#007F6C;   /* Глубокий бирюзовый (secondary) */
-  --c3:#35D0C4;   /* Акцент/ховер */
-  --text:#083A34; /* Тёмный текст на светлом */
-  --mute:#3E6D66; /* Подписи/вторичный текст */
-
-  /* Светлые секции и подложки */
-  --bg-soft:#F7FBFA;        /* Светлый фон блоков */
-  --glass:rgba(255,255,255,.10);
-  --glass-b:rgba(255,255,255,.22);
-
-  /* Тени и радиусы */
-  --r:16px;
-  --shadow-lg:0 16px 36px rgba(0,0,0,.28);
-  --shadow-md:0 10px 24px rgba(0,0,0,.22);
-}
-:root{--c1:#00B3A4;--c2:#007F6C;--text:#083a34}
+      --c1:#00B3A4; --c2:#007F6C; --c3:#35D0C4;
+      --text:#083A34; --mute:#3E6D66;
+      --bg-soft:#F7FBFA; --glass:rgba(255,255,255,.10); --glass-b:rgba(255,255,255,.22);
+      --r:16px; --shadow-lg:0 16px 36px rgba(0,0,0,.28); --shadow-md:0 10px 24px rgba(0,0,0,.22);
+    }
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Inter,Arial,sans-serif;color:#fff;background:linear-gradient(135deg,var(--c1),var(--c2));}
+    html,body{margin:0}
+    body{
+      font-family:system-ui,-apple-system,'Segoe UI',Inter,Roboto,Arial,sans-serif;
+      color:#fff;
+      background:linear-gradient(135deg,var(--c1),var(--c2));
+    }
     a{color:inherit;text-decoration:none}
 
-    /* NAV (стеклянная шапка) */
-    header{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.08);backdrop-filter:blur(8px)}
-    .nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 12px}
-    .logo{height:42px;width:auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
-    .brand{font-weight:800;letter-spacing:.3px}
-    nav{margin-left:auto;display:flex;gap:14px;flex-wrap:wrap}
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.08);backdrop-filter:blur(8px)}
+    .nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 16px}
+    .logo{height:40px;width:auto;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+    .brand{font-weight:900;letter-spacing:.2px}
+    nav{margin-left:auto;display:flex;gap:12px;flex-wrap:wrap}
     nav a{padding:8px 10px;border-radius:10px;opacity:.95}
     nav a:hover{opacity:1;background:rgba(255,255,255,.12)}
-    .shield-cta{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;
-      background:linear-gradient(135deg,#00B3A4,#007F6C);box-shadow:0 6px 16px rgba(0,0,0,.2);font-weight:800}
+    .cta{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:800;box-shadow:0 6px 16px rgba(0,0,0,.18);transition:.2s}
+    .cta.primary{background:#fff;color:var(--c2)}
+    .cta.primary:hover{transform:translateY(-2px);background:#eaffff}
+    .cta.grad{background:linear-gradient(135deg,var(--c1),var(--c2))}
+    .cta.grad:hover{transform:translateY(-2px);filter:saturate(1.05)}
 
-    .container{max-width:1100px;margin:0 auto;padding:16px}
+    .container{max-width:1200px;margin:0 auto;padding:16px}
+    .card{background:var(--glass);border:1px solid var(--glass-b);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow-md)}
+    h1,h2,h3{margin:0 0 8px}
 
-    /* HERO блок как у Greenix */
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center;padding:28px 0}
-.hero h1{margin:8px 0 10px;font-size:42px;line-height:1.1}
-.hero p{margin:0 0 18px;opacity:.95}
-.cta{display:inline-block;padding:12px 20px;background:#00B3A4;border-radius:10px;font-weight:700;
-     box-shadow:0 6px 16px rgba(0,0,0,.18);transition:.2s}
-.cta:hover{transform:translateY(-2px);background:#009c90}
-.cta.secondary{background:#fff;color:#007F6C}
-.hero-visual{position:relative}
-.hero-visual img{width:100%;height:360px;object-fit:cover;border-radius:18px;box-shadow:0 16px 36px rgba(0,0,0,.28)}
-/* ====== СЕТКА РАБОТ (фото работ, специалистов, клиентов) ====== */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 18px;
-  margin: 40px auto;
-  max-width: 1100px;
-}
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:center;padding:24px 0}
+    .hero h1{font-size:44px;line-height:1.08}
+    .hero p{opacity:.95;margin:8px 0 18px}
+    .hero-visual{position:relative;overflow:hidden;border-radius:18px;box-shadow:var(--shadow-lg)}
+    .hero-visual img{width:100%;height:380px;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.05)}
+    .badge-ribbon{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+    .chip{background:rgba(255,255,255,.12);border:1px solid var(--glass-b);border-radius:12px;padding:10px;text-align:center}
 
-.gallery img {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 10px 24px rgba(0,0,0,.18);
-  transition: transform .3s ease, box-shadow .3s ease;
-  cursor: pointer;
-}
+    /* How we work */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .step{padding:16px;border-radius:14px;background:rgba(255,255,255,.12);border:1px solid var(--glass-b);transition:.2s}
+    .step:hover{transform:translateY(-2px);background:rgba(255,255,255,.16)}
+    .step b{display:block;margin-bottom:6px}
 
-.gallery img:hover {
-  transform: scale(1.04);
-  box-shadow: 0 14px 32px rgba(0,0,0,.28);
-}
-    #img-modal {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  z-index: 9999;
-}
+    /* About */
+    .two{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:center}
+    .embed{border-radius:16px;overflow:hidden;box-shadow:var(--shadow-md);background:#000}
 
-#img-modal.show {
-  display: flex;
-  animation: fadeIn .3s ease;
-}
+    /* Package */
+    #package .bullets{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
+    #package .bullets .card{min-height:120px}
+    #package .cta-wrap{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
 
-#img-modal img {
-  max-width: 90%;
-  max-height: 80%;
-  border-radius: 18px;
-  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.6);
-  transition: transform .3s ease;
-  cursor: zoom-out;
-}
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:16px}
+    .gallery figure{position:relative;margin:0}
+    .gallery img{width:100%;height:220px;object-fit:cover;border-radius:16px;box-shadow:var(--shadow-md);transition:transform .3s ease, box-shadow .3s}
+    .gallery img:hover{transform:scale(1.04);box-shadow:0 14px 32px rgba(0,0,0,.28)}
+    .gallery figcaption{position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);color:#fff;font-size:14px;padding:6px 10px;text-align:center;border-radius:0 0 16px 16px;opacity:0;transition:.3s}
+    .gallery figure:hover figcaption{opacity:1}
 
-#img-modal .caption {
-  color: #fff;
-  font-size: 18px;
-  margin-top: 16px;
-  text-align: center;
-  opacity: 0.9;
-  font-weight: 500;
-}
+    /* Reviews */
+    .reviews{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .review{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.10);border:1px solid var(--glass-b);border-radius:14px;padding:14px}
+    .avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;box-shadow:var(--shadow-md)}
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.97); }
-  to { opacity: 1; transform: scale(1); }
-}
+    /* FAQ */
+    .faq{display:grid;grid-template-columns:1fr;gap:10px}
+    details{background:rgba(255,255,255,.10);border:1px solid var(--glass-b);border-radius:12px;padding:12px}
+    summary{cursor:pointer;font-weight:700}
+    details[open]{background:rgba(255,255,255,.14)}
 
-/* ====== МОДАЛЬНОЕ УВЕЛИЧЕНИЕ ФОТО С ПОДПИСЬЮ ====== */
-#img-modal {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  z-index: 9999;
-}
+    /* Contacts */
+    .contacts-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+    .map{border-radius:16px;overflow:hidden;box-shadow:var(--shadow-md);min-height:320px}
 
-#img-modal.show {
-  display: flex;
-  animation: fadeIn .3s ease;
-}
+    footer{text-align:center;padding:18px 0;opacity:.9}
 
-#img-modal img {
-  max-width: 90%;
-  max-height: 80%;
-  border-radius: 18px;
-  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.6);
-  transition: transform .3s ease;
-  cursor: zoom-out;
-}
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
 
-#img-modal .caption {
-  color: #fff;
-  font-size: 18px;
-  margin-top: 16px;
-  text-align: center;
-  opacity: 0.9;
-  font-weight: 500;
-}
+    /* Mobile */
+    @media(max-width:1020px){.hero{grid-template-columns:1fr}.two,.contacts-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.badge-ribbon{grid-template-columns:1fr 1fr}.reviews{grid-template-columns:1fr} }
+    @media(max-width:560px){.steps{grid-template-columns:1fr}.badge-ribbon{grid-template-columns:1fr}.hero h1{font-size:34px}}
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.97); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-    /* РИББОН УТП */
-    .ribbon{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
-    .chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:12px;text-align:center}
-
-    /* ТРИ КОРОТКИХ НАПРАВЛЕНИЯ */
-    .tri{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
-    .card{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:18px 20px}
-    .card h3{margin:0 0 6px}
-    .card p{margin:0 0 12px;opacity:.9}
-    .small{font-size:14px;opacity:.9}
-
-    footer{padding:18px 0;text-align:center;opacity:.9;margin-top:24px}
-
-    @media(max-width:980px){
-      .hero{grid-template-columns:1fr}
-      .ribbon{grid-template-columns:1fr 1fr}
-      .tri{grid-template-columns:1fr}
+    /* Floating call on mobile */
+    .call-fab{
+      position:fixed;right:16px;bottom:16px;z-index:60;
+      background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;border:none;
+      width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      box-shadow:0 10px 22px rgba(0,0,0,.25);font-weight:900;font-size:22px
     }
+    @media(min-width:981px){.call-fab{display:none}}
+
+    /* Image Modal */
+    #img-modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:80}
+    #img-modal.show{display:flex;animation:fadeIn .25s ease}
+    #img-modal img{max-width:90%;max-height:80%;border-radius:18px;box-shadow:0 14px 42px rgba(0,0,0,.6);cursor:zoom-out}
+    #img-modal .caption{color:#fff;font-size:18px;margin-top:14px;text-align:center;opacity:.92}
+    .nav-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.25);border:none;color:#fff;font-size:38px;width:44px;height:44px;border-radius:50%;cursor:pointer}
+    .nav-btn:hover{background:rgba(255,255,255,.4)}
+    #prev-btn{left:5%} #next-btn{right:5%}
+    @keyframes fadeIn{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:scale(1)}}
   </style>
 </head>
-<script>
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
-  },{threshold:.15});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-</script>
 <body>
 
-  <!-- NAV -->
+  <!-- Header -->
   <header>
     <div class="nav">
       <img class="logo" src="media/mascot1.png" alt="ДЕЗЩИТ 360">
       <div class="brand">ДЕЗЩИТ 360</div>
       <nav>
-        <a href="index.html">Главная</a>
-        <a href="services.html">Виды услуг</a>
-        <a href="examples.html">Примеры</a>
-        <a href="prices.html">Цены</a>
-        <a href="articles.html">Статьи</a>
-        <a href="policy.html">Политика</a>
-        <a href="dezshit360.html" class="shield-cta">ДезЩит 360</a>
+        <a href="#top">Главная</a>
+        <a href="#how">Как мы работаем</a>
+        <a href="#about">О нас</a>
+        <a href="#package">ДезЩит 360</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacts">Контакты</a>
       </nav>
+      <a class="cta primary" href="tel:+79785500557">Бесплатный осмотр</a>
     </div>
   </header>
 
-  <main class="container">
-    <!-- HERO -->
-   <!-- ФОТОГАЛЕРЕЯ РАБОТ -->
-<section class="gallery">
-  <img src="media/ops-spray-1.jpg" alt="Дезинфекция помещений — безопасно и эффективно">
-  <img src="media/ops-vent-1.jpg" alt="Очистка и дезинфекция систем вентиляции">
-  <img src="media/ops-vehicle-1.jpg" alt="Обработка автотранспорта по стандартам СЭС">
-  <img src="media/team-tech-1.jpg" alt="Наши специалисты в работе">
-  <img src="media/client-happy-1.jpg" alt="Довольные клиенты после обработки">
-  <img src="media/client-happy-2.jpg" alt="Результаты, которые говорят сами за себя">
-</section>
-                      
-<!-- КОМАНДА -->
-<section class="card" style="margin-top:18px">
- <h2 style="margin:4px 0 12px">Наши специалисты</h2>
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">
-    <article class="card reveal" style="background:var(--glass);border:1px solid var(--glass-b)">
-      <div style="display:flex;gap:14px;align-items:center">
-        <img src="media/team-tech-1.jpg" alt="Специалист" style="width:84px;height:84px;object-fit:cover;border-radius:14px;box-shadow:var(--shadow-md)">
-        <div>
-          <strong>Старший мастер</strong>
-          <p style="margin:6px 0 0;opacity:.9">Сертификаты, опыт >5 лет, безопасные методики + рекомендации по режимам.</p>
+  <main id="top" class="container">
+    <!-- Hero -->
+    <section class="hero reveal card" style="padding:18px">
+      <div>
+        <h1>Безопасность на каждом уровне</h1>
+        <p>Профессиональная дезинфекция, дезинсекция, дератизация и вентиляция для дома и бизнеса по всему Крыму. Акты и документы — в день работ.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="cta grad" href="#contacts">Заказать обработку</a>
+          <a class="cta primary" href="#package">Спецпредложение: ДезЩит 360</a>
+        </div>
+
+        <div class="badge-ribbon">
+          <div class="chip">Первичный осмотр — 0 ₽</div>
+          <div class="chip">Гарантия 365</div>
+          <div class="chip">Документы в день работ</div>
+          <div class="chip">Ночной тариф для HoReCa −10%</div>
         </div>
       </div>
-    </article>
-    <article class="card reveal" style="background:var(--glass);border:1px solid var(--glass-b)">
-      <div style="display:flex;gap:14px;align-items:center">
-        <img src="media/team-tech-2.jpg" alt="Специалист" style="width:84px;height:84px;object-fit:cover;border-radius:14px;box-shadow:var(--shadow-md)">
+
+      <div class="hero-visual">
+        <img src="media/restaurant-banner.jpg" alt="Чистая кухня ресторана">
+      </div>
+    </section>
+
+    <!-- How we work -->
+    <section id="how" class="reveal" style="margin-top:18px">
+      <h2>Как мы работаем</h2>
+      <p style="opacity:.95;margin:4px 0 12px">Прозрачно, быстро и по стандартам СЭС.</p>
+      <div class="steps">
+        <div class="step"><b>1. Осмотр</b>Бесплатный выезд. Диагностика и рекомендации.</div>
+        <div class="step"><b>2. Смета</b>Фиксируем стоимость и график. Документы заранее.</div>
+        <div class="step"><b>3. Обработка</b>Безопасные препараты, режимы, фотоотчёт.</div>
+        <div class="step"><b>4. Документы</b>Акты и журналы — в день работ. Гарантия 365.</div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="reveal card" style="margin-top:18px">
+      <div class="two">
         <div>
-          <strong>Инженер по вентиляции</strong>
-          <p style="margin:6px 0 0;opacity:.9">Vент-Safe Check: фото «до/после», смета за 10 минут, рекомендации по уходу.</p>
+          <h2>О нас</h2>
+          <p style="opacity:.95">«ДЕЗЩИТ 360» — центр дезинфектологии с опытом более 10 лет. Работаем по всему Крыму: квартиры, рестораны, склады, гостиницы, медучреждения и образовательные объекты. Сертифицированные специалисты, акты и документы — в день работ.</p>
+          <ul style="margin:0;padding-left:18px;opacity:.95">
+            <li>Дезинфекция, дезинсекция, дератизация, дезодорация</li>
+            <li>Дезинфекция систем вентиляции (Vент-Safe Check)</li>
+            <li>Дезинфекция автотранспорта (включая рефрижераторы)</li>
+          </ul>
+        </div>
+        <div class="embed">
+          <!-- Ваше видео из проекта (без автоплея со звуком) -->
+          <video src="media/AVJO6241.MP4" controls playsinline muted style="width:100%;height:100%"></video>
         </div>
       </div>
-    </article>
-  </div>
-</section>
-<section class="gallery">
-  <img src="media/ops-spray-1.jpg" alt="Дезинфекция помещений">
-  <img src="media/ops-vent-1.jpg" alt="Очистка вентиляции">
-  <img src="media/ops-vehicle-1.jpg" alt="Обработка автотранспорта">
-  <img src="media/team-tech-1.jpg" alt="Наши специалисты за работой">
-  <img src="media/client-happy-1.jpg" alt="Довольный клиент">
-  <img src="media/client-happy-2.jpg" alt="Результат обработки">
-</section>
-<section class="hero container">
-  <div class="hero-copy">
-    <h1>Безопасность на каждом уровне</h1>
-    <p>Комплексные обработки для квартир, ресторанов, складов и медучреждений. Документы в день работ.</p>
-    <a class="cta" href="examples.html">Смотреть примеры</a>
-    <a class="cta secondary" href="prices.html">Узнать цены</a>
-  </div>
-
-  <div class="hero-visual">
-    <img src="media/restaurant-banner.jpg" alt="Чистая кухня ресторана">
-  </div>
-</section>
-
-
-    <!-- УТП (короткая лента) -->
-    <section class="ribbon">
-      <div class="chip">Первичный осмотр — 0 ₽</div>
-      <div class="chip">Акт и документы — в день работ</div>
-      <div class="chip">Гарантия 365 — повторная обработка</div>
-      <div class="chip">Ночной тариф HoReCa −10%</div>
     </section>
 
-    <!-- ТРИ НАПРАВЛЕНИЯ (тизер) -->
-    <section class="tri">
-      <article class="card">
-        <h3>Дом</h3>
-        <p>Комплексные решения для квартиры и частного дома: безопасные препараты и режимные рекомендации.</p>
-        <a class="cta secondary small" href="services.html#s-dezinsekciya">Смотреть услуги для дома</a>
-      </article>
-      <article class="card">
-        <h3>Ресторан</h3>
-        <p>Кухня, зал, склад, вентиляция. Ночной график и полный пакет документов для проверок.</p>
-        <a class="cta secondary small" href="services.html#s-vent">Смотреть услуги для HoReCa</a>
-      </article>
-      <article class="card">
-        <h3>Бизнес/склад</h3>
-        <p>Склад, логистика, производство — планы обработок, регламенты, акты, журналы, квартальные осмотры.</p>
-        <a class="cta secondary small" href="services.html#s-deratizaciya">Смотреть услуги для бизнеса</a>
-      </article>
+    <!-- Package: ДезЩит 360 -->
+    <section id="package" class="reveal card" style="margin-top:18px;background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.18));">
+      <h2>ДезЩит 360 — пакет-сервис</h2>
+      <p style="opacity:.95;margin-bottom:10px">
+        Абонентское сопровождение для HoReCa, складов, производств, гостиниц, медучреждений и ТС. Регулярные профилактики, акты и журналы, контроль графика и приоритетный выезд.
+      </p>
+      <div class="bullets">
+        <div class="card"><b>Регулярные визиты</b><br/>Гибкий график, ночные обработки без простоя.</div>
+        <div class="card"><b>Документы 24/7</b><br/>Акты, журналы, фото «до/после» — в день работ.</div>
+        <div class="card"><b>Vент-Safe Check</b><br/>Дезинфекция вентиляции, смета за 10 минут.</div>
+      </div>
+      <div class="cta-wrap">
+        <a class="cta grad" href="#contacts">Оставить заявку на пакет</a>
+        <a class="cta primary" href="tel:+79785500557">Позвонить сейчас</a>
+      </div>
     </section>
-    <!-- ОТЗЫВЫ -->
-<section class="card" style="margin-top:18px">
-  <h2 style="margin:4px 0 12px">Отзывы</h2>
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">
-    <article class="card reveal" style="display:flex;gap:12px;align-items:flex-start;background:var(--glass);border:1px solid var(--glass-b)">
-      <img src="media/client-happy-1.jpg" alt="Клиент" style="width:64px;height:64px;object-fit:cover;border-radius:50%;box-shadow:var(--shadow-md)">
-      <p style="margin:0;opacity:.95">«Сделали ночью без остановки кухни. Документы утром уже были на почте — проверку прошли спокойно».</p>
-    </article>
-    <article class="card reveal" style="display:flex;gap:12px;align-items:flex-start;background:var(--glass);border:1px solid var(--glass-b)">
-      <img src="media/client-happy-2.jpg" alt="Клиент" style="width:64px;height:64px;object-fit:cover;border-radius:50%;box-shadow:var(--shadow-md)">
-      <p style="margin:0;opacity:.95">«После обработки насекомых нет. Дали понятные инструкции — в квартире спокойно».</p>
-    </article>
-  </div>
-</section>
+
+    <!-- Gallery -->
+    <section class="reveal" style="margin-top:18px">
+      <h2>Наши работы</h2>
+      <div class="gallery">
+        <figure>
+          <img src="media/ops-spray-1.jpg" alt="Дезинфекция помещений — безопасно и эффективно">
+          <figcaption>Дезинфекция помещений — безопасно и эффективно</figcaption>
+        </figure>
+        <figure>
+          <img src="media/ops-vent-1.jpg" alt="Очистка и дезинфекция систем вентиляции">
+          <figcaption>Очистка и дезинфекция систем вентиляции</figcaption>
+        </figure>
+        <figure>
+          <img src="media/ops-vehicle-1.jpg" alt="Обработка автотранспорта по стандартам СЭС">
+          <figcaption>Обработка автотранспорта по стандартам СЭС</figcaption>
+        </figure>
+        <figure>
+          <img src="media/team-tech-1.jpg" alt="Наши специалисты в работе">
+          <figcaption>Наши специалисты в работе</figcaption>
+        </figure>
+        <figure>
+          <img src="media/client-happy-1.jpg" alt="Довольные клиенты после обработки">
+          <figcaption>Довольные клиенты после обработки</figcaption>
+        </figure>
+        <figure>
+          <img src="media/client-happy-2.jpg" alt="Результаты, которые говорят сами за себя">
+          <figcaption>Результаты, которые говорят сами за себя</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="reveal" style="margin-top:18px">
+      <h2>Отзывы клиентов</h2>
+      <div class="reviews">
+        <div class="review">
+          <img class="avatar" src="media/client-happy-1.jpg" alt="">
+          <p style="margin:0">«Сделали ночью без остановки кухни. Документы утром уже были на почте — проверку прошли спокойно».</p>
+        </div>
+        <div class="review">
+          <img class="avatar" src="media/client-happy-2.jpg" alt="">
+          <p style="margin:0">«После обработки насекомых нет. Дали понятные инструкции — в квартире спокойно».</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="reveal card" style="margin-top:18px">
+      <h2>FAQ — часто задаваемые вопросы</h2>
+      <div class="faq" style="margin-top:8px">
+        <details>
+          <summary>Какие препараты вы используете и безопасно ли это?</summary>
+          <div style="margin-top:6px;opacity:.95">Мы применяем сертифицированные средства, безопасные при соблюдении режимов. Все препараты рекомендованы к использованию Роспотребнадзором.</div>
+        </details>
+        <details>
+          <summary>Можно ли находиться в помещении после обработки?</summary>
+          <div style="margin-top:6px;opacity:.95">Зависит от метода. Обычно требуется проветривание 30–60 минут и соблюдение рекомендаций мастера.</div>
+        </details>
+        <details>
+          <summary>Даете ли вы акты и гарантию?</summary>
+          <div style="margin-top:6px;opacity:.95">Да. Акты и журналы предоставляем в день работ. Гарантия 365 на регламентные услуги.</div>
+        </details>
+        <details>
+          <summary>Как быстро выезжаете?</summary>
+          <div style="margin-top:6px;opacity:.95">Обычно — в день обращения. Для HoReCa — ночные выезды с -10% тарифом.</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Contacts -->
+    <section id="contacts" class="reveal" style="margin-top:18px">
+      <h2>Контактная информация</h2>
+      <div class="contacts-grid" style="margin-top:8px">
+        <div class="card">
+          <p style="margin:0 0 6px"><b>Адрес:</b> Крым, г. Симферополь, ул. Екатерининская, 51</p>
+          <p style="margin:0 0 6px"><b>Телефон:</b> <a href="tel:+79785500557">+7 (978) 550-05-57</a></p>
+          <p style="margin:0 0 10px"><b>E-mail:</b> <a href="mailto:Dezschit360@mail.ru">Dezschit360@mail.ru</a></p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a class="cta grad" href="tel:+79785500557">Позвонить сейчас</a>
+            <a class="cta primary" href="#package">Заявка на «ДезЩит 360»</a>
+          </div>
+        </div>
+        <div class="map card" style="padding:0">
+          <!-- Встраиваем Яндекс.Карты (можно заменить на Google) -->
+          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A&ll=34.100%2C44.948&z=13"
+                  width="100%" height="100%" frameborder="0" style="border:0"></iframe>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    © 2025 ДЕЗЩИТ 360. Все права защищены. |
-    <a href="policy.html" style="text-decoration:underline">Политика конфиденциальности</a>
+    © 2025 ДЕЗЩИТ 360. Все права защищены. | <a href="policy.html" style="text-decoration:underline;color:#fff">Политика конфиденциальности</a>
   </footer>
-<!-- Reveal on scroll -->
-<script>
-  // Подсветка появляющихся блоков
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: "0px 0px -10% 0px" });
 
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
-<!-- Reveal on scroll + надёжный фолбэк -->
-<script>
-(function () {
-  function revealRun() {
-    const nodes = document.querySelectorAll('.reveal');
-    if (!nodes.length) return;
+  <!-- Floating Call -->
+  <a class="call-fab" href="tel:+79785500557">📞</a>
 
-    // Фолбэк: если нет IntersectionObserver — просто показать всё
-    if (!('IntersectionObserver' in window)) {
-      nodes.forEach(n => n.classList.add('visible'));
-      return;
-    }
+  <!-- Image Modal -->
+  <div id="img-modal">
+    <img src="" alt="">
+    <div class="caption"></div>
+    <button id="prev-btn" class="nav-btn">‹</button>
+    <button id="next-btn" class="nav-btn">›</button>
+  </div>
 
-    const io = new IntersectionObserver((entries, obs) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          obs.unobserve(e.target);
+  <!-- Scripts -->
+  <script>
+    // Reveal on scroll (надёжно)
+    (function(){
+      function run(){
+        const nodes=document.querySelectorAll('.reveal');
+        if(!('IntersectionObserver'in window)){
+          nodes.forEach(n=>n.classList.add('visible')); return;
         }
+        const io=new IntersectionObserver((entries,obs)=>{
+          entries.forEach(e=>{
+            if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+          });
+        },{threshold:.12,rootMargin:"0px 0px -10% 0px"});
+        nodes.forEach(n=>io.observe(n));
+      }
+      if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run); else run();
+    })();
+
+    // Modal gallery (с подписями + стрелки)
+    (function(){
+      const modal=document.getElementById('img-modal');
+      const modalImg=modal.querySelector('img');
+      const modalCap=modal.querySelector('.caption');
+      const prev=document.getElementById('prev-btn');
+      const next=document.getElementById('next-btn');
+      const thumbs=[...document.querySelectorAll('.gallery img')];
+      let i=-1;
+
+      function show(idx){
+        if(!thumbs.length) return;
+        if(idx<0) idx=thumbs.length-1;
+        if(idx>=thumbs.length) idx=0;
+        i=idx;
+        modalImg.src=thumbs[i].src;
+        modalCap.textContent=thumbs[i].alt||'';
+      }
+
+      thumbs.forEach((img,idx)=>{
+        img.addEventListener('click',()=>{
+          show(idx);
+          modal.classList.add('show');
+        });
       });
-    }, { threshold: 0.1, rootMargin: "0px 0px -10% 0px" });
 
-    nodes.forEach(n => io.observe(n));
-  }
+      modal.addEventListener('click',(e)=>{ if(e.target===modal) modal.classList.remove('show'); });
+      document.addEventListener('keydown',(e)=>{
+        if(!modal.classList.contains('show')) return;
+        if(e.key==='Escape') modal.classList.remove('show');
+        if(e.key==='ArrowLeft') show(i-1);
+        if(e.key==='ArrowRight') show(i+1);
+      });
+      prev.addEventListener('click',(e)=>{ e.stopPropagation(); show(i-1); });
+      next.addEventListener('click',(e)=>{ e.stopPropagation(); show(i+1); });
+    })();
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', revealRun);
-  } else {
-    revealRun();
-  }
-})();
-</script>
-<!-- МОДАЛЬНОЕ ОКНО ДЛЯ УВЕЛИЧЕНИЯ ФОТО -->
-<div id="img-modal">
-  <img src="" alt="Фото">
-</div>
-<script>
-  // Модальное увеличение фото из галереи
-  const modal = document.getElementById('img-modal');
-  const modalImg = modal.querySelector('img');
-  const galleryImgs = document.querySelectorAll('.gallery img');
-
-  galleryImgs.forEach(img => {
-    img.addEventListener('click', () => {
-      modalImg.src = img.src;
-      modal.classList.add('show');
+    // Safe image fallback (если где-то опечатка в пути)
+    document.querySelectorAll('img').forEach(img=>{
+      img.addEventListener('error',()=>{ img.style.display='none'; });
     });
-  });
-
-  // Закрытие по клику или клавише Esc
-  modal.addEventListener('click', () => modal.classList.remove('show'));
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') modal.classList.remove('show');
-  });
-</script>
-<!-- МОДАЛЬНОЕ ОКНО С ПОДПИСЬЮ -->
-<div id="img-modal">
-  <img src="" alt="Фото">
-  <div class="caption"></div>
-<script>
-  const modal = document.getElementById('img-modal');
-  const modalImg = modal.querySelector('img');
-  const modalCaption = modal.querySelector('.caption');
-  const galleryImgs = document.querySelectorAll('.gallery img');
-
-  galleryImgs.forEach(img => {
-    img.addEventListener('click', () => {
-      modalImg.src = img.src;
-      modalCaption.textContent = img.alt || '';
-      modal.classList.add('show');
-    });
-  });
-
-  // Закрытие по клику или клавише Esc
-  modal.addEventListener('click', () => modal.classList.remove('show'));
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') modal.classList.remove('show');
-  });
-</script>
-</div>
-<!-- МОДАЛЬНОЕ ОКНО ДЛЯ ПРОСМОТРА ФОТО -->
-<div id="img-modal">
-  <img src="" alt="Фото">
-  <div class="caption"></div>
-</div>
-<script>
-  const modal = document.getElementById('img-modal');
-  const modalImg = modal.querySelector('img');
-  const modalCaption = modal.querySelector('.caption');
-  const galleryImgs = document.querySelectorAll('.gallery img');
-
-  galleryImgs.forEach(img => {
-    img.addEventListener('click', () => {
-      modalImg.src = img.src;
-      modalCaption.textContent = img.alt || '';
-      modal.classList.add('show');
-    });
-  });
-
-  // Закрытие по клику или клавише Esc
-  modal.addEventListener('click', () => modal.classList.remove('show'));
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') modal.classList.remove('show');
-  });
-</script>
+  </script>
 </body>
 </html>
 
