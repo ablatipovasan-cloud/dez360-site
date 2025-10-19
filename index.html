@@ -718,8 +718,90 @@ nav a {
     ctaBtn.classList.add('glow');
   }
 </script>
+<!-- 🔹 Telegram чат-бот "ДЕЗЩИТ 360" -->
+<a href="https://t.me/DezSchit360Bot" target="_blank" id="tg-widget" title="Написать в Telegram">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+  <span id="tg-label">Написать в Telegram</span>
+</a>
+
+<style>
+  /* === Telegram floating button === */
+  #tg-widget {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #00B3A4, #007F6C);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: pulseBtn 2.8s infinite ease-in-out;
+    text-decoration: none;
+    overflow: visible;
+  }
+
+  #tg-widget img {
+    width: 34px;
+    height: 34px;
+    filter: brightness(0) invert(1);
+    pointer-events: none;
+    transition: transform 0.3s ease;
+  }
+
+  /* Подпись при наведении */
+  #tg-label {
+    position: absolute;
+    right: 70px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(4px);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  #tg-widget:hover #tg-label {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #tg-widget:hover img {
+    transform: scale(1.1);
+  }
+
+  /* Плавное свечение */
+  @keyframes pulseBtn {
+    0%, 100% { box-shadow: 0 0 16px rgba(0, 179, 164, 0.35); }
+    50% { box-shadow: 0 0 28px rgba(0, 179, 164, 0.6); }
+  }
+
+  /* 📱 Адаптация для мобильных */
+  @media (max-width: 640px) {
+    #tg-widget {
+      width: 68px;
+      height: 68px;
+      bottom: 18px;
+      right: 18px;
+    }
+    #tg-label {
+      display: none; /* не мешаем на маленьких экранах */
+    }
+  }
+</style>
 </body>
 </html>
+
 
 
 
