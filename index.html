@@ -147,28 +147,27 @@ nav a {
 @keyframes navFade {
   to { opacity: 1; transform: translateY(0); }
 }
-/* === Плавный фон и параллакс для секции "ДезЩит 360" === */
+/* === Секция спецпредложения "ДезЩит 360" === */
 #dezshield {
   position: relative;
   background: url("media/disinfector.jpg") center/cover no-repeat;
   min-height: 80vh;
   color: #fff;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
   text-align: center;
   padding: 80px 20px;
   overflow: hidden;
   border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s ease;
 }
 
 #dezshield::before {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
   background: rgba(0, 40, 35, 0.55);
   backdrop-filter: blur(2px);
   z-index: 1;
@@ -178,25 +177,51 @@ nav a {
   position: relative;
   z-index: 2;
   max-width: 800px;
-  margin: 0 auto;
   animation: fadeUp 1.2s ease forwards;
 }
 
 #dezshield h2 {
   font-size: 2.2rem;
   font-weight: 800;
-  margin-bottom: 16px;
-  text-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  margin: 18px 0;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.45);
 }
 
 #dezshield p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  opacity: 0.95;
+  font-size: 1.15rem;
+  line-height: 1.7;
   margin-bottom: 24px;
+  opacity: 0.95;
 }
 
-/* лёгкий параллакс */
+#dezshield .badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  font-size: 0.95rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+}
+
+/* CTA-кнопки */
+#dezshield .cta {
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 10px 22px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+#dezshield .cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+
+/* --- Эффект движения фона при мыши --- */
 @media (min-width: 768px) {
   #dezshield {
     background-attachment: fixed;
@@ -650,9 +675,24 @@ nav a {
       dez.style.transform = 'rotateX(0) rotateY(0)';
     });
   }
+<script>
+  // Эффект движения и оживления фона
+  const dez = document.querySelector('#dezshield');
+  if (dez) {
+    dez.addEventListener('mousemove', e => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 5;
+      const y = (e.clientY / window.innerHeight - 0.5) * 5;
+      dez.style.transform = `rotateX(${y}deg) rotateY(${x}deg)`;
+    });
+    dez.addEventListener('mouseleave', () => {
+      dez.style.transform = 'rotateX(0) rotateY(0)';
+    });
+  }
+</script>
 </script>
 </body>
 </html>
+
 
 
 
