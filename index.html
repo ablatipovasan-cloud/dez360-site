@@ -3,189 +3,449 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ДЕЗЩИТ 360 — Профессиональная дезинфекция в Крыму</title>
-  <link rel="icon" href="media/logo.png" />
+  <title>ДЕЗЩИТ 360 — Дезинфекция, дезинсекция, дератизация в Крыму</title>
+  <meta name="description" content="Профессиональная дезинфекция, дезинсекция, дератизация — и любые другие санитарные услуги. Акты и документы — в день работ. Симферополь и весь Крым." />
+  <link rel="icon" href="media/mascot1.png" />
   <style>
-    :root {
-      --c1:#00B3A4;
-      --c2:#007F6C;
-      --txt:#033c34;
+    :root{
+      --c1:#00B3A4; --c2:#007F6C; --c3:#35D0C4;
+      --bg:#F7FBFA; --txt:#083A34; --mut:#5F6E6C; --white:#fff;
+      --r:16px; --shadow:0 10px 30px rgba(0,0,0,.12); --shadow-lg:0 18px 48px rgba(0,0,0,.18);
     }
-    body {
-      margin:0; font-family:'Inter',system-ui,Arial,sans-serif;
-      color:var(--txt);
-      background:#f9fdfc;
-    }
-    header {
-      background:linear-gradient(90deg,var(--c1),var(--c2));
-      color:#fff; padding:14px 24px;
-      display:flex;align-items:center;justify-content:space-between;
-      box-shadow:0 2px 10px rgba(0,0,0,.15);
-    }
-    header nav a {
-      color:#fff;text-decoration:none;margin:0 10px;font-weight:600;
-      transition:.3s;
-    }
-    header nav a:hover {opacity:.8;}
-    section {padding:60px 20px;max-width:1100px;margin:0 auto;}
-    .hero {
-      background:url('media/disinfector.jpg') center/cover no-repeat;
-      color:#fff;text-align:center;
-      padding:100px 20px;
-      position:relative;
-    }
-    .hero::after {
-      content:"";position:absolute;inset:0;
-      background:rgba(0,0,0,.5);
-    }
-    .hero>* {position:relative;z-index:2;}
-    .hero h1 {font-size:42px;margin:0 0 12px;}
-    .hero p {font-size:18px;max-width:650px;margin:0 auto;}
-    .btn {
-      background:var(--c1);color:#fff;border:none;
-      padding:12px 22px;font-weight:600;
-      border-radius:8px;cursor:pointer;transition:.3s;
-    }
-    .btn:hover {background:var(--c2);}
-    .services {
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;
-    }
-    .card {
-      background:#fff;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.08);
-      padding:20px;transition:.3s;cursor:pointer;
-    }
-    .card:hover {transform:translateY(-6px);}
-    .card h3 {margin-top:0;color:var(--c2);}
-    footer {
-      background:var(--c2);color:#fff;text-align:center;padding:20px;font-size:15px;
-    }
-    #map {height:300px;border-radius:12px;margin-top:20px;}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',Inter,Roboto,Arial,sans-serif;color:var(--txt);background:linear-gradient(135deg,#0fb9ad,#077464)}
+    img{max-width:100%;display:block}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.08);backdrop-filter:blur(8px);color:#fff;box-shadow:0 6px 16px rgba(0,0,0,.2)}
+    .bar{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:14px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900}
+    .brand img{height:40px;width:auto;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+    nav{margin-left:auto;display:flex;gap:12px;flex-wrap:wrap}
+    nav a{color:#fff;text-decoration:none;padding:8px 10px;border-radius:10px;opacity:.95}
+    nav a:hover,nav a.active{background:rgba(255,255,255,.18)}
+    .container{max-width:1180px;margin:0 auto;padding:22px 16px}
+
+    /* Hero */
+    .hero{background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(255,255,255,.86));border-radius:20px;box-shadow:var(--shadow-lg);padding:28px;display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:center}
+    .hero h1{margin:8px 0;font-size:clamp(28px,4.2vw,48px);color:var(--c2)}
+    .hero p{margin:0 0 16px;color:#244a45}
+    .cta{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--c1),var(--c2));box-shadow:0 10px 26px rgba(0,0,0,.2);transition:.2s}
+    .cta:hover{transform:translateY(-2px);filter:saturate(1.05)}
+    .hero-visual{border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+    .hero-visual img{width:100%;height:320px;object-fit:cover}
+
+    /* Generic sections */
+    section.section{background:var(--bg);border-radius:18px;box-shadow:var(--shadow);padding:20px;margin-top:20px}
+    .section h2{margin:6px 0 12px;font-size:clamp(22px,3.2vw,34px);color:#0a4d45}
+
+    /* Services grid */
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+    .card{background:#fff;border-radius:16px;padding:16px;box-shadow:var(--shadow);transition:.2s}
+    .card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(0,0,0,.16)}
+    .service-card .head{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer}
+    .service-card .more{max-height:0;overflow:hidden;opacity:0;transition:max-height .35s,opacity .35s}
+    .service-card.open .more{max-height:1000px;opacity:1}
+    .icon{font-size:26px}
+    .chip{background:rgba(0,179,164,.12);color:var(--c2);padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px}
+
+    /* Steps */
+    .steps{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .step{background:#fff;border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+    .step .num{font-weight:900;color:var(--c2)}
+
+    /* About */
+    .about{display:grid;gap:16px;grid-template-columns:1.1fr .9fr}
+    .about .box{background:#fff;border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+    .about video{width:100%;border-radius:16px;box-shadow:var(--shadow-lg)}
+
+    /* Package */
+    .shield{position:relative;border-radius:18px;overflow:hidden;color:#fff;min-height:360px;display:flex;align-items:center;box-shadow:var(--shadow-lg)}
+    .shield::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.55)),url('media/disinfector.jpg') center/cover no-repeat fixed}
+    .shield .inner{position:relative;padding:24px;max-width:850px}
+    .badge{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.16);padding:8px 12px;border-radius:999px}
+
+    /* Prices */
+    .price-card .head{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer}
+    .price-card .more{max-height:0;overflow:hidden;opacity:0;transition:max-height .35s,opacity .35s}
+    .price-card.open .more{max-height:1000px;opacity:1}
+
+    /* Gallery */
+    .gallery{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .gallery figure{position:relative;margin:0}
+    .gallery img{border-radius:16px;box-shadow:var(--shadow);cursor:zoom-in;transition:.22s;height:220px;object-fit:cover}
+    .gallery img:hover{transform:scale(1.02)}
+    .gallery figcaption{position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);color:#fff;font-size:14px;padding:6px 10px;text-align:center;border-radius:0 0 16px 16px;opacity:0;transition:.3s}
+    .gallery figure:hover figcaption{opacity:1}
+
+    /* FAQ */
+    .accordion .item{background:#fff;border-radius:14px;padding:14px 16px;box-shadow:var(--shadow)}
+    .accordion .q{display:flex;justify-content:space-between;gap:12px;cursor:pointer;font-weight:800}
+    .accordion .a{max-height:0;overflow:hidden;opacity:0;transition:max-height .35s,opacity .35s}
+    .accordion .item.open .a{max-height:800px;opacity:1}
+
+    /* Contacts */
+    .contacts{display:grid;gap:16px;grid-template-columns:1.1fr 1fr}
+    .form input,.form textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #dfe7e6;background:#fff;font-family:inherit;font-size:16px;color:var(--txt)}
+    .form textarea{min-height:120px;resize:vertical}
+    .form input:focus,.form textarea:focus{outline:none;border-color:var(--c1);box-shadow:0 0 0 4px rgba(0,179,164,.14)}
+    #map{height:260px;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);margin-top:8px}
+
+    footer{color:#fff;opacity:.95;text-align:center;padding:18px}
+
+    /* Modal */
+    #img-modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:90}
+    #img-modal.show{display:flex;animation:fadeIn .25s ease}
+    #img-modal img{max-width:92%;max-height:82vh;border-radius:16px;box-shadow:0 18px 48px rgba(0,0,0,.5)}
+    #img-modal .caption{color:#fff;margin-top:10px;opacity:.9;font-weight:600}
+    @keyframes fadeIn{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:scale(1)}}
+
+    /* Responsive */
+    @media(max-width:980px){.hero{grid-template-columns:1fr}.about{grid-template-columns:1fr}.contacts{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
 
-<header>
-  <div><strong>ДЕЗЩИТ 360</strong></div>
-  <nav>
-    <a href="#">Главная</a>
-    <a href="#services">Все услуги</a>
-    <a href="#prices">Цены</a>
-    <a href="#about">О нас</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contacts">Контакты</a>
-  </nav>
-</header>
-
-<section class="hero">
-  <h1>Безопасность на каждом уровне</h1>
-  <p>Дезинфекция • Дезинсекция • Дератизация — и любые виды обработок в Крыму и Севастополе</p>
-  <button class="btn" onclick="document.getElementById('contacts').scrollIntoView({behavior:'smooth'});">Оставить заявку</button>
-</section>
-
-<section id="services">
-  <h2>Наши услуги</h2>
-  <div class="services">
-    <div class="card">
-      <h3>Дезинфекция</h3>
-      <p>Комплексная обработка помещений от вирусов и бактерий.</p>
+  <!-- Header -->
+  <header>
+    <div class="bar">
+      <div class="brand">
+        <img src="media/mascot1.png" alt="ДЕЗЩИТ 360">
+        <div>ДЕЗЩИТ 360</div>
+      </div>
+      <nav id="topnav">
+        <a href="#hero" class="active">Главная</a>
+        <a href="#services">Все услуги</a>
+        <a href="#process">Как мы работаем</a>
+        <a href="#about">О нас</a>
+        <a href="#dezshield">ДезЩит 360</a>
+        <a href="#prices">Цены</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
     </div>
-    <div class="card">
-      <h3>Дезинсекция</h3>
-      <p>Уничтожение насекомых (тараканов, клопов, муравьёв, ос).</p>
-    </div>
-    <div class="card">
-      <h3>Дератизация</h3>
-      <p>Профессиональное уничтожение грызунов и профилактика их появления.</p>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section id="hero" class="hero">
+      <div>
+        <h1>Безопасность на каждом уровне</h1>
+        <p>Профессиональная <b>дезинфекция</b>, <b>дезинсекция</b>, <b>дератизация</b> — и любые другие виды санитарных услуг. Без запаха, простоев и рисков. Акты и документы — в день работ.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="cta" href="#services">Все услуги</a>
+          <a class="cta" href="#prices" style="background:#fff;color:var(--c2)">Цены</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="media/restaurant-banner.jpg" alt="Чистая кухня ресторана">
+      </div>
+    </section>
+
+    <!-- ВСЕ УСЛУГИ -->
+    <section id="services" class="section">
+      <h2>Все услуги</h2>
+      <div class="grid">
+        <article class="card service-card">
+          <div class="head">
+            <div style="display:flex;gap:10px;align-items:center"><span class="icon">🧴</span><div><b>Дезинфекция</b><div class="mut">Бактерии, вирусы, споры</div></div></div>
+            <span class="chip">Подробнее</span>
+          </div>
+          <div class="more mut">Обеззараживание помещений сертифицированными средствами. Акты и журналы — в день работ.</div>
+        </article>
+        <article class="card service-card">
+          <div class="head">
+            <div style="display:flex;gap:10px;align-items:center"><span class="icon">🪳</span><div><b>Дезинсекция</b><div class="mut">Тараканы, клопы, муравьи</div></div></div>
+            <span class="chip">Подробнее</span>
+          </div>
+          <div class="more mut">Комплексная обработка, безопасные режимы, подготовка помещения и рекомендации.</div>
+        </article>
+        <article class="card service-card">
+          <div class="head">
+            <div style="display:flex;gap:10px;align-items:center"><span class="icon">🐭</span><div><b>Дератизация</b><div class="mut">Мониторинг и барьеры</div></div></div>
+            <span class="chip">Подробнее</span>
+          </div>
+          <div class="more mut">Приманочные станции, перекрытие путей, контрольные визиты. Документирование.</div>
+        </article>
+        <article class="card service-card">
+          <div class="head">
+            <div style="display:flex;gap:10px;align-items:center"><span class="icon">🌀</span><div><b>Дезинфекция систем вентиляции</b><div class="mut">Чистка/обработка воздуховодов</div></div></div>
+            <span class="chip">Подробнее</span>
+          </div>
+          <div class="more mut">Диагностика, чистка и дезинфекция воздуховодов, фото «до/после», смета за 10 минут.</div>
+        </article>
+        <article class="card service-card">
+          <div class="head">
+            <div style="display:flex;gap:10px;align-items:center"><span class="icon">🌿</span><div><b>Удаление запахов</b><div class="mut">Озон/нейтрализация</div></div></div>
+            <span class="chip">Подробнее</span>
+          </div>
+          <div class="more mut">Устранение запахов после пожара/затопления/биозагрязнений. Подбор технологии под объект.</div>
+        </article>
+        <article class="card service-card">
+          <div class="head">
+            <div style="display:flex;gap:10px;align-items:center"><span class="icon">🛡️</span><div><b>«ДезЩит 360» — пакет</b><div class="mut">Регулярные обработки</div></div></div>
+            <span class="chip">Подробнее</span>
+          </div>
+          <div class="more mut">Годовой план, журналы и акты в день работ, гарантия 365. Ночной тариф для HoReCa.</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- КАК МЫ РАБОТАЕМ -->
+    <section id="process" class="section">
+      <h2>Как мы работаем</h2>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><b>Заявка</b><div class="mut">Консультация и согласование времени.</div></div>
+        <div class="step"><div class="num">2</div><b>Осмотр</b><div class="mut">Диагностика и фиксация стоимости.</div></div>
+        <div class="step"><div class="num">3</div><b>Обработка</b><div class="mut">Безопасные препараты, чистое рабочее место.</div></div>
+        <div class="step"><div class="num">4</div><b>Документы</b><div class="mut">Акты и рекомендации — в день работ.</div></div>
+      </div>
+    </section>
+
+    <!-- О НАС -->
+    <section id="about" class="section">
+      <h2>О нас</h2>
+      <div class="about">
+        <div class="box">
+          <h3 style="margin-top:4px">ДЕЗЩИТ 360 — команда, стандарты, результат</h3>
+          <p class="mut">Работаем по регламентам СЭС. Используем сертифицированные средства и методики под каждый объект: квартиры, рестораны, склады, производство, транспорт.</p>
+          <ul class="mut">
+            <li>Документы и акты — в день работ</li>
+            <li>Ночная смена для HoReCa без простоя</li>
+            <li>Понятные режимные рекомендации</li>
+          </ul>
+        </div>
+        <div>
+          <video src="media/AVJO6241.MP4" controls preload="metadata" style="width:100%;border-radius:16px;box-shadow:var(--shadow-lg)"></video>
+        </div>
+      </div>
+    </section>
+
+    <!-- ДЕЗЩИТ 360 -->
+    <section id="dezshield" class="shield section" style="padding:0">
+      <div class="inner">
+        <div class="badge">🛡️ Спецпредложение</div>
+        <h2>«ДезЩит 360» — регулярная защита вашего объекта</h2>
+        <p style="opacity:.95">Годовой план обработок, журналы и акты в день работ, гарантия на повторные визиты, ночной тариф для HoReCa. Отчётность для проверок — без стресса.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="cta" href="#contacts">Оформить пакет</a>
+          <a class="cta" href="#prices" style="background:#fff;color:var(--c2)">Сравнить тарифы</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ЦЕНЫ -->
+    <section id="prices" class="section">
+      <h2>Цены</h2>
+      <div class="grid">
+        <article class="card price-card">
+          <div class="head"><div><strong>Дезинсекция</strong> <span class="mut">— квартиры/HoReCa</span></div><span class="chip">от 1 900 ₽</span></div>
+          <div class="more">
+            <ul class="mut"><li>Тараканы / клопы / муравьи</li><li>Безопасные режимы</li><li>Акты в день работ</li></ul>
+            <a class="cta" href="#contacts">Рассчитать стоимость</a>
+          </div>
+        </article>
+        <article class="card price-card">
+          <div class="head"><div><strong>Дератизация</strong> <span class="mut">— барьеры и мониторинг</span></div><span class="chip">от 2 400 ₽</span></div>
+          <div class="more">
+            <ul class="mut"><li>Приманочные станции</li><li>Контрольные визиты</li></ul>
+            <a class="cta" href="#contacts">Рассчитать стоимость</a>
+          </div>
+        </article>
+        <article class="card price-card">
+          <div class="head"><div><strong>Дезинфекция</strong> <span class="mut">— помещения/ТС</span></div><span class="chip">от 1 200 ₽</span></div>
+          <div class="more">
+            <ul class="mut"><li>Бактерии, вирусы, споры</li><li>Сертифицированные средства</li></ul>
+            <a class="cta" href="#contacts">Рассчитать стоимость</a>
+          </div>
+        </article>
+        <article class="card price-card">
+          <div class="head"><div><strong>Дезинфекция вентиляции</strong></div><span class="chip">от 3 900 ₽</span></div>
+          <div class="more">
+            <ul class="mut"><li>Чистка/обработка воздуховодов</li><li>Фото «до/после», рекомендации</li></ul>
+            <a class="cta" href="#contacts">Рассчитать стоимость</a>
+          </div>
+        </article>
+        <article class="card price-card">
+          <div class="head"><div><strong>Удаление запахов</strong> <span class="mut">— озон/нейтрализация</span></div><span class="chip">от 2 200 ₽</span></div>
+          <div class="more">
+            <ul class="mut"><li>Пожар, затопление, био-загрязнения</li></ul>
+            <a class="cta" href="#contacts">Рассчитать стоимость</a>
+          </div>
+        </article>
+        <article class="card price-card">
+          <div class="head"><div><strong>«ДезЩит 360» — пакет</strong> <span class="mut">годовой план</span></div><span class="chip">от 5 900 ₽/мес</span></div>
+          <div class="more">
+            <ul class="mut"><li>Регулярные обработки</li><li>Журналы и акты 24/7</li><li>Ночной тариф для HoReCa</li></ul>
+            <a class="cta" href="#contacts">Подобрать пакет</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ГАЛЕРЕЯ -->
+    <section class="section">
+      <h2>Наши работы</h2>
+      <div class="gallery">
+        <figure><img src="media/ops-spray-1.jpg" alt="Дезинфекция помещений — безопасно и эффективно"><figcaption>Дезинфекция помещений — безопасно и эффективно</figcaption></figure>
+        <figure><img src="media/ops-vent-1.jpg" alt="Очистка и дезинфекция систем вентиляции"><figcaption>Очистка и дезинфекция систем вентиляции</figcaption></figure>
+        <figure><img src="media/ops-vehicle-1.jpg" alt="Обработка автотранспорта по стандартам СЭС"><figcaption>Обработка автотранспорта по стандартам СЭС</figcaption></figure>
+        <figure><img src="media/team-tech-1.jpg" alt="Наши специалисты в работе"><figcaption>Наши специалисты в работе</figcaption></figure>
+        <figure><img src="media/client-happy-1.jpg" alt="Довольные клиенты после обработки"><figcaption>Довольные клиенты после обработки</figcaption></figure>
+        <figure><img src="media/client-happy-2.jpg" alt="Результаты, которые говорят сами за себя"><figcaption>Результаты, которые говорят сами за себя</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <h2>FAQ — частые вопросы</h2>
+      <div class="accordion" id="faqBox">
+        <div class="item"><div class="q">Это безопасно для детей и животных? <span class="chip">узнать</span></div><div class="a mut">Да. Препараты сертифицированы, режимы подобраны под объект. Даем рекомендации до/после.</div></div>
+        <div class="item"><div class="q">Когда будут документы и акты? <span class="chip">узнать</span></div><div class="a mut">В день работ: электронно или в бумаге. Готовим пакет для проверок.</div></div>
+        <div class="item"><div class="q">Как быстро выезжаете? <span class="chip">узнать</span></div><div class="a mut">Обычно в день обращения. Для HoReCa — ночные выезды без простоя.</div></div>
+      </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+    <section id="contacts" class="section">
+      <h2>Контакты</h2>
+      <div class="contacts">
+        <div class="card">
+          <div style="font-weight:800;font-size:18px">ДЕЗЩИТ 360</div>
+          <div class="mut">Крым, г. Симферополь, ул. Екатерининская, 51</div>
+          <div style="margin:8px 0">
+            📞 <a href="tel:+79785500557">+7 (978) 550-05-57</a><br>
+            ✉️ <a href="mailto:Dezschit360@mail.ru">Dezschit360@mail.ru</a><br>
+            🕒 Пн–Вс 09:00–20:00
+          </div>
+          <div id="map"></div>
+        </div>
+        <div class="card form">
+          <div style="font-weight:800;margin-bottom:6px">Оставить заявку</div>
+          <form id="contactForm" onsubmit="event.preventDefault();alert('Спасибо! Мы свяжемся с вами.');this.reset();">
+            <input id="formName" required placeholder="Ваше имя">
+            <div style="height:10px"></div>
+            <input id="formPhone" required type="tel" placeholder="Телефон">
+            <div style="height:10px"></div>
+            <input id="formEmail" type="email" placeholder="Email (по желанию)">
+            <div style="height:10px"></div>
+            <textarea id="formMsg" placeholder="Кратко опишите задачу (объект, вид услуги)"></textarea>
+            <div style="height:12px"></div>
+            <button class="cta" type="submit">Отправить</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 ДЕЗЩИТ 360. Все права защищены. | <a href="policy.html" style="color:#fff;text-decoration:underline">Политика конфиденциальности</a>
+  </footer>
+
+  <!-- Модалка фото -->
+  <div id="img-modal" role="dialog" aria-modal="true">
+    <img src="" alt="">
+    <div class="caption"></div>
+  </div>
+
+  <!-- Виджет -->
+  <div id="dezWidget">
+    <div class="bubble">💬</div>
+    <div class="panel">
+      <strong>«ДезЩит 360»</strong><br>
+      <span class="rotating-text">Нужна консультация?</span>
+      <button class="cta" style="margin-top:6px;width:100%" onclick="openFormFromWidget()">Оставить заявку</button>
     </div>
   </div>
-</section>
 
-<section id="special">
-  <h2>Спецпредложение «ДезЩит 360»</h2>
-  <p>Пакетное обслуживание предприятий и частных объектов с регулярными профилактическими обработками.  
-  Выбирайте комфорт и уверенность — действует гибкая система скидок для долгосрочных клиентов.</p>
-</section>
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<section id="contacts">
-  <h2>Контактная информация</h2>
-  <p><strong>Телефон:</strong> +7 (978) 550-05-57 <br>
-     <strong>Email:</strong> <a href="mailto:Dezschit360@mail.ru">Dezschit360@mail.ru</a><br>
-     <strong>Адрес:</strong> Крым, г. Симферополь, ул. Екатерининская, 51</p>
-  <div id="map"></div>
-</section>
+  <script>
+    // Подсветка активного пункта меню
+    (function(){
+      const links=[...document.querySelectorAll('#topnav a')];
+      const secs=[...document.querySelectorAll('section[id]')];
+      function onScroll(){
+        const y=window.scrollY+120; let cur=secs[0].id;
+        secs.forEach(s=>{ if(y>=s.offsetTop) cur=s.id; });
+        links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+cur));
+      }
+      document.addEventListener('scroll',onScroll); onScroll();
+    })();
 
-<footer>
-  © 2025 ДЕЗЩИТ 360 | Безопасность на каждом уровне
-</footer>
+    // Интерактивные карточки (услуги/цены)
+    document.querySelectorAll('.service-card .head,.price-card .head').forEach(h=>{
+      h.addEventListener('click',()=>h.closest('.service-card,.price-card').classList.toggle('open'));
+    });
 
-<!-- ===== Всплывающий виджет ===== -->
-<div id="dezWidget">
-  <div class="bubble">💬</div>
-  <div class="panel">
-    <strong>«ДезЩит 360»</strong><br/>
-    <span class="rotating-text">Нужна консультация?</span>
-    <button class="btn" style="margin-top:6px;width:100%" onclick="openFormFromWidget()">Оставить заявку</button>
-  </div>
-</div>
+    // FAQ
+    document.querySelectorAll('#faqBox .item .q').forEach(q=>q.addEventListener('click',()=>q.parentElement.classList.toggle('open')));
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    // Галерея — модалка
+    (function(){
+      const modal=document.getElementById('img-modal'); if(!modal) return;
+      const mImg=modal.querySelector('img'); const mCap=modal.querySelector('.caption');
+      document.querySelectorAll('.gallery img').forEach(img=>{
+        img.addEventListener('click',()=>{
+          mImg.src=img.src; mCap.textContent=img.alt||''; modal.classList.add('show');
+        });
+      });
+      modal.addEventListener('click',()=>modal.classList.remove('show'));
+      document.addEventListener('keydown',e=>{ if(e.key==='Escape') modal.classList.remove('show'); });
+    })();
 
-<script>
-function openFormFromWidget(){
-  const contacts=document.getElementById('contacts');
-  if(contacts) contacts.scrollIntoView({behavior:'smooth'});
-}
-window.addEventListener('load',()=>{
-  setTimeout(()=>document.getElementById('dezWidget').classList.add('visible'),5000);
-  if(document.getElementById('map')){
-    const map=L.map('map').setView([44.9521,34.1024],13);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap'}).addTo(map);
-    L.marker([44.9521,34.1024]).addTo(map)
-     .bindPopup("ДЕЗЩИТ 360 — Симферополь, Екатерининская 51").openPopup();
-  }
-});
-const phrases=["Нужна консультация?","Хотите узнать цену?","Есть проблема с насекомыми?","Пора провести обработку?"];
-let i=0;setInterval(()=>{
-  const el=document.querySelector('#dezWidget .rotating-text');
-  if(!el)return;el.style.opacity=0;
-  setTimeout(()=>{i=(i+1)%phrases.length;el.textContent=phrases[i];el.style.opacity=1;},400);
-},5000);
-</script>
+    // Leaflet карта
+    window.addEventListener('load',()=>{
+      const el=document.getElementById('map');
+      if(el && window.L){
+        const map=L.map('map',{scrollWheelZoom:false}).setView([44.9521,34.1024],13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap'}).addTo(map);
+        L.marker([44.9521,34.1024]).addTo(map).bindPopup('ДЕЗЩИТ 360 — Симферополь, Екатерининская, 51').openPopup();
+      }
+    });
 
-<style>
-#dezWidget{
-  position:fixed;bottom:26px;right:26px;z-index:80;
-  display:flex;flex-direction:column;align-items:flex-end;gap:8px;
-  opacity:0;transform:translateY(30px);
-  transition:opacity .8s ease,transform .8s ease;
-}
-#dezWidget.visible{opacity:1;transform:translateY(0);}
-#dezWidget .bubble{
-  width:56px;height:56px;background:var(--c1);color:#fff;
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:26px;box-shadow:0 8px 20px rgba(0,0,0,.25);
-  cursor:pointer;transition:.25s;animation:pulse 3s infinite;
-}
-#dezWidget .bubble:hover{transform:scale(1.08);}
-#dezWidget .panel{
-  display:none;background:#fff;color:var(--txt);font-size:15px;
-  padding:14px;border-radius:14px;box-shadow:0 12px 30px rgba(0,0,0,.25);
-  max-width:240px;line-height:1.4;transform:translateY(10px);
-  animation:fadeIn .25s ease;
-}
-#dezWidget.open .panel{display:block;}
-#dezWidget .rotating-text{
-  font-weight:600;color:var(--c2);
-  display:block;transition:opacity .4s ease;margin:4px 0 8px;
-}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-@keyframes pulse{
-  0%{box-shadow:0 0 0 0 rgba(0,179,164,.5);}
-  70%{box-shadow:0 0 0 18px rgba(0,179,164,0);}
-  100%{box-shadow:0 0 0 0 rgba(0,179,164,0);}
-}
-</style>
+    // Виджет
+    const widget=document.getElementById('dezWidget');
+    if(widget){
+      const bubble=widget.querySelector('.bubble');
+      const panel=widget.querySelector('.panel');
+      const rot=panel.querySelector('.rotating-text');
+      bubble.addEventListener('click',()=>widget.classList.toggle('open'));
+      window.addEventListener('load',()=>{ setTimeout(()=>widget.classList.add('visible'),5000); });
+      function openFormFromWidget(){ const t=document.getElementById('formMsg'); if(t) t.value='Хочу консультацию / расчет по услуге'; document.getElementById('contacts')?.scrollIntoView({behavior:'smooth'}); widget.classList.remove('open'); }
+      window.openFormFromWidget=openFormFromWidget;
+      const phrases=["Нужна консультация?","Хотите узнать цену?","Есть проблема с насекомыми?","Пора провести обработку?","Хотите заключить договор?"];
+      let i=0; setInterval(()=>{ if(!rot) return; rot.style.opacity=0; setTimeout(()=>{ i=(i+1)%phrases.length; rot.textContent=phrases[i]; rot.style.opacity=1; },350); },5000);
+
+      // Автозаполнение формы из CTA в карточках цен/услуг
+      document.querySelectorAll('.cta').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          if(btn.textContent.includes('Рассчитать')||btn.textContent.includes('Подобрать')){
+            const title=btn.closest('.card')?.querySelector('.head strong')?.textContent||'услуга';
+            const ta=document.getElementById('formMsg'); if(ta) ta.value='Хочу '+title.toLowerCase();
+          }
+        });
+      });
+    }
+  </script>
+
+  <style>
+    /* Виджет */
+    #dezWidget{position:fixed;bottom:26px;right:26px;z-index:80;display:flex;flex-direction:column;align-items:flex-end;gap:8px;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+    #dezWidget.visible{opacity:1;transform:translateY(0)}
+    #dezWidget .bubble{width:56px;height:56px;background:var(--c1);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 8px 20px rgba(0,0,0,.25);cursor:pointer;transition:.25s;animation:pulse 3s infinite}
+    #dezWidget .bubble:hover{transform:scale(1.08)}
+    #dezWidget .panel{display:none;background:#fff;color:var(--txt);font-size:15px;padding:14px;border-radius:14px;box-shadow:0 12px 30px rgba(0,0,0,.25);max-width:240px;line-height:1.4;transform:translateY(10px);animation:fadeIn .25s ease}
+    #dezWidget.open .panel{display:block}
+    #dezWidget .rotating-text{font-weight:600;color:var(--c2);display:block;transition:opacity .35s ease;margin:4px 0 8px}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,179,164,.5)}70%{box-shadow:0 0 0 18px rgba(0,179,164,0)}100%{box-shadow:0 0 0 0 rgba(0,179,164,0)}}
+  </style>
 
 </body>
 </html>
