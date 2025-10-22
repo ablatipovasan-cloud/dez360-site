@@ -249,66 +249,31 @@ nav a {
   }
 }
 </style>
-/* ——— Секция «Как мы работаем» ——— */
-.section.portfolio { padding: 48px 0; }
-.section.portfolio h2 { margin: 0 0 8px; }
-.section.portfolio .sub { opacity:.8; margin: 0 0 20px; }
+<style id="portfolio-fix">
+/* ===== Секция «Как мы работаем» / Портфолио ===== */
+.section.portfolio{padding:48px 0}
+.section.portfolio h2{margin:0 0 8px}
+.section.portfolio .sub{opacity:.8;margin:0 0 20px}
+.gallery-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{position:relative;overflow:hidden;border-radius:14px;box-shadow:0 8px 22px rgba(0,0,0,.12);background:#fff;transition:transform .25s ease,box-shadow .25s ease}
+.card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.16)}
+.thumb,.thumb video{width:100%;height:200px;object-fit:cover;display:block;background:#f3f5f5}
+.caption{padding:10px 12px;font-size:14px;color:#043d37}
+.badge-video{position:absolute;top:10px;left:10px;background:linear-gradient(145deg,#00B3A4,#007F6C);color:#fff;border-radius:999px;padding:4px 8px;font-weight:600}
+.more-wrap{text-align:center;margin-top:18px}
+.btn-more{background:linear-gradient(145deg,#00B3A4,#007F6C);color:#fff;border:0;padding:10px 16px;border-radius:10px;font-weight:600;cursor:pointer;transition:filter .25s ease}
+.btn-more:hover{filter:brightness(1.05)}
 
-.gallery-grid{
-  display:grid; gap:16px;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-}
-.card{
-  position:relative; overflow:hidden; border-radius:14px;
-  box-shadow:0 8px 22px rgba(0,0,0,.12);
-  background:#fff; transition:transform .25s ease, box-shadow .25s ease;
-}
-.card:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.16); }
+/* ===== Лайтбокс (модалка) ===== */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:9999;padding:24px}
+.lightbox.show{display:flex;animation:fadeIn .18s ease}
+@keyframes fadeIn{from{opacity:0} to{opacity:1}}
+.lb-inner{width:min(100%,980px);max-height:90vh;background:#000;border-radius:14px;overflow:hidden;position:relative;box-shadow:0 12px 36px rgba(0,0,0,.4)}
+#lbImg,#lbVideo{width:100%;display:block;max-height:76vh}
+.lb-caption{color:#fff;padding:10px 14px;font-size:15px;background:rgba(0,0,0,.35)}
+.lb-close{position:absolute;top:10px;right:12px;z-index:2;width:36px;height:36px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.9);color:#043d37;font-size:22px;line-height:36px}
+</style>
 
-.thumb, .thumb video{
-  width:100%; height:200px; object-fit:cover; display:block; background:#f3f5f5;
-}
-.caption{
-  padding:10px 12px; font-weight:500; color:#043d37;
-  border-top:1px solid rgba(4,61,55,.08);
-}
-
-.badge-video{
-  position:absolute; top:10px; left:10px;
-  background:linear-gradient(145deg,#00B3A4,#007F6C);
-  color:#fff; font-size:12px; padding:4px 8px; border-radius:999px;
-  box-shadow:0 2px 10px rgba(0,0,0,.2);
-}
-
-.more-wrap{ text-align:center; margin-top:18px; }
-.btn-more{
-  background:linear-gradient(145deg,#00B3A4,#007F6C);
-  color:#fff; border:0; padding:10px 16px; border-radius:10px;
-  font-weight:600; cursor:pointer; transition:filter .25s ease;
-}
-.btn-more:hover{ filter:brightness(1.05); }
-
-/* ——— Модалка ——— */
-.lightbox{
-  position:fixed; inset:0; background:rgba(0,0,0,.7);
-  display:none; align-items:center; justify-content:center; z-index:9999;
-  padding:24px;
-}
-.lightbox.show{ display:flex; animation:fadeIn .18s ease }
-@keyframes fadeIn{ from{opacity:0} to{opacity:1} }
-
-.lb-inner{
-  width:min(100%, 980px); max-height:90vh; background:#000; border-radius:14px;
-  overflow:hidden; position:relative; box-shadow:0 12px 36px rgba(0,0,0,.4);
-}
-#lbImg, #lbVideo{ width:100%; height:auto; max-height:76vh; display:none; }
-.lb-caption{ color:#fff; padding:10px 14px; font-size:15px; background:rgba(0,0,0,.35); }
-
-.lb-close{
-  position:absolute; top:10px; right:12px; z-index:2;
-  width:36px; height:36px; border-radius:50%; border:0; cursor:pointer;
-  background:rgba(255,255,255,.9); color:#043d37; font-size:22px; line-height:36px;
-}
 </head>
 <body>
 
@@ -1050,6 +1015,7 @@ nav a {
 </script>
 </body>
 </html>
+
 
 
 
