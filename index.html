@@ -249,6 +249,66 @@ nav a {
   }
 }
 </style>
+/* ——— Секция «Как мы работаем» ——— */
+.section.portfolio { padding: 48px 0; }
+.section.portfolio h2 { margin: 0 0 8px; }
+.section.portfolio .sub { opacity:.8; margin: 0 0 20px; }
+
+.gallery-grid{
+  display:grid; gap:16px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+.card{
+  position:relative; overflow:hidden; border-radius:14px;
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
+  background:#fff; transition:transform .25s ease, box-shadow .25s ease;
+}
+.card:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.16); }
+
+.thumb, .thumb video{
+  width:100%; height:200px; object-fit:cover; display:block; background:#f3f5f5;
+}
+.caption{
+  padding:10px 12px; font-weight:500; color:#043d37;
+  border-top:1px solid rgba(4,61,55,.08);
+}
+
+.badge-video{
+  position:absolute; top:10px; left:10px;
+  background:linear-gradient(145deg,#00B3A4,#007F6C);
+  color:#fff; font-size:12px; padding:4px 8px; border-radius:999px;
+  box-shadow:0 2px 10px rgba(0,0,0,.2);
+}
+
+.more-wrap{ text-align:center; margin-top:18px; }
+.btn-more{
+  background:linear-gradient(145deg,#00B3A4,#007F6C);
+  color:#fff; border:0; padding:10px 16px; border-radius:10px;
+  font-weight:600; cursor:pointer; transition:filter .25s ease;
+}
+.btn-more:hover{ filter:brightness(1.05); }
+
+/* ——— Модалка ——— */
+.lightbox{
+  position:fixed; inset:0; background:rgba(0,0,0,.7);
+  display:none; align-items:center; justify-content:center; z-index:9999;
+  padding:24px;
+}
+.lightbox.show{ display:flex; animation:fadeIn .18s ease }
+@keyframes fadeIn{ from{opacity:0} to{opacity:1} }
+
+.lb-inner{
+  width:min(100%, 980px); max-height:90vh; background:#000; border-radius:14px;
+  overflow:hidden; position:relative; box-shadow:0 12px 36px rgba(0,0,0,.4);
+}
+#lbImg, #lbVideo{ width:100%; height:auto; max-height:76vh; display:none; }
+.lb-caption{ color:#fff; padding:10px 14px; font-size:15px; background:rgba(0,0,0,.35); }
+
+.lb-close{
+  position:absolute; top:10px; right:12px; z-index:2;
+  width:36px; height:36px; border-radius:50%; border:0; cursor:pointer;
+  background:rgba(255,255,255,.9); color:#043d37; font-size:22px; line-height:36px;
+}
 </head>
 <body>
 
@@ -347,7 +407,27 @@ nav a {
         <div class="step"><div class="num">3</div><b>Обработка</b><div class="mut">Безопасные препараты, чистое рабочее место.</div></div>
         <div class="step"><div class="num">4</div><b>Документы</b><div class="mut">Акты и рекомендации — в день работ.</div></div>
       </div>
-    </section>
+    <section id="work" class="section portfolio">
+  <h2>Как мы работаем</h2>
+  <p class="sub">Реальные фото и видео нашей команды на объектах по всему Крыму</p>
+
+  <div id="gallery" class="gallery-grid" aria-live="polite"></div>
+
+  <div class="more-wrap">
+    <button id="showMore" class="btn-more">Показать ещё</button>
+  </div>
+</section>
+
+<!-- Модалка -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <button class="lb-close" aria-label="Закрыть">×</button>
+  <div class="lb-inner">
+    <img id="lbImg" alt="" />
+    <video id="lbVideo" controls playsinline></video>
+    <div id="lbCaption" class="lb-caption"></div>
+  </div>
+</div>
+</section>
 
     <!-- О НАС -->
     <section id="about" class="section">
@@ -833,8 +913,144 @@ nav a {
   });
 </script>
 </style>
+<script>
+(async function(){
+  // Сколько карточек показывать за раз
+  const BATCH = 8;
+
+  // Загружаем данные
+  const res = await fetch('gallery.json', {cache:'no-store'});
+  const data = await res.json();
+
+  // Собираем список элементов: сначала фото (с превью), затем видео
+  const items = [];
+  const photos = data.photos || [];
+  const thumbs = data.thumbs || [];
+  const videos = data.videos || [];
+
+  photos.forEach((src, i) => {
+    items.push({ type:'img', src, thumb: thumbs[i] || src, caption:`Фото #${i+1}` });
+  });
+  videos.forEach((src, i) => {
+    items.push({ type:'video', src, caption:`Видео #${i+1}` });
+  });
+
+  // Ссылки на DOM
+  const grid = document.getElementById('gallery');
+  const btnMore = document.getElementById('showMore');
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbVideo = document.getElementById('lbVideo');
+  const lbCaption = document.getElementById('lbCaption');
+  const lbClose = document.querySelector('.lb-close');
+
+  let shown = 0;
+
+  function createCard(item){
+    const card = document.createElement('figure');
+    card.className = 'card';
+
+    // thumb
+    let mediaEl;
+    if(item.type === 'img'){
+      mediaEl = document.createElement('img');
+      mediaEl.className = 'thumb';
+      mediaEl.loading = 'lazy';
+      mediaEl.alt = item.caption || 'Работы ДЕЗЩИТ 360';
+      mediaEl.src = item.thumb || item.src; // лёгкая превьюшка
+    } else {
+      mediaEl = document.createElement('div');
+      mediaEl.className = 'thumb';
+      // иконка «видео»
+      const badge = document.createElement('div');
+      badge.className = 'badge-video';
+      badge.textContent = 'Видео';
+      card.appendChild(badge);
+
+      // ставим постер-заглушку (можно заменить на свой)
+      mediaEl.style.background = 'linear-gradient(145deg,#00B3A4,#007F6C)';
+      mediaEl.style.display = 'grid';
+      mediaEl.style.placeItems = 'center';
+      const play = document.createElement('div');
+      play.style.width='64px'; play.style.height='64px';
+      play.style.borderRadius='50%'; play.style.background='rgba(255,255,255,.9)';
+      play.style.boxShadow='0 8px 24px rgba(0,0,0,.25)';
+      play.style.position='relative';
+      const tri = document.createElement('div');
+      tri.style.borderLeft='18px solid #007F6C';
+      tri.style.borderTop='12px solid transparent';
+      tri.style.borderBottom='12px solid transparent';
+      tri.style.position='absolute';
+      tri.style.left='26px'; tri.style.top='20px';
+      play.appendChild(tri);
+      mediaEl.appendChild(play);
+    }
+
+    // caption
+    const cap = document.createElement('figcaption');
+    cap.className = 'caption';
+    cap.textContent = item.caption || (item.type==='img' ? 'Фото' : 'Видео');
+
+    // клик — открыть модалку
+    card.addEventListener('click', () => openLightbox(item));
+
+    card.appendChild(mediaEl);
+    card.appendChild(cap);
+    return card;
+  }
+
+  function renderMore(){
+    const next = items.slice(shown, shown + BATCH);
+    next.forEach(item => grid.appendChild(createCard(item)));
+    shown += next.length;
+
+    if (shown >= items.length) {
+      btnMore.style.display = 'none';
+    } else {
+      btnMore.style.display = 'inline-block';
+    }
+  }
+
+  function openLightbox(item){
+    lbImg.style.display = 'none';
+    lbVideo.style.display = 'none';
+    lbCaption.textContent = item.caption || '';
+
+    if(item.type === 'img'){
+      lbImg.src = item.src;  // полноразмерная фотография
+      lbImg.style.display = 'block';
+    } else {
+      lbVideo.src = item.src; // видео со звуком
+      lbVideo.currentTime = 0;
+      lbVideo.style.display = 'block';
+      lbVideo.play().catch(()=>{});
+    }
+
+    lb.classList.add('show');
+    lb.setAttribute('aria-hidden','false');
+  }
+
+  function closeLightbox(){
+    lb.classList.remove('show');
+    lb.setAttribute('aria-hidden','true');
+    lbVideo.pause();
+    lbVideo.src = '';
+    lbImg.src = '';
+  }
+
+  // Слушатели
+  btnMore.addEventListener('click', renderMore);
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLightbox(); });
+
+  // Первый рендер
+  renderMore();
+})();
+</script>
 </body>
 </html>
+
 
 
 
