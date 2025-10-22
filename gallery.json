@@ -1,0 +1,17 @@
+{
+  "title": "Как мы работаем — ДЕЗЩИТ 360",
+  "photos": [
+    "media/photos/photo_01.jpg",
+    "media/photos/photo_02.jpg"
+  ],
+  "videos": [
+    "media/videos/video_01.mp4"
+  ],
+  "thumbs": [
+    "media/thumbs/thumb_01.jpg",
+    "media/thumbs/thumb_02.jpg"
+  ],
+  "captions": [
+    "Реальные кадры с наших объектов по всему Крыму"
+  ]
+}
