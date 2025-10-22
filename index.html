@@ -251,6 +251,21 @@ nav a {
 </style>
 <style id="portfolio-fix">
 /* ===== Секция «Как мы работаем» / Портфолио ===== */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.gallery-grid figure{margin:0;position:relative;overflow:hidden;border-radius:14px;background:#fff;box-shadow:0 8px 22px rgba(0,0,0,.12)}
+.gallery-grid img{width:100%;height:200px;object-fit:cover;display:block}
+.gallery-grid figure.is-video::after{
+  content:'▶';position:absolute;top:8px;left:8px;
+  padding:6px 10px;border-radius:12px;
+  color:#fff;background:linear-gradient(145deg,#00B3A4,#007F6C);font-weight:700
+}
+#lightbox{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:9999}
+#lightbox.show{display:flex}
+#lightbox .lb-inner{position:relative;max-width:min(1100px,96vw);max-height:90vh;padding:0}
+#lightbox .lb-close{position:absolute;top:10px;right:12px;background:#fff;border:0;border-radius:8px;padding:6px 10px;cursor:pointer}
+#lightbox .lb-body{max-height:90vh}
+#lightbox img,#lightbox video{max-width:100%;max-height:90vh;display:block}
+
 .section.portfolio{padding:48px 0}
 .section.portfolio h2{margin:0 0 8px}
 .section.portfolio .sub{opacity:.8;margin:0 0 20px}
@@ -263,6 +278,59 @@ nav a {
 .more-wrap{text-align:center;margin-top:18px}
 .btn-more{background:linear-gradient(145deg,#00B3A4,#007F6C);color:#fff;border:0;padding:10px 16px;border-radius:10px;font-weight:600;cursor:pointer;transition:filter .25s ease}
 .btn-more:hover{filter:brightness(1.05)}
+<script>
+(async ()=>{
+  try{
+    const res = await fetch('gallery.json?v=2');
+    const data = await res.json();
+    const box = document.getElementById('gallery');
+
+    const addFig = (src, alt, onClick, isVideo=false) =>{
+      const f=document.createElement('figure');
+      if(isVideo) f.classList.add('is-video');
+      const img=new Image();
+      img.loading='lazy'; img.decoding='async';
+      img.src=src; img.alt=alt||'ДезЩит 360 — работа';
+      f.appendChild(img);
+      f.addEventListener('click', onClick);
+      box.appendChild(f);
+    };
+
+    const open = (src, isVideo=false)=>{
+      const lb = document.getElementById('lightbox') || (()=>{
+        const d=document.createElement('div');
+        d.id='lightbox';
+        d.innerHTML=`<div class="lb-inner">
+          <button class="lb-close" aria-label="Закрыть">×</button>
+          <div class="lb-body"></div>
+        </div>`;
+        document.body.appendChild(d);
+        d.addEventListener('click', e=>{
+          if(e.target===d || e.target.classList.contains('lb-close')) d.classList.remove('show');
+        });
+        return d;
+      })();
+      const body = lb.querySelector('.lb-body'); body.innerHTML='';
+      body.innerHTML = isVideo
+        ? `<video src="${src}" controls playsinline></video>`
+        : `<img src="${src}" alt="">`;
+      lb.classList.add('show');
+    };
+
+    // фотографии
+    (data.photos||[]).forEach((p,i)=>{
+      const thumb = (data.thumbs||[])[i] || p;
+      addFig(thumb, `Кадр ${i+1}`, ()=>open(p));
+    });
+
+    // видео
+    (data.videos||[]).forEach((v,i)=>{
+      const t = (data.thumbs||[])[i] || 'media/disinfector.jpg';
+      addFig(t, `Видео ${i+1}`, ()=>open(v,true), true);
+    });
+  }catch(e){ console.error('Gallery load error', e); }
+})();
+</script>
 
 /* ===== Лайтбокс (модалка) ===== */
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:9999;padding:24px}
@@ -476,16 +544,11 @@ nav a {
     </section>
 
     <!-- ГАЛЕРЕЯ -->
-    <section class="section">
-      <h2>Наши работы</h2>
-      <div class="gallery">
-        <figure><img src="media/ops-spray-1.jpg" alt="Дезинфекция помещений — безопасно и эффективно"><figcaption>Дезинфекция помещений — безопасно и эффективно</figcaption></figure>
-        <figure><img src="media/ops-vent-1.jpg" alt="Очистка и дезинфекция систем вентиляции"><figcaption>Очистка и дезинфекция систем вентиляции</figcaption></figure>
-        <figure><img src="media/ops-vehicle-1.jpg" alt="Обработка автотранспорта по стандартам СЭС"><figcaption>Обработка автотранспорта по стандартам СЭС</figcaption></figure>
-        <figure><img src="media/team-tech-1.jpg" alt="Наши специалисты в работе"><figcaption>Наши специалисты в работе</figcaption></figure>
-        <figure><img src="media/client-happy-1.jpg" alt="Довольные клиенты после обработки"><figcaption>Довольные клиенты после обработки</figcaption></figure>
-        <figure><img src="media/client-happy-2.jpg" alt="Результаты, которые говорят сами за себя"><figcaption>Результаты, которые говорят сами за себя</figcaption></figure>
-      </div>
+<section class="section portfolio">
+  <h2>Наши работы</h2>
+  <div id="gallery" class="gallery-grid">
+    
+  </div>
     </section>
 
     <!-- FAQ -->
@@ -1015,6 +1078,7 @@ nav a {
 </script>
 </body>
 </html>
+
 
 
 
