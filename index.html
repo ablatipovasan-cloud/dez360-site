@@ -278,59 +278,7 @@ nav a {
 .more-wrap{text-align:center;margin-top:18px}
 .btn-more{background:linear-gradient(145deg,#00B3A4,#007F6C);color:#fff;border:0;padding:10px 16px;border-radius:10px;font-weight:600;cursor:pointer;transition:filter .25s ease}
 .btn-more:hover{filter:brightness(1.05)}
-<script>
-(async ()=>{
-  try{
-    const res = await fetch('gallery.json?v=2');
-    const data = await res.json();
-    const box = document.getElementById('gallery');
 
-    const addFig = (src, alt, onClick, isVideo=false) =>{
-      const f=document.createElement('figure');
-      if(isVideo) f.classList.add('is-video');
-      const img=new Image();
-      img.loading='lazy'; img.decoding='async';
-      img.src=src; img.alt=alt||'ДезЩит 360 — работа';
-      f.appendChild(img);
-      f.addEventListener('click', onClick);
-      box.appendChild(f);
-    };
-
-    const open = (src, isVideo=false)=>{
-      const lb = document.getElementById('lightbox') || (()=>{
-        const d=document.createElement('div');
-        d.id='lightbox';
-        d.innerHTML=`<div class="lb-inner">
-          <button class="lb-close" aria-label="Закрыть">×</button>
-          <div class="lb-body"></div>
-        </div>`;
-        document.body.appendChild(d);
-        d.addEventListener('click', e=>{
-          if(e.target===d || e.target.classList.contains('lb-close')) d.classList.remove('show');
-        });
-        return d;
-      })();
-      const body = lb.querySelector('.lb-body'); body.innerHTML='';
-      body.innerHTML = isVideo
-        ? `<video src="${src}" controls playsinline></video>`
-        : `<img src="${src}" alt="">`;
-      lb.classList.add('show');
-    };
-
-    // фотографии
-    (data.photos||[]).forEach((p,i)=>{
-      const thumb = (data.thumbs||[])[i] || p;
-      addFig(thumb, `Кадр ${i+1}`, ()=>open(p));
-    });
-
-    // видео
-    (data.videos||[]).forEach((v,i)=>{
-      const t = (data.thumbs||[])[i] || 'media/disinfector.jpg';
-      addFig(t, `Видео ${i+1}`, ()=>open(v,true), true);
-    });
-  }catch(e){ console.error('Gallery load error', e); }
-})();
-</script>
 
 /* ===== Лайтбокс (модалка) ===== */
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:9999;padding:24px}
@@ -441,14 +389,7 @@ nav a {
         <div class="step"><div class="num">4</div><b>Документы</b><div class="mut">Акты и рекомендации — в день работ.</div></div>
       </div>
     <section id="work" class="section portfolio">
-  <h2>Как мы работаем</h2>
-  <p class="sub">Реальные фото и видео нашей команды на объектах по всему Крыму</p>
 
-  <div id="gallery" class="gallery-grid" aria-live="polite"></div>
-
-  <div class="more-wrap">
-    <button id="showMore" class="btn-more">Показать ещё</button>
-  </div>
 </section>
 
 <!-- Модалка -->
@@ -1078,6 +1019,7 @@ nav a {
 </script>
 </body>
 </html>
+
 
 
 
