@@ -388,6 +388,17 @@ nav a {
         <div class="step"><div class="num">4</div><b>Документы</b><div class="mut">Акты и рекомендации — в день работ.</div></div>
       </div>
     <section id="work" class="section portfolio">
+<section class="portfolio section">
+  <h2>Наши работы</h2>
+
+  <!-- контейнер сетки -->
+  <div class="gallery-grid" id="gallery"></div>
+
+  <!-- кнопка "Показать ещё" -->
+  <div class="more-wrap">
+    <button id="moreBtn" class="btn more">Показать ещё</button>
+  </div>
+</section>
 
 </section>
 
@@ -1021,8 +1032,60 @@ renderMore();
   renderMore();
 })();
 </script>
+<script id="portfolio-js">
+(function () {
+  const GRID = document.querySelector('.gallery-grid') || document.getElementById('gallery');
+  if (!GRID) return;
+
+  const PAGE_SIZE = 8;
+  let items = [];
+  let page = 0;
+
+  function addCard(src) {
+    const isVideo = src.toLowerCase().endsWith('.mp4');
+    const fig = document.createElement('figure');
+    fig.className = isVideo ? 'is-video card' : 'card';
+
+    const el = isVideo ? document.createElement('video') : document.createElement('img');
+    el.src = src;
+    if (isVideo) {
+      el.controls = true;
+      el.preload = 'metadata';
+    } else {
+      el.loading = 'lazy';
+      el.className = 'thumb';
+    }
+    fig.appendChild(el);
+    GRID.appendChild(fig);
+  }
+
+  function renderMore() {
+    const from = page * PAGE_SIZE;
+    const to = from + PAGE_SIZE;
+    items.slice(from, to).forEach(addCard);
+    page++;
+    if (page * PAGE_SIZE >= items.length) {
+      document.getElementById('moreBtn')?.remove();
+    }
+  }
+
+  // ВАЖНО: абсолютный путь + параметр, чтобы не кэшировалось
+  fetch('/gallery.json?v=3')
+    .then(r => r.json())
+    .then(data => {
+      items = [
+        ...(data.photos || []),
+        ...(data.videos || [])
+      ];
+      renderMore();
+      document.getElementById('moreBtn')?.addEventListener('click', renderMore);
+    })
+    .catch(err => console.error('Gallery load error:', err));
+})();
+</script>
 </body>
 </html>
+
 
 
 
