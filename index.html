@@ -486,10 +486,26 @@ nav a {
     <!-- ГАЛЕРЕЯ -->
 <section class="section portfolio">
   <h2>Наши работы</h2>
-  <div id="gallery" class="gallery-grid">
-    
-  </div>
-    </section>
+
+  <div id="gallery" class="gallery-grid"></div>
+
+  <!-- Кнопка догрузки -->
+  <div class="more-wrap">
+    <button id="showMore" class="btn-more">Показать ещё</button>
+  </div>const btnMore = document.getElementById('showMore');
+// …
+function renderMore() {
+  const next = items.slice(shown, shown + BATCH);
+  next.forEach(item => grid.appendChild(createCard(item)));
+  shown += next.length;
+
+  if (btnMore) {
+    btnMore.style.display = (shown >= items.length) ? 'none' : 'inline-block';
+  }
+}
+if (btnMore) btnMore.addEventListener('click', renderMore);
+renderMore();
+</section>
 
     <!-- FAQ -->
     <section id="faq" class="section">
@@ -732,32 +748,21 @@ nav a {
   });
 </script>
 <script>
-  // Эффект мягкого параллакса при движении мыши
-  const dez = document.querySelector('#dezshield');
-  if (dez) {
-    dez.addEventListener('mousemove', e => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 6;
-      const y = (e.clientY / window.innerHeight - 0.5) * 6;
-      dez.style.transform = `rotateX(${y}deg) rotateY(${x}deg)`;
-    });
-    dez.addEventListener('mouseleave', () => {
-      dez.style.transform = 'rotateX(0) rotateY(0)';
-    });
-  }
-<script>
-  // Эффект движения и оживления фона
-  const dez = document.querySelector('#dezshield');
-  if (dez) {
+  // Нежный параллакс для секции #dezshield
+  (function () {
+    const dez = document.querySelector('#dezshield');
+    if (!dez) return;
+
     dez.addEventListener('mousemove', e => {
       const x = (e.clientX / window.innerWidth - 0.5) * 5;
       const y = (e.clientY / window.innerHeight - 0.5) * 5;
       dez.style.transform = `rotateX(${y}deg) rotateY(${x}deg)`;
     });
+
     dez.addEventListener('mouseleave', () => {
       dez.style.transform = 'rotateX(0) rotateY(0)';
     });
-  }
-</script>
+  })();
 </script>
 <script>
   // Мягкое свечение главной CTA-кнопки
@@ -1018,6 +1023,7 @@ nav a {
 </script>
 </body>
 </html>
+
 
 
 
