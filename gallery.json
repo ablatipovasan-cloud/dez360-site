@@ -1,48 +1,28 @@
 {
-  "title": "Как мы работаем — ДЕЗЩИТ 360",
   "photos": [
-    "media/photos/photo_01.jpg",
-    "media/photos/photo_02.jpg",
-    "media/photos/photo_03.jpg",
-    "media/photos/photo_04.jpg",
-    "media/photos/photo_05.jpg",
-    "media/photos/photo_06.jpg",
-    "media/photos/photo_07.jpg",
-    "media/photos/photo_08.jpg",
-    "media/photos/photo_09.jpg",
-    "media/photos/photo_10.jpg",
-    "media/photos/photo_11.jpg",
-    "media/photos/photo_12.jpg",
-    "media/photos/photo_13.jpg",
-    "media/photos/photo_14.jpg",
-    "media/photos/photo_15.jpg"
+    "media/photos/photo_1_2025-10-20_01-58-46.jpg",
+    "media/photos/photo_2_2025-10-20_01-58-46.jpg",
+    "media/photos/photo_3_2025-10-20_01-58-46.jpg",
+    "media/photos/photo_4_2025-10-20_01-58-46.jpg",
+    "media/photos/photo_5_2025-10-20_01-58-46.jpg",
+    "media/photos/photo_6_2025-10-20_01-58-46.jpg",
+    "media/photos/photo_7_2025-10-20_01-58-46.jpg",
+    "media/photos/photo_8_2025-10-20_01-58-46.jpg",
+    "media/photos/photo_9_2025-10-20_01-58-46.jpg",
+    "media/photos/photo_10_2025-10-20_01-58-46.jpg",
+    "media/photos/photo_11_2025-10-20_01-58-46.jpg",
+    "media/photos/photo_12_2025-10-20_01-58-46.jpg",
+    "media/photos/photo_13_2025-10-20_01-58-46.jpg",
+    "media/photos/photo_14_2025-10-20_01-58-46.jpg"
   ],
   "videos": [
-    "media/videos/video_01.mp4",
-    "media/videos/video_02.mp4",
-    "media/videos/video_03.mp4",
-    "media/videos/video_04.mp4",
-    "media/videos/video_05.mp4"
+    "media/videos/video_2025-10-20_01-58-46 (2).mp4",
+    "media/videos/video_2025-10-20_01-58-46 (3).mp4",
+    "media/videos/video_2025-10-20_01-58-46 (4).mp4",
+    "media/videos/video_2025-10-20_01-58-46 (5).mp4",
+    "media/videos/video_2025-10-20_01-58-46 (6).mp4",
+    "media/videos/video_2025-10-20_01-58-46 (10).mp4",
+    "media/videos/video_2025-10-20_01-58-46 (11).mp4"
   ],
-  "thumbs": [
-    "media/thumbs/thumb_01.jpg",
-    "media/thumbs/thumb_02.jpg",
-    "media/thumbs/thumb_03.jpg",
-    "media/thumbs/thumb_04.jpg",
-    "media/thumbs/thumb_05.jpg",
-    "media/thumbs/thumb_06.jpg",
-    "media/thumbs/thumb_07.jpg",
-    "media/thumbs/thumb_08.jpg",
-    "media/thumbs/thumb_09.jpg",
-    "media/thumbs/thumb_10.jpg",
-    "media/thumbs/thumb_11.jpg",
-    "media/thumbs/thumb_12.jpg",
-    "media/thumbs/thumb_13.jpg",
-    "media/thumbs/thumb_14.jpg",
-    "media/thumbs/thumb_15.jpg"
-  ],
-  "captions": [
-    "Реальные кадры с наших объектов по всему Крыму"
-  ]
+  "thumbs": []
 }
-
