@@ -494,28 +494,26 @@ nav a {
     </section>
 
     <!-- ГАЛЕРЕЯ -->
-<section class="section portfolio">
+<section id="portfolio" class="section portfolio">
   <h2>Наши работы</h2>
+  <p class="subtitle">Фото и видео примеры обработки объектов</p>
 
-  <div id="gallery" class="gallery-grid"></div>
-
-  <!-- Кнопка догрузки -->
+  <div class="gallery-grid" id="gallery"></div>
   <div class="more-wrap">
     <button id="showMore" class="btn-more">Показать ещё</button>
-  </div>const btnMore = document.getElementById('showMore');
-// …
-function renderMore() {
-  const next = items.slice(shown, shown + BATCH);
-  next.forEach(item => grid.appendChild(createCard(item)));
-  shown += next.length;
+  </div>
 
-  if (btnMore) {
-    btnMore.style.display = (shown >= items.length) ? 'none' : 'inline-block';
-  }
-}
-if (btnMore) btnMore.addEventListener('click', renderMore);
-renderMore();
+  <!-- Модалка -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="lb-close" aria-label="Закрыть">×</button>
+    <div class="lb-inner">
+      <img id="lbImg" alt="">
+      <video id="lbVideo" controls playsinline></video>
+      <div id="lbCaption" class="lb-caption"></div>
+    </div>
+  </div>
 </section>
+
 
     <!-- FAQ -->
     <section id="faq" class="section">
@@ -920,113 +918,7 @@ renderMore();
 
   // Ссылки на DOM
   const grid = document.getElementById('gallery');
-  const btnMore = document.getElementById('showMore');
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lbImg');
-  const lbVideo = document.getElementById('lbVideo');
-  const lbCaption = document.getElementById('lbCaption');
-  const lbClose = document.querySelector('.lb-close');
-
-  let shown = 0;
-
-  function createCard(item){
-    const card = document.createElement('figure');
-    card.className = 'card';
-
-    // thumb
-    let mediaEl;
-    if(item.type === 'img'){
-      mediaEl = document.createElement('img');
-      mediaEl.className = 'thumb';
-      mediaEl.loading = 'lazy';
-      mediaEl.alt = item.caption || 'Работы ДЕЗЩИТ 360';
-      mediaEl.src = item.thumb || item.src; // лёгкая превьюшка
-    } else {
-      mediaEl = document.createElement('div');
-      mediaEl.className = 'thumb';
-      // иконка «видео»
-      const badge = document.createElement('div');
-      badge.className = 'badge-video';
-      badge.textContent = 'Видео';
-      card.appendChild(badge);
-
-      // ставим постер-заглушку (можно заменить на свой)
-      mediaEl.style.background = 'linear-gradient(145deg,#00B3A4,#007F6C)';
-      mediaEl.style.display = 'grid';
-      mediaEl.style.placeItems = 'center';
-      const play = document.createElement('div');
-      play.style.width='64px'; play.style.height='64px';
-      play.style.borderRadius='50%'; play.style.background='rgba(255,255,255,.9)';
-      play.style.boxShadow='0 8px 24px rgba(0,0,0,.25)';
-      play.style.position='relative';
-      const tri = document.createElement('div');
-      tri.style.borderLeft='18px solid #007F6C';
-      tri.style.borderTop='12px solid transparent';
-      tri.style.borderBottom='12px solid transparent';
-      tri.style.position='absolute';
-      tri.style.left='26px'; tri.style.top='20px';
-      play.appendChild(tri);
-      mediaEl.appendChild(play);
-    }
-
-    // caption
-    const cap = document.createElement('figcaption');
-    cap.className = 'caption';
-    cap.textContent = item.caption || (item.type==='img' ? 'Фото' : 'Видео');
-
-    // клик — открыть модалку
-    card.addEventListener('click', () => openLightbox(item));
-
-    card.appendChild(mediaEl);
-    card.appendChild(cap);
-    return card;
-  }
-
-  function renderMore(){
-    const next = items.slice(shown, shown + BATCH);
-    next.forEach(item => grid.appendChild(createCard(item)));
-    shown += next.length;
-
-    if (shown >= items.length) {
-      btnMore.style.display = 'none';
-    } else {
-      btnMore.style.display = 'inline-block';
-    }
-  }
-
-  function openLightbox(item){
-    lbImg.style.display = 'none';
-    lbVideo.style.display = 'none';
-    lbCaption.textContent = item.caption || '';
-
-    if(item.type === 'img'){
-      lbImg.src = item.src;  // полноразмерная фотография
-      lbImg.style.display = 'block';
-    } else {
-      lbVideo.src = item.src; // видео со звуком
-      lbVideo.currentTime = 0;
-      lbVideo.style.display = 'block';
-      lbVideo.play().catch(()=>{});
-    }
-
-    lb.classList.add('show');
-    lb.setAttribute('aria-hidden','false');
-  }
-
-  function closeLightbox(){
-    lb.classList.remove('show');
-    lb.setAttribute('aria-hidden','true');
-    lbVideo.pause();
-    lbVideo.src = '';
-    lbImg.src = '';
-  }
-
-  // Слушатели
-  btnMore.addEventListener('click', renderMore);
-  lbClose.addEventListener('click', closeLightbox);
-  lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLightbox(); });
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLightbox(); });
-
+ 
   // Первый рендер
   renderMore();
 })();
@@ -1081,100 +973,107 @@ renderMore();
     })
     .catch(err => console.error('Gallery load error:', err));
 })();
-</script>
-  
+</script>  
 <script>
-/* ===== Портфолио (галерея) — без самописного lazy ===== */
-document.addEventListener('DOMContentLoaded', () => {
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
   const grid = document.querySelector('.gallery-grid');
-  const moreBtn = document.getElementById('btnMore');   // ваша кнопка «Показать ещё» (id из макета)
-  const CAPTION_DEFAULT = 'Реальные кадры с наших объектов по всему Крыму';
-
+  const moreBtn = document.getElementById('showMore');
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbVideo = document.getElementById('lbVideo');
+  const lbCaption = document.getElementById('lbCaption');
+  const lbClose = document.querySelector('.lb-close');
   if (!grid) return;
 
-  let photos = [];
-  let videos = [];
-  let thumbs = [];
-  let idx = 0;
-  const PAGE = 6;
+  const BATCH = 8;
+  let shown = 0;
+  let items = [];
 
-  fetch('gallery.json')
-    .then(r => r.json())
-    .then(data => {
-      photos = Array.isArray(data.photos) ? data.photos : [];
-      videos = Array.isArray(data.videos) ? data.videos : [];
-      thumbs = Array.isArray(data.thumbs) ? data.thumbs : [];
-      renderPage();                       // ← сразу показываем первую партию
-      if (moreBtn) {
-        moreBtn.onclick = () => renderPage();
-        // если карточки уже все выданы — спрятать кнопку
-        toggleMoreVisibility();
-      }
-    })
-    .catch(() => {
-      grid.innerHTML = '<p style="opacity:.7">Не удалось загрузить галерею.</p>';
-    });
+  try {
+    const res = await fetch('gallery.json', { cache: 'no-store' });
+    const data = await res.json();
+    const photos = data.photos || [];
+    const videos = data.videos || [];
+    const thumbs = data.thumbs || [];
 
-  function renderPage() {
-    const slice = photos.slice(idx, idx + PAGE);
-    const frag = document.createDocumentFragment();
-
-    slice.forEach((src, i) => {
-      const n = idx + i + 1;
-      const fig = document.createElement('figure');
-      fig.className = 'card thumb';               // ваши стили карточек
-      fig.dataset.index = String(n);
-
-      const img = document.createElement('img');
-      img.src = src;                               // <— СРАЗУ подставляем src
-      img.loading = 'lazy';
-      img.alt = `Фото #${n}`;
-
-      const cap = document.createElement('figcaption');
-      cap.className = 'caption';
-      cap.textContent = (Array.isArray(thumbs) && thumbs[n-1]) ? '' : CAPTION_DEFAULT;
-
-      fig.appendChild(img);
-      fig.appendChild(cap);
-      frag.appendChild(fig);
-    });
-
-    grid.appendChild(frag);
-    idx += slice.length;
-    toggleMoreVisibility();
+    items = [
+      ...photos.map((src, i) => ({ type: 'img', src, thumb: thumbs[i] || src, caption: `Фото #${i+1}` })),
+      ...videos.map((src, i) => ({ type: 'video', src, caption: `Видео #${i+1}` }))
+    ];
+    renderMore();
+  } catch (err) {
+    console.error('Ошибка загрузки gallery.json', err);
   }
 
-  function toggleMoreVisibility() {
-    const done = idx >= photos.length;
-    if (moreBtn) moreBtn.style.display = done ? 'none' : '';
+  function createCard(item) {
+    const card = document.createElement('figure');
+    card.className = 'card';
+    let el;
+
+    if (item.type === 'img') {
+      el = document.createElement('img');
+      el.src = item.thumb || item.src;
+      el.loading = 'lazy';
+      el.alt = item.caption;
+    } else {
+      el = document.createElement('video');
+      el.src = item.src;
+      el.controls = true;
+      el.preload = 'metadata';
+      el.muted = true;
+      el.style.height = '200px';
+    }
+
+    const cap = document.createElement('figcaption');
+    cap.className = 'caption';
+    cap.textContent = item.caption;
+
+    card.appendChild(el);
+    card.appendChild(cap);
+    card.addEventListener('click', () => openLightbox(item));
+    return card;
   }
 
-  /* Lightbox — используем ваш существующий обработчик
-     Если у вас не было делегирования — вот безопасный вариант: */
-  grid.addEventListener('click', (e) => {
-    const fig = e.target.closest('figure');
-    if (!fig) return;
-    const img = fig.querySelector('img');
-    if (!img) return;
+  function renderMore() {
+    const next = items.slice(shown, shown + BATCH);
+    next.forEach(item => grid.appendChild(createCard(item)));
+    shown += next.length;
+    moreBtn.style.display = shown >= items.length ? 'none' : 'inline-block';
+  }
 
-    openLightbox(img.src, fig.querySelector('.caption')?.textContent || img.alt);
-  });
-
-  // Функция открытия лайтбокса — используем вашу, если уже есть.
-  // Если у вас уже есть modal with id="lightbox" и функции show/hide — можете удалить этот «заглушечный» вариант.
-  function openLightbox(src, caption) {
-    const lb = document.getElementById('lightbox');
-    if (!lb) return; // у вас уже реализовано
-    const lbImg = lb.querySelector('img');
-    const lbCap = lb.querySelector('.lb-body');
-    lbImg.src = src;
-    lbCap.textContent = caption || '';
+  function openLightbox(item) {
+    lbImg.style.display = 'none';
+    lbVideo.style.display = 'none';
+    lbCaption.textContent = item.caption;
+    if (item.type === 'img') {
+      lbImg.src = item.src;
+      lbImg.style.display = 'block';
+    } else {
+      lbVideo.src = item.src;
+      lbVideo.style.display = 'block';
+      lbVideo.play().catch(()=>{});
+    }
     lb.classList.add('show');
   }
+
+  function closeLightbox() {
+    lb.classList.remove('show');
+    lbImg.src = '';
+    lbVideo.pause();
+    lbVideo.src = '';
+  }
+
+  moreBtn.addEventListener('click', renderMore);
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 });
 </script>
 </body>
 </html>
+
 
 
 
