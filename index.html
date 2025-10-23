@@ -386,20 +386,6 @@ nav a {
         <div class="step"><div class="num">3</div><b>Обработка</b><div class="mut">Безопасные препараты, чистое рабочее место.</div></div>
         <div class="step"><div class="num">4</div><b>Документы</b><div class="mut">Акты и рекомендации — в день работ.</div></div>
       </div>
-    <section id="work" class="section portfolio">
-<section class="portfolio section">
-  <h2>Наши работы</h2>
-
-  <!-- контейнер сетки -->
-  <div class="gallery-grid" id="gallery"></div>
-
-  <!-- кнопка "Показать ещё" -->
-  <div class="more-wrap">
-    <button id="moreBtn" class="btn more">Показать ещё</button>
-  </div>
-</section>
-
-</section>
 
 <!-- Модалка -->
 <div id="lightbox" class="lightbox" aria-hidden="true">
@@ -607,7 +593,7 @@ nav a {
     (function(){
       const modal=document.getElementById('img-modal'); if(!modal) return;
       const mImg=modal.querySelector('img'); const mCap=modal.querySelector('.caption');
-      document.querySelectorAll('.gallery img').forEach(img=>{
+      document.querySelectorAll('.gallery-grid img').forEach(img=>{
         img.addEventListener('click',()=>{
           mImg.src=img.src; mCap.textContent=img.alt||''; modal.classList.add('show');
         });
@@ -894,97 +880,13 @@ nav a {
   });
 </script>
 </style>
-<script>
-(async function(){
-  // Сколько карточек показывать за раз
-  const BATCH = 8;
 
-  // Загружаем данные
-  const res = await fetch('gallery.json', {cache:'no-store'});
-  const data = await res.json();
 
-  // Собираем список элементов: сначала фото (с превью), затем видео
-  const items = [];
-  const photos = data.photos || [];
-  const thumbs = data.thumbs || [];
-  const videos = data.videos || [];
-
-  photos.forEach((src, i) => {
-    items.push({ type:'img', src, thumb: thumbs[i] || src, caption:`Фото #${i+1}` });
-  });
-  videos.forEach((src, i) => {
-    items.push({ type:'video', src, caption:`Видео #${i+1}` });
-  });
-
-  // Ссылки на DOM
-  const grid = document.getElementById('gallery');
- 
-  // Первый рендер
-  renderMore();
-})();
-</script>
-<script id="portfolio-js">
-(function () {
-  const GRID = document.querySelector('.gallery-grid') || document.getElementById('gallery');
-  if (!GRID) return;
-
-  const PAGE_SIZE = 8;
-  let items = [];
-  let page = 0;
-
-  function addCard(src) {
-    const isVideo = src.toLowerCase().endsWith('.mp4');
-    const fig = document.createElement('figure');
-    fig.className = isVideo ? 'is-video card' : 'card';
-
-    const el = isVideo ? document.createElement('video') : document.createElement('img');
-    el.src = src;
-    if (isVideo) {
-      el.controls = true;
-      el.preload = 'metadata';
-    } else {
-      el.loading = 'lazy';
-      el.className = 'thumb';
-    }
-    fig.appendChild(el);
-    GRID.appendChild(fig);
-  }
-
-  function renderMore() {
-    const from = page * PAGE_SIZE;
-    const to = from + PAGE_SIZE;
-    items.slice(from, to).forEach(addCard);
-    page++;
-    if (page * PAGE_SIZE >= items.length) {
-      document.getElementById('moreBtn')?.remove();
-    }
-  }
-
-  // ВАЖНО: абсолютный путь + параметр, чтобы не кэшировалось
-  fetch('/gallery.json?v=3')
-    .then(r => r.json())
-    .then(data => {
-      items = [
-        ...(data.photos || []),
-        ...(data.videos || [])
-      ];
-      renderMore();
-      document.getElementById('moreBtn')?.addEventListener('click', renderMore);
-    })
-    .catch(err => console.error('Gallery load error:', err));
-})();
-</script>  
 <script>
 </script>
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
-  const grid = document.querySelector('.gallery-grid');
-  const moreBtn = document.getElementById('showMore');
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lbImg');
-  const lbVideo = document.getElementById('lbVideo');
-  const lbCaption = document.getElementById('lbCaption');
-  const lbClose = document.querySelector('.lb-close');
+  
   if (!grid) return;
 
   const BATCH = 8;
@@ -992,7 +894,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   let items = [];
 
   try {
-    const res = await fetch('gallery.json', { cache: 'no-store' });
+    const res = await fetch('/gallery.json?v=4', { cache: 'no-store' });
     const data = await res.json();
     const photos = data.photos || [];
     const videos = data.videos || [];
@@ -1073,6 +975,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 </script>
 </body>
 </html>
+
 
 
 
