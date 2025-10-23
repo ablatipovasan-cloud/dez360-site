@@ -761,9 +761,9 @@ nav a {
 <script>
   // Мягкое свечение главной CTA-кнопки
   const ctaBtn = document.querySelector('#dezshield .cta');
-  if (ctaBtn) {
-    ctaBtn.classList.add('glow');
-  }
+  if (ctaBtn) ctaBtn.classList.add('glow');
+</script>
+
 <!-- Telegram Chat Widget -->
 <script async src="https://telegram.org/js/telegram-widget.js?22"
         data-telegram-login="DezShield360Bot"
@@ -772,7 +772,7 @@ nav a {
         data-auth-url="#"
         data-request-access="write"></script>
 
-<!-- Лайтбокс для изображений -->
+<!-- Модалка для изображений -->
 <div id="img-modal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -789,7 +789,6 @@ nav a {
   const mImg = modal.querySelector('img');
   const mCap = modal.querySelector('.caption');
   const close = modal.querySelector('.close');
-
   document.querySelectorAll('.gallery-grid img').forEach(img => {
     img.addEventListener('click', () => {
       mImg.src = img.src;
@@ -797,7 +796,6 @@ nav a {
       modal.classList.add('show');
     });
   });
-
   close.addEventListener('click', () => modal.classList.remove('show'));
   modal.addEventListener('click', e => {
     if (e.target === modal) modal.classList.remove('show');
@@ -817,7 +815,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   let items = [];
 
   try {
-    const res = await fetch('/gallery.json?v=4', { cache: 'no-store' });
+    // ВАЖНО: убрали слэш в пути, иначе GitHub Pages даёт 404
+    const res = await fetch('gallery.json?v=5', { cache: 'no-store' });
     const data = await res.json();
     const photos = data.photos || [];
     const videos = data.videos || [];
@@ -836,7 +835,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const card = document.createElement('figure');
     card.className = 'card';
     let el;
-
     if (item.type === 'img') {
       el = document.createElement('img');
       el.src = item.thumb || item.src;
@@ -850,11 +848,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       el.muted = true;
       el.style.height = '200px';
     }
-
     const cap = document.createElement('figcaption');
     cap.className = 'caption';
     cap.textContent = item.caption;
-
     card.appendChild(el);
     card.appendChild(cap);
     return card;
@@ -883,8 +879,9 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 
 </body>
 </html>
-</body>
-</html>
+
+
+
 
 
 
