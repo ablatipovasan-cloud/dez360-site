@@ -804,53 +804,73 @@ nav a {
 </script>
 
 <script>
-/* ==== ОСНОВНАЯ ГАЛЕРЕЯ ==== */
-document.addEventListener('DOMContentLoaded', async () => {
+/* ==== ОСНОВНАЯ ГАЛЕРЕЯ (исправленная версия) ==== */
+window.addEventListener('load', async () => {
   const grid = document.querySelector('.gallery-grid');
   const moreBtn = document.getElementById('showMore');
-  if (!grid) return;
+  if (!grid) {
+    console.warn('❗ Элемент .gallery-grid не найден');
+    return;
+  }
 
   const BATCH = 8;
   let shown = 0;
   let items = [];
 
   try {
-    // ВАЖНО: убрали слэш в пути, иначе GitHub Pages даёт 404
-    const res = await fetch('gallery.json?v=5', { cache: 'no-store' });
+    // используем относительный путь, чтобы JSON находился рядом с index.html
+    const res = await fetch('./gallery.json?v=6', { cache: 'no-store' });
+    if (!res.ok) throw new Error('Файл gallery.json не найден');
     const data = await res.json();
+
     const photos = data.photos || [];
     const videos = data.videos || [];
     const thumbs = data.thumbs || [];
 
+    // объединяем всё в один массив
     items = [
-      ...photos.map((src, i) => ({ type: 'img', src, thumb: thumbs[i] || src, caption: `Фото #${i+1}` })),
-      ...videos.map((src, i) => ({ type: 'video', src, caption: `Видео #${i+1}` }))
+      ...photos.map((src, i) => ({
+        type: 'img',
+        src,
+        thumb: thumbs[i] || src,
+        caption: `Фото #${i + 1}`
+      })),
+      ...videos.map((src, i) => ({
+        type: 'video',
+        src,
+        caption: `Видео #${i + 1}`
+      }))
     ];
+
     renderMore();
   } catch (err) {
-    console.error('Ошибка загрузки gallery.json', err);
+    console.error('Ошибка загрузки gallery.json:', err);
   }
 
   function createCard(item) {
     const card = document.createElement('figure');
-    card.className = 'card';
+    card.className = 'card fade-in';
+
     let el;
     if (item.type === 'img') {
       el = document.createElement('img');
       el.src = item.thumb || item.src;
       el.loading = 'lazy';
       el.alt = item.caption;
+      el.addEventListener('click', () => openModal(item.src, item.caption));
     } else {
       el = document.createElement('video');
       el.src = item.src;
       el.controls = true;
       el.preload = 'metadata';
       el.muted = true;
-      el.style.height = '200px';
+      el.style.height = '220px';
     }
+
     const cap = document.createElement('figcaption');
     cap.className = 'caption';
     cap.textContent = item.caption;
+
     card.appendChild(el);
     card.appendChild(cap);
     return card;
@@ -860,12 +880,32 @@ document.addEventListener('DOMContentLoaded', async () => {
     const next = items.slice(shown, shown + BATCH);
     next.forEach(item => grid.appendChild(createCard(item)));
     shown += next.length;
-    moreBtn.style.display = shown >= items.length ? 'none' : 'inline-block';
+    if (moreBtn) moreBtn.style.display = shown >= items.length ? 'none' : 'inline-block';
   }
 
-  moreBtn.addEventListener('click', renderMore);
+  if (moreBtn) moreBtn.addEventListener('click', renderMore);
+
+  // === модалка для изображений ===
+  const modal = document.getElementById('lightbox') || document.getElementById('img-modal');
+  const mImg = modal?.querySelector('img');
+  const mCap = modal?.querySelector('.caption');
+  const close = modal?.querySelector('.close');
+
+  function openModal(src, caption) {
+    if (!modal) return;
+    modal.classList.add('show');
+    if (mImg) mImg.src = src;
+    if (mCap) mCap.textContent = caption;
+  }
+
+  if (close) close.addEventListener('click', () => modal.classList.remove('show'));
+  if (modal)
+    modal.addEventListener('click', e => {
+      if (e.target === modal) modal.classList.remove('show');
+    });
 });
 </script>
+
 
 <!-- Плавное появление элементов при скролле -->
 <script>
@@ -879,6 +919,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 
 </body>
 </html>
+
 
 
 
