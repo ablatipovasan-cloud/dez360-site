@@ -764,129 +764,52 @@ nav a {
   if (ctaBtn) {
     ctaBtn.classList.add('glow');
   }
-</script>
-<!-- 🔹 Telegram чат-бот "ДЕЗЩИТ 360" -->
-<a href="https://t.me/dezshit360_bot" 
-   target="_blank" 
-   id="tg-widget" 
-   title="Написать в Telegram">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
-  <span id="tg-label">Написать в Telegram</span>
-</a>
+<!-- Telegram Chat Widget -->
+<script async src="https://telegram.org/js/telegram-widget.js?22"
+        data-telegram-login="DezShield360Bot"
+        data-size="large"
+        data-radius="10"
+        data-auth-url="#"
+        data-request-access="write"></script>
 
-<!-- 💬 Всплывающая подсказка -->
-<div id="tg-hint">💬 Нужна консультация? Напишите нашему эксперту!</div>
-
-<style>
-  #tg-widget {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 62px;
-    height: 62px;
-    border-radius: 50%;
-    background: linear-gradient(145deg, #00B3A4, #007F6C);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    animation: pulseBtn 2.8s infinite ease-in-out;
-    text-decoration: none;
-  }
-
-  #tg-widget img {
-    width: 34px;
-    height: 34px;
-    filter: brightness(0) invert(1);
-    pointer-events: none;
-    transition: transform 0.3s ease;
-  }
-
-  #tg-label {
-    position: absolute;
-    right: 70px;
-    background: rgba(0, 0, 0, 0.75);
-    color: #fff;
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(4px);
-    transition: all 0.3s ease;
-    white-space: nowrap;
-  }
-
-  #tg-widget:hover #tg-label { opacity: 1; transform: translateY(0); }
-  #tg-widget:hover img { transform: scale(1.1); }
-
-  @keyframes pulseBtn {
-    0%,100% { box-shadow: 0 0 16px rgba(0,179,164,0.35); }
-    50% { box-shadow: 0 0 28px rgba(0,179,164,0.6); }
-  }
-
-  #tg-hint {
-    position: fixed;
-    bottom: 100px;
-    right: 30px;
-    background: rgba(0, 0, 0, 0.82);
-    color: #fff;
-    padding: 10px 16px;
-    border-radius: 12px;
-    font-size: 15px;
-    max-width: 240px;
-    line-height: 1.3;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.35);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(10px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-    z-index: 9998;
-  }
-
-  #tg-hint.show { opacity: 1; transform: translateY(0); }
-
-  @media (max-width: 640px) {
-    #tg-widget { width: 70px; height: 70px; bottom: 18px; right: 18px; }
-    #tg-label { display: none; }
-    #tg-hint { right: 20px; bottom: 90px; font-size: 14px; max-width: 200px; }
-  }
-</style>
+<!-- Лайтбокс для изображений -->
+<div id="img-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <img src="" alt="">
+    <div class="caption"></div>
+  </div>
+</div>
 
 <script>
-  // 💬 Подсказка только при первом визите
-  const hint = document.getElementById('tg-hint');
-  const hintShown = sessionStorage.getItem('hintShown');
+/* ==== МОДАЛКА ФОТО ==== */
+(function(){
+  const modal = document.getElementById('img-modal');
+  if (!modal) return;
+  const mImg = modal.querySelector('img');
+  const mCap = modal.querySelector('.caption');
+  const close = modal.querySelector('.close');
 
-  if (!hintShown) {
-    setTimeout(() => {
-      hint.classList.add('show');
-      setTimeout(() => hint.classList.remove('show'), 5000);
-      sessionStorage.setItem('hintShown', 'true');
-    }, 6000);
-  }
-
-  // 🚀 Автозаполнение формы для CTA-кнопок
-  document.querySelectorAll('[data-tg-message]').forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.preventDefault();
-      const msg = encodeURIComponent(btn.getAttribute('data-tg-message'));
-      window.open(`https://t.me/dezshit360_bot?start=${msg}`, '_blank');
+  document.querySelectorAll('.gallery-grid img').forEach(img => {
+    img.addEventListener('click', () => {
+      mImg.src = img.src;
+      mCap.textContent = img.alt || '';
+      modal.classList.add('show');
     });
   });
-</script>
-</style>
 
+  close.addEventListener('click', () => modal.classList.remove('show'));
+  modal.addEventListener('click', e => {
+    if (e.target === modal) modal.classList.remove('show');
+  });
+})();
+</script>
 
 <script>
-</script>
-<script>
+/* ==== ОСНОВНАЯ ГАЛЕРЕЯ ==== */
 document.addEventListener('DOMContentLoaded', async () => {
-  
+  const grid = document.querySelector('.gallery-grid');
+  const moreBtn = document.getElementById('showMore');
   if (!grid) return;
 
   const BATCH = 8;
@@ -934,7 +857,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     card.appendChild(el);
     card.appendChild(cap);
-    card.addEventListener('click', () => openLightbox(item));
     return card;
   }
 
@@ -945,36 +867,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     moreBtn.style.display = shown >= items.length ? 'none' : 'inline-block';
   }
 
-  function openLightbox(item) {
-    lbImg.style.display = 'none';
-    lbVideo.style.display = 'none';
-    lbCaption.textContent = item.caption;
-    if (item.type === 'img') {
-      lbImg.src = item.src;
-      lbImg.style.display = 'block';
-    } else {
-      lbVideo.src = item.src;
-      lbVideo.style.display = 'block';
-      lbVideo.play().catch(()=>{});
-    }
-    lb.classList.add('show');
-  }
-
-  function closeLightbox() {
-    lb.classList.remove('show');
-    lbImg.src = '';
-    lbVideo.pause();
-    lbVideo.src = '';
-  }
-
   moreBtn.addEventListener('click', renderMore);
-  lbClose.addEventListener('click', closeLightbox);
-  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 });
 </script>
+
+<!-- Плавное появление элементов при скролле -->
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+});
+document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
+</script>
+
 </body>
 </html>
+</body>
+</html>
+
 
 
 
