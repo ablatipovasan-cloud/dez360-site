@@ -1083,8 +1083,99 @@ renderMore();
     .catch(err => console.error('Gallery load error:', err));
 })();
 </script>
+<script>
+/* ===== Портфолио (галерея) — без самописного lazy ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.querySelector('.gallery-grid');
+  const moreBtn = document.getElementById('btnMore');   // ваша кнопка «Показать ещё» (id из макета)
+  const CAPTION_DEFAULT = 'Реальные кадры с наших объектов по всему Крыму';
+
+  if (!grid) return;
+
+  let photos = [];
+  let videos = [];
+  let thumbs = [];
+  let idx = 0;
+  const PAGE = 6;
+
+  fetch('gallery.json')
+    .then(r => r.json())
+    .then(data => {
+      photos = Array.isArray(data.photos) ? data.photos : [];
+      videos = Array.isArray(data.videos) ? data.videos : [];
+      thumbs = Array.isArray(data.thumbs) ? data.thumbs : [];
+      renderPage();                       // ← сразу показываем первую партию
+      if (moreBtn) {
+        moreBtn.onclick = () => renderPage();
+        // если карточки уже все выданы — спрятать кнопку
+        toggleMoreVisibility();
+      }
+    })
+    .catch(() => {
+      grid.innerHTML = '<p style="opacity:.7">Не удалось загрузить галерею.</p>';
+    });
+
+  function renderPage() {
+    const slice = photos.slice(idx, idx + PAGE);
+    const frag = document.createDocumentFragment();
+
+    slice.forEach((src, i) => {
+      const n = idx + i + 1;
+      const fig = document.createElement('figure');
+      fig.className = 'card thumb';               // ваши стили карточек
+      fig.dataset.index = String(n);
+
+      const img = document.createElement('img');
+      img.src = src;                               // <— СРАЗУ подставляем src
+      img.loading = 'lazy';
+      img.alt = `Фото #${n}`;
+
+      const cap = document.createElement('figcaption');
+      cap.className = 'caption';
+      cap.textContent = (Array.isArray(thumbs) && thumbs[n-1]) ? '' : CAPTION_DEFAULT;
+
+      fig.appendChild(img);
+      fig.appendChild(cap);
+      frag.appendChild(fig);
+    });
+
+    grid.appendChild(frag);
+    idx += slice.length;
+    toggleMoreVisibility();
+  }
+
+  function toggleMoreVisibility() {
+    const done = idx >= photos.length;
+    if (moreBtn) moreBtn.style.display = done ? 'none' : '';
+  }
+
+  /* Lightbox — используем ваш существующий обработчик
+     Если у вас не было делегирования — вот безопасный вариант: */
+  grid.addEventListener('click', (e) => {
+    const fig = e.target.closest('figure');
+    if (!fig) return;
+    const img = fig.querySelector('img');
+    if (!img) return;
+
+    openLightbox(img.src, fig.querySelector('.caption')?.textContent || img.alt);
+  });
+
+  // Функция открытия лайтбокса — используем вашу, если уже есть.
+  // Если у вас уже есть modal with id="lightbox" и функции show/hide — можете удалить этот «заглушечный» вариант.
+  function openLightbox(src, caption) {
+    const lb = document.getElementById('lightbox');
+    if (!lb) return; // у вас уже реализовано
+    const lbImg = lb.querySelector('img');
+    const lbCap = lb.querySelector('.lb-body');
+    lbImg.src = src;
+    lbCap.textContent = caption || '';
+    lb.classList.add('show');
+  }
+});
+</script>
 </body>
 </html>
+
 
 
 
