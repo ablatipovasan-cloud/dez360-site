@@ -290,7 +290,6 @@ nav a {
 
 </head>
 <body>
-<body>
 <script>document.body.classList.add('js');</script>
 
   <!-- Header -->
@@ -347,15 +346,30 @@ body:not(.js) .fade-in { opacity:1; transform:none; }
 
 <script>
 /* Плавное появление .fade-in */
-(()=> {
+window.addEventListener('DOMContentLoaded', () => {
   const obsFade = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obsFade.unobserve(entry.target);
+      }
     });
   }, { threshold: 0.15 });
+
+  // Подхватываем все элементы .fade-in, которые уже есть
   document.querySelectorAll('.fade-in').forEach(el => obsFade.observe(el));
-})();
+
+  // На всякий случай: если что-то добавят позже — тоже наблюдаем
+  const mo = new MutationObserver(() => {
+    document.querySelectorAll('.fade-in:not(.__watched)').forEach(el => {
+      el.classList.add('__watched');
+      obsFade.observe(el);
+    });
+  });
+  mo.observe(document.body, { childList: true, subtree: true });
+});
 </script>
+
 
   <!-- ВСЕ УСЛУГИ -->
     <section id="services" class="section">
@@ -1013,6 +1027,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 
 </body>
 </html>
+
 
 
 
