@@ -343,14 +343,17 @@ nav a {
 </style>
 
 <script>
-// ====== Скролл-анимация для появления блоков ======
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-});
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+/* Плавное появление .fade-in */
+(()=> {
+  const obsFade = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => obsFade.observe(el));
+})();
 </script>
+
   <!-- ВСЕ УСЛУГИ -->
     <section id="services" class="section">
       <h2>Все услуги</h2>
@@ -414,8 +417,8 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 <section id="about" class="section about" style="background:#f9f9f9; padding:60px 20px;">
   <div class="inner" style="max-width:900px; margin:0 auto; text-align:left;">
     <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-      <img src="media/license-icon.svg" alt="Лицензия ДезЩит 360" style="width:42px; height:42px; opacity:0.85;">
-      <h2 style="font-size:1.8rem; color:#004d43; margin:0;">О нас</h2>
+      <img src="media/mascot1.png" alt="Лицензия ДезЩит 360" ...>
+         <h2 style="font-size:1.8rem; color:#004d43; margin:0;">О нас</h2>
     </div>
 
     <div class="about-content" style="margin-top:25px; font-size:1.05rem; line-height:1.7; color:#333;">
@@ -474,26 +477,6 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </div>
   </div>
 </section>
-
-    <!-- О НАС -->
-    <section id="about" class="section">
-      <h2>О нас</h2>
-      <div class="about">
-        <div class="box">
-          <h3 style="margin-top:4px">ДЕЗЩИТ 360 — команда, стандарты, результат</h3>
-          <p class="mut">Работаем по регламентам СЭС. Используем сертифицированные средства и методики под каждый объект: квартиры, рестораны, склады, производство, транспорт.</p>
-          <ul class="mut">
-            <li>Документы и акты — в день работ</li>
-            <li>Ночная смена для HoReCa без простоя</li>
-            <li>Понятные режимные рекомендации</li>
-          </ul>
-        </div>
-        <div>
-          <video src="media/AVJO6241.MP4" controls preload="metadata" style="width:100%;border-radius:16px;box-shadow:var(--shadow-lg)"></video>
-        </div>
-      </div>
-    </section>
-
     <!-- ДЕЗЩИТ 360 -->
     <section id="dezshield" class="shield section" style="padding:0">
       <div class="inner">
@@ -815,28 +798,35 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </style>
 
 <script>
-  // Анимация появления при скролле
-  const observer = new IntersectionObserver((entries) => {
+/* Появление карточек, шагов, about и FAQ */
+(()=> {
+  const obsCards = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+        obsCards.unobserve(entry.target);
       }
     });
   }, { threshold: 0.15 });
 
-  document.querySelectorAll('.card, .step, .about .box, .about video, .gallery figure, .accordion .item')
-    .forEach(el => observer.observe(el));
+  document
+    .querySelectorAll('.card, .step, .about .box, .about video, .gallery figure, .accordion .item')
+    .forEach(el => obsCards.observe(el));
+})();
 </script>
+
 <script>
-  // Плавное появление пунктов меню поочерёдно
-  window.addEventListener('load', () => {
-    const navLinks = document.querySelectorAll('header nav a');
-    navLinks.forEach((link, i) => {
-      link.style.animationDelay = `${0.8 + i * 0.1}s`;
+/* Плавное появление целых секций */
+(()=> {
+  const obsSections = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   });
+  document.querySelectorAll('.section').forEach(sec => obsSections.observe(sec));
+})();
 </script>
+
 <script>
   // Нежный параллакс для секции #dezshield
   (function () {
@@ -868,14 +858,7 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         data-auth-url="#"
         data-request-access="write"></script>
 
-<!-- Модалка для изображений -->
-<div id="img-modal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <img src="" alt="">
-    <div class="caption"></div>
-  </div>
-</div>
+
 
 <script>
 /* ==== МОДАЛКА ФОТО ==== */
@@ -1029,6 +1012,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 
 </body>
 </html>
+
 
 
 
