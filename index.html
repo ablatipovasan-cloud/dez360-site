@@ -319,19 +319,20 @@ nav a {
   <main class="container">
 
     <!-- HERO -->
-    <section id="hero" class="hero">
-      <div>
-        <h1>Безопасность на каждом уровне</h1>
-        <p>Профессиональная <b>дезинфекция</b>, <b>дезинсекция</b>, <b>дератизация</b> — и любые другие виды санитарных услуг. Без запаха, простоев и рисков. Акты и документы — в день работ.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <a class="cta" href="#services">Все услуги</a>
-          <a class="cta" href="#prices" style="background:#fff;color:var(--c2)">Цены</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-       <img src="media/banner-main.png" alt="Специалист по дезинфекции" class="hero-image" loading="lazy">
- </div>
-    </section>
+   <section class="hero-banner" id="home">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Безопасность на каждом уровне</h1>
+    <p>
+      Профессиональная <strong>дезинфекция, дезинсекция и дератизация</strong> — любые виды санитарных услуг.
+      Без запаха, простоев и рисков. Акт и документы — в день работ.
+    </p>
+    <div class="hero-buttons">
+      <a href="#services" class="btn-primary">Наши услуги</a>
+      <a href="#prices" class="btn-secondary">Цены</a>
+    </div>
+  </div>
+</section>
 
 
 <style>
@@ -352,6 +353,108 @@ body:not(.js) .fade-in { opacity:1; transform:none; }
   object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+/* === HERO BANNER === */
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  min-height: 480px;
+  background: url("media/1761327143.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 0 0 24px 24px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+/* затемнение поверх фото */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.35));
+  z-index: 1;
+}
+
+/* контент */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 700px;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.hero-content p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* кнопки */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #008d83;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #00b8aa;
+}
+
+.btn-secondary {
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255,255,255,0.35);
+}
+
+/* адаптация под мобильные */
+@media (max-width: 768px) {
+  .hero-banner {
+    height: 60vh;
+    min-height: 380px;
+    border-radius: 0;
+  }
+
+  .hero-content {
+    padding: 15px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>
 
@@ -1185,6 +1288,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 </script>
 </body>
 </html>
+
 
 
 
