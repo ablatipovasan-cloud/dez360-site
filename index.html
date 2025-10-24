@@ -293,24 +293,25 @@ nav a {
 <script>document.body.classList.add('js');</script>
 
   <!-- Header -->
-  <header>
-    <div class="bar">
-      <div class="brand">
-        <img src="media/mascot1.png" alt="ДЕЗЩИТ 360">
-        <div>ДЕЗЩИТ 360</div>
-      </div>
-      <nav id="topnav">
-        <a href="#hero" class="active">Главная</a>
-        <a href="#services">Все услуги</a>
-        <a href="#process">Как мы работаем</a>
-        <a href="#about">О нас</a>
-        <a href="#dezshield">ДезЩит 360</a>
-        <a href="#prices">Цены</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contacts">Контакты</a>
-      </nav>
-    </div>
-  </header>
+ <header>
+  <div class="logo-wrap">
+    <img src="media/logo.png" alt="ДЕЗЩИТ 360">
+    <h1>ДЕЗЩИТ 360</h1>
+  </div>
+
+  <button class="burger" aria-label="Открыть меню">☰</button>
+
+  <nav class="nav-menu">
+    <a href="#home">Главная</a>
+    <a href="#services">Все услуги</a>
+    <a href="#about">О нас</a>
+    <a href="#prices">Цены</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contacts">Контакты</a>
+    <a href="#dezshield">ДезЩит 360</a>
+  </nav>
+</header>
+
 
   <main class="container">
 
@@ -882,6 +883,65 @@ window.addEventListener('DOMContentLoaded', () => {
     text-align: center;
   }
 }
+/* === БУРГЕР-МЕНЮ === */
+.burger {
+  display: none;
+  font-size: 26px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+@media (max-width: 850px) {
+  .burger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 18px;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  .nav-menu a {
+    color: #fff;
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    text-decoration: none;
+  }
+
+  .nav-menu a:hover {
+    background: rgba(255,255,255,0.1);
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  header {
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 16px;
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
 </style>
 
 <script>
@@ -1095,8 +1155,27 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 </script>
 
+<script>
+  // Переключатель бургер-меню
+  const burger = document.querySelector('.burger');
+  const navMenu = document.querySelector('.nav-menu');
+
+  burger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    burger.textContent = navMenu.classList.contains('active') ? '✖' : '☰';
+  });
+
+  // Автоматически закрываем меню при клике на пункт
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+      burger.textContent = '☰';
+    });
+  });
+</script>
 </body>
 </html>
+
 
 
 
