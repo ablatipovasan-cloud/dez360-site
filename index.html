@@ -449,14 +449,14 @@ body:not(.js) .fade-in { opacity:1; transform:none; }
   .hero-banner {
     height: clamp(46vh, 56vh, 60vh);
     min-height: 360px;
-    border-radius: 0;      
-    /* на мобиле обычно «в край» смотрится лучше */
+    border-radius: 0;
   }
 
   .hero-content { padding: 15px; }
   .hero-buttons { flex-direction: column; }
   .btn-primary, .btn-secondary { width: 100%; text-align: center; }
 }
+
 
 
   .hero-buttons {
@@ -941,41 +941,26 @@ window.addEventListener('DOMContentLoaded', () => {
 }
   /* ==== АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ УСТРОЙСТВА ==== */
 @media (max-width: 900px) {
-  header {
+  /* сам header оставляем как есть (sticky + фон) */
+  header { padding: 0; }
+
+  /* работаем именно с флекс-контейнером */
+  .bar {
     flex-direction: column;
     align-items: flex-start;
+    gap: 8px;
     padding: 10px 16px;
   }
 
-  header img {
-    height: 36px;
-  }
+  .brand img { height: 36px; }
 
   nav {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 10px;
+    margin-top: 6px;
   }
-
-  main, section {
-    padding: 20px 14px !important;
-  }
-
-  h1, h2 {
-    font-size: 1.4rem;
-    line-height: 1.2;
-  }
-
-  p {
-    font-size: 0.95rem;
-  }
-
-  .cta {
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-  }
+}
 
   /* Галерея / портфолио */
   .gallery-grid {
@@ -1301,6 +1286,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 </script>
 </body>
 </html>
+
 
 
 
