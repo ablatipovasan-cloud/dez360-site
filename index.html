@@ -812,7 +812,77 @@ window.addEventListener('DOMContentLoaded', () => {
   gap: 15px;
   margin-top: 20px;
 }
-  </style>
+  /* ==== АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ УСТРОЙСТВА ==== */
+@media (max-width: 900px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 16px;
+  }
+
+  header img {
+    height: 36px;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  main, section {
+    padding: 20px 14px !important;
+  }
+
+  h1, h2 {
+    font-size: 1.4rem;
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+
+  .cta {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+
+  /* Галерея / портфолио */
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+  }
+
+  .gallery-item img, .gallery-item video {
+    border-radius: 10px;
+  }
+
+  /* Секция О нас */
+  #about {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  #about img {
+    margin: 0 auto 10px;
+  }
+
+  /* Цены — карточки */
+  .price-card {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  /* Подвал */
+  footer {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+}
+</style>
 
 <script>
 /* Появление карточек, шагов, about и FAQ */
@@ -1027,6 +1097,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 
 </body>
 </html>
+
 
 
 
