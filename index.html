@@ -292,24 +292,27 @@ nav a {
 <body>
 <script>document.body.classList.add('js');</script>
 
-  <!-- Header -->
- <header>
-  <div class="logo-wrap">
-    <img src="media/logo.png" alt="ДЕЗЩИТ 360">
-    <h1>ДЕЗЩИТ 360</h1>
+  <header>
+  <div class="bar">
+    <a href="#home" class="brand" aria-label="ДЕЗЩИТ 360">
+      <!-- используем реальный файл из репозитория -->
+      <img src="media/mascot1.png" alt="Логотип ДЕЗЩИТ 360" loading="eager" decoding="async">
+      <span>ДЕЗЩИТ 360</span>
+    </a>
+
+    <button class="burger" aria-label="Открыть меню">☰</button>
+
+    <!-- добавили id="topnav", который ждёт ваш скрипт -->
+    <nav id="topnav" class="nav-menu">
+      <a href="#home">Главная</a>
+      <a href="#services">Все услуги</a>
+      <a href="#about">О нас</a>
+      <a href="#prices">Цены</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacts">Контакты</a>
+      <a href="#dezshield">ДезЩит 360</a>
+    </nav>
   </div>
-
-  <button class="burger" aria-label="Открыть меню">☰</button>
-
-  <nav class="nav-menu">
-    <a href="#home">Главная</a>
-    <a href="#services">Все услуги</a>
-    <a href="#about">О нас</a>
-    <a href="#prices">Цены</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contacts">Контакты</a>
-    <a href="#dezshield">ДезЩит 360</a>
-  </nav>
 </header>
 
 
@@ -1175,6 +1178,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 </script>
 </body>
 </html>
+
 
 
 
