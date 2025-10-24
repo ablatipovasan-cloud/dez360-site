@@ -386,16 +386,6 @@ nav a {
         <div class="step"><div class="num">3</div><b>Обработка</b><div class="mut">Безопасные препараты, чистое рабочее место.</div></div>
         <div class="step"><div class="num">4</div><b>Документы</b><div class="mut">Акты и рекомендации — в день работ.</div></div>
       </div>
-
-<!-- Модалка -->
-<div id="lightbox" class="lightbox" aria-hidden="true">
-  <button class="lb-close" aria-label="Закрыть">×</button>
-  <div class="lb-inner">
-    <img id="lbImg" alt="" />
-    <video id="lbVideo" controls playsinline></video>
-    <div id="lbCaption" class="lb-caption"></div>
-  </div>
-</div>
 </section>
 
     <!-- О НАС -->
@@ -823,41 +813,47 @@ nav a {
 </script>
 
 <script>
-/* ==== ОСНОВНАЯ ГАЛЕРЕЯ (исправленная версия) ==== */
+/* ==== ОСНОВНАЯ ГАЛЕРЕЯ (нормализация путей + единая модалка) ==== */
 window.addEventListener('load', async () => {
-  const grid = document.querySelector('.gallery-grid');
-  const moreBtn = document.getElementById('showMore');
-  if (!grid) {
-    console.warn('❗ Элемент .gallery-grid не найден');
-    return;
-  }
+  const grid   = document.querySelector('.gallery-grid');
+  const moreBtn= document.getElementById('showMore');
+  if (!grid) return;
 
   const BATCH = 8;
   let shown = 0;
   let items = [];
 
+  // Нормализация путей: trim, абсолют от корня проекта, регистр/дубликаты слэшей
+  const normalize = (p='') => {
+    if (!p) return '';
+    p = String(p).trim();
+    // если путь начинается с 'media/', допишем './' чтобы не зависеть от baseUrl
+    if (/^media\//i.test(p)) p = './' + p;
+    // уберём возможные двойные слэши
+    p = p.replace(/\/{2,}/g, '/');
+    return p;
+  };
+
   try {
-    // используем относительный путь, чтобы JSON находился рядом с index.html
-    const res = await fetch('./gallery.json?v=6', { cache: 'no-store' });
-    if (!res.ok) throw new Error('Файл gallery.json не найден');
+    const res = await fetch('./gallery.json?v=7', { cache:'no-store' });
+    if (!res.ok) throw new Error('gallery.json не найден');
     const data = await res.json();
 
-    const photos = data.photos || [];
-    const videos = data.videos || [];
-    const thumbs = data.thumbs || [];
+    const photos = Array.isArray(data.photos) ? data.photos : [];
+    const videos = Array.isArray(data.videos) ? data.videos : [];
+    const thumbs = Array.isArray(data.thumbs) ? data.thumbs : [];
 
-    // объединяем всё в один массив
     items = [
       ...photos.map((src, i) => ({
-        type: 'img',
-        src,
-        thumb: thumbs[i] || src,
-        caption: `Фото #${i + 1}`
+        type   : 'img',
+        src    : normalize(src),
+        thumb  : normalize(thumbs[i] || src),
+        caption: `Фото #${i+1}`
       })),
       ...videos.map((src, i) => ({
-        type: 'video',
-        src,
-        caption: `Видео #${i + 1}`
+        type   : 'video',
+        src    : normalize(src),
+        caption: `Видео #${i+1}`
       }))
     ];
 
@@ -876,14 +872,20 @@ window.addEventListener('load', async () => {
       el.src = item.thumb || item.src;
       el.loading = 'lazy';
       el.alt = item.caption;
+      el.onerror = () => {                      // подсветим 404 прямо на карточке
+        el.style.opacity = 0.3;
+        el.style.filter  = 'grayscale(1)';
+        console.warn('Не найден файл изображения:', el.src);
+      };
       el.addEventListener('click', () => openModal(item.src, item.caption));
     } else {
       el = document.createElement('video');
       el.src = item.src;
       el.controls = true;
-      el.preload = 'metadata';
-      el.muted = true;
+      el.preload  = 'metadata';
+      el.muted    = true;
       el.style.height = '220px';
+      el.onerror = () => console.warn('Не найден видеофайл:', el.src);
     }
 
     const cap = document.createElement('figcaption');
@@ -904,26 +906,28 @@ window.addEventListener('load', async () => {
 
   if (moreBtn) moreBtn.addEventListener('click', renderMore);
 
-  // === модалка для изображений ===
-  const modal = document.getElementById('lightbox') || document.getElementById('img-modal');
-  const mImg = modal?.querySelector('img');
-  const mCap = modal?.querySelector('.caption');
-  const close = modal?.querySelector('.close');
+  // --- ЕДИНАЯ модалка (используем ту, что в секции «Наши работы») ---
+  const modal = document.querySelector('#portfolio #lightbox') || document.getElementById('lightbox');
+  const mImg  = modal?.querySelector('#lbImg');
+  const mCap  = modal?.querySelector('#lbCaption');
+  const btnX  = modal?.querySelector('.lb-close');
 
   function openModal(src, caption) {
     if (!modal) return;
+    if (mImg)  { mImg.src = src; mImg.style.display = 'block'; }
+    if (mCap)  mCap.textContent = caption || '';
+    const v = modal.querySelector('#lbVideo');
+    if (v) v.style.display = 'none';
     modal.classList.add('show');
-    if (mImg) mImg.src = src;
-    if (mCap) mCap.textContent = caption;
   }
 
-  if (close) close.addEventListener('click', () => modal.classList.remove('show'));
-  if (modal)
-    modal.addEventListener('click', e => {
-      if (e.target === modal) modal.classList.remove('show');
-    });
+  btnX?.addEventListener('click', () => modal.classList.remove('show'));
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.remove('show');
+  });
 });
 </script>
+
 
 
 <!-- Плавное появление элементов при скролле -->
@@ -938,6 +942,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 
 </body>
 </html>
+
 
 
 
