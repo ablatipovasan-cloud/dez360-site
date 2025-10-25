@@ -385,30 +385,42 @@ body:not(.js) .fade-in { opacity: 1; transform: none; }
   <main class="container"> 
 <style>
 /* === HERO BANNER (адаптировано) === */
-.hero-banner::after{
+/* 1) Убираем «полосу» снизу полностью */
+.hero-banner::after {
+  content: none !important;
+}
+
+/* 2) Корректный оверлей для текста внутри баннера (не выходит за границы) */
+.hero-banner {
+  position: relative;
+  background: url("media/restaurant-banner.jpg") center 35% / cover no-repeat;
+  /* Вариант для десктопа — баннер видимый целиком и без «полосы» */
+  min-height: clamp(420px, 70vh, 760px);
+  margin-bottom: 0;            /* на всякий случай, чтобы не было «ступеньки» */
+  overflow: hidden;            /* убирает любые артефакты на краях */
+}
+
+/* Лёгкий верхний градиент (можно убрать, если не нужен) */
+.hero-banner::before{
   content:"";
   position:absolute;
-  bottom:-1px;
-  left:0;
-  right:0;
-  height:60px;
-  background:linear-gradient(to bottom, rgba(0,141,131,.9) 0%, #f4faf9 100%);
-  z-index:3;
+  inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 60%);
+  pointer-events:none;
+  z-index:0;
 }
 
-/* адаптация под мобильные */
+/* Контент в баннере должен быть поверх оверлея */
+.hero-banner .hero-content { position: relative; z-index: 1; }
+
+/* Мобильная адаптация */
 @media (max-width: 768px){
   .hero-banner{
-    height: clamp(38vh, 45vh, 50vh);
-    min-height: 300px;
-    background-position: center 30%;
-    border-radius: 0;
+    min-height: 62vh;                 /* баннер компактнее, но без обрезаний */
+    background-position: center 40%;
   }
-
-  .hero-content{ padding: 15px; }
-  .hero-buttons{ flex-direction: column; }
-  .btn-primary, .btn-secondary{ width:100%; text-align:center; }
 }
+
 </style>
 <script>
 /* Плавное появление .fade-in */
@@ -1225,6 +1237,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 </script>
 </body>
 </html>
+
 
 
 
