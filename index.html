@@ -334,7 +334,10 @@ body:not(.js) .fade-in { opacity: 1; transform: none; }
 </style>
 
 </head>
-<body>
+<body>                                                
+<!-- Фиксированный фоновый баннер до секции «ДезЩит 360» -->
+<div id="heroBackdrop" aria-hidden="true"></div>
+
 <script>document.body.classList.add('js');</script>
 
   <header>
@@ -377,6 +380,36 @@ body:not(.js) .fade-in { opacity: 1; transform: none; }
 </section>
 
 <style>
+/* === Fixed Hero Backdrop (полноэкранный фон до #dezshield) === */
+#heroBackdrop{
+  position: fixed;
+  inset: 0;
+  z-index: 0;                 /* фон за всем контентом */
+  background: url("media/1761327143.png") center 32% / cover no-repeat;
+  opacity: 1;
+  transition: opacity .6s ease, visibility .6s ease;
+}
+
+/* мягкое затемнение для читаемости шапки/первых блоков */
+#heroBackdrop::before{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.12) 45%, rgba(0,0,0,.06) 70%, rgba(0,0,0,0) 100%);
+}
+
+/* когда дошли до #dezshield — фоновый баннер исчезает */
+#heroBackdrop.is-hidden{
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* чтобы контент гарантированно был выше фонового слоя */
+header, main, footer, .wrap, section{ position: relative; z-index: 1; }
+
+/* доступность: без анимаций для тех, кто отключил движения */
+@media (prefers-reduced-motion: reduce){
+  #heroBackdrop{ transition:none }
+}
 /* ====== HERO base ====== */
 .hero-banner{
   position:relative;
@@ -427,6 +460,31 @@ body:not(.js) .fade-in { opacity: 1; transform: none; }
 
 </style>
 <script>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const backdrop = document.getElementById('heroBackdrop');
+  const target   = document.querySelector('#dezshield'); // id секции «ДезЩит 360»
+
+  if (!backdrop || !target) return;
+
+  // Когда секция попадает хотя бы на 10% в зону видимости — скрываем фон
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        backdrop.classList.add('is-hidden');
+      } else {
+        backdrop.classList.remove('is-hidden');
+      }
+    });
+  }, {
+    threshold: 0.10,
+    rootMargin: '0px 0px -10% 0px' // ещё чуть раньше спрячем фон
+  });
+
+  obs.observe(target);
+});
+</script>
+
 /* Плавное появление .fade-in */
 window.addEventListener('DOMContentLoaded', () => {
   const obsFade = new IntersectionObserver((entries) => {
@@ -1241,6 +1299,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 </script>
 </body>
 </html>
+
 
 
 
