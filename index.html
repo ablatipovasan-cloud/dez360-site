@@ -301,9 +301,9 @@ body:not(.js) .fade-in { opacity: 1; transform: none; }
 /* === HERO BANNER === */
 .hero-banner{
   position:relative;
-  height: clamp(46vh, 58vh, 64vh);   /* сделал баннер ниже, чтобы было видно специалиста */
+  height: clamp(42vh, 52vh, 58vh); /* немного ниже, чтобы лицо не обрезалось */
   min-height: 380px;
-  background: url("media/1761327143.png") center 35% / cover no-repeat;
+  background: url("media/1761327143.png") center 22% / cover no-repeat; /* поднимаем зону интереса */
   display:flex; align-items:center; justify-content:center;
   text-align:center; color:#fff; border-radius:16px; overflow:hidden;
 }
@@ -382,43 +382,32 @@ body:not(.js) .fade-in { opacity: 1; transform: none; }
     </div>
   </div>
 </section>
-  <main class="container">
-
-<style> 
+  <main class="container"> 
+<style>
 /* === HERO BANNER (адаптировано) === */
- .hero-banner::after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background: linear-gradient(to bottom, rgba(0, 141, 131, 0.9) 0%, #f4faf9 100%);
-  z-index: 3;
+.hero-banner::after{
+  content:"";
+  position:absolute;
+  bottom:-1px;
+  left:0;
+  right:0;
+  height:60px;
+  background:linear-gradient(to bottom, rgba(0,141,131,.9) 0%, #f4faf9 100%);
+  z-index:3;
 }
 
 /* адаптация под мобильные */
-@media (max-width: 768px) {
-  .hero-banner 
+@media (max-width: 768px){
+  .hero-banner{
     height: clamp(38vh, 45vh, 50vh);
     min-height: 300px;
     background-position: center 30%;
     border-radius: 0;
-
-
-  .hero-content {
-    padding: 15px;
   }
 
-  .hero-buttons {
-    flex-direction: column;
-  }
-
-  .btn-primary,
-  .btn-secondary {
-    width: 100%;
-    text-align: center;
-  }
+  .hero-content{ padding: 15px; }
+  .hero-buttons{ flex-direction: column; }
+  .btn-primary, .btn-secondary{ width:100%; text-align:center; }
 }
 </style>
 <script>
@@ -1244,6 +1233,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 </script>
 </body>
 </html>
+
 
 
 
