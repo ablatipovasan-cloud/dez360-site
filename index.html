@@ -284,6 +284,60 @@ nav a {
 .lb-caption{color:#fff;padding:10px 14px;font-size:15px;background:rgba(0,0,0,.35)}
 .lb-close{position:absolute;top:10px;right:12px;z-index:2;width:36px;height:36px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.9);color:#043d37;font-size:22px;line-height:36px}
 </style>
+<style>
+/* ====== Анимация плавного появления ====== */
+body:not(.js) .fade-in { opacity: 1; transform: none; }
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .8s ease-out, transform .8s ease-out;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === HERO BANNER === */
+.hero-banner{
+  position:relative;
+  height: clamp(46vh, 58vh, 64vh);   /* сделал баннер ниже, чтобы было видно специалиста */
+  min-height: 380px;
+  background: url("media/restaurant-banner.jpg") center 35% / cover no-repeat;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; color:#fff; border-radius:16px; overflow:hidden;
+}
+.hero-overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.25));
+}
+.hero-content{ position:relative; z-index:2; max-width: 920px; padding: 18px; }
+.hero-content h1{ margin:0 0 12px; font-weight:900; font-size:clamp(28px,5.2vw,52px); }
+.hero-content p{ margin:0 auto 18px; line-height:1.6; font-size:clamp(15px,2.1vw,20px); max-width: 900px; }
+.hero-buttons{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.btn-primary,.btn-secondary{
+  display:inline-block; padding:10px 20px; border-radius:10px; font-weight:700; text-decoration:none;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.btn-primary{ background:#00B3A4; color:#fff; box-shadow:0 8px 20px rgba(0,0,0,.18); }
+.btn-secondary{ background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.25); }
+
+.hero-banner::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:60px;
+  background:linear-gradient(to bottom, rgba(0,141,131,.9) 0%, #f4faf9 100%); z-index:3;
+}
+
+/* Мобильная адаптация hero */
+@media (max-width: 768px){
+  .hero-banner{ height: clamp(38vh, 45vh, 50vh); min-height: 300px; background-position:center 30%; border-radius:0; }
+  .hero-content{ padding: 12px; }
+  .hero-buttons{ flex-direction:column; }
+  .btn-primary,.btn-secondary{ width:100%; text-align:center; }
+}
+
+/* Вспомогательное изображение (если где-то используется) */
+.hero-image{ width:100%; height:100%; object-fit:cover; border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,.15); }
+</style>
 
 </head>
 <body>
@@ -329,24 +383,7 @@ nav a {
   </div>
 </section>
   <main class="container">
-body:not(.js) .fade-in { opacity:1; transform:none; }
-/* ====== Анимация плавного появления ====== */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity .8s ease-out, transform .8s ease-out;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.hero-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-}
+
 <style> 
 /* === HERO BANNER (адаптировано) === */
  .hero-banner::after {
@@ -362,12 +399,12 @@ body:not(.js) .fade-in { opacity:1; transform:none; }
 
 /* адаптация под мобильные */
 @media (max-width: 768px) {
-  .hero-banner {
+  .hero-banner 
     height: clamp(38vh, 45vh, 50vh);
     min-height: 300px;
     background-position: center 30%;
     border-radius: 0;
-  }
+
 
   .hero-content {
     padding: 15px;
@@ -1208,6 +1245,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 </script>
 </body>
 </html>
+
 
 
 
