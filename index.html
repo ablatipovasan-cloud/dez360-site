@@ -31,14 +31,7 @@
   background: rgba(0, 0, 0, 0.06);
   backdrop-filter: blur(8px);
 }
-   /* Hero */
-    .hero{background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(255,255,255,.86));border-radius:20px;box-shadow:var(--shadow-lg);padding:28px;display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:center}
-    .hero h1{margin:8px 0;font-size:clamp(28px,4.2vw,48px);color:var(--c2)}
-    .hero p{margin:0 0 16px;color:#244a45}
-    .cta{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--c1),var(--c2));box-shadow:0 10px 26px rgba(0,0,0,.2);transition:.2s}
-    .cta:hover{transform:translateY(-2px);filter:saturate(1.05)}
-    .hero-visual{border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
-    .hero-visual img{width:100%;height:320px;object-fit:cover}
+  
 
     /* Generic sections */
     section.section{background:var(--bg);border-radius:18px;box-shadow:var(--shadow);padding:20px;margin-top:20px}
@@ -318,18 +311,15 @@ nav a {
     </nav>
   </div>
 </header>
-
-
-  <main class="container">
-
-    <!-- HERO -->
-   <section class="hero-banner" id="home">
+  <!-- HERO -->
+<section class="hero-banner" id="home">
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <h1>Безопасность на каждом уровне</h1>
     <p>
-      Профессиональная <strong>дезинфекция, дезинсекция и дератизация</strong> — любые виды санитарных услуг.
-      Без запаха, простоев и рисков. Акт и документы — в день работ.
+      Профессиональная <strong>дезинфекция, дезинсекция и дератизация</strong> —
+      любые виды санитарных услуг. Без запаха, простоев и рисков.
+      Акт и документы — в день работ.
     </p>
     <div class="hero-buttons">
       <a href="#services" class="btn-primary">Наши услуги</a>
@@ -339,7 +329,8 @@ nav a {
 </section>
 
 
-<style>
+  <main class="container">
+ <style>
 body:not(.js) .fade-in { opacity:1; transform:none; }
 /* ====== Анимация плавного появления ====== */
 .fade-in {
@@ -358,12 +349,14 @@ body:not(.js) .fade-in { opacity:1; transform:none; }
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.15);
 }
-/* === HERO BANNER (full-bleed + adaptive height) === */
+/* === HERO BANNER === */
 .hero-banner {
   position: relative;
-  width: 100%;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
   height: clamp(52vh, 65vh, 72vh);
   min-height: 420px;
   max-height: 760px;
@@ -374,13 +367,14 @@ body:not(.js) .fade-in { opacity:1; transform:none; }
   color: #fff;
   border-radius: 0 0 24px 24px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  margin-top: -2px; /* убирает белую полоску под шапкой */
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.35));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.35));
   z-index: 1;
 }
 
@@ -389,7 +383,7 @@ body:not(.js) .fade-in { opacity:1; transform:none; }
   z-index: 2;
   text-align: center;
   max-width: 700px;
-  padding: 20px;
+  padding: 0 20px;
 }
 
 .hero-content h1 {
@@ -429,13 +423,13 @@ body:not(.js) .fade-in { opacity:1; transform:none; }
 }
 
 .btn-secondary {
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(255, 255, 255, 0.2);
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .btn-secondary:hover {
-  background-color: rgba(255,255,255,0.35);
+  background-color: rgba(255, 255, 255, 0.35);
 }
 
 /* адаптация под мобильные */
@@ -460,7 +454,6 @@ body:not(.js) .fade-in { opacity:1; transform:none; }
     text-align: center;
   }
 }
-</style>
 
 <script>
 /* Плавное появление .fade-in */
@@ -1285,6 +1278,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 </script>
 </body>
 </html>
+
 
 
 
