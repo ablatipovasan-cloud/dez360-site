@@ -413,26 +413,17 @@ body:not(.js) .fade-in { opacity: 1; transform: none; }
 <script>
 /* Плавное появление .fade-in */
 window.addEventListener('DOMContentLoaded', () => {
-  const obsFade = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
+  const obsFade = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
         obsFade.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.15 }); // <- опции должны быть вторым аргументом здесь!
 
-  // Подхватываем все элементы .fade-in
+  // Подхватываем все элементы .fade-in:
   document.querySelectorAll('.fade-in').forEach(el => obsFade.observe(el));
-
-  // На случай добавления новых
-  const mo = new MutationObserver(() => {
-    document.querySelectorAll('.fade-in:not(.__watched)').forEach(el => {
-      el.classList.add('__watched');
-      obsFade.observe(el);
-    });
-  });
-  mo.observe(document.body, { childList: true, subtree: true });
 });
 </script>
 
@@ -1233,6 +1224,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 </script>
 </body>
 </html>
+
 
 
 
