@@ -366,22 +366,32 @@ body:not(.js) .fade-in { opacity: 1; transform: none; }
   </div>
 </header>
   
-    <!-- HERO -->
-  <section class="hero-banner" id="home">
-  <div class="hero-overlay"></div>
+ <!-- ========== HERO BANNER (drop-in) ========== -->
+<section class="hero-banner" id="home">
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-content">
-    <h1>Безопасность на каждом уровне</h1>
-    <p>
-      Профессиональная <strong>дезинфекция, дезинсекция и дератизация</strong> —
-      любые виды санитарных услуг. Без запаха, простоев и рисков.
-      Акт и документы — в день работ.
+    <h1 class="reveal">Безопасность на каждом уровне</h1>
+    <p class="reveal delay-1">
+      Профессиональная <b>дезинфекция, дезинсекция и дератизация</b> — любые виды санитарных услуг.
+      Без запаха, простоев и рисков. Акт и документы — в день работ.
     </p>
-    <div class="hero-buttons">
-      <a href="#services" class="btn-primary">Наши услуги</a>
-      <a href="#prices" class="btn-secondary">Цены</a>
+    <div class="hero-buttons reveal delay-2">
+      <a class="btn btn-primary" href="#services">Наши услуги</a>
+      <a class="btn btn-secondary" href="#prices">Цены</a>
     </div>
   </div>
 </section>
+
+<style>
+/* ====== HERO base ====== */
+.hero-banner{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  border-radius:0 0 16px 16px;
+  /* высота адаптивная: компактнее, чтобы специалист попадал целиком */
+  min-height: clamp(360px,
+
   <main class="container"> 
 <style>
 /* === HERO BANNER (адаптировано) === */
@@ -1237,6 +1247,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 </script>
 </body>
 </html>
+
 
 
 
