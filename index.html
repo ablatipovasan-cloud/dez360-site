@@ -27,11 +27,14 @@
     nav a:hover,nav a.active{background:rgba(255,255,255,.18)}
     .container{max-width:1180px;margin:0 auto;padding:22px 16px}
 
- header {
-  background: rgba(0, 0, 0, 0.06);
-  backdrop-filter: blur(8px);
-}
-  
+    /* Hero */
+    .hero{background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(255,255,255,.86));border-radius:20px;box-shadow:var(--shadow-lg);padding:28px;display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:center}
+    .hero h1{margin:8px 0;font-size:clamp(28px,4.2vw,48px);color:var(--c2)}
+    .hero p{margin:0 0 16px;color:#244a45}
+    .cta{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--c1),var(--c2));box-shadow:0 10px 26px rgba(0,0,0,.2);transition:.2s}
+    .cta:hover{transform:translateY(-2px);filter:saturate(1.05)}
+    .hero-visual{border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+    .hero-visual img{width:100%;height:320px;object-fit:cover}
 
     /* Generic sections */
     section.section{background:var(--bg);border-radius:18px;box-shadow:var(--shadow);padding:20px;margin-top:20px}
@@ -245,18 +248,6 @@ nav a {
     transform: scale(1.03);
   }
 }
-:root{
-  --c1:#00B3A4; --c2:#007F6C;
-  --bg:#f5faf9; --txt:#083A34; --white:#fff;
-  --r:16px; --shadow:0 10px 30px rgba(0,0,0,.12);
-}
-
-html{scroll-behavior:smooth}
-body{margin:0;background:linear-gradient(135deg,#0fb9ad,#077464);color:var(--txt);}
-
-.container{max-width:1180px;margin:0 auto;padding:0 16px;}
-.section{background:var(--bg);border-radius:18px;box-shadow:var(--shadow);padding:32px; margin:28px 0;}
-.section h2{margin:6px 0 12px;font-size:clamp(22px,3.2vw,34px);color:#0a4d45}
 </style>
 <style id="portfolio-fix">
 /* ===== Секция «Как мы работаем» / Портфолио ===== */
@@ -274,6 +265,7 @@ body{margin:0;background:linear-gradient(135deg,#0fb9ad,#077464);color:var(--txt
 #lightbox .lb-close{position:absolute;top:10px;right:12px;background:#fff;border:0;border-radius:8px;padding:6px 10px;cursor:pointer}
 #lightbox .lb-body{max-height:90vh}
 #lightbox img,#lightbox video{max-width:100%;max-height:90vh;display:block}
+
 .section.portfolio{padding:48px 0}
 .section.portfolio h2{margin:0 0 8px}
 .section.portfolio .sub{opacity:.8;margin:0 0 20px}
@@ -296,318 +288,48 @@ body{margin:0;background:linear-gradient(135deg,#0fb9ad,#077464);color:var(--txt
 .lb-caption{color:#fff;padding:10px 14px;font-size:15px;background:rgba(0,0,0,.35)}
 .lb-close{position:absolute;top:10px;right:12px;z-index:2;width:36px;height:36px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.9);color:#043d37;font-size:22px;line-height:36px}
 </style>
-<style>
-/* ====== Анимация плавного появления ====== */
-body:not(.js) .fade-in { opacity: 1; transform: none; }
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity .8s ease-out, transform .8s ease-out;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* HERO: максимум видимости специалиста, без «ступени», с мягкой маской */
-.hero-banner{
-  position:relative;
-  width:100%;
-  min-height:clamp(420px, 66vh, 760px);   /* адаптивная высота */
-  background:url("media/1761327143.png") center 32% / cover no-repeat;
-  display:flex; align-items:center; justify-content:center;
-  text-align:center; color:#fff;
-  border-radius:0 0 16px 16px;           
-  /* скругляем только низ */
-  overflow:hidden;                       
-  /* убираем артефакты */
-}
-
-/* лёгкий затемняющий оверлей для читаемости */
-.hero-banner::before{
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,.18) 60%, rgba(0,0,0,.05) 85%, rgba(0,0,0,0) 100%);
-  pointer-events:none;
-  z-index:0;
-}
-
-/* НИЗ баннера мягко «растворяем», чтобы не было жёсткой границы */
-.hero-banner{
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 88%, rgba(0,0,0,0) 100%);
-          mask-image: linear-gradient(to bottom, #000 0%, #000 88%, rgba(0,0,0,0) 100%);
-  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;       mask-repeat: no-repeat;
-}
-
-/* Убираем ВСЕ старые «полосы/after», если где-то остались */
-.hero-banner::after { content:none !important; }
-
-/* Контент — поверх оверлея */
-.hero-content{ position:relative; z-index:1; max-width:920px; padding: 18px; }
-.hero-content h1{ margin:0 0 12px; font-weight:900; font-size:clamp(28px,5.2vw,52px); }
-.hero-content p{ margin:0 auto 18px; line-height:1.6; font-size:clamp(15px,2.1vw,20px); max-width: 900px; }
-
-/* Кнопки в баннере */
-.hero-buttons{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-.btn-primary,.btn-secondary{
-  display:inline-block; padding:10px 20px; border-radius:10px; font-weight:700; text-decoration:none;
-  transition:transform .2s ease, box-shadow .2s ease;
-  background:#fff; color:#004a42;
-}
-.btn-secondary{ background:transparent; border:2px solid rgba(255,255,255,.9); color:#fff; }
-
-/* Мобильная адаптация */
-@media (max-width: 768px){
-  .hero-banner{ min-height: 56vh; background-position:center 40%; border-radius:0; }
-  .hero-content{ padding: 12px; }
-  .hero-buttons{ flex-direction:column; }
-  .btn-primary,.btn-secondary{ width:100%; text-align:center; }
-}
-
-/* Вспомогательное изображение (если где-то используется) */
-.hero-image{ width:100%; height:100%; object-fit:cover; border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,.15); }
-/* === HERO: мягкое «растворение» низа через МАСКУ === */
-/* Если у тебя секция называется .hero — правило тоже сработает */
-.hero-banner,
-.hero {
-  /* базовая маска: нижние 12–15% растворяются в прозрачность */
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 85%, rgba(0,0,0,0) 100%);
-          mask-image: linear-gradient(to bottom, #000 0%, #000 85%, rgba(0,0,0,0) 100%);
-  -webkit-mask-size: 100% 100%;
-          mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-}
-
-/* На мобильных «растворяем» чуть выше, чтобы переход был мягче на коротком экране */
-@media (max-width: 768px){
-  .hero-banner,
-  .hero {
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 88%, rgba(0,0,0,0) 100%);
-            mask-image: linear-gradient(to bottom, #000 0%, #000 88%, rgba(0,0,0,0) 100%);
-  }
-}
-
-/* На больших мониторах — более деликатный переход */
-@media (min-width: 1280px){
-  .hero-banner,
-  .hero {
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 90%, rgba(0,0,0,0) 100%);
-            mask-image: linear-gradient(to bottom, #000 0%, #000 90%, rgba(0,0,0,0) 100%);
-  }
-}
-
-/* СТАРУЮ «полосу» отключаем, если где-то осталась */
-.hero-banner::after,
-.hero::after {
-  content: none !important;
-}
-
-/* Чтобы ничего «не просвечивало» под баннером: секции ниже сплошные */
-section, main, footer {
-  background: #f5faf9;           /* твой светлый системный фон */
-  position: relative;
-  z-index: 1;
-}
-</style>
 
 </head>
-<body>                                                
-<!-- Фиксированный фоновый баннер до секции «ДезЩит 360» -->
-<div id="heroBackdrop" aria-hidden="true"></div>
+<body>
 
-<script>document.body.classList.add('js');</script>
-
+  <!-- Header -->
   <header>
-  <div class="bar">
-    <a href="#home" class="brand" aria-label="ДЕЗЩИТ 360">
-      <!-- используем реальный файл из репозитория -->
-      <img src="media/mascot1.png" alt="Логотип ДЕЗЩИТ 360" loading="eager" decoding="async">
-      <span>ДЕЗЩИТ 360</span>
-    </a>
-
-    <button class="burger" aria-label="Открыть меню">☰</button>
-
-    <!-- добавили id="topnav", который ждёт ваш скрипт -->
-    <nav id="topnav" class="nav-menu">
-      <a href="#home">Главная</a>
-      <a href="#services">Все услуги</a>
-      <a href="#about">О нас</a>
-      <a href="#prices">Цены</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contacts">Контакты</a>
-      <a href="#dezshield">ДезЩит 360</a>
-    </nav>
-  </div>
-</header>
-  
- <!-- ========== HERO BANNER (drop-in) ========== -->
-<section class="hero-banner" id="home">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="hero-content">
-    <h1 class="reveal">Безопасность на каждом уровне</h1>
-    <p class="reveal delay-1">
-      Профессиональная <b>дезинфекция, дезинсекция и дератизация</b> — любые виды санитарных услуг.
-      Без запаха, простоев и рисков. Акт и документы — в день работ.
-    </p>
-    <div class="hero-buttons reveal delay-2">
-      <a class="btn btn-primary" href="#services">Наши услуги</a>
-      <a class="btn btn-secondary" href="#prices">Цены</a>
+    <div class="bar">
+      <div class="brand">
+        <img src="media/mascot1.png" alt="ДЕЗЩИТ 360">
+        <div>ДЕЗЩИТ 360</div>
+      </div>
+      <nav id="topnav">
+        <a href="#hero" class="active">Главная</a>
+        <a href="#services">Все услуги</a>
+        <a href="#process">Как мы работаем</a>
+        <a href="#about">О нас</a>
+        <a href="#dezshield">ДезЩит 360</a>
+        <a href="#prices">Цены</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-<style>
-/* === Fixed Hero Backdrop (полноэкранный фон до #dezshield) === */
-#heroBackdrop{
-  position: fixed;
-  inset: 0;
-  z-index: 0;                 /* фон за всем контентом */
-  background: url("media/1761327143.png") center 32% / cover no-repeat;
-  opacity: 1;
-  transition: opacity .6s ease, visibility .6s ease;
-}
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const io = new IntersectionObserver((entries)=> {
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.15 });
+  <main class="container">
 
-  document.querySelectorAll('.fade-in, .section').forEach(el=>io.observe(el));
-});
-</script>
+    <!-- HERO -->
+    <section id="hero" class="hero">
+      <div>
+        <h1>Безопасность на каждом уровне</h1>
+        <p>Профессиональная <b>дезинфекция</b>, <b>дезинсекция</b>, <b>дератизация</b> — и любые другие виды санитарных услуг. Без запаха, простоев и рисков. Акты и документы — в день работ.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="cta" href="#services">Все услуги</a>
+          <a class="cta" href="#prices" style="background:#fff;color:var(--c2)">Цены</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="media/restaurant-banner.jpg" alt="Чистая кухня ресторана">
+      </div>
+    </section>
 
-/* мягкое затемнение для читаемости шапки/первых блоков */
-#heroBackdrop::before{
-  content:"";
-  position:absolute; inset:0;
-  background: linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.12) 45%, rgba(0,0,0,.06) 70%, rgba(0,0,0,0) 100%);
-}
-
-/* когда дошли до #dezshield — фоновый баннер исчезает */
-#heroBackdrop.is-hidden{
-  opacity: 0;
-  visibility: hidden;
-}
-
-/* чтобы контент гарантированно был выше фонового слоя */
-header, main, footer, .wrap, section{ position: relative; z-index: 1; }
-
-/* доступность: без анимаций для тех, кто отключил движения */
-@media (prefers-reduced-motion: reduce){
-  #heroBackdrop{ transition:none }
-}
-/* ====== HERO base ====== */
-.hero-banner{
-  position:relative;
-  width:100%;
-  overflow:hidden;
-  border-radius:0 0 16px 16px;
-  /* высота адаптивная: компактнее, чтобы специалист попадал целиком */
-  min-height:  clamp(360px, 52vh, 620px);
-}
-
-  <main class="container"> 
-<style>
-/* === HERO BANNER (адаптировано) === */
-/* 1) Убираем «полосу» снизу полностью */
-.hero-banner::after {
-  content: none !important;
-}
-
-/* 2) Корректный оверлей для текста внутри баннера (не выходит за границы) */
-.hero-banner {
-  position: relative;
-  background: url("media/1761327143.png") center 35% / cover no-repeat;
-  /* Вариант для десктопа — баннер видимый целиком и без «полосы» */
-  min-height: clamp(420px, 70vh, 760px);
-  margin-bottom: 0;            /* на всякий случай, чтобы не было «ступеньки» */
-  overflow: hidden;            /* убирает любые артефакты на краях */
-}
-
-/* Лёгкий верхний градиент (можно убрать, если не нужен) */
-.hero-banner::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 60%);
-  pointer-events:none;
-  z-index:0;
-}
-
-/* Контент в баннере должен быть поверх оверлея */
-.hero-banner .hero-content { position: relative; z-index: 1; }
-
-/* Мобильная адаптация */
-@media (max-width: 768px){
-  .hero-banner{
-    min-height: 62vh;                 /* баннер компактнее, но без обрезаний */
-    background-position: center 40%;
-  }
-}
-
-</style>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const backdrop = document.getElementById('heroBackdrop');
-  const target   = document.querySelector('#dezshield'); // id секции «ДезЩит 360»
-
-  if (!backdrop || !target) return;
-
-  // Когда секция попадает хотя бы на 10% в зону видимости — скрываем фон
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting){
-        backdrop.classList.add('is-hidden');
-      } else {
-        backdrop.classList.remove('is-hidden');
-      }
-    });
-  }, {
-    threshold: 0.10,
-    rootMargin: '0px 0px -10% 0px' // ещё чуть раньше спрячем фон
-  });
-
-  obs.observe(target);
-});
-</script>
-<script>
-/* Плавное появление .fade-in */
-window.addEventListener('DOMContentLoaded', () => {
-  const obsFade = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        obsFade.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 }); // <- опции должны быть вторым аргументом здесь!
-
-  // Подхватываем все элементы .fade-in:
-  document.querySelectorAll('.fade-in').forEach(el => obsFade.observe(el));
-});
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const back = document.getElementById('heroBackdrop');
-  const t = document.getElementById('dezshield');
-  if(!back || !t) return;
-
-  const obs = new IntersectionObserver((en)=>{
-    en.forEach(e=>{
-      if(e.isIntersecting) back.classList.add('is-hidden');
-      else back.classList.remove('is-hidden');
-    });
-  },{threshold:0.1});
-  obs.observe(t);
-});
-</script>
-
-
-
-  <!-- ВСЕ УСЛУГИ -->
+    <!-- ВСЕ УСЛУГИ -->
     <section id="services" class="section">
       <h2>Все услуги</h2>
       <div class="grid">
@@ -665,130 +387,109 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="step"><div class="num">3</div><b>Обработка</b><div class="mut">Безопасные препараты, чистое рабочее место.</div></div>
         <div class="step"><div class="num">4</div><b>Документы</b><div class="mut">Акты и рекомендации — в день работ.</div></div>
       </div>
+    <section id="work" class="section portfolio">
+
 </section>
-  <!-- ====== О НАС ====== -->
-<section id="about" class="section about" style="background:#f9f9f9; padding:60px 20px;">
-  <div class="inner" style="max-width:900px; margin:0 auto; text-align:left;">
-    <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-     <img src="media/mascot1.png" alt="Лицензия ДезЩит 360" style="width:52px;height:52px;border-radius:10px" loading="lazy">
-         <h2 style="font-size:1.8rem; color:#004d43; margin:0;">О нас</h2>
-    </div>
 
-    <div class="about-content" style="margin-top:25px; font-size:1.05rem; line-height:1.7; color:#333;">
-      <p class="fade-in">
-        Компания <strong>«ДезЩит 360»</strong> оказывает профессиональные услуги по 
-        <strong>дератизации</strong>, <strong>дезинсекции</strong> и <strong>дезинфекции</strong> 
-        объектов различной категории сложности и назначения. Мы работаем с жилыми, 
-        коммерческими и производственными помещениями по всему Крыму, обеспечивая высокий уровень санитарной безопасности.
-      </p>
-
-      <p class="fade-in">
-        За годы практики нами накоплен значительный опыт и глубокое знание специфики обслуживания
-        предприятий практически всех сфер деятельности в Симферополе и за его пределами. 
-        Эффективность проводимых мероприятий подтверждена результатами и долгосрочным сотрудничеством 
-        с нашими постоянными клиентами.
-      </p>
-
-      <p class="fade-in">
-        Мы успешно боремся с <strong>мышевидными грызунами</strong>, 
-        <strong>синантропными членистоногими</strong>, 
-        <strong>плесневыми грибами</strong>, 
-        а также различными <strong>бактериями, инфекциями и вирусами</strong>. 
-        Все работы проводятся строго в соответствии с санитарными нормами и требованиями Роспотребнадзора.
-      </p>
-
-      <div class="license-card fade-in" style="
-        background:white;
-        border-left:6px solid #00B3A4;
-        padding:16px 20px;
-        margin:25px 0;
-        box-shadow:0 4px 12px rgba(0,0,0,0.08);
-        border-radius:8px;
-      ">
-        <h3 style="margin-top:0; color:#007f6c; font-size:1.2rem; display:flex; align-items:center; gap:8px;">
-          <span>🛡️</span> Официальная лицензия
-        </h3>
-        <p style="margin:0; color:#444;">
-          Мы работаем <strong>на основании действующей лицензии</strong> на выполнение дезинфекционных мероприятий, 
-          что гарантирует законность и безопасность проводимых работ. 
-          Наши специалисты регулярно проходят аттестацию и используют только сертифицированные препараты.
-        </p>
-      </div>
-
-      <p class="fade-in">
-        Усилия нашей команды направлены на обеспечение <strong>санитарно-эпидемиологического благополучия населения</strong>. 
-        Мы стремимся сделать сервис по борьбе с вредителями максимально <strong>удобным, безопасным и доступным</strong> 
-        для каждого человека и организации.
-      </p>
-
-      <p class="fade-in">
-        Заключая с нами договор на годовое обслуживание, вы получаете уверенность, что проблема будет решена
-        <strong>быстро, профессионально и с гарантией результата</strong>. 
-        Мы предоставляем полный комплект документов для проверяющих органов и гарантируем 
-        <strong>стабильное поддержание санитарных норм</strong> на вашем объекте.
-      </p>
-    </div>
+<!-- Модалка -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <button class="lb-close" aria-label="Закрыть">×</button>
+  <div class="lb-inner">
+    <img id="lbImg" alt="" />
+    <video id="lbVideo" controls playsinline></video>
+    <div id="lbCaption" class="lb-caption"></div>
   </div>
+</div>
 </section>
-   <!-- ======== СПЕЦПРЕДЛОЖЕНИЕ ======== -->
-  <section id="offer" class="container section" aria-label="Спецпредложение ДезЩит 360">
-    <h2>«ДезЩит 360» — пакет регулярной обработки</h2>
-    <div class="grid" style="grid-template-columns:1.2fr .8fr">
-      <div class="card">
-        <h3>Что входит</h3>
-        <p>План-график обработок, мониторинг, барьерная защита, журнал работ и все документы для проверяющих органов. Приоритетное реагирование.</p>
-        <p><b>Бонус:</b> бесплатные внеплановые визиты по заявке в пределах SLA.</p>
-        <div style="margin-top:12px">
-          <a class="btn btn-primary" href="#contacts">Оставить заявку</a>
+
+    <!-- О НАС -->
+    <section id="about" class="section">
+      <h2>О нас</h2>
+      <div class="about">
+        <div class="box">
+          <h3 style="margin-top:4px">ДЕЗЩИТ 360 — команда, стандарты, результат</h3>
+          <p class="mut">Работаем по регламентам СЭС. Используем сертифицированные средства и методики под каждый объект: квартиры, рестораны, склады, производство, транспорт.</p>
+          <ul class="mut">
+            <li>Документы и акты — в день работ</li>
+            <li>Ночная смена для HoReCa без простоя</li>
+            <li>Понятные режимные рекомендации</li>
+          </ul>
+        </div>
+        <div>
+          <video src="media/AVJO6241.MP4" controls preload="metadata" style="width:100%;border-radius:16px;box-shadow:var(--shadow-lg)"></video>
         </div>
       </div>
-      <div class="card">
-        <h3>Для кого</h3>
-        <p>Кафе/рестораны, склады, отели, медцентры, ТСЖ, офисы, магазины.</p>
-        <p style="color:#6a8d8b">Стоимость рассчитывается индивидуально — по площади и режиму.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-    <!-- ======== ЦЕНЫ ======== -->
-  <section id="prices" class="container section" aria-label="Цены">
-    <h2>Цены</h2>
-    <div class="grid" style="grid-template-columns:repeat(3,1fr)">
-      <div class="card">
-        <h3>Разовая обработка</h3>
-        <p>От <b>₽</b> — зависит от площади и типа объекта.</p>
+    <!-- ДЕЗЩИТ 360 -->
+    <section id="dezshield" class="shield section" style="padding:0">
+      <div class="inner">
+        <div class="badge">🛡️ Спецпредложение</div>
+        <h2>«ДезЩит 360» — регулярная защита вашего объекта</h2>
+        <p style="opacity:.95">Годовой план обработок, журналы и акты в день работ, гарантия на повторные визиты, ночной тариф для HoReCa. Отчётность для проверок — без стресса.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="cta" href="#contacts">Оформить пакет</a>
+          <a class="cta" href="#prices" style="background:#fff;color:var(--c2)">Сравнить тарифы</a>
+        </div>
       </div>
-      <div class="card">
-        <h3>Абонемент «ДезЩит 360»</h3>
-        <p>Индивидуальный расчёт: график + мониторинг + гарантии.</p>
+    </section>
+
+    <!-- ЦЕНЫ -->
+    <section id="prices" class="section">
+      <h2>Цены</h2>
+      <div class="grid">
+        <article class="card price-card">
+          <div class="head"><div><strong>Дезинсекция</strong> <span class="mut">— квартиры/HoReCa</span></div><span class="chip">от 1 900 ₽</span></div>
+          <div class="more">
+            <ul class="mut"><li>Тараканы / клопы / муравьи</li><li>Безопасные режимы</li><li>Акты в день работ</li></ul>
+            <a class="cta" href="#contacts">Рассчитать стоимость</a>
+          </div>
+        </article>
+        <article class="card price-card">
+          <div class="head"><div><strong>Дератизация</strong> <span class="mut">— барьеры и мониторинг</span></div><span class="chip">от 2 400 ₽</span></div>
+          <div class="more">
+            <ul class="mut"><li>Приманочные станции</li><li>Контрольные визиты</li></ul>
+            <a class="cta" href="#contacts">Рассчитать стоимость</a>
+          </div>
+        </article>
+        <article class="card price-card">
+          <div class="head"><div><strong>Дезинфекция</strong> <span class="mut">— помещения/ТС</span></div><span class="chip">от 1 200 ₽</span></div>
+          <div class="more">
+            <ul class="mut"><li>Бактерии, вирусы, споры</li><li>Сертифицированные средства</li></ul>
+            <a class="cta" href="#contacts">Рассчитать стоимость</a>
+          </div>
+        </article>
+        <article class="card price-card">
+          <div class="head"><div><strong>Дезинфекция вентиляции</strong></div><span class="chip">от 3 900 ₽</span></div>
+          <div class="more">
+            <ul class="mut"><li>Чистка/обработка воздуховодов</li><li>Фото «до/после», рекомендации</li></ul>
+            <a class="cta" href="#contacts">Рассчитать стоимость</a>
+          </div>
+        </article>
+        <article class="card price-card">
+          <div class="head"><div><strong>Удаление запахов</strong> <span class="mut">— озон/нейтрализация</span></div><span class="chip">от 2 200 ₽</span></div>
+          <div class="more">
+            <ul class="mut"><li>Пожар, затопление, био-загрязнения</li></ul>
+            <a class="cta" href="#contacts">Рассчитать стоимость</a>
+          </div>
+        </article>
+        <article class="card price-card">
+          <div class="head"><div><strong>«ДезЩит 360» — пакет</strong> <span class="mut">годовой план</span></div><span class="chip">от 5 900 ₽/мес</span></div>
+          <div class="more">
+            <ul class="mut"><li>Регулярные обработки</li><li>Журналы и акты 24/7</li><li>Ночной тариф для HoReCa</li></ul>
+            <a class="cta" href="#contacts">Подобрать пакет</a>
+          </div>
+        </article>
       </div>
-      <div class="card">
-        <h3>Спецработы</h3>
-        <p>Вентиляция, склады, кухни. Рассчитывается по ТЗ.</p>
-      </div>
-    </div>
-  </section>
+    </section>
+
     <!-- ГАЛЕРЕЯ -->
-<section id="portfolio" class="section portfolio">
+<section class="section portfolio">
   <h2>Наши работы</h2>
-  <p class="subtitle">Фото и видео примеры обработки объектов</p>
-
-  <div class="gallery-grid" id="gallery"></div>
-  <div class="more-wrap">
-    <button id="showMore" class="btn-more">Показать ещё</button>
+  <div id="gallery" class="gallery-grid">
+    
   </div>
-
-  <!-- Модалка -->
-  <div id="lightbox" class="lightbox" aria-hidden="true">
-    <button class="lb-close" aria-label="Закрыть">×</button>
-    <div class="lb-inner">
-      <img id="lbImg" alt="">
-      <video id="lbVideo" controls playsinline></video>
-      <div id="lbCaption" class="lb-caption"></div>
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- FAQ -->
     <section id="faq" class="section">
@@ -882,7 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
     (function(){
       const modal=document.getElementById('img-modal'); if(!modal) return;
       const mImg=modal.querySelector('img'); const mCap=modal.querySelector('.caption');
-      document.querySelectorAll('.gallery-grid img').forEach(img=>{
+      document.querySelectorAll('.gallery img').forEach(img=>{
         img.addEventListener('click',()=>{
           mImg.src=img.src; mCap.textContent=img.alt||''; modal.classList.add('show');
         });
@@ -1005,380 +706,319 @@ document.addEventListener('DOMContentLoaded', () => {
   transform: translateY(0);
   animation: fadeUp 0.8s ease forwards;
 }
- .card {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  border-radius: 8px;
-  overflow: hidden;
-  background: #fff;
-}
-.card.fade-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 15px;
-  margin-top: 20px;
-}
-/* ==== АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ УСТРОЙСТВА ==== */
-@media (max-width: 900px) {
-  header {
-    padding: 0;
-  }
-
-  .bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    padding: 10px 16px;
-  }
-
-  .brand img {
-    height: 36px;
-  }
-
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 6px;
-  }
-
-  nav a {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-  }
-}
-
-
-  /* Галерея / портфолио */
-  .gallery-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
-  }
-
-  .gallery-item img, .gallery-item video {
-    border-radius: 10px;
-  }
-
-  /* Секция О нас */
-  #about {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-  #about img {
-    margin: 0 auto 10px;
-  }
-
-  /* Цены — карточки */
-  .price-card {
-    width: 100%;
-    margin-bottom: 12px;
-  }
-
-  /* Подвал */
-  footer {
-    font-size: 0.8rem;
-    text-align: center;
-  }
-}
-/* === БУРГЕР-МЕНЮ === */
-.burger {
-  display: none;
-  font-size: 26px;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-@media (max-width: 850px) {
-  .burger {
-    display: block;
-    position: absolute;
-    right: 20px;
-    top: 18px;
-  }
-
-  .nav-menu {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    position: absolute;
-    top: 60px;
-    left: 0;
-    padding: 10px 0;
-    text-align: center;
-  }
-
-  .nav-menu a {
-    color: #fff;
-    padding: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    text-decoration: none;
-  }
-
-  .nav-menu a:hover {
-    background: rgba(255,255,255,0.1);
-  }
-
-  .nav-menu.active {
-    display: flex;
-  }
-
-  header {
-    position: relative;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 16px;
-  }
-
-  .logo-wrap {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-}
-</style>
+ </style>
 
 <script>
-/* Появление карточек, шагов, about и FAQ */
-(()=> {
-  const obsCards = new IntersectionObserver((entries) => {
+  // Анимация появления при скролле
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        obsCards.unobserve(entry.target);
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.15 });
 
-  document
-    .querySelectorAll('.card, .step, .about .box, .about video, .gallery figure, .accordion .item')
-    .forEach(el => obsCards.observe(el));
-})();
+  document.querySelectorAll('.card, .step, .about .box, .about video, .gallery figure, .accordion .item')
+    .forEach(el => observer.observe(el));
 </script>
-
 <script>
-/* Плавное появление целых секций */
-(()=> {
-  const obsSections = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
+  // Плавное появление пунктов меню поочерёдно
+  window.addEventListener('load', () => {
+    const navLinks = document.querySelectorAll('header nav a');
+    navLinks.forEach((link, i) => {
+      link.style.animationDelay = `${0.8 + i * 0.1}s`;
     });
   });
-  document.querySelectorAll('.section').forEach(sec => obsSections.observe(sec));
-})();
 </script>
-
 <script>
-  // Нежный параллакс для секции #dezshield
-  (function () {
-    const dez = document.querySelector('#dezshield');
-    if (!dez) return;
-
+  // Эффект мягкого параллакса при движении мыши
+  const dez = document.querySelector('#dezshield');
+  if (dez) {
+    dez.addEventListener('mousemove', e => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 6;
+      const y = (e.clientY / window.innerHeight - 0.5) * 6;
+      dez.style.transform = `rotateX(${y}deg) rotateY(${x}deg)`;
+    });
+    dez.addEventListener('mouseleave', () => {
+      dez.style.transform = 'rotateX(0) rotateY(0)';
+    });
+  }
+<script>
+  // Эффект движения и оживления фона
+  const dez = document.querySelector('#dezshield');
+  if (dez) {
     dez.addEventListener('mousemove', e => {
       const x = (e.clientX / window.innerWidth - 0.5) * 5;
       const y = (e.clientY / window.innerHeight - 0.5) * 5;
       dez.style.transform = `rotateX(${y}deg) rotateY(${x}deg)`;
     });
-
     dez.addEventListener('mouseleave', () => {
       dez.style.transform = 'rotateX(0) rotateY(0)';
     });
-  })();
+  }
+</script>
 </script>
 <script>
   // Мягкое свечение главной CTA-кнопки
   const ctaBtn = document.querySelector('#dezshield .cta');
-  if (ctaBtn) ctaBtn.classList.add('glow');
+  if (ctaBtn) {
+    ctaBtn.classList.add('glow');
+  }
 </script>
+<!-- 🔹 Telegram чат-бот "ДЕЗЩИТ 360" -->
+<a href="https://t.me/dezshit360_bot" 
+   target="_blank" 
+   id="tg-widget" 
+   title="Написать в Telegram">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+  <span id="tg-label">Написать в Telegram</span>
+</a>
 
-<!-- Telegram Chat Widget -->
-<script async src="https://telegram.org/js/telegram-widget.js?22"
-        data-telegram-login="dezshit360_bot"
-        data-size="large"
-        data-radius="10"
-        data-auth-url="#"
-        data-request-access="write"></script>
+<!-- 💬 Всплывающая подсказка -->
+<div id="tg-hint">💬 Нужна консультация? Напишите нашему эксперту!</div>
 
-
-
-<script>
-/* ==== МОДАЛКА ФОТО ==== */
-(function(){
-  const modal = document.getElementById('img-modal');
-  if (!modal) return;
-  const mImg = modal.querySelector('img');
-  const mCap = modal.querySelector('.caption');
-  document.querySelectorAll('.gallery-grid img').forEach(img => {
-    img.addEventListener('click', () => {
-      mImg.src = img.src;
-      mCap.textContent = img.alt || '';
-      modal.classList.add('show');
-    });
-  });
-  modal.addEventListener('click', e => {
-    if (e.target === modal) modal.classList.remove('show');
-  });
-})();
-</script>
-
-<script>
-/* ==== ОСНОВНАЯ ГАЛЕРЕЯ (нормализация путей + единая модалка) ==== */
-window.addEventListener('load', async () => {
-  const grid   = document.querySelector('.gallery-grid');
-  const moreBtn= document.getElementById('showMore');
-  if (!grid) return;
-
-  const BATCH = 8;
-  let shown = 0;
-  let items = [];
-
-  // Нормализация путей: trim, абсолют от корня проекта, регистр/дубликаты слэшей
-  const normalize = (p='') => {
-    if (!p) return '';
-    p = String(p).trim();
-    // если путь начинается с 'media/', допишем './' чтобы не зависеть от baseUrl
-    if (/^media\//i.test(p)) p = './' + p;
-    // уберём возможные двойные слэши
-    p = p.replace(/\/{2,}/g, '/');
-    return p;
-  };
-
-  try {
-    const res = await fetch('./gallery.json?v=7', { cache:'no-store' });
-    if (!res.ok) throw new Error('gallery.json не найден');
-    const data = await res.json();
-
-    const photos = Array.isArray(data.photos) ? data.photos : [];
-    const videos = Array.isArray(data.videos) ? data.videos : [];
-    const thumbs = Array.isArray(data.thumbs) ? data.thumbs : [];
-
-    items = [
-      ...photos.map((src, i) => ({
-        type   : 'img',
-        src    : normalize(src),
-        thumb  : normalize(thumbs[i] || src),
-        caption: `Фото #${i+1}`
-      })),
-      ...videos.map((src, i) => ({
-        type   : 'video',
-        src    : normalize(src),
-        caption: `Видео #${i+1}`
-      }))
-    ];
-
-    renderMore();
-  } catch (err) {
-    console.error('Ошибка загрузки gallery.json:', err);
+<style>
+  #tg-widget {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #00B3A4, #007F6C);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: pulseBtn 2.8s infinite ease-in-out;
+    text-decoration: none;
   }
 
-  function createCard(item) {
-    const card = document.createElement('figure');
-    card.className = 'card fade-in';
+  #tg-widget img {
+    width: 34px;
+    height: 34px;
+    filter: brightness(0) invert(1);
+    pointer-events: none;
+    transition: transform 0.3s ease;
+  }
 
-    let el;
-    if (item.type === 'img') {
-      el = document.createElement('img');
-      el.src = item.thumb || item.src;
-      el.loading = 'lazy';
-      el.alt = item.caption;
-      el.onerror = () => {                      // подсветим 404 прямо на карточке
-        el.style.opacity = 0.3;
-        el.style.filter  = 'grayscale(1)';
-        console.warn('Не найден файл изображения:', el.src);
-      };
-      el.addEventListener('click', () => openModal(item.src, item.caption));
+  #tg-label {
+    position: absolute;
+    right: 70px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(4px);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  #tg-widget:hover #tg-label { opacity: 1; transform: translateY(0); }
+  #tg-widget:hover img { transform: scale(1.1); }
+
+  @keyframes pulseBtn {
+    0%,100% { box-shadow: 0 0 16px rgba(0,179,164,0.35); }
+    50% { box-shadow: 0 0 28px rgba(0,179,164,0.6); }
+  }
+
+  #tg-hint {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    background: rgba(0, 0, 0, 0.82);
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 15px;
+    max-width: 240px;
+    line-height: 1.3;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    z-index: 9998;
+  }
+
+  #tg-hint.show { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px) {
+    #tg-widget { width: 70px; height: 70px; bottom: 18px; right: 18px; }
+    #tg-label { display: none; }
+    #tg-hint { right: 20px; bottom: 90px; font-size: 14px; max-width: 200px; }
+  }
+</style>
+
+<script>
+  // 💬 Подсказка только при первом визите
+  const hint = document.getElementById('tg-hint');
+  const hintShown = sessionStorage.getItem('hintShown');
+
+  if (!hintShown) {
+    setTimeout(() => {
+      hint.classList.add('show');
+      setTimeout(() => hint.classList.remove('show'), 5000);
+      sessionStorage.setItem('hintShown', 'true');
+    }, 6000);
+  }
+
+  // 🚀 Автозаполнение формы для CTA-кнопок
+  document.querySelectorAll('[data-tg-message]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const msg = encodeURIComponent(btn.getAttribute('data-tg-message'));
+      window.open(`https://t.me/dezshit360_bot?start=${msg}`, '_blank');
+    });
+  });
+</script>
+</style>
+<script>
+(async function(){
+  // Сколько карточек показывать за раз
+  const BATCH = 8;
+
+  // Загружаем данные
+  const res = await fetch('gallery.json', {cache:'no-store'});
+  const data = await res.json();
+
+  // Собираем список элементов: сначала фото (с превью), затем видео
+  const items = [];
+  const photos = data.photos || [];
+  const thumbs = data.thumbs || [];
+  const videos = data.videos || [];
+
+  photos.forEach((src, i) => {
+    items.push({ type:'img', src, thumb: thumbs[i] || src, caption:`Фото #${i+1}` });
+  });
+  videos.forEach((src, i) => {
+    items.push({ type:'video', src, caption:`Видео #${i+1}` });
+  });
+
+  // Ссылки на DOM
+  const grid = document.getElementById('gallery');
+  const btnMore = document.getElementById('showMore');
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbVideo = document.getElementById('lbVideo');
+  const lbCaption = document.getElementById('lbCaption');
+  const lbClose = document.querySelector('.lb-close');
+
+  let shown = 0;
+
+  function createCard(item){
+    const card = document.createElement('figure');
+    card.className = 'card';
+
+    // thumb
+    let mediaEl;
+    if(item.type === 'img'){
+      mediaEl = document.createElement('img');
+      mediaEl.className = 'thumb';
+      mediaEl.loading = 'lazy';
+      mediaEl.alt = item.caption || 'Работы ДЕЗЩИТ 360';
+      mediaEl.src = item.thumb || item.src; // лёгкая превьюшка
     } else {
-      el = document.createElement('video');
-      el.src = item.src;
-      el.controls = true;
-      el.preload  = 'metadata';
-      el.muted    = true;
-      el.style.height = '220px';
-      el.onerror = () => console.warn('Не найден видеофайл:', el.src);
+      mediaEl = document.createElement('div');
+      mediaEl.className = 'thumb';
+      // иконка «видео»
+      const badge = document.createElement('div');
+      badge.className = 'badge-video';
+      badge.textContent = 'Видео';
+      card.appendChild(badge);
+
+      // ставим постер-заглушку (можно заменить на свой)
+      mediaEl.style.background = 'linear-gradient(145deg,#00B3A4,#007F6C)';
+      mediaEl.style.display = 'grid';
+      mediaEl.style.placeItems = 'center';
+      const play = document.createElement('div');
+      play.style.width='64px'; play.style.height='64px';
+      play.style.borderRadius='50%'; play.style.background='rgba(255,255,255,.9)';
+      play.style.boxShadow='0 8px 24px rgba(0,0,0,.25)';
+      play.style.position='relative';
+      const tri = document.createElement('div');
+      tri.style.borderLeft='18px solid #007F6C';
+      tri.style.borderTop='12px solid transparent';
+      tri.style.borderBottom='12px solid transparent';
+      tri.style.position='absolute';
+      tri.style.left='26px'; tri.style.top='20px';
+      play.appendChild(tri);
+      mediaEl.appendChild(play);
     }
 
+    // caption
     const cap = document.createElement('figcaption');
     cap.className = 'caption';
-    cap.textContent = item.caption;
+    cap.textContent = item.caption || (item.type==='img' ? 'Фото' : 'Видео');
 
-    card.appendChild(el);
+    // клик — открыть модалку
+    card.addEventListener('click', () => openLightbox(item));
+
+    card.appendChild(mediaEl);
     card.appendChild(cap);
     return card;
   }
 
-  function renderMore() {
+  function renderMore(){
     const next = items.slice(shown, shown + BATCH);
     next.forEach(item => grid.appendChild(createCard(item)));
     shown += next.length;
-    if (moreBtn) moreBtn.style.display = shown >= items.length ? 'none' : 'inline-block';
+
+    if (shown >= items.length) {
+      btnMore.style.display = 'none';
+    } else {
+      btnMore.style.display = 'inline-block';
+    }
   }
 
-  if (moreBtn) moreBtn.addEventListener('click', renderMore);
+  function openLightbox(item){
+    lbImg.style.display = 'none';
+    lbVideo.style.display = 'none';
+    lbCaption.textContent = item.caption || '';
 
-  // --- ЕДИНАЯ модалка (используем ту, что в секции «Наши работы») ---
-  const modal = document.querySelector('#portfolio #lightbox') || document.getElementById('lightbox');
-  const mImg  = modal?.querySelector('#lbImg');
-  const mCap  = modal?.querySelector('#lbCaption');
-  const btnX  = modal?.querySelector('.lb-close');
+    if(item.type === 'img'){
+      lbImg.src = item.src;  // полноразмерная фотография
+      lbImg.style.display = 'block';
+    } else {
+      lbVideo.src = item.src; // видео со звуком
+      lbVideo.currentTime = 0;
+      lbVideo.style.display = 'block';
+      lbVideo.play().catch(()=>{});
+    }
 
-  function openModal(src, caption) {
-    if (!modal) return;
-    if (mImg)  { mImg.src = src; mImg.style.display = 'block'; }
-    if (mCap)  mCap.textContent = caption || '';
-    const v = modal.querySelector('#lbVideo');
-    if (v) v.style.display = 'none';
-    modal.classList.add('show');
+    lb.classList.add('show');
+    lb.setAttribute('aria-hidden','false');
   }
 
-  btnX?.addEventListener('click', () => modal.classList.remove('show'));
-  modal?.addEventListener('click', (e) => {
-    if (e.target === modal) modal.classList.remove('show');
-  });
-});
-</script>
+  function closeLightbox(){
+    lb.classList.remove('show');
+    lb.setAttribute('aria-hidden','true');
+    lbVideo.pause();
+    lbVideo.src = '';
+    lbImg.src = '';
+  }
 
+  // Слушатели
+  btnMore.addEventListener('click', renderMore);
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLightbox(); });
 
-
-<!-- Плавное появление элементов при скролле -->
-<script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-});
-document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
-</script>
-
-<script>
-  // Переключатель бургер-меню
-  const burger = document.querySelector('.burger');
-  const navMenu = document.querySelector('.nav-menu');
-
-  burger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    burger.textContent = navMenu.classList.contains('active') ? '✖' : '☰';
-  });
-
-  // Автоматически закрываем меню при клике на пункт
-  navMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navMenu.classList.remove('active');
-      burger.textContent = '☰';
-    });
-  });
+  // Первый рендер
+  renderMore();
+})();
 </script>
 </body>
 </html>
+
 
 
 
