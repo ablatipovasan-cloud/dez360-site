@@ -506,7 +506,8 @@ header, main, footer, .wrap, section{ position: relative; z-index: 1; }
   overflow:hidden;
   border-radius:0 0 16px 16px;
   /* высота адаптивная: компактнее, чтобы специалист попадал целиком */
-  min-height: clamp(360px,
+  min-height:  clamp(360px, 52vh, 620px);
+}
 
   <main class="container"> 
 <style>
@@ -549,7 +550,6 @@ header, main, footer, .wrap, section{ position: relative; z-index: 1; }
 
 </style>
 <script>
-  <script>
 document.addEventListener('DOMContentLoaded', () => {
   const backdrop = document.getElementById('heroBackdrop');
   const target   = document.querySelector('#dezshield'); // id секции «ДезЩит 360»
@@ -573,7 +573,7 @@ document.addEventListener('DOMContentLoaded', () => {
   obs.observe(target);
 });
 </script>
-
+<script>
 /* Плавное появление .fade-in */
 window.addEventListener('DOMContentLoaded', () => {
   const obsFade = new IntersectionObserver((entries) => {
@@ -1403,6 +1403,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 </script>
 </body>
 </html>
+
 
 
 
