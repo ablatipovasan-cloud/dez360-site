@@ -388,6 +388,17 @@ nav a {
         <div class="step"><div class="num">4</div><b>Документы</b><div class="mut">Акты и рекомендации — в день работ.</div></div>
       </div>
     <section id="work" class="section portfolio">
+<section class="portfolio section">
+  <h2>Наши работы</h2>
+
+  <!-- контейнер сетки -->
+  <div class="gallery-grid" id="gallery"></div>
+
+  <!-- кнопка "Показать ещё" -->
+  <div class="more-wrap">
+    <button id="moreBtn" class="btn more">Показать ещё</button>
+  </div>
+</section>
 
 </section>
 
@@ -486,10 +497,26 @@ nav a {
     <!-- ГАЛЕРЕЯ -->
 <section class="section portfolio">
   <h2>Наши работы</h2>
-  <div id="gallery" class="gallery-grid">
-    
-  </div>
-    </section>
+
+  <div id="gallery" class="gallery-grid"></div>
+
+  <!-- Кнопка догрузки -->
+  <div class="more-wrap">
+    <button id="showMore" class="btn-more">Показать ещё</button>
+  </div>const btnMore = document.getElementById('showMore');
+// …
+function renderMore() {
+  const next = items.slice(shown, shown + BATCH);
+  next.forEach(item => grid.appendChild(createCard(item)));
+  shown += next.length;
+
+  if (btnMore) {
+    btnMore.style.display = (shown >= items.length) ? 'none' : 'inline-block';
+  }
+}
+if (btnMore) btnMore.addEventListener('click', renderMore);
+renderMore();
+</section>
 
     <!-- FAQ -->
     <section id="faq" class="section">
@@ -732,32 +759,21 @@ nav a {
   });
 </script>
 <script>
-  // Эффект мягкого параллакса при движении мыши
-  const dez = document.querySelector('#dezshield');
-  if (dez) {
-    dez.addEventListener('mousemove', e => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 6;
-      const y = (e.clientY / window.innerHeight - 0.5) * 6;
-      dez.style.transform = `rotateX(${y}deg) rotateY(${x}deg)`;
-    });
-    dez.addEventListener('mouseleave', () => {
-      dez.style.transform = 'rotateX(0) rotateY(0)';
-    });
-  }
-<script>
-  // Эффект движения и оживления фона
-  const dez = document.querySelector('#dezshield');
-  if (dez) {
+  // Нежный параллакс для секции #dezshield
+  (function () {
+    const dez = document.querySelector('#dezshield');
+    if (!dez) return;
+
     dez.addEventListener('mousemove', e => {
       const x = (e.clientX / window.innerWidth - 0.5) * 5;
       const y = (e.clientY / window.innerHeight - 0.5) * 5;
       dez.style.transform = `rotateX(${y}deg) rotateY(${x}deg)`;
     });
+
     dez.addEventListener('mouseleave', () => {
       dez.style.transform = 'rotateX(0) rotateY(0)';
     });
-  }
-</script>
+  })();
 </script>
 <script>
   // Мягкое свечение главной CTA-кнопки
@@ -1016,8 +1032,152 @@ nav a {
   renderMore();
 })();
 </script>
+<script id="portfolio-js">
+(function () {
+  const GRID = document.querySelector('.gallery-grid') || document.getElementById('gallery');
+  if (!GRID) return;
+
+  const PAGE_SIZE = 8;
+  let items = [];
+  let page = 0;
+
+  function addCard(src) {
+    const isVideo = src.toLowerCase().endsWith('.mp4');
+    const fig = document.createElement('figure');
+    fig.className = isVideo ? 'is-video card' : 'card';
+
+    const el = isVideo ? document.createElement('video') : document.createElement('img');
+    el.src = src;
+    if (isVideo) {
+      el.controls = true;
+      el.preload = 'metadata';
+    } else {
+      el.loading = 'lazy';
+      el.className = 'thumb';
+    }
+    fig.appendChild(el);
+    GRID.appendChild(fig);
+  }
+
+  function renderMore() {
+    const from = page * PAGE_SIZE;
+    const to = from + PAGE_SIZE;
+    items.slice(from, to).forEach(addCard);
+    page++;
+    if (page * PAGE_SIZE >= items.length) {
+      document.getElementById('moreBtn')?.remove();
+    }
+  }
+
+  // ВАЖНО: абсолютный путь + параметр, чтобы не кэшировалось
+  fetch('/gallery.json?v=3')
+    .then(r => r.json())
+    .then(data => {
+      items = [
+        ...(data.photos || []),
+        ...(data.videos || [])
+      ];
+      renderMore();
+      document.getElementById('moreBtn')?.addEventListener('click', renderMore);
+    })
+    .catch(err => console.error('Gallery load error:', err));
+})();
+</script>
+<script>
+/* ===== Портфолио (галерея) — без самописного lazy ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.querySelector('.gallery-grid');
+  const moreBtn = document.getElementById('btnMore');   // ваша кнопка «Показать ещё» (id из макета)
+  const CAPTION_DEFAULT = 'Реальные кадры с наших объектов по всему Крыму';
+
+  if (!grid) return;
+
+  let photos = [];
+  let videos = [];
+  let thumbs = [];
+  let idx = 0;
+  const PAGE = 6;
+
+  fetch('gallery.json')
+    .then(r => r.json())
+    .then(data => {
+      photos = Array.isArray(data.photos) ? data.photos : [];
+      videos = Array.isArray(data.videos) ? data.videos : [];
+      thumbs = Array.isArray(data.thumbs) ? data.thumbs : [];
+      renderPage();                       // ← сразу показываем первую партию
+      if (moreBtn) {
+        moreBtn.onclick = () => renderPage();
+        // если карточки уже все выданы — спрятать кнопку
+        toggleMoreVisibility();
+      }
+    })
+    .catch(() => {
+      grid.innerHTML = '<p style="opacity:.7">Не удалось загрузить галерею.</p>';
+    });
+
+  function renderPage() {
+    const slice = photos.slice(idx, idx + PAGE);
+    const frag = document.createDocumentFragment();
+
+    slice.forEach((src, i) => {
+      const n = idx + i + 1;
+      const fig = document.createElement('figure');
+      fig.className = 'card thumb';               // ваши стили карточек
+      fig.dataset.index = String(n);
+
+      const img = document.createElement('img');
+      img.src = src;                               // <— СРАЗУ подставляем src
+      img.loading = 'lazy';
+      img.alt = `Фото #${n}`;
+
+      const cap = document.createElement('figcaption');
+      cap.className = 'caption';
+      cap.textContent = (Array.isArray(thumbs) && thumbs[n-1]) ? '' : CAPTION_DEFAULT;
+
+      fig.appendChild(img);
+      fig.appendChild(cap);
+      frag.appendChild(fig);
+    });
+
+    grid.appendChild(frag);
+    idx += slice.length;
+    toggleMoreVisibility();
+  }
+
+  function toggleMoreVisibility() {
+    const done = idx >= photos.length;
+    if (moreBtn) moreBtn.style.display = done ? 'none' : '';
+  }
+
+  /* Lightbox — используем ваш существующий обработчик
+     Если у вас не было делегирования — вот безопасный вариант: */
+  grid.addEventListener('click', (e) => {
+    const fig = e.target.closest('figure');
+    if (!fig) return;
+    const img = fig.querySelector('img');
+    if (!img) return;
+
+    openLightbox(img.src, fig.querySelector('.caption')?.textContent || img.alt);
+  });
+
+  // Функция открытия лайтбокса — используем вашу, если уже есть.
+  // Если у вас уже есть modal with id="lightbox" и функции show/hide — можете удалить этот «заглушечный» вариант.
+  function openLightbox(src, caption) {
+    const lb = document.getElementById('lightbox');
+    if (!lb) return; // у вас уже реализовано
+    const lbImg = lb.querySelector('img');
+    const lbCap = lb.querySelector('.lb-body');
+    lbImg.src = src;
+    lbCap.textContent = caption || '';
+    lb.classList.add('show');
+  }
+});
+</script>
 </body>
 </html>
+
+
+
 
 
 
