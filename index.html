@@ -245,6 +245,18 @@ nav a {
     transform: scale(1.03);
   }
 }
+:root{
+  --c1:#00B3A4; --c2:#007F6C;
+  --bg:#f5faf9; --txt:#083A34; --white:#fff;
+  --r:16px; --shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(135deg,#0fb9ad,#077464);color:var(--txt);}
+
+.container{max-width:1180px;margin:0 auto;padding:0 16px;}
+.section{background:var(--bg);border-radius:18px;box-shadow:var(--shadow);padding:32px; margin:28px 0;}
+.section h2{margin:6px 0 12px;font-size:clamp(22px,3.2vw,34px);color:#0a4d45}
 </style>
 <style id="portfolio-fix">
 /* ===== Секция «Как мы работаем» / Портфолио ===== */
@@ -297,33 +309,56 @@ body:not(.js) .fade-in { opacity: 1; transform: none; }
   opacity: 1;
   transform: translateY(0);
 }
-
-/* === HERO BANNER === */
+/* HERO: максимум видимости специалиста, без «ступени», с мягкой маской */
 .hero-banner{
   position:relative;
-  height: clamp(42vh, 52vh, 58vh); /* немного ниже, чтобы лицо не обрезалось */
-  min-height: 380px;
-  background: url("media/1761327143.png") center 15% / cover no-repeat; /* поднимаем зону интереса */
+  width:100%;
+  min-height:clamp(420px, 66vh, 760px);   /* адаптивная высота */
+  background:url("media/1761327143.png") center 32% / cover no-repeat;
   display:flex; align-items:center; justify-content:center;
-  text-align:center; color:#fff; border-radius:16px; overflow:hidden;
+  text-align:center; color:#fff;
+  border-radius:0 0 16px 16px;           
+  /* скругляем только низ */
+  overflow:hidden;                       
+  /* убираем артефакты */
 }
-.hero-overlay{
-  position:absolute; inset:0;
-  background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.25));
+
+/* лёгкий затемняющий оверлей для читаемости */
+.hero-banner::before{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,.18) 60%, rgba(0,0,0,.05) 85%, rgba(0,0,0,0) 100%);
+  pointer-events:none;
+  z-index:0;
 }
-.hero-content{ position:relative; z-index:2; max-width: 920px; padding: 18px; }
+
+/* НИЗ баннера мягко «растворяем», чтобы не было жёсткой границы */
+.hero-banner{
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 88%, rgba(0,0,0,0) 100%);
+          mask-image: linear-gradient(to bottom, #000 0%, #000 88%, rgba(0,0,0,0) 100%);
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;       mask-repeat: no-repeat;
+}
+
+/* Убираем ВСЕ старые «полосы/after», если где-то остались */
+.hero-banner::after { content:none !important; }
+
+/* Контент — поверх оверлея */
+.hero-content{ position:relative; z-index:1; max-width:920px; padding: 18px; }
 .hero-content h1{ margin:0 0 12px; font-weight:900; font-size:clamp(28px,5.2vw,52px); }
 .hero-content p{ margin:0 auto 18px; line-height:1.6; font-size:clamp(15px,2.1vw,20px); max-width: 900px; }
+
+/* Кнопки в баннере */
 .hero-buttons{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
 .btn-primary,.btn-secondary{
   display:inline-block; padding:10px 20px; border-radius:10px; font-weight:700; text-decoration:none;
   transition:transform .2s ease, box-shadow .2s ease;
+  background:#fff; color:#004a42;
 }
+.btn-secondary{ background:transparent; border:2px solid rgba(255,255,255,.9); color:#fff; }
 
-
-/* Мобильная адаптация hero */
+/* Мобильная адаптация */
 @media (max-width: 768px){
-  .hero-banner{ height: clamp(38vh, 45vh, 50vh); min-height: 300px; background-position:center 30%; border-radius:0; }
+  .hero-banner{ min-height: 56vh; background-position:center 40%; border-radius:0; }
   .hero-content{ padding: 12px; }
   .hero-buttons{ flex-direction:column; }
   .btn-primary,.btn-secondary{ width:100%; text-align:center; }
@@ -432,6 +467,17 @@ section, main, footer {
   opacity: 1;
   transition: opacity .6s ease, visibility .6s ease;
 }
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const io = new IntersectionObserver((entries)=> {
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in, .section').forEach(el=>io.observe(el));
+});
+</script>
 
 /* мягкое затемнение для читаемости шапки/первых блоков */
 #heroBackdrop::before{
@@ -541,6 +587,21 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Подхватываем все элементы .fade-in:
   document.querySelectorAll('.fade-in').forEach(el => obsFade.observe(el));
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const back = document.getElementById('heroBackdrop');
+  const t = document.getElementById('dezshield');
+  if(!back || !t) return;
+
+  const obs = new IntersectionObserver((en)=>{
+    en.forEach(e=>{
+      if(e.isIntersecting) back.classList.add('is-hidden');
+      else back.classList.remove('is-hidden');
+    });
+  },{threshold:0.1});
+  obs.observe(t);
 });
 </script>
 
@@ -1342,6 +1403,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 </script>
 </body>
 </html>
+
 
 
 
