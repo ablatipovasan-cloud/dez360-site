@@ -331,6 +331,49 @@ body:not(.js) .fade-in { opacity: 1; transform: none; }
 
 /* Вспомогательное изображение (если где-то используется) */
 .hero-image{ width:100%; height:100%; object-fit:cover; border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,.15); }
+/* === HERO: мягкое «растворение» низа через МАСКУ === */
+/* Если у тебя секция называется .hero — правило тоже сработает */
+.hero-banner,
+.hero {
+  /* базовая маска: нижние 12–15% растворяются в прозрачность */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 85%, rgba(0,0,0,0) 100%);
+          mask-image: linear-gradient(to bottom, #000 0%, #000 85%, rgba(0,0,0,0) 100%);
+  -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+}
+
+/* На мобильных «растворяем» чуть выше, чтобы переход был мягче на коротком экране */
+@media (max-width: 768px){
+  .hero-banner,
+  .hero {
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 88%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to bottom, #000 0%, #000 88%, rgba(0,0,0,0) 100%);
+  }
+}
+
+/* На больших мониторах — более деликатный переход */
+@media (min-width: 1280px){
+  .hero-banner,
+  .hero {
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 90%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to bottom, #000 0%, #000 90%, rgba(0,0,0,0) 100%);
+  }
+}
+
+/* СТАРУЮ «полосу» отключаем, если где-то осталась */
+.hero-banner::after,
+.hero::after {
+  content: none !important;
+}
+
+/* Чтобы ничего «не просвечивало» под баннером: секции ниже сплошные */
+section, main, footer {
+  background: #f5faf9;           /* твой светлый системный фон */
+  position: relative;
+  z-index: 1;
+}
 </style>
 
 </head>
@@ -1299,6 +1342,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 </script>
 </body>
 </html>
+
 
 
 
