@@ -750,55 +750,24 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   </section>
 
-    <!-- ЦЕНЫ -->
-    <section id="prices" class="section">
-      <h2>Цены</h2>
-      <div class="grid">
-        <article class="card price-card">
-          <div class="head"><div><strong>Дезинсекция</strong> <span class="mut">— квартиры/HoReCa</span></div><span class="chip">от 1 900 ₽</span></div>
-          <div class="more">
-            <ul class="mut"><li>Тараканы / клопы / муравьи</li><li>Безопасные режимы</li><li>Акты в день работ</li></ul>
-            <a class="cta" href="#contacts">Рассчитать стоимость</a>
-          </div>
-        </article>
-        <article class="card price-card">
-          <div class="head"><div><strong>Дератизация</strong> <span class="mut">— барьеры и мониторинг</span></div><span class="chip">от 2 400 ₽</span></div>
-          <div class="more">
-            <ul class="mut"><li>Приманочные станции</li><li>Контрольные визиты</li></ul>
-            <a class="cta" href="#contacts">Рассчитать стоимость</a>
-          </div>
-        </article>
-        <article class="card price-card">
-          <div class="head"><div><strong>Дезинфекция</strong> <span class="mut">— помещения/ТС</span></div><span class="chip">от 1 200 ₽</span></div>
-          <div class="more">
-            <ul class="mut"><li>Бактерии, вирусы, споры</li><li>Сертифицированные средства</li></ul>
-            <a class="cta" href="#contacts">Рассчитать стоимость</a>
-          </div>
-        </article>
-        <article class="card price-card">
-          <div class="head"><div><strong>Дезинфекция вентиляции</strong></div><span class="chip">от 3 900 ₽</span></div>
-          <div class="more">
-            <ul class="mut"><li>Чистка/обработка воздуховодов</li><li>Фото «до/после», рекомендации</li></ul>
-            <a class="cta" href="#contacts">Рассчитать стоимость</a>
-          </div>
-        </article>
-        <article class="card price-card">
-          <div class="head"><div><strong>Удаление запахов</strong> <span class="mut">— озон/нейтрализация</span></div><span class="chip">от 2 200 ₽</span></div>
-          <div class="more">
-            <ul class="mut"><li>Пожар, затопление, био-загрязнения</li></ul>
-            <a class="cta" href="#contacts">Рассчитать стоимость</a>
-          </div>
-        </article>
-        <article class="card price-card">
-          <div class="head"><div><strong>«ДезЩит 360» — пакет</strong> <span class="mut">годовой план</span></div><span class="chip">от 5 900 ₽/мес</span></div>
-          <div class="more">
-            <ul class="mut"><li>Регулярные обработки</li><li>Журналы и акты 24/7</li><li>Ночной тариф для HoReCa</li></ul>
-            <a class="cta" href="#contacts">Подобрать пакет</a>
-          </div>
-        </article>
+    <!-- ======== ЦЕНЫ ======== -->
+  <section id="prices" class="container section" aria-label="Цены">
+    <h2>Цены</h2>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="card">
+        <h3>Разовая обработка</h3>
+        <p>От <b>₽</b> — зависит от площади и типа объекта.</p>
       </div>
-    </section>
-
+      <div class="card">
+        <h3>Абонемент «ДезЩит 360»</h3>
+        <p>Индивидуальный расчёт: график + мониторинг + гарантии.</p>
+      </div>
+      <div class="card">
+        <h3>Спецработы</h3>
+        <p>Вентиляция, склады, кухни. Рассчитывается по ТЗ.</p>
+      </div>
+    </div>
+  </section>
     <!-- ГАЛЕРЕЯ -->
 <section id="portfolio" class="section portfolio">
   <h2>Наши работы</h2>
@@ -1410,6 +1379,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 </script>
 </body>
 </html>
+
 
 
 
