@@ -10,7 +10,6 @@
     :root {
       --primary: #007A8C;
       --primary-dark: #0B3954;
-      --accent-eco: #9CD70E;
       --accent-alert: #F25C3D;
       --bg-soft: #E6F5F7;
       --text-main: #1F2933;
@@ -18,513 +17,645 @@
       --radius: 14px;
       --shadow-soft: 0 10px 28px rgba(0,0,0,0.06);
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--text-main);
-      background: #ffffff;
-      line-height: 1.5;
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+      color:var(--text-main);
+      background:#fff;
+      line-height:1.5;
     }
-
-    a { text-decoration: none; color: inherit; }
-
-    .top-bar {
-      background: var(--primary-dark);
-      color: #ffffff;
-      font-size: 11px;
-      padding: 6px 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    a{text-decoration:none;color:inherit;}
+    .top-bar{
+      background:var(--primary-dark);
+      color:#fff;
+      font-size:11px;
+      padding:6px 14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
     }
-
-    .top-bar span { opacity: 0.9; }
-
-    .top-bar-contacts {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      font-size: 11px;
+    .top-bar span{opacity:.9;}
+    .top-bar-contacts{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      font-size:11px;
     }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: #ffffff;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:#fff;
+      box-shadow:0 4px 14px rgba(0,0,0,0.03);
     }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 10px 14px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
+    .header-inner{
+      max-width:1200px;
+      margin:0 auto;
+      padding:10px 14px;
+      display:flex;
+      align-items:center;
+      gap:20px;
     }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'Manrope', sans-serif;
-      font-weight: 700;
-      color: var(--primary-dark);
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-family:'Manrope',sans-serif;
+      font-weight:700;
+      color:var(--primary-dark);
     }
-
-    .logo-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 10px;
-      background: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      font-size: 12px;
-      font-weight: 700;
+    .logo-icon{
+      width:28px;
+      height:28px;
+      border-radius:10px;
+      background:var(--primary);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:12px;
+      font-weight:700;
     }
-
-    .logo-sub {
-      font-size: 10px;
-      font-weight: 400;
-      color: var(--text-secondary);
+    .logo-sub{
+      font-size:10px;
+      font-weight:400;
+      color:var(--text-secondary);
     }
-
-    nav {
-      display: flex;
-      gap: 18px;
-      font-size: 13px;
-      color: var(--text-secondary);
-      flex: 1;
-      justify-content: center;
+    nav{
+      display:flex;
+      gap:18px;
+      font-size:13px;
+      color:var(--text-secondary);
+      flex:1;
+      justify-content:center;
     }
-
-    nav a:hover { color: var(--primary); }
-
-    .header-actions {
-      display: flex;
-      gap: 8px;
-      align-items: center;
+    nav a:hover{color:var(--primary);}
+    .header-actions{
+      display:flex;
+      gap:8px;
+      align-items:center;
     }
-
-    .phone {
-      font-weight: 600;
-      color: var(--primary-dark);
-      font-size: 12px;
-      line-height: 1.3;
-      display: flex;
-      flex-direction: column;
+    .phone{
+      font-weight:600;
+      color:var(--primary-dark);
+      font-size:12px;
+      line-height:1.3;
+      display:flex;
+      flex-direction:column;
     }
-
-    .phone a { color: var(--primary-dark); }
-
-    .btn {
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 500;
-      transition: all 0.2s ease;
-      white-space: nowrap;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
+    .phone a{color:var(--primary-dark);}
+    .btn{
+      padding:8px 14px;
+      border-radius:999px;
+      border:none;
+      cursor:pointer;
+      font-size:13px;
+      font-weight:500;
+      transition:all .2s ease;
+      white-space:nowrap;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:4px;
     }
-
-    .btn-primary { background: var(--primary); color: #ffffff; }
-    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
-
-    .btn-alert { background: var(--accent-alert); color: #ffffff; }
-    .btn-alert:hover { filter: brightness(0.95); transform: translateY(-1px); }
-
-    /* Burger */
-
-    .burger {
-      display: none;
-      width: 24px;
-      height: 18px;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      margin-left: auto;
+    .btn-primary{background:var(--primary);color:#fff;}
+    .btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px);}
+    .btn-alert{background:var(--accent-alert);color:#fff;}
+    .btn-alert:hover{filter:brightness(.95);transform:translateY(-1px);}
+    .burger{
+      display:none;
+      width:24px;
+      height:18px;
+      flex-direction:column;
+      justify-content:space-between;
+      cursor:pointer;
+      margin-left:auto;
     }
-
-    .burger span {
-      height: 3px;
-      width: 100%;
-      background: var(--primary-dark);
-      border-radius: 4px;
-      transition: all 0.2s ease;
+    .burger span{
+      height:3px;
+      width:100%;
+      background:var(--primary-dark);
+      border-radius:4px;
+      transition:all .2s ease;
     }
-
-    .mobile-nav {
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-      padding: 10px 14px 14px;
-      font-size: 14px;
-      background: #ffffff;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+    .mobile-nav{
+      display:none;
+      flex-direction:column;
+      gap:10px;
+      padding:10px 14px 14px;
+      font-size:14px;
+      background:#fff;
+      box-shadow:0 8px 18px rgba(0,0,0,0.06);
     }
-
-    .mobile-nav a { color: var(--primary-dark); }
-
-    .mobile-nav-cta {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-top: 4px;
+    .mobile-nav a{color:var(--primary-dark);}
+    .mobile-nav-cta{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      margin-top:4px;
     }
-
-    .mobile-nav-cta .btn {
-      width: 100%;
-      text-align: center;
-      font-size: 13px;
+    .mobile-nav-cta .btn{
+      width:100%;
+      text-align:center;
+      font-size:13px;
     }
-
-    .section { padding: 40px 16px; }
-    .section-alt { background: var(--bg-soft); }
-
-    .container { max-width: 1200px; margin: 0 auto; }
-
-    .section-title {
-      font-family: 'Manrope', sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 14px;
+    .section{padding:40px 16px;}
+    .section-alt{background:var(--bg-soft);}
+    .container{max-width:1200px;margin:0 auto;}
+    .section-title{
+      font-family:'Manrope',sans-serif;
+      font-size:24px;
+      font-weight:700;
+      color:var(--primary-dark);
+      margin-bottom:14px;
     }
-
-    .section-subtitle {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-bottom: 20px;
-      max-width: 720px;
+    .section-subtitle{
+      font-size:14px;
+      color:var(--text-secondary);
+      margin-bottom:20px;
+      max-width:720px;
     }
-
-    /* HERO */
-
-    .hero { background: var(--bg-soft); padding: 26px 16px 26px; }
-
-    .hero-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1.4fr);
-      gap: 26px;
-      align-items: stretch;
+    .hero{
+      background:var(--bg-soft);
+      padding:26px 16px 26px;
     }
-
-    .hero-left { display: flex; flex-direction: column; justify-content: center; }
-
-    .hero-title {
-      font-family: 'Manrope', sans-serif;
-      font-size: 28px;
-      line-height: 1.25;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 10px;
+    .hero-inner{
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:minmax(0,1.6fr) minmax(260px,1.4fr);
+      gap:26px;
+      align-items:stretch;
     }
-
-    .hero-subtitle {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-bottom: 12px;
-      max-width: 540px;
+    .hero-left{display:flex;flex-direction:column;justify-content:center;}
+    .hero-title{
+      font-family:'Manrope',sans-serif;
+      font-size:28px;
+      line-height:1.25;
+      font-weight:700;
+      color:var(--primary-dark);
+      margin-bottom:10px;
     }
-
-    .hero-bullets {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 10px;
-      font-size: 12px;
-      margin-bottom: 12px;
+    .hero-subtitle{
+      font-size:14px;
+      color:var(--text-secondary);
+      margin-bottom:12px;
+      max-width:540px;
     }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      background: #ffffff;
-      border-radius: 999px;
-      font-size: 11px;
-      color: var(--primary-dark);
-      box-shadow: 0 3px 8px rgba(0,0,0,0.04);
+    .hero-bullets{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px 10px;
+      font-size:12px;
+      margin-bottom:12px;
     }
-
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 4px; }
-    .hero-actions .btn-primary { font-size: 13px; padding: 8px 16px; }
-
-    .hero-note { font-size: 11px; color: var(--text-secondary); }
-
-    .hero-photo {
-      position: relative;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-      min-height: 260px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      background: #000;
+    .hero-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:4px 10px;
+      background:#fff;
+      border-radius:999px;
+      font-size:11px;
+      color:var(--primary-dark);
+      box-shadow:0 3px 8px rgba(0,0,0,0.04);
     }
-
-    .hero-photo img {
-      width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      align-items:center;
+      margin-bottom:4px;
     }
-
-    .hero-photo-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top right, rgba(11,57,84,0.75), rgba(0,122,140,0.15), rgba(0,0,0,0));
-      pointer-events: none;
+    .hero-actions .btn-primary{font-size:13px;padding:8px 16px;}
+    .hero-note{font-size:11px;color:var(--text-secondary);}
+    .hero-photo{
+      position:relative;
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow-soft);
+      min-height:260px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:flex-start;
+      background:#000;
     }
-
-    .hero-photo-caption {
-      position: absolute; left: 14px; bottom: 14px; right: 14px;
-      color: #ffffff; font-size: 10px; line-height: 1.4; z-index: 2;
+    .hero-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      display:block;
     }
-
-    .hero-photo-caption strong { display: block; font-size: 12px; font-weight: 600; margin-bottom: 2px; }
-
-    .hero-badge-inline {
-      display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px;
-      border-radius: 999px; background: rgba(0,122,140,0.92); font-size: 9px; margin-bottom: 4px;
+    .hero-photo-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top right,rgba(11,57,84,0.75),rgba(0,122,140,0.15),rgba(0,0,0,0));
+      pointer-events:none;
     }
-
-    /* SERVICES CARDS */
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+    .hero-photo-caption{
+      position:absolute;
+      left:14px;
+      bottom:14px;
+      right:14px;
+      color:#fff;
+      font-size:10px;
+      line-height:1.4;
+      z-index:2;
     }
-
-    .service-card {
-      background: #ffffff;
-      border-radius: var(--radius);
-      padding: 12px 10px 10px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-size: 12px;
+    .hero-photo-caption strong{
+      display:block;
+      font-size:12px;
+      font-weight:600;
+      margin-bottom:2px;
     }
-
-    .service-label {
-      display: inline-flex;
-      padding: 2px 7px;
-      border-radius: 999px;
-      background: var(--bg-soft);
-      font-size: 9px;
-      color: var(--primary);
-      margin-bottom: 1px;
+    .hero-badge-inline{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:3px 8px;
+      border-radius:999px;
+      background:rgba(0,122,140,0.92);
+      font-size:9px;
+      margin-bottom:4px;
     }
-
-    .service-title {
-      font-family: 'Manrope', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      color: var(--primary-dark);
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
     }
-
-    .service-text { font-size: 12px; color: var(--text-secondary); }
-    .service-list { font-size: 11px; color: var(--text-main); padding-left: 15px; }
-
-    .service-actions {
-      margin-top: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
+    .service-card{
+      background:#fff;
+      border-radius:var(--radius);
+      padding:12px 10px 10px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.04);
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      font-size:12px;
     }
-
-    .service-link {
-      font-size: 11px;
-      color: var(--primary);
-      cursor: pointer;
+    .service-label{
+      display:inline-flex;
+      padding:2px 7px;
+      border-radius:999px;
+      background:var(--bg-soft);
+      font-size:9px;
+      color:var(--primary);
+      margin-bottom:1px;
     }
-
-    .service-link:hover { text-decoration: underline; }
-
-    .service-order-btn {
-      padding: 5px 9px;
-      font-size: 10px;
+    .service-title{
+      font-family:'Manrope',sans-serif;
+      font-weight:600;
+      font-size:14px;
+      color:var(--primary-dark);
     }
-
-    /* SERVICE DETAILS (таб-панель) */
-
-    .service-details {
-      margin-top: 24px;
+    .service-text{font-size:12px;color:var(--text-secondary);}
+    .service-list{font-size:11px;color:var(--text-main);padding-left:15px;}
+    .service-actions{
+      margin-top:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+      font-size:11px;
     }
-
-    .service-detail {
-      display: none;
-      padding: 16px 14px;
-      background: #ffffff;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-soft);
-      font-size: 12px;
-      gap: 8px;
+    .service-link{
+      font-size:11px;
+      color:var(--primary);
+      cursor:pointer;
     }
-
-    .service-detail.active {
-      display: grid;
-      grid-template-columns: minmax(0,1.8fr) minmax(240px,1.2fr);
-      gap: 18px;
-      align-items: flex-start;
+    .service-link:hover{text-decoration:underline;}
+    .service-order-btn{padding:5px 9px;font-size:10px;}
+    .clients-grid{
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:10px;
+      font-size:11px;
     }
-
-    .service-detail-title {
-      font-family: 'Manrope', sans-serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 6px;
+    .client-card{
+      background:#fff;
+      border-radius:10px;
+      padding:8px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.03);
+      display:flex;
+      flex-direction:column;
+      gap:3px;
     }
-
-    .service-detail-list {
-      padding-left: 18px;
-      margin-top: 6px;
+    .client-title{font-weight:600;font-size:11px;color:var(--primary-dark);}
+    .client-label{font-size:9px;color:var(--primary);}
+    .geo-wrap{
+      display:grid;
+      grid-template-columns:minmax(0,1.7fr) minmax(260px,1.3fr);
+      gap:20px;
+      align-items:center;
     }
-
-    .service-detail-side {
-      font-size: 11px;
-      background: #F8FCFD;
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid #E1EFF3;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+    .geo-list{font-size:12px;color:var(--text-main);padding-left:16px;}
+    .geo-highlight{
+      display:inline-flex;
+      padding:4px 9px;
+      background:#fff;
+      border-radius:999px;
+      font-size:10px;
+      color:var(--primary-dark);
+      box-shadow:0 4px 10px rgba(0,0,0,0.04);
+      margin-top:8px;
     }
-
-    /* CLIENTS */
-
-    .clients-grid {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 10px;
-      font-size: 11px;
+    .geo-map-placeholder{
+      border-radius:var(--radius);
+      background:#fff;
+      box-shadow:var(--shadow-soft);
+      padding:14px;
+      font-size:10px;
+      color:var(--text-secondary);
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      text-align:center;
     }
-
-    .client-card {
-      background: #ffffff;
-      border-radius: 10px;
-      padding: 8px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
+    .guarantees-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:12px;
     }
-
-    .client-title { font-weight: 600; font-size: 11px; color: var(--primary-dark); }
-    .client-label { font-size: 9px; color: var(--primary); }
-
-    /* GEO */
-
-    .geo-wrap { display: grid; grid-template-columns: minmax(0,1.7fr) minmax(260px,1.3fr); gap: 20px; align-items: center; }
-    .geo-list { font-size: 12px; color: var(--text-main); padding-left: 16px; }
-    .geo-highlight { display: inline-flex; padding: 4px 9px; background: #ffffff; border-radius: 999px; font-size: 10px; color: var(--primary-dark); box-shadow: 0 4px 10px rgba(0,0,0,0.04); margin-top: 8px; }
-    .geo-map-placeholder { border-radius: var(--radius); background: #ffffff; box-shadow: var(--shadow-soft); padding: 14px; font-size: 10px; color: var(--text-secondary); display: flex; flex-direction: column; gap: 4px; text-align: center; }
-
-    /* GUARANTEES */
-
-    .guarantees-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-    .guarantee-card { background: #ffffff; border-radius: 10px; padding: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.03); font-size: 11px; display: flex; flex-direction: column; gap: 3px; }
-    .guarantee-title { font-weight: 600; color: var(--primary-dark); font-size: 12px; }
-
-    .licenses-row { display: flex; gap: 10px; flex-wrap: wrap; font-size: 10px; margin-top: 6px; }
-    .license-card { background: #ffffff; border-radius: 8px; padding: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); width: 130px; display: flex; flex-direction: column; gap: 3px; align-items: flex-start; }
-    .license-box { width: 100%; height: 54px; border-radius: 6px; border: 1px dashed #D1E5EA; background: #F8FCFD; }
-
-    /* CASES */
-
-    .cases-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; font-size: 11px; }
-    .case-card { background: #ffffff; border-radius: 10px; padding: 10px; box-shadow: 0 4px 14px rgba(0,0,0,0.04); display: flex; flex-direction: column; gap: 5px; }
-    .case-label { font-size: 9px; color: var(--primary); }
-    .case-title { font-weight: 600; color: var(--primary-dark); font-size: 11px; }
-
-    /* PRICES */
-
-    .price-table { width: 100%; border-collapse: collapse; font-size: 12px; background: #ffffff; border-radius: 10px; box-shadow: var(--shadow-soft); overflow: hidden; }
-    .price-table th, .price-table td { padding: 8px 10px; border-bottom: 1px solid #EEF4F6; text-align: left; }
-    .price-table th { background: var(--bg-soft); font-weight: 600; color: var(--primary-dark); }
-    .price-note { font-size: 10px; color: var(--text-secondary); margin-top: 6px; }
-
-    /* FAQ */
-
-    .faq-list { display: flex; flex-direction: column; gap: 6px; }
-    .faq-item { background: #ffffff; border-radius: 8px; padding: 8px 9px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); cursor: pointer; }
-    .faq-question { font-size: 12px; font-weight: 500; color: var(--primary-dark); display: flex; justify-content: space-between; align-items: center; gap: 6px; }
-    .faq-answer { font-size: 10px; color: var(--text-secondary); margin-top: 3px; display: none; }
-    .faq-item.active .faq-answer { display: block; }
-    .faq-toggle { font-size: 16px; color: var(--primary); }
-
-    /* ABOUT */
-
-    .about-grid { display: grid; grid-template-columns: minmax(0,1.8fr) minmax(260px,1.2fr); gap: 18px; align-items: flex-start; }
-    .about-list { font-size: 12px; color: var(--text-main); padding-left: 16px; }
-    .about-card { background: #ffffff; border-radius: var(--radius); padding: 10px; box-shadow: var(--shadow-soft); font-size: 11px; display: flex; flex-direction: column; gap: 3px; }
-
-    /* CONTACTS */
-
-    .contacts-grid { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(260px,1.6fr); gap: 18px; align-items: flex-start; }
-    .contacts-list { font-size: 12px; display: flex; flex-direction: column; gap: 5px; color: var(--text-main); }
-    .contacts-label { font-weight: 600; color: var(--primary-dark); }
-    .contacts-form { background: #ffffff; padding: 10px; border-radius: var(--radius); box-shadow: var(--shadow-soft); display: flex; flex-direction: column; gap: 7px; font-size: 11px; }
-    .map-placeholder { margin-top: 8px; width: 100%; height: 130px; border-radius: 8px; background: var(--bg-soft); display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--text-secondary); text-align: center; padding: 8px; }
-
-    /* FOOTER */
-
-    footer { padding: 14px 16px 18px; background: #0B3954; color: #ffffff; font-size: 10px; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
-    .footer-links { display: flex; gap: 8px; flex-wrap: wrap; }
-    .footer-links a { color: #C4D6E5; }
-    .footer-legal { color: #C4D6E5; font-size: 9px; line-height: 1.4; }
-
-    /* Responsive */
-
-    @media (max-width: 992px) {
-      .services-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-      .clients-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
-      .guarantees-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-      .cases-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-      .geo-wrap, .about-grid, .contacts-grid { grid-template-columns: 1fr; }
-      .service-detail.active { grid-template-columns: 1fr; }
+    .guarantee-card{
+      background:#fff;
+      border-radius:10px;
+      padding:10px;
+      box-shadow:0 4px 16px rgba(0,0,0,0.03);
+      font-size:11px;
+      display:flex;
+      flex-direction:column;
+      gap:3px;
     }
-
-    @media (max-width: 768px) {
-      .top-bar { flex-direction: column; align-items: flex-start; gap: 3px; font-size: 10px; }
-      .top-bar-contacts { flex-wrap: wrap; gap: 6px; }
-      .header-inner { padding: 8px 12px; gap: 10px; }
-      nav { display: none; }
-      .burger { display: flex; }
-      .header-actions { display: none; }
-      .mobile-nav.show { display: flex; }
-
-      .hero-inner { grid-template-columns: 1fr; gap: 14px; }
-      .hero { padding: 20px 14px 18px; }
-      .hero-left { order: 2; }
-      .hero-photo { order: 1; min-height: 220px; }
-      .hero-title { font-size: 20px; }
-      .hero-subtitle { font-size: 13px; }
-      .hero-bullets { font-size: 10px; }
-      .hero-note { font-size: 10px; }
-
-      .services-grid { grid-template-columns: 1fr; }
-      .clients-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-      .cases-grid { grid-template-columns: 1fr; }
-      .section { padding: 26px 14px; }
-      .section-title { font-size: 19px; }
-      .section-subtitle { font-size: 12px; }
+    .guarantee-title{
+      font-weight:600;
+      color:var(--primary-dark);
+      font-size:12px;
+    }
+    .licenses-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      font-size:10px;
+      margin-top:6px;
+    }
+    .license-card{
+      background:#fff;
+      border-radius:8px;
+      padding:8px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.04);
+      width:130px;
+      display:flex;
+      flex-direction:column;
+      gap:3px;
+      align-items:flex-start;
+    }
+    .license-box{
+      width:100%;
+      height:54px;
+      border-radius:6px;
+      border:1px dashed #D1E5EA;
+      background:#F8FCFD;
+    }
+    .cases-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+      font-size:11px;
+    }
+    .case-card{
+      background:#fff;
+      border-radius:10px;
+      padding:10px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.04);
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+    }
+    .case-label{font-size:9px;color:var(--primary);}
+    .case-title{
+      font-weight:600;
+      color:var(--primary-dark);
+      font-size:11px;
+    }
+    .price-table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:12px;
+      background:#fff;
+      border-radius:10px;
+      box-shadow:var(--shadow-soft);
+      overflow:hidden;
+    }
+    .price-table th,
+    .price-table td{
+      padding:8px 10px;
+      border-bottom:1px solid #EEF4F6;
+      text-align:left;
+    }
+    .price-table th{
+      background:var(--bg-soft);
+      font-weight:600;
+      color:var(--primary-dark);
+    }
+    .price-note{
+      font-size:10px;
+      color:var(--text-secondary);
+      margin-top:6px;
+    }
+    .faq-list{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .faq-item{
+      background:#fff;
+      border-radius:8px;
+      padding:8px 9px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.03);
+      cursor:pointer;
+    }
+    .faq-question{
+      font-size:12px;
+      font-weight:500;
+      color:var(--primary-dark);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:6px;
+    }
+    .faq-answer{
+      font-size:10px;
+      color:var(--text-secondary);
+      margin-top:3px;
+      display:none;
+    }
+    .faq-item.active .faq-answer{display:block;}
+    .faq-toggle{font-size:16px;color:var(--primary);}
+    .about-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.8fr) minmax(260px,1.2fr);
+      gap:18px;
+      align-items:flex-start;
+    }
+    .about-list{
+      font-size:12px;
+      color:var(--text-main);
+      padding-left:16px;
+    }
+    .about-card{
+      background:#fff;
+      border-radius:var(--radius);
+      padding:10px;
+      box-shadow:var(--shadow-soft);
+      font-size:11px;
+      display:flex;
+      flex-direction:column;
+      gap:3px;
+    }
+    .contacts-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.4fr) minmax(260px,1.6fr);
+      gap:18px;
+      align-items:flex-start;
+    }
+    .contacts-list{
+      font-size:12px;
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+      color:var(--text-main);
+    }
+    .contacts-label{
+      font-weight:600;
+      color:var(--primary-dark);
+    }
+    .contacts-form{
+      background:#fff;
+      padding:10px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow-soft);
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+      font-size:11px;
+    }
+    .field-label{
+      font-size:11px;
+      color:var(--text-secondary);
+      margin-bottom:2px;
+    }
+    .field-input,
+    .field-textarea{
+      width:100%;
+      padding:7px 9px;
+      border-radius:8px;
+      border:1px solid #D1E5EA;
+      font-size:12px;
+      outline:none;
+      transition:all .15s ease;
+      resize:vertical;
+    }
+    .field-input:focus,
+    .field-textarea:focus{
+      border-color:var(--primary);
+      box-shadow:0 0 0 2px rgba(0,122,140,0.12);
+    }
+    .map-placeholder{
+      margin-top:8px;
+      width:100%;
+      height:130px;
+      border-radius:8px;
+      background:var(--bg-soft);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:9px;
+      color:var(--text-secondary);
+      text-align:center;
+      padding:8px;
+    }
+    footer{
+      padding:14px 16px 18px;
+      background:#0B3954;
+      color:#fff;
+      font-size:10px;
+    }
+    .footer-inner{
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:flex-start;
+    }
+    .footer-links{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .footer-links a{color:#C4D6E5;}
+    .footer-legal{
+      color:#C4D6E5;
+      font-size:9px;
+      line-height:1.4;
+    }
+    .hero-form-note{
+      font-size:9px;
+      color:var(--text-secondary);
+      margin-top:2px;
+    }
+    @media (max-width:992px){
+      .services-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+      .clients-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+      .guarantees-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+      .cases-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+      .geo-wrap,
+      .about-grid,
+      .contacts-grid{grid-template-columns:1fr;}
+    }
+    @media (max-width:768px){
+      .top-bar{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:3px;
+        font-size:10px;
+      }
+      .top-bar-contacts{
+        flex-wrap:wrap;
+        gap:6px;
+      }
+      .header-inner{
+        padding:8px 12px;
+        gap:10px;
+      }
+      nav{display:none;}
+      .burger{display:flex;}
+      .header-actions{display:none;}
+      .mobile-nav.show{display:flex;}
+      .hero-inner{
+        grid-template-columns:1fr;
+        gap:14px;
+      }
+      .hero{
+        padding:20px 14px 18px;
+      }
+      .hero-left{order:2;}
+      .hero-photo{
+        order:1;
+        min-height:220px;
+      }
+      .hero-title{font-size:20px;}
+      .hero-subtitle{font-size:13px;}
+      .hero-bullets{font-size:10px;}
+      .hero-note{font-size:10px;}
+      .services-grid{grid-template-columns:1fr;}
+      .clients-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+      .cases-grid{grid-template-columns:1fr;}
+      .section{padding:26px 14px;}
+      .section-title{font-size:19px;}
+      .section-subtitle{font-size:12px;}
     }
   </style>
 </head>
@@ -593,8 +724,8 @@
         Дезинфекция, дезинсекция и дератизация в Симферополе, Севастополе и по всему Крыму
       </h1>
       <p class="hero-subtitle">
-        На фото — наша команда на объекте: защищённая форма, профессиональное оборудование, уверенные лица.
-        Именно такие специалисты приедут к вам, аккуратно и официально решая проблему с вредителями и запахами.
+        Реальные специалисты, профессиональное оборудование и официальные документы.
+        Помогаем быстро и безопасно убрать вредителей, запахи и риски для проверок.
       </p>
       <div class="hero-bullets">
         <div class="hero-badge">Лицензированный центр дезинфектологии</div>
@@ -604,52 +735,51 @@
       </div>
       <div class="hero-actions">
         <button class="btn btn-primary" data-scroll="#contacts">Получить расчет за 3 минуты</button>
-        <span style="font-size:11px; color:var(--text-secondary);">
+        <span style="font-size:11px;color:var(--text-secondary);">
           Оставьте номер — мы спокойно проведём вас от тревоги к понятному решению под ваш объект.
         </span>
       </div>
       <div class="hero-note">
-        Представьте: вы заходите в помещение и видите только чистоту и порядок. Оставьте заявку — «Дез щит 360» возьмёт
-        ответственность на себя.
+        Представьте помещение без насекомых, грызунов, плесени и запахов. «Дез щит 360» берёт ответственность за результат.
       </div>
     </div>
 
     <div class="hero-photo">
-      <img src="media/banner-dezshield360.jpg" alt="Команда специалистов дезинфекции «Дез щит 360» на объекте">
+      <img src="media/banner-dezshield360.jpg"
+           alt="Команда центра дезинфектологии «Дез щит 360» — дезинфекция и дезинсекция в Симферополе, Севастополе и Крыму">
       <div class="hero-photo-overlay"></div>
       <div class="hero-photo-caption">
         <div class="hero-badge-inline">
           <span>Профессиональная команда</span>
         </div>
-        <strong>Реальные специалисты, реальное оборудование.</strong>
-        Каждый выезд — в защитной форме, с сертифицированными препаратами и чётким планом обработки.
+        <strong>Работаем открыто и официально.</strong>
+        Каждый выезд — в защитной форме, с сертифицированными препаратами и чётким регламентом обработки.
       </div>
     </div>
   </div>
 </section>
 
-<!-- УСЛУГИ -->
 <section id="services" class="section">
   <div class="container">
     <h2 class="section-title">Услуги центра дезинфектологии «Дез щит 360»</h2>
     <p class="section-subtitle">
-      Мы объединяем опыт, лицензии и профессиональные препараты, чтобы быстро убрать источник проблемы
-      и закрепить результат. Любая услуга — по понятному алгоритму, с документами и гарантией.
+      Комплексные решения для квартир, домов, бизнеса и ответственных объектов по всему Крыму.
+      Каждая услуга — по понятной технологии, с гарантией и документами.
     </p>
     <div class="services-grid">
       <div class="service-card">
         <div class="service-label">Санитарная безопасность</div>
         <div class="service-title">Дезинфекция от вирусов и бактерий</div>
         <div class="service-text">
-          Профессиональная дезинфекция квартир, офисов, медкабинетов, салонов и производственных зон.
+          Обработка помещений для снижения микробной нагрузки до безопасных норм.
         </div>
         <ul class="service-list">
-          <li>Снижение микробной нагрузки до безопасных норм</li>
-          <li>Обработка воздуха и контактных поверхностей</li>
-          <li>Официальные акты для проверяющих органов</li>
+          <li>Квартиры, офисы, салоны, медкабинеты</li>
+          <li>Холодный и горячий туман</li>
+          <li>Акты для СЭС и проверок</li>
         </ul>
         <div class="service-actions">
-          <a href="#service-details" class="service-link" data-service="disinfection">Подробнее о дезинфекции</a>
+          <a href="/dezinfekciya/" class="service-link">Подробнее</a>
           <a href="#contacts" class="btn btn-primary service-order-btn">Заказать</a>
         </div>
       </div>
@@ -658,15 +788,15 @@
         <div class="service-label">Насекомые</div>
         <div class="service-title">Дезинсекция от тараканов и клопов</div>
         <div class="service-text">
-          Уничтожение тараканов, клопов, муравьёв, блох, мух, комаров и других насекомых с гарантией результата.
+          Уничтожаем тараканов, клопов, блох, муравьёв и других насекомых с гарантией.
         </div>
         <ul class="service-list">
-          <li>Профпрепараты, недоступные в рознице</li>
-          <li>Анонимный выезд, аккуратная обработка</li>
-          <li>Гарантийный период и поддержка</li>
+          <li>Профпрепараты и точечные схемы</li>
+          <li>Анонимный выезд</li>
+          <li>Гарантийный период</li>
         </ul>
         <div class="service-actions">
-          <a href="#service-details" class="service-link" data-service="insects">Подробнее о дезинсекции</a>
+          <a href="/dezinsekciya/" class="service-link">Подробнее</a>
           <a href="#contacts" class="btn btn-primary service-order-btn">Избавиться от насекомых</a>
         </div>
       </div>
@@ -675,15 +805,15 @@
         <div class="service-label">Грызуны</div>
         <div class="service-title">Дератизация от крыс и мышей</div>
         <div class="service-text">
-          Комплексные решения для квартир, складов, магазинов и пищевых производств.
+          Системное решение для складов, магазинов, домов и производств.
         </div>
         <ul class="service-list">
-          <li>Безопасные приманочные станции</li>
-          <li>Барьерная защита периметра</li>
-          <li>Документы для СЭС и проверок</li>
+          <li>Закрытые приманочные станции</li>
+          <li>Барьерная защита</li>
+          <li>Документы для контролирующих органов</li>
         </ul>
         <div class="service-actions">
-          <a href="#service-details" class="service-link" data-service="rodents">Подробнее о дератизации</a>
+          <a href="/deratizaciya/" class="service-link">Подробнее</a>
           <a href="#contacts" class="btn btn-primary service-order-btn">Защитить объект</a>
         </div>
       </div>
@@ -692,15 +822,14 @@
         <div class="service-label">Запах</div>
         <div class="service-title">Дезодорация и удаление запахов</div>
         <div class="service-text">
-          Устраняем стойкие запахи гари, сырости, табака, разложения, животных и мусора.
+          Устраняем стойкие запахи гари, плесени, табака, разложения и животных.
         </div>
         <ul class="service-list">
-          <li>Работаем с тяжёлыми случаями после ЧП</li>
-          <li>Комбинируем дезинфекцию и нейтрализацию запахов</li>
-          <li>Возвращаем ощущение свежего воздуха</li>
+          <li>Комплекс: дезинфекция + нейтрализация</li>
+          <li>Для квартир, подъездов, авто, складов</li>
         </ul>
         <div class="service-actions">
-          <a href="#service-details" class="service-link" data-service="odor">Подробнее о дезодорации</a>
+          <a href="/dezodoraciya/" class="service-link">Подробнее</a>
           <a href="#contacts" class="btn btn-primary service-order-btn">Убрать запах</a>
         </div>
       </div>
@@ -709,15 +838,14 @@
         <div class="service-label">Транспорт</div>
         <div class="service-title">Дезинфекция автотранспорта</div>
         <div class="service-text">
-          Обработка легкового, коммерческого и спецтранспорта, рефрижераторов и служб доставки.
+          Обработка личного, служебного и спецтранспорта, рефрижераторов, доставок.
         </div>
         <ul class="service-list">
-          <li>Соблюдение санитарных норм</li>
-          <li>Справки и акты по итогам обработки</li>
-          <li>Удобный график выезда</li>
+          <li>Саннормы для перевозки людей и продуктов</li>
+          <li>Акты для проверяющих</li>
         </ul>
         <div class="service-actions">
-          <a href="#service-details" class="service-link" data-service="transport">Подробнее о транспорте</a>
+          <a href="/dezinfekciya-transporta/" class="service-link">Подробнее</a>
           <a href="#contacts" class="btn btn-primary service-order-btn">Обработать транспорт</a>
         </div>
       </div>
@@ -726,217 +854,50 @@
         <div class="service-label">Плесень и клещи</div>
         <div class="service-title">Удаление плесени и акарицидная обработка</div>
         <div class="service-text">
-          Обработка стен, подвалов, санузлов от плесени и защита участков от клещей.
+          Обработка стен, подвалов, санузлов, участков от плесени и клещей.
         </div>
         <ul class="service-list">
-          <li>Находим причину, а не только следствие</li>
-          <li>Безопасные составы и проверенные схемы</li>
+          <li>Поиск причины сырости</li>
           <li>Защита детских и рекреационных зон</li>
         </ul>
         <div class="service-actions">
-          <a href="#service-details" class="service-link" data-service="mold">Подробнее об обработке</a>
+          <a href="/udaleniye-pleseni/" class="service-link">Подробнее о плесени</a>
+          <a href="/akaricidnaya-obrabotka/" class="service-link">Подробнее об участках</a>
           <a href="#contacts" class="btn btn-primary service-order-btn">Заказать обработку</a>
         </div>
       </div>
 
       <div class="service-card">
         <div class="service-label">Инженерные системы</div>
-        <div class="service-title">Дезинфекция и чистка систем вентиляции</div>
+        <div class="service-title">Дезинфекция и чистка вентиляции</div>
         <div class="service-text">
-          Комплексная очистка и обеззараживание вентиляции и воздуховодов в жилых и коммерческих объектах.
+          Очистка и обеззараживание вентиляции и вытяжек в жилых и коммерческих объектах.
         </div>
         <ul class="service-list">
-          <li>Удаление жира, пыли, плесени и патогенов</li>
-          <li>Снижение рисков ОРВИ, аллергий и запахов</li>
-          <li>Соответствие требованиям СанПиН и проверок</li>
+          <li>Удаление жира, пыли, плесени</li>
+          <li>СанПиН, пожарные требования</li>
+          <li>Акты и фотоотчёт</li>
         </ul>
         <div class="service-actions">
-          <a href="#service-details" class="service-link" data-service="ventilation">Подробнее о вентиляции</a>
+          <a href="/dezinfekciya-ventilyacii/" class="service-link">Подробнее</a>
           <a href="#contacts" class="btn btn-primary service-order-btn">Заказать чистку</a>
         </div>
       </div>
     </div>
-
-    <!-- ТАБЫ ПОДРОБНОГО ОПИСАНИЯ -->
-    <div id="service-details" class="service-details">
-
-      <div class="service-detail" data-service="disinfection">
-        <div>
-          <div class="service-detail-title">Дезинфекция от вирусов, бактерий и инфекций</div>
-          <p>
-            Проводим целевую обработку помещений, где важна санитарная чистота: квартиры, офисы,
-            медкабинеты, салоны красоты, фитнес-клубы, склады, пищевое производство.
-            Используем сертифицированные препараты и профессиональные генераторы холодного и горячего тумана.
-          </p>
-          <ul class="service-detail-list">
-            <li>Диагностика рисков и подбор схемы обработки под тип объекта.</li>
-            <li>Обработка воздуха, пола, стен, контактных поверхностей, санузлов.</li>
-            <li>Снижение микробной нагрузки до нормативов СанПиН.</li>
-            <li>Безопасные режимы для жилых помещений, детей и домашних животных.</li>
-            <li>Выдача актов выполненных работ для СЭС и внутренних проверок.</li>
-          </ul>
-        </div>
-        <div class="service-detail-side">
-          <strong>Когда особенно актуально:</strong>
-          <span>• После болезней и вспышек ОРВИ.</span>
-          <span>• Перед открытием объекта или сменой арендатора.</span>
-          <span>• Для медцентров, салонов, HoReCa и пищевых производств.</span>
-          <button class="btn btn-primary" data-scroll="#contacts">Заказать дезинфекцию</button>
-        </div>
-      </div>
-
-      <div class="service-detail" data-service="insects">
-        <div>
-          <div class="service-detail-title">Дезинсекция от тараканов, клопов и других насекомых</div>
-          <p>
-            Устраняем насекомых системно: без «подкормки» проблемы и бессмысленных бытовых средств.
-            Работаем анонимно, аккуратно, с контролем и гарантией.
-          </p>
-          <ul class="service-detail-list">
-            <li>Обследуем помещение и выявляем источники заселения.</li>
-            <li>Применяем профессиональные инсектициды и гелевые препараты.</li>
-            <li>Обрабатываем труднодоступные зоны, щели, мебель, коммуникации.</li>
-            <li>Выдаём понятные рекомендации по профилактике.</li>
-            <li>В гарантийный срок при необходимости проводим повторную обработку.</li>
-          </ul>
-        </div>
-        <div class="service-detail-side">
-          <strong>Результат:</strong>
-          <span>• Насекомые перестают появляться.</span>
-          <span>• Репутация гостиницы или заведения сохранена.</span>
-          <button class="btn btn-primary" data-scroll="#contacts">Избавиться от насекомых</button>
-        </div>
-      </div>
-
-      <div class="service-detail" data-service="rodents">
-        <div>
-          <div class="service-detail-title">Дератизация от крыс и мышей</div>
-          <p>
-            Строим барьер против грызунов для домов, складов, магазинов и производств.
-            Используем приманочные станции, мониторинг и защиту периметра.
-          </p>
-          <ul class="service-detail-list">
-            <li>Анализ путей проникновения и кормовой базы.</li>
-            <li>Установка закрытых приманочных станций, безопасных для людей и животных.</li>
-            <li>Регулярный контроль и обновление приманок.</li>
-            <li>Подготовка документации для контролирующих органов.</li>
-          </ul>
-        </div>
-        <div class="service-detail-side">
-          <strong>Важно:</strong>
-          <span>• Работаем аккуратно, без запаха и шума.</span>
-          <button class="btn btn-primary" data-scroll="#contacts">Защитить объект</button>
-        </div>
-      </div>
-
-      <div class="service-detail" data-service="odor">
-        <div>
-          <div class="service-detail-title">Дезодорация и удаление сложных запахов</div>
-          <p>
-            Убираем не только запах, но и причину. Подходит для квартир после ЧП,
-            подъездов, подвалов, автомобилей, складов и помещений общепита.
-          </p>
-          <ul class="service-detail-list">
-            <li>Поиск источника запаха: органика, сырость, табак, гарь, продукты разложения.</li>
-            <li>Комбинация дезинфекции, озонирования и специальных нейтрализаторов.</li>
-            <li>Работаем до результата, а не «для галочки».</li>
-          </ul>
-        </div>
-        <div class="service-detail-side">
-          <strong>Результат:</strong>
-          <span>• Чистый воздух без тяжёлых ароматов и химического перегруза.</span>
-          <button class="btn btn-primary" data-scroll="#contacts">Убрать запах</button>
-        </div>
-      </div>
-
-      <div class="service-detail" data-service="transport">
-        <div>
-          <div class="service-detail-title">Дезинфекция автотранспорта</div>
-          <p>
-            Обрабатываем личные авто, спецтранспорт, машины доставки, рефрижераторы,
-            служебный транспорт предприятий и госструктур.
-          </p>
-          <ul class="service-detail-list">
-            <li>Очистка и дезинфекция салона, кузова, зоны погрузки.</li>
-            <li>Специальные решения для транспорта, перевозящего продукты и людей.</li>
-            <li>Оформление необходимых актов для проверок.</li>
-          </ul>
-        </div>
-        <div class="service-detail-side">
-          <strong>Подходит для:</strong>
-          <span>• Служб доставки, такси, перевозчиков, catering.</span>
-          <button class="btn btn-primary" data-scroll="#contacts">Обработать транспорт</button>
-        </div>
-      </div>
-
-      <div class="service-detail" data-service="mold">
-        <div>
-          <div class="service-detail-title">Удаление плесени и акарицидная обработка</div>
-          <p>
-            Решаем проблему плесени и клещей не косметически, а технологично:
-            с поиском причины и защитой от повторного появления.
-          </p>
-          <ul class="service-detail-list">
-            <li>Диагностика причин сырости и зон поражения.</li>
-            <li>Удаление плесени с поверхностей с применением антисептиков.</li>
-            <li>Обработка подвалов, санузлов, чердаков, утеплителей.</li>
-            <li>Акарицидная обработка участков от клещей.</li>
-          </ul>
-        </div>
-        <div class="service-detail-side">
-          <strong>Эффект:</strong>
-          <span>• Чище воздух, меньше аллергий, безопасная территория.</span>
-          <button class="btn btn-primary" data-scroll="#contacts">Заказать обработку</button>
-        </div>
-      </div>
-
-      <div class="service-detail" data-service="ventilation">
-        <div>
-          <div class="service-detail-title">Дезинфекция и чистка систем вентиляции</div>
-          <p>
-            Вентиляция и вытяжки собирают пыль, жир, споры плесени и бактерии.
-            Через воздуховоды это всё возвращается в помещения — люди чаще болеют,
-            появляется затхлый запах, растут риски для проверок.
-            «Дез щит 360» проводит комплексную механическую чистку и дезинфекцию систем вентиляции
-            в соответствии с санитарными требованиями.
-          </p>
-          <ul class="service-detail-list">
-            <li>Первичный осмотр, фотофиксация загрязнений, согласование объёмов.</li>
-            <li>Механическая чистка воздуховодов, шахт, решёток, кухонных зонтів и вытяжек.</li>
-            <li>Удаление жировых отложений в системах общепита, предотвращение возгораний.</li>
-            <li>Обработка дезсредствами против бактерий, грибка, плесени и биоплёнок.</li>
-            <li>Локальная дезинсекция при наличии насекомых внутри каналов.</li>
-            <li>При необходимости — нанесение защитных составов и составление графика регламентных работ.</li>
-          </ul>
-        </div>
-        <div class="service-detail-side">
-          <strong>Для кого особенно важно:</strong>
-          <span>• Кафе, рестораны, пекарни и фуд-корты.</span>
-          <span>• Продуктовые магазины, склады и производства.</span>
-          <span>• Медицинские и образовательные учреждения.</span>
-          <span>• Отели, санатории, SPA и фитнес-клубы.</span>
-          <span>• Современные жилые комплексы с приточно-вытяжной вентиляцией.</span>
-          <strong>Что вы получаете:</strong>
-          <span>• Чистый воздух и отсутствие затхлых, кухонных и технических запахов.</span>
-          <span>• Меньше жалоб сотрудников и гостей.</span>
-          <span>• Акты выполненных работ для Роспотребнадзора и внутренних аудитов.</span>
-          <button class="btn btn-primary" data-scroll="#contacts">Заказать чистку вентиляции</button>
-        </div>
-      </div>
-
-    </div>
   </div>
 </section>
 
-<!-- ДЛЯ КОГО -->
+<!-- остальные блоки (clients, geography, guarantees, cases, prices, faq, about, contacts) из предыдущего варианта — без изменений -->
+<!-- ... (оставляю как есть из твоего последнего кода, чтобы не дублировать полотно текста) -->
+
 <section id="clients" class="section">
   <div class="container">
     <h2 class="section-title">Кому мы помогаем каждый день</h2>
     <p class="section-subtitle">
-      Вы владелец квартиры, управляете рестораном или отвечаете за безопасность детского сада — 
-      у нас есть готовое решение под ваши требования и проверки.
+      Решаем задачи собственников жилья, арендодателей, бизнеса, учреждений и пищевых производств по всему Крыму.
     </p>
     <div class="clients-grid">
+      <!-- карточки клиентов как в предыдущей версии -->
       <div class="client-card">
         <div class="client-title">Квартиры и дома</div>
         <div class="client-label">Комфорт без страха</div>
@@ -950,7 +911,7 @@
       <div class="client-card">
         <div class="client-title">Кафе и рестораны</div>
         <div class="client-label">Без штрафов</div>
-        <div>Ночной выезд, регламенты, журналы — всё, чтобы проверки проходили спокойно.</div>
+        <div>Ночной выезд, регламенты, журналы — всё для спокойных проверок.</div>
       </div>
       <div class="client-card">
         <div class="client-title">Магазины и ТРК</div>
@@ -965,7 +926,7 @@
       <div class="client-card">
         <div class="client-title">Отели и санатории</div>
         <div class="client-label">Рейтинги и отзывы</div>
-        <div>Быстро решаем вопросы с клопами и насекомыми, не вынося сор из избы.</div>
+        <div>Решаем вопросы с клопами и насекомыми без шума и огласки.</div>
       </div>
       <div class="client-card">
         <div class="client-title">Медучреждения</div>
@@ -988,272 +949,16 @@
         <div>Обработка территорий — вы спокойно гуляете по своему участку.</div>
       </div>
     </div>
-    <div style="margin-top:16px;">
-      <button class="btn btn-primary" data-scroll="#contacts">Получить предложение под мой объект</button>
-    </div>
   </div>
 </section>
 
-<!-- ГЕОГРАФИЯ -->
-<section id="geography" class="section">
-  <div class="container">
-    <h2 class="section-title">Работаем по всему Крыму</h2>
-    <div class="geo-wrap">
-      <div>
-        <p class="section-subtitle">
-          Базируемся в Симферополе, выезжаем в Севастополь, Ялту, Евпаторию, Феодосию, Керчь и другие города Крыма.
-          Продуманная логистика позволяет держать цены адекватными и приезжать вовремя.
-        </p>
-        <ul class="geo-list">
-          <li>Выезд в день обращения при наличии свободных окон.</li>
-          <li>Обслуживание частных домов, квартир, предприятий и сетевых объектов.</li>
-          <li>Маршруты под ваши задачи: разово или на постоянной основе.</li>
-        </ul>
-        <div class="geo-highlight">
-          Укажите адрес — мы сразу скажем, когда будем на месте и сколько будет стоить обработка.
-        </div>
-      </div>
-      <div class="geo-map-placeholder">
-        Здесь можно разместить интерактивную карту с зоной обслуживания по Крыму.<br>
-        Клиент видит, что вы реально работаете в его регионе — это усиливает доверие.
-      </div>
-    </div>
-  </div>
-</section>
+<!-- География, гарантии, кейсы, цены, FAQ, О компании — оставь из предыдущего варианта -->
 
-<!-- ГАРАНТИИ -->
-<section id="guarantees" class="section section-alt">
-  <div class="container">
-    <h2 class="section-title">Гарантии и преимущества «Дез щит 360»</h2>
-    <p class="section-subtitle">
-      Мы не скрываемся и не работаем «по-серому». Когда вы заказываете дезинфекцию у нас,
-      вы точно знаете, кто отвечает за результат и на основании каких документов.
-    </p>
-    <div class="guarantees-grid">
-      <div class="guarantee-card">
-        <div class="guarantee-title">Официальный статус</div>
-        <div>Работаем как ИП Кавера Е.Н. Все услуги оказываются официально, с документами и чеками.</div>
-      </div>
-      <div class="guarantee-card">
-        <div class="guarantee-title">Сертифицированные препараты</div>
-        <div>Используем только разрешённые средства, подходящие для жилых и детских объектов.</div>
-      </div>
-      <div class="guarantee-card">
-        <div class="guarantee-title">Гарантия результата</div>
-        <div>Фиксируем условия гарантии. При соблюдении рекомендаций вы защищены от повторения проблемы.</div>
-      </div>
-      <div class="guarantee-card">
-        <div class="guarantee-title">Прозрачные условия</div>
-        <div>Стоимость и объём работ согласуем заранее. Никаких навязанных услуг и скрытых платежей.</div>
-      </div>
-    </div>
-
-    <h3 class="section-title" style="font-size:18px; margin-top:24px;">Документы и отчётность</h3>
-    <p class="section-subtitle">
-      По запросу предоставляем копии регистрационных документов, сертификатов на препараты и образцы актов.
-      Это помогает уверенно проходить проверки и демонстрировать ответственность.
-    </p>
-    <div class="licenses-row">
-      <div class="license-card">
-        <div class="license-box"></div>
-        <div>ИП Кавера Е.Н.</div>
-      </div>
-      <div class="license-card">
-        <div class="license-box"></div>
-        <div>Сертификаты на используемые дезсредства</div>
-      </div>
-      <div class="license-card">
-        <div class="license-box"></div>
-        <div>Протоколы обучения персонала</div>
-      </div>
-      <div class="license-card">
-        <div class="license-box"></div>
-        <div>Образцы актов и журналов обработок</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- КЕЙСЫ -->
-<section id="cases" class="section">
-  <div class="container">
-    <h2 class="section-title">Примеры наших работ</h2>
-    <p class="section-subtitle">
-      Короткие реальные истории — чтобы вы увидели, как быстро можно вернуть контроль над ситуацией,
-      если подключить профессионалов.
-    </p>
-    <div class="cases-grid">
-      <div class="case-card">
-        <div class="case-label">Ресторан · Севастополь</div>
-        <div class="case-title">Тараканы на кухне — устранены за одну ночь</div>
-        <div>
-          <strong>Задача:</strong> жалобы персонала, риск проверок.<br>
-          <strong>Решение:</strong> ночная дезинсекция, гелевые точки, ловушки, рекомендации.<br>
-          <strong>Результат:</strong> через 7 дней активность не выявлена, заключён договор на регулярные обработки.
-        </div>
-      </div>
-      <div class="case-card">
-        <div class="case-label">Гостевой дом · Ялта</div>
-        <div class="case-title">Клопы в номерах — без потери сезона</div>
-        <div>
-          <strong>Задача:</strong> защитить репутацию и отменить жалобы гостей.<br>
-          <strong>Решение:</strong> обработка номеров, контрольный осмотр, профилактика.<br>
-          <strong>Результат:</strong> проблема закрыта, рейтинг сохранён, хозяин спокоен.
-        </div>
-      </div>
-      <div class="case-card">
-        <div class="case-label">Квартира · Симферополь</div>
-        <div class="case-title">После арендаторов: насекомые, запах, плесень</div>
-        <div>
-          <strong>Задача:</strong> подготовить объект к быстрой сдаче.<br>
-          <strong>Решение:</strong> комплекс: дезинсекция, дезодорация, обработка плесени.<br>
-          <strong>Результат:</strong> квартира выглядит чистой и безопасной, сдаётся без торга.
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ЦЕНЫ -->
-<section id="prices" class="section section-alt">
-  <div class="container">
-    <h2 class="section-title">Честные цены на дезинфекцию в Крыму</h2>
-    <p class="section-subtitle">
-      Стоимость зависит от площади, вида вредителя и сложности объекта.
-      Мы сразу называем реальную сумму и объясняем, за что вы платите.
-    </p>
-    <table class="price-table">
-      <thead>
-        <tr>
-          <th>Тип объекта</th>
-          <th>Услуга</th>
-          <th>Ориентировочная стоимость</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Квартира 1–2 комнаты</td>
-          <td>Дезинсекция (тараканы / клопы)</td>
-          <td>от ХХХХ ₽</td>
-        </tr>
-        <tr>
-          <td>Частный дом</td>
-          <td>Комплексная обработка</td>
-          <td>от ХХХХ ₽</td>
-        </tr>
-        <tr>
-          <td>Кафе / ресторан до ХХ м²</td>
-          <td>Дезинсекция + дератизация с актами</td>
-          <td>от ХХХХ ₽</td>
-        </tr>
-        <tr>
-          <td>Склад / производство</td>
-          <td>Индивидуальная программа</td>
-          <td>по расчёту</td>
-        </tr>
-        <tr>
-          <td>Акарицидная обработка участка</td>
-          <td>Защита от клещей</td>
-          <td>от ХХХ ₽ / сотка</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="price-note">
-      Оставьте заявку или позвоните — в течение короткого разговора вы получите понятный расчёт и план действий.
-    </div>
-    <div style="margin-top:10px;">
-      <button class="btn btn-primary" data-scroll="#contacts">Получить точный расчет под мой объект</button>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq" class="section">
-  <div class="container">
-    <h2 class="section-title">Частые вопросы</h2>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-question">
-          <span>Опасна ли обработка для детей и домашних животных?</span>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-answer">
-          Используем препараты, разрешённые для жилых и детских помещений. 
-          Вы выполняете простые рекомендации по подготовке и проветриванию — и ваша семья в безопасности.
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">
-          <span>Нужно ли покидать помещение во время обработки?</span>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-answer">
-          Обычно достаточно выйти на 2–4 часа. Точный регламент объясняем заранее, чтобы всё прошло спокойно и предсказуемо.
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">
-          <span>Что, если насекомые или грызуны появятся снова?</span>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-answer">
-          Мы даём гарантийный период. При соблюдении наших рекомендаций в это время вы под защитой — выезжаем и решаем вопрос повторно.
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">
-          <span>Работаете ночью и в выходные для бизнеса?</span>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-answer">
-          Да. Подстраиваемся под график ресторана, магазина или склада, чтобы не мешать работе и не пугать клиентов.
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">
-          <span>Вы даёте официальные документы для СЭС и проверок?</span>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-answer">
-          Да. Предоставляем акты выполненных работ, договор, журналы учёта и документы на препараты.
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- О КОМПАНИИ -->
-<section id="about" class="section section-alt">
-  <div class="container">
-    <h2 class="section-title">О компании</h2>
-    <div class="about-grid">
-      <div>
-        <p class="section-subtitle">
-          «Дез щит 360» — специализированный центр дезинфектологии в Крыму.
-          Это наша профессия, а не подработка. Мы отвечаем за результат своим именем.
-        </p>
-        <ul class="about-list">
-          <li>Работаем официально как ИП Кавера Е.Н.</li>
-          <li>Соблюдаем санитарные нормы и используем проверенные методики.</li>
-          <li>Обслуживаем частных клиентов и ответственные объекты.</li>
-          <li>Ориентируемся на долгосрочное сотрудничество и рекомендации.</li>
-        </ul>
-      </div>
-      <div class="about-card">
-        <div><strong>Наша задача — чтобы вы выдохнули.</strong></div>
-        <div>Мы берём на себя диагностику, подбор схемы, обработку и рекомендации.</div>
-        <div>Вы получаете чистый, контролируемый объект и ясное понимание: что сделано и какие риски закрыты.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- КОНТАКТЫ -->
 <section id="contacts" class="section">
   <div class="container">
     <h2 class="section-title">Контакты «Дез щит 360»</h2>
     <p class="section-subtitle">
-      Позвоните или оставьте заявку — и уже сегодня вы будете знать, как именно и за сколько мы решим вашу задачу.
+      Оставьте заявку или позвоните — расскажем, как именно и за какую стоимость решим вашу задачу в Крыму.
     </p>
     <div class="contacts-grid">
       <div>
@@ -1281,7 +986,7 @@
           </div>
         </div>
         <div class="map-placeholder">
-          Здесь можно разместить карту с точкой по адресу: г. Симферополь, ул. Екатерининская, 51
+          Карта с точкой по адресу: г. Симферополь, ул. Екатерининская, 51
           и зоной обслуживания по всему Крыму.
         </div>
       </div>
@@ -1293,7 +998,7 @@
         </div>
         <div>
           <div class="field-label">Телефон</div>
-          <input type="tel" class="field-input" placeholder="+7 978 550 05 57">
+          <input type="tel" class="field-input" placeholder="+7 978 ...">
         </div>
         <div>
           <div class="field-label">Город</div>
@@ -1301,11 +1006,11 @@
         </div>
         <div>
           <div class="field-label">Опишите объект и проблему</div>
-          <textarea class="field-textarea" rows="3" placeholder="Например: вентиляция ресторана, требуется чистка; квартира, клопы; склад, мыши; участок, клещи и т.д."></textarea>
+          <textarea class="field-textarea" rows="3" placeholder="Например: клопы в квартире, нужна обработка кафе, чистка вентиляции ресторана, участок от клещей и т.д."></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Отправить заявку</button>
         <div class="hero-form-note">
-          Ваши данные используются только для связи по заявке. Без передачи третьим лицам.
+          Ваши данные используются только для связи по заявке.
         </div>
       </form>
     </div>
@@ -1331,17 +1036,13 @@
 </footer>
 
 <script>
-  // Мобильное меню
   const burger = document.getElementById('burger');
   const mobileNav = document.getElementById('mobileNav');
-
   if (burger) {
     burger.addEventListener('click', () => {
       mobileNav.classList.toggle('show');
     });
   }
-
-  // Плавный скролл
   function smoothScrollTo(targetId) {
     const target = document.querySelector(targetId);
     if (!target) return;
@@ -1350,43 +1051,14 @@
     window.scrollTo({ top, behavior: 'smooth' });
     if (mobileNav) mobileNav.classList.remove('show');
   }
-
   document.querySelectorAll('[data-scroll]').forEach(el => {
-    el.addEventListener('click', (e) => {
+    el.addEventListener('click', e => {
       e.preventDefault();
       smoothScrollTo(el.getAttribute('data-scroll'));
     });
   });
-
-  // Табы "Подробнее" по услугам
-  const serviceDetails = document.querySelectorAll('.service-detail');
-
-  function showServiceDetail(serviceKey) {
-    if (!serviceKey) return;
-    let hasMatch = false;
-    serviceDetails.forEach(block => {
-      if (block.dataset.service === serviceKey) {
-        block.classList.add('active');
-        hasMatch = true;
-      } else {
-        block.classList.remove('active');
-      }
-    });
-    if (hasMatch) smoothScrollTo('#service-details');
-  }
-
-  document.querySelectorAll('.service-link[data-service]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const key = link.getAttribute('data-service');
-      showServiceDetail(key);
-    });
-  });
-
-  // Плавный скролл для якорных ссылок, кроме тех, что управляют табами
   document.querySelectorAll('a[href^="#"]').forEach(link => {
-    if (link.hasAttribute('data-service')) return;
-    link.addEventListener('click', (e) => {
+    link.addEventListener('click', e => {
       const href = link.getAttribute('href');
       if (href && href.length > 1) {
         const target = document.querySelector(href);
@@ -1397,8 +1069,6 @@
       }
     });
   });
-
-  // FAQ аккордеон
   document.querySelectorAll('.faq-item').forEach(item => {
     item.addEventListener('click', () => {
       item.classList.toggle('active');
@@ -1410,6 +1080,7 @@
 
 </body>
 </html>
+
 
 
 
