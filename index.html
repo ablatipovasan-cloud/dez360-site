@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Дез щит 360 — Дезинфекция, дезинсекция, дератизация в Симферополе, Севастополе и по всему Крыму</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Центр дезинфектологии «Дез щит 360» — профессиональная дезинфекция, дезинсекция, дератизация, акарицидная обработка, удаление запахов и плесени в Симферополе, Севастополе и по всему Крыму. Лицензия, гарантии, быстрый выезд, официальные документы." />
+  <meta name="description" content="Центр дезинфектологии «Дез щит 360» — профессиональная дезинфекция, дезинсекция, дератизация, акарицидная обработка, чистка вентиляции, удаление запахов и плесени в Симферополе, Севастополе и по всему Крыму. Лицензия, гарантии, быстрый выезд, официальные документы." />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -131,6 +131,10 @@
       font-weight: 500;
       transition: all 0.2s ease;
       white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
     }
 
     .btn-primary { background: var(--primary); color: #ffffff; }
@@ -331,26 +335,84 @@
 
     /* SERVICES */
 
-    .services-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-
-    .service-card {
-      background: #ffffff; border-radius: var(--radius); padding: 12px 10px 10px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.04); display: flex; flex-direction: column; gap: 6px; font-size: 12px;
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
     }
 
-    .service-label { display: inline-flex; padding: 2px 7px; border-radius: 999px; background: var(--bg-soft); font-size: 9px; color: var(--primary); margin-bottom: 1px; }
-    .service-title { font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 14px; color: var(--primary-dark); }
+    .service-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 12px 10px 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    .service-label {
+      display: inline-flex;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      font-size: 9px;
+      color: var(--primary);
+      margin-bottom: 1px;
+    }
+
+    .service-title {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--primary-dark);
+    }
+
     .service-text { font-size: 12px; color: var(--text-secondary); }
     .service-list { font-size: 11px; color: var(--text-main); padding-left: 15px; }
 
-    .service-actions { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 11px; }
-    .service-link { font-size: 11px; color: var(--primary); cursor: pointer; }
+    .service-actions {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .service-link {
+      font-size: 11px;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
     .service-link:hover { text-decoration: underline; }
+
+    .service-order-btn {
+      padding: 5px 9px;
+      font-size: 10px;
+    }
 
     /* CLIENTS */
 
-    .clients-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; font-size: 11px; }
-    .client-card { background: #ffffff; border-radius: 10px; padding: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.03); display: flex; flex-direction: column; gap: 3px; }
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      font-size: 11px;
+    }
+
+    .client-card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 8px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
     .client-title { font-weight: 600; font-size: 11px; color: var(--primary-dark); }
     .client-label { font-size: 9px; color: var(--primary); }
 
@@ -488,7 +550,7 @@
         <a href="tel:+79785500557">+7 978 550 05 57</a>
         <a href="tel:+79785732708">+7 978 573 27 08</a>
       </div>
-      <button class="btn btn-alert">Срочный выезд</button>
+      <button class="btn btn-alert" data-scroll="#contacts">Срочный выезд</button>
     </div>
 
     <div class="burger" id="burger">
@@ -506,7 +568,7 @@
     <div class="mobile-nav-cta">
       <a href="tel:+79785500557" class="btn btn-primary">Позвонить: +7 978 550 05 57</a>
       <a href="tel:+79785732708" class="btn btn-primary">Позвонить: +7 978 573 27 08</a>
-      <button class="btn btn-alert">Срочный выезд</button>
+      <button class="btn btn-alert" data-scroll="#contacts">Срочный выезд</button>
     </div>
   </div>
 </header>
@@ -528,7 +590,7 @@
         <div class="hero-badge">Документы для СЭС и проверок</div>
       </div>
       <div class="hero-actions">
-        <button class="btn btn-primary">Получить расчет за 3 минуты</button>
+        <button class="btn btn-primary" data-scroll="#contacts">Получить расчет за 3 минуты</button>
         <span style="font-size:11px; color:var(--text-secondary);">
           Оставьте номер — мы спокойно проведём вас от тревоги к понятному решению под ваш объект.
         </span>
@@ -566,8 +628,7 @@
         <div class="service-label">Санитарная безопасность</div>
         <div class="service-title">Дезинфекция от вирусов и бактерий</div>
         <div class="service-text">
-          Профессиональная дезинфекция помещений в Симферополе, Севастополе и по всему Крыму:
-          квартиры, офисы, медкабинеты, салоны, производственные зоны.
+          Профессиональная дезинфекция квартир, офисов, медкабинетов, салонов и производственных зон.
         </div>
         <ul class="service-list">
           <li>Снижение микробной нагрузки до безопасных норм</li>
@@ -575,8 +636,8 @@
           <li>Официальные акты для проверяющих органов</li>
         </ul>
         <div class="service-actions">
-          <span class="service-link">Подробнее о дезинфекции</span>
-          <button class="btn btn-primary" style="padding:5px 9px; font-size:10px;">Заказать дезинфекцию</button>
+          <a href="#service-disinfection" class="service-link">Подробнее о дезинфекции</a>
+          <a href="#contacts" class="btn btn-primary service-order-btn">Заказать</a>
         </div>
       </div>
 
@@ -592,8 +653,8 @@
           <li>Гарантийный период и поддержка</li>
         </ul>
         <div class="service-actions">
-          <span class="service-link">Подробнее о дезинсекции</span>
-          <button class="btn btn-primary" style="padding:5px 9px; font-size:10px;">Избавиться от насекомых</button>
+          <a href="#service-insects" class="service-link">Подробнее о дезинсекции</a>
+          <a href="#contacts" class="btn btn-primary service-order-btn">Избавиться от насекомых</a>
         </div>
       </div>
 
@@ -606,11 +667,11 @@
         <ul class="service-list">
           <li>Безопасные приманочные станции</li>
           <li>Барьерная защита периметра</li>
-          <li>Отчётные документы для СЭС и проверок</li>
+          <li>Документы для СЭС и проверок</li>
         </ul>
         <div class="service-actions">
-          <span class="service-link">Подробнее о дератизации</span>
-          <button class="btn btn-primary" style="padding:5px 9px; font-size:10px;">Защитить объект</button>
+          <a href="#service-rodents" class="service-link">Подробнее о дератизации</a>
+          <a href="#contacts" class="btn btn-primary service-order-btn">Защитить объект</a>
         </div>
       </div>
 
@@ -626,8 +687,8 @@
           <li>Возвращаем ощущение свежего воздуха</li>
         </ul>
         <div class="service-actions">
-          <span class="service-link">Подробнее о дезодорации</span>
-          <button class="btn btn-primary" style="padding:5px 9px; font-size:10px;">Убрать запах</button>
+          <a href="#service-odor" class="service-link">Подробнее о дезодорации</a>
+          <a href="#contacts" class="btn btn-primary service-order-btn">Убрать запах</a>
         </div>
       </div>
 
@@ -643,8 +704,8 @@
           <li>Удобный график выезда</li>
         </ul>
         <div class="service-actions">
-          <span class="service-link">Подробнее о транспорте</span>
-          <button class="btn btn-primary" style="padding:5px 9px; font-size:10px;">Обработать транспорт</button>
+          <a href="#service-transport" class="service-link">Подробнее о транспорте</a>
+          <a href="#contacts" class="btn btn-primary service-order-btn">Обработать транспорт</a>
         </div>
       </div>
 
@@ -652,7 +713,7 @@
         <div class="service-label">Плесень и клещи</div>
         <div class="service-title">Удаление плесени и акарицидная обработка</div>
         <div class="service-text">
-          Лечение стен, подвалов, санузлов от плесени и защита участков от клещей.
+          Обработка стен, подвалов, санузлов от плесени и защита участков от клещей.
         </div>
         <ul class="service-list">
           <li>Находим причину, а не только следствие</li>
@@ -660,8 +721,81 @@
           <li>Защита детских и рекреационных зон</li>
         </ul>
         <div class="service-actions">
-          <span class="service-link">Подробнее об обработке</span>
-          <button class="btn btn-primary" style="padding:5px 9px; font-size:10px;">Заказать обработку</button>
+          <a href="#service-mold" class="service-link">Подробнее об обработке</a>
+          <a href="#contacts" class="btn btn-primary service-order-btn">Заказать обработку</a>
+        </div>
+      </div>
+
+      <!-- НОВЫЙ СЕРВИС: ВЕНТИЛЯЦИЯ -->
+      <div class="service-card">
+        <div class="service-label">Инженерные системы</div>
+        <div class="service-title">Дезинфекция и чистка систем вентиляции</div>
+        <div class="service-text">
+          Профессиональная очистка и обеззараживание вентканалов, воздуховодов и климатических систем
+          в жилых и коммерческих помещениях.
+        </div>
+        <ul class="service-list">
+          <li>Удаление пыли, жира, плесени и патогенной микрофлоры</li>
+          <li>Снижение рисков ОРВИ, аллергий и запахов</li>
+          <li>Соответствие СанПиН и требованиям проверяющих органов</li>
+        </ul>
+        <div class="service-actions">
+          <a href="#service-ventilation" class="service-link">Подробнее о чистке вентиляции</a>
+          <a href="#contacts" class="btn btn-primary service-order-btn">Заказать чистку</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ДЕТАЛИ УСЛУГ (якоря для "Подробнее") + детальный блок вентиляции -->
+<section id="service-ventilation" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Дезинфекция и чистка систем вентиляции</h2>
+    <p class="section-subtitle">
+      Грязная вентиляция — скрытый источник пыли, спор плесени, бактерий и неприятных запахов.
+      Для кафе, производств, медучреждений и отелей это ещё и прямой риск штрафов и претензий.
+      «Дез щит 360» проводит комплексную механическую и химическую обработку вентиляционных систем
+      по требованиям санитарных норм.
+    </p>
+
+    <div class="about-grid" style="gap:20px;">
+      <div>
+        <h3 class="section-title" id="service-disinfection" style="font-size:18px; margin-bottom:8px;">Что входит в работу</h3>
+        <ul class="about-list" style="margin-bottom:14px;">
+          <li>Диагностика состояния каналов и оборудования с фотофиксацией загрязнений.</li>
+          <li>Механическая чистка воздуховодов, решёток, вентканалов, вытяжек, кухонных зонтів.</li>
+          <li>Обезжиривание и удаление жировых отложений на участках общественного питания.</li>
+          <li>Обработка дезинфицирующими средствами против бактерий, грибка и плесени.</li>
+          <li>Точечная дезинсекция при наличии насекомых в шахтах и вытяжках.</li>
+          <li>При необходимости — обработка внутренних поверхностей антикоррозийными и защитными составами.</li>
+        </ul>
+
+        <h3 class="section-title" style="font-size:18px; margin-bottom:8px;">Для каких объектов</h3>
+        <ul class="about-list">
+          <li id="service-insects">Кафе, рестораны, кухни общепита, фуд-корты.</li>
+          <li id="service-rodents">Продуктовые магазины, кулинарии, пекарни.</li>
+          <li id="service-transport">Склады, логистические центры, производства.</li>
+          <li id="service-mold">Медицинские и образовательные учреждения.</li>
+          <li>Отели, санатории, SPA, фитнес-центры.</li>
+          <li>Жилые дома, ЖК, частные коттеджи с приточно-вытяжной вентиляцией.</li>
+        </ul>
+      </div>
+
+      <div class="about-card">
+        <div><strong>Почему вентиляцию важно чистить регулярно:</strong></div>
+        <div id="service-odor">
+          • Снижается риск распространения инфекций и аллергенов по всему зданию.<br>
+          • Уходит запах кухни, сырости, табака, который «гуляет» по этажам.<br>
+          • Оборудование работает тише и дольше, без перегрузок из-за засоров.<br>
+          • При проверке Роспотребнадзора и других служб вы показываете акты выполненных работ.
+        </div>
+        <div style="margin-top:6px;">
+          По итогам чистки и дезинфекции систем вентиляции выдаём акт,
+          при необходимости — график регламентных обработок.
+        </div>
+        <div style="margin-top:10px;">
+          <button class="btn btn-primary" data-scroll="#contacts">Заказать дезинфекцию вентиляции</button>
         </div>
       </div>
     </div>
@@ -669,7 +803,7 @@
 </section>
 
 <!-- ДЛЯ КОГО -->
-<section id="clients" class="section section-alt">
+<section id="clients" class="section">
   <div class="container">
     <h2 class="section-title">Кому мы помогаем каждый день</h2>
     <p class="section-subtitle">
@@ -729,7 +863,7 @@
       </div>
     </div>
     <div style="margin-top:16px;">
-      <button class="btn btn-primary">Получить предложение под мой объект</button>
+      <button class="btn btn-primary" data-scroll="#contacts">Получить предложение под мой объект</button>
     </div>
   </div>
 </section>
@@ -776,7 +910,7 @@
       </div>
       <div class="guarantee-card">
         <div class="guarantee-title">Сертифицированные препараты</div>
-        <div>Используем только разрешённые в РФ средства, подходящие для жилых и детских объектов.</div>
+        <div>Используем только разрешённые средства, подходящие для жилых и детских объектов.</div>
       </div>
       <div class="guarantee-card">
         <div class="guarantee-title">Гарантия результата</div>
@@ -902,7 +1036,7 @@
       Оставьте заявку или позвоните — в течение короткого разговора вы получите понятный расчёт и план действий.
     </div>
     <div style="margin-top:10px;">
-      <button class="btn btn-primary">Получить точный расчет под мой объект</button>
+      <button class="btn btn-primary" data-scroll="#contacts">Получить точный расчет под мой объект</button>
     </div>
   </div>
 </section>
@@ -1041,7 +1175,7 @@
         </div>
         <div>
           <div class="field-label">Опишите объект и проблему</div>
-          <textarea class="field-textarea" rows="3" placeholder="Например: квартира, клопы; ресторан, тараканы; склад, мыши; участок, клещи и т.д."></textarea>
+          <textarea class="field-textarea" rows="3" placeholder="Например: вентиляция ресторана, требуется чистка; квартира, клопы; склад, мыши; участок, клещи и т.д."></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Отправить заявку</button>
         <div class="hero-form-note">
@@ -1081,9 +1215,33 @@
     });
   }
 
-  document.querySelectorAll('#mobileNav a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileNav.classList.remove('show');
+  // Smooth scroll для всех ссылок/кнопок с data-scroll или href="#..."
+  function smoothScrollTo(targetId) {
+    const target = document.querySelector(targetId);
+    if (!target) return;
+    const offset = 80;
+    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+    if (mobileNav) mobileNav.classList.remove('show');
+  }
+
+  document.querySelectorAll('[data-scroll]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      smoothScrollTo(el.getAttribute('data-scroll'));
+    });
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href.length > 1) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          smoothScrollTo(href);
+        }
+      }
     });
   });
 
@@ -1099,6 +1257,8 @@
 
 </body>
 </html>
+
+
 
 
 
