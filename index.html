@@ -15,6 +15,7 @@
       --text-main: #1F2933;
       --text-secondary: #6B7B8D;
       --radius: 14px;
+      --shadow-soft: 0 10px 28px rgba(0,0,0,0.06);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,6 +24,7 @@
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text-main);
       background: #ffffff;
+      line-height: 1.4;
     }
 
     a { text-decoration: none; color: inherit; }
@@ -140,6 +142,34 @@
       transform: translateY(-1px);
     }
 
+    .section {
+      padding: 50px 16px;
+    }
+
+    .section-alt {
+      background: var(--bg-soft);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Manrope', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      max-width: 640px;
+    }
+
     /* HERO */
 
     .hero {
@@ -209,7 +239,7 @@
       background: #ffffff;
       padding: 18px 18px 16px;
       border-radius: var(--radius);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+      box-shadow: var(--shadow-soft);
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -229,7 +259,7 @@
       margin-bottom: 2px;
     }
 
-    .field-input, .field-select {
+    .field-input, .field-select, .field-textarea {
       width: 100%;
       padding: 8px 10px;
       border-radius: 8px;
@@ -237,9 +267,10 @@
       font-size: 13px;
       outline: none;
       transition: all 0.15s ease;
+      resize: vertical;
     }
 
-    .field-input:focus, .field-select:focus {
+    .field-input:focus, .field-select:focus, .field-textarea:focus {
       border-color: var(--primary);
       box-shadow: 0 0 0 2px rgba(0,122,140,0.12);
     }
@@ -255,20 +286,409 @@
       margin-top: 2px;
     }
 
-    @media (max-width: 768px) {
-      .header-inner {
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-      nav {
-        display: none; /* упрощаем, дальше можно сделать бургер */
-      }
-      .hero-inner {
+    /* SERVICES */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 16px 14px 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .service-label {
+      display: inline-flex;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      font-size: 10px;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+
+    .service-title {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--primary-dark);
+    }
+
+    .service-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .service-list {
+      font-size: 12px;
+      color: var(--text-main);
+      padding-left: 16px;
+    }
+
+    .service-actions {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .service-link {
+      font-size: 12px;
+      color: var(--primary);
+    }
+
+    /* CLIENTS */
+
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      font-size: 12px;
+    }
+
+    .client-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 10px 9px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .client-title {
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--primary-dark);
+    }
+
+    .client-label {
+      font-size: 10px;
+      color: var(--primary);
+    }
+
+    /* GEOGRAPHY */
+
+    .geo-wrap {
+      display: grid;
+      grid-template-columns: minmax(0,1.6fr) minmax(260px,1.4fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .geo-list {
+      font-size: 13px;
+      color: var(--text-main);
+      padding-left: 16px;
+    }
+
+    .geo-highlight {
+      display: inline-flex;
+      padding: 4px 10px;
+      background: #ffffff;
+      border-radius: 999px;
+      font-size: 11px;
+      color: var(--primary-dark);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+      margin-top: 10px;
+    }
+
+    .geo-map-placeholder {
+      border-radius: var(--radius);
+      background: #ffffff;
+      box-shadow: var(--shadow-soft);
+      padding: 18px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    /* GUARANTEES */
+
+    .guarantees-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .guarantee-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 12px 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .guarantee-title {
+      font-weight: 600;
+      color: var(--primary-dark);
+      font-size: 13px;
+    }
+
+    /* LICENSES */
+
+    .licenses-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 11px;
+    }
+
+    .license-card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      width: 150px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: flex-start;
+    }
+
+    .license-box {
+      width: 100%;
+      height: 70px;
+      border-radius: 8px;
+      border: 1px dashed #D1E5EA;
+      background: #F8FCFD;
+    }
+
+    /* CASES */
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+      font-size: 12px;
+    }
+
+    .case-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 12px 10px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .case-label {
+      font-size: 10px;
+      color: var(--primary);
+    }
+
+    .case-title {
+      font-weight: 600;
+      color: var(--primary-dark);
+      font-size: 13px;
+    }
+
+    /* PRICES */
+
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .price-table th,
+    .price-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #EEF4F6;
+      text-align: left;
+    }
+
+    .price-table th {
+      background: var(--bg-soft);
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .price-note {
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-top: 8px;
+    }
+
+    /* FAQ */
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 10px 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      cursor: pointer;
+    }
+
+    .faq-question {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--primary-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .faq-answer {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+      display: none;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .faq-toggle {
+      font-size: 18px;
+      color: var(--primary);
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.8fr) minmax(260px,1.2fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .about-list {
+      font-size: 13px;
+      color: var(--text-main);
+      padding-left: 16px;
+    }
+
+    .about-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 14px 12px;
+      box-shadow: var(--shadow-soft);
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* CONTACTS */
+
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(260px,1.6fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .contacts-list {
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      color: var(--text-main);
+    }
+
+    .contacts-label {
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .contacts-form {
+      background: #ffffff;
+      padding: 14px 12px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .map-placeholder {
+      margin-top: 10px;
+      width: 100%;
+      height: 150px;
+      border-radius: 10px;
+      background: var(--bg-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 18px 16px 24px;
+      background: #0B3954;
+      color: #ffffff;
+      font-size: 11px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #C4D6E5;
+    }
+
+    @media (max-width: 992px) {
+      .services-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .clients-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+      .guarantees-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .cases-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .geo-wrap, .about-grid, .contacts-grid {
         grid-template-columns: 1fr;
       }
-      .hero-title {
-        font-size: 26px;
-      }
+    }
+
+    @media (max-width: 768px) {
+      .header-inner { flex-wrap: wrap; gap: 10px; }
+      nav { display: none; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-title { font-size: 26px; }
+      .clients-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .cases-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -330,7 +750,7 @@
         </span>
       </div>
       <div class="hero-note">
-        Работают безопасные препараты. Подготовим акты для проверок и управляющих органов.
+        Используем препараты с подтверждённой эффективностью и безопасностью. Подготовим акты для проверок.
       </div>
     </div>
 
@@ -386,8 +806,499 @@
   </div>
 </section>
 
+<!-- УСЛУГИ -->
+<section id="services" class="section">
+  <div class="container">
+    <h2 class="section-title">Комплексные услуги дезинфекции</h2>
+    <p class="section-subtitle">
+      Закрываем полный цикл: от обработки квартиры до регулярного санитарного обслуживания ресторанов, складов и медицинских учреждений.
+    </p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-label">Профессиональная обработка</div>
+        <div class="service-title">Дезинфекция вирусов и бактерий</div>
+        <div class="service-text">Объемная и поверхностная обработка помещений для снижения микробной нагрузки.</div>
+        <ul class="service-list">
+          <li>Квартиры, офисы, медкабинеты</li>
+          <li>Профилактика инфекций</li>
+          <li>Сертифицированные средства</li>
+        </ul>
+        <div class="service-actions">
+          <span class="service-link">Подробнее об услуге</span>
+          <button class="btn btn-primary" style="padding:6px 10px; font-size:11px;">Заказать</button>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-label">Насекомые</div>
+        <div class="service-title">Дезинсекция</div>
+        <div class="service-text">Уничтожение тараканов, клопов, муравьёв, блох, мух, комаров и других насекомых.</div>
+        <ul class="service-list">
+          <li>Современные препараты</li>
+          <li>Гарантия результата</li>
+          <li>Анонимный выезд</li>
+        </ul>
+        <div class="service-actions">
+          <span class="service-link">Подробнее об услуге</span>
+          <button class="btn btn-primary" style="padding:6px 10px; font-size:11px;">Заказать</button>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-label">Грызуны</div>
+        <div class="service-title">Дератизация</div>
+        <div class="service-text">Комплексные меры по защите от крыс и мышей на объектах любого масштаба.</div>
+        <ul class="service-list">
+          <li>Индивидуальные схемы</li>
+          <li>Безопасные станции</li>
+          <li>Регулярный контроль</li>
+        </ul>
+        <div class="service-actions">
+          <span class="service-link">Подробнее об услуге</span>
+          <button class="btn btn-primary" style="padding:6px 10px; font-size:11px;">Заказать</button>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-label">Запахи</div>
+        <div class="service-title">Дезодорация</div>
+        <div class="service-text">Удаляем стойкие запахи гари, сырости, табака, разложения, животных.</div>
+        <ul class="service-list">
+          <li>Работа с трудными случаями</li>
+          <li>Обработка воздуха и поверхностей</li>
+        </ul>
+        <div class="service-actions">
+          <span class="service-link">Подробнее об услуге</span>
+          <button class="btn btn-primary" style="padding:6px 10px; font-size:11px;">Заказать</button>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-label">Транспорт</div>
+        <div class="service-title">Дезинфекция автотранспорта</div>
+        <div class="service-text">Обработка салонов, спецтранспорта, рефрижераторов, служб доставки.</div>
+        <ul class="service-list">
+          <li>Сертификаты для проверок</li>
+          <li>Гибкий график</li>
+        </ul>
+        <div class="service-actions">
+          <span class="service-link">Подробнее об услуге</span>
+          <button class="btn btn-primary" style="padding:6px 10px; font-size:11px;">Заказать</button>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-label">Плесень и клещи</div>
+        <div class="service-title">Удаление плесени и акарицидная обработка</div>
+        <div class="service-text">Комплексная обработка от плесени и клещей в помещениях и на участках.</div>
+        <ul class="service-list">
+          <li>Выявление причин</li>
+          <li>Профессиональные составы</li>
+          <li>Защита территории</li>
+        </ul>
+        <div class="service-actions">
+          <span class="service-link">Подробнее об услуге</span>
+          <button class="btn btn-primary" style="padding:6px 10px; font-size:11px;">Заказать</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ДЛЯ КОГО -->
+<section id="clients" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Решения для частных и корпоративных клиентов</h2>
+    <p class="section-subtitle">
+      Подбираем формат обработки и пакет документов под требования квартиры, бизнеса, санаториев, медучреждений и государственных объектов.
+    </p>
+    <div class="clients-grid">
+      <div class="client-card">
+        <div class="client-title">Квартиры и дома</div>
+        <div class="client-label">Безопасно для семьи</div>
+        <div>Анонимный выезд, щадящие режимы, рекомендации по подготовке.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-title">Арендное жильё</div>
+        <div class="client-label">Быстро и официально</div>
+        <div>Обработка перед въездом/выездом, акты для собственников.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-title">Кафе и рестораны</div>
+        <div class="client-label">Документы для проверок</div>
+        <div>Ночной график, плановая дезинсекция и дератизация.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-title">Магазины и ТРК</div>
+        <div class="client-label">Без остановки работы</div>
+        <div>Локальные обработки, журналы учета.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-title">Склады и логистика</div>
+        <div class="client-label">Большие площади</div>
+        <div>Схемы мониторинга, барьерная защита.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-title">Отели, санатории</div>
+        <div class="client-label">Имидж и комфорт</div>
+        <div>Минимум простоя, конфиденциально, регулярные обработки.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-title">Медучреждения</div>
+        <div class="client-label">Стандарты</div>
+        <div>Работа по регламентам и протоколам.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-title">Образовательные учреждения</div>
+        <div class="client-label">Дети</div>
+        <div>Согласование с администрацией, безопасные препараты.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-title">Пищевая промышленность</div>
+        <div class="client-label">Строгий контроль</div>
+        <div>Системный мониторинг, отчётность.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-title">Частные участки</div>
+        <div class="client-label">Клещи и насекомые</div>
+        <div>Сезонные обработки территории.</div>
+      </div>
+    </div>
+    <div style="margin-top:18px;">
+      <button class="btn btn-primary">Получить коммерческое предложение для вашего объекта</button>
+    </div>
+  </div>
+</section>
+
+<!-- ГЕОГРАФИЯ -->
+<section id="geography" class="section">
+  <div class="container">
+    <h2 class="section-title">Работаем по всему Крыму</h2>
+    <div class="geo-wrap">
+      <div>
+        <p class="section-subtitle">
+          Основные направления: Симферополь, Севастополь, Ялта, Евпатория, Феодосия, Керчь и другие города АР Крым.
+          Организуем оперативный выезд специалистов с учетом загруженности.
+        </p>
+        <ul class="geo-list">
+          <li>Выезд в день обращения при наличии свободных окон.</li>
+          <li>Оптимизация маршрутов для снижения стоимости для клиента.</li>
+          <li>Возможность обслуживания сетевых объектов по всему региону.</li>
+        </ul>
+        <div class="geo-highlight">
+          Рассчитаем время выезда под ваш адрес — оставьте номер, мы перезвоним.
+        </div>
+      </div>
+      <div class="geo-map-placeholder">
+        <div>
+          Здесь карта/схема Крыма с выделением Симферополя, Севастополя и ключевых городов.<br/>
+          Верстальщик: вставить интерактивную карту (Яндекс/Google) или фирменную схему.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ГАРАНТИИ И ЛИЦЕНЗИИ -->
+<section id="guarantees" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Гарантии, безопасность и документы</h2>
+    <p class="section-subtitle">
+      Мы работаем официально, соблюдаем санитарные нормы и даём прозрачные гарантии на результат обработки.
+    </p>
+    <div class="guarantees-grid">
+      <div class="guarantee-card">
+        <div class="guarantee-title">Лицензированная деятельность</div>
+        <div>Наличие всех необходимых разрешений и допусков к работе с дезсредствами.</div>
+      </div>
+      <div class="guarantee-card">
+        <div class="guarantee-title">Сертифицированные препараты</div>
+        <div>Используем только официальные средства с подтверждённой эффективностью.</div>
+      </div>
+      <div class="guarantee-card">
+        <div class="guarantee-title">Гарантия результата</div>
+        <div>Предоставляем гарантийный период и при необходимости повторную обработку.</div>
+      </div>
+      <div class="guarantee-card">
+        <div class="guarantee-title">Документы для проверок</div>
+        <div>Акты, журналы, договоры — полный пакет для Роспотребнадзора и контролирующих органов.</div>
+      </div>
+    </div>
+
+    <h3 class="section-title" style="font-size:20px; margin-top:32px;">Лицензии и сертификаты</h3>
+    <div class="licenses-row">
+      <div class="license-card">
+        <div class="license-box"></div>
+        <div>Лицензия на дезинфекционную деятельность</div>
+      </div>
+      <div class="license-card">
+        <div class="license-box"></div>
+        <div>Сертификаты на применяемые препараты</div>
+      </div>
+      <div class="license-card">
+        <div class="license-box"></div>
+        <div>Допуски персонала к работе с дезсредствами</div>
+      </div>
+      <div class="license-card">
+        <div class="license-box"></div>
+        <div>Страхование ответственности (при наличии)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- КЕЙСЫ -->
+<section id="cases" class="section">
+  <div class="container">
+    <h2 class="section-title">Примеры выполненных работ</h2>
+    <p class="section-subtitle">
+      Коротко и по делу: какие задачи решаем для бизнеса и частных клиентов в Крыму.
+    </p>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-label">Ресторан · Севастополь</div>
+        <div class="case-title">Уничтожение тараканов без остановки работы</div>
+        <div>
+          <strong>Задача:</strong> жалобы персонала на тараканов на кухне.<br>
+          <strong>Решение:</strong> ночная обработка, установка гелевых точек, барьерная защита.<br>
+          <strong>Результат:</strong> через 7 дней активность отсутствует, заключен договор на плановые обработки.
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-label">Гостевой дом · Ялта</div>
+        <div class="case-title">Обработка от клопов в номерах</div>
+        <div>
+          <strong>Задача:</strong> единичные укусы гостей.<br>
+          <strong>Решение:</strong> обработка 8 номеров, контрольные осмотры.<br>
+          <strong>Результат:</strong> отсутствие повторных случаев, сохранение репутации.
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-label">Квартира · Симферополь</div>
+        <div class="case-title">Комплекс против клопов и запаха</div>
+        <div>
+          <strong>Задача:</strong> клопы и неприятный запах после арендаторов.<br>
+          <strong>Решение:</strong> дезинсекция + дезодорация.<br>
+          <strong>Результат:</strong> жилье подготовлено к сдаче, выдан акт обработки.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ЦЕНЫ -->
+<section id="prices" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Прозрачные цены</h2>
+    <p class="section-subtitle">
+      Стоимость зависит от площади, сложности, выбранных препаратов и удаленности объекта. Ниже — ориентировочные цены.
+    </p>
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th>Тип объекта</th>
+          <th>Услуга</th>
+          <th>Ориентировочная стоимость</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Квартира 1–2 комнаты</td>
+          <td>Дезинсекция / дезинфекция</td>
+          <td>от ХХХХ ₽</td>
+        </tr>
+        <tr>
+          <td>Частный дом</td>
+          <td>Комплексная обработка</td>
+          <td>от ХХХХ ₽</td>
+        </tr>
+        <tr>
+          <td>Кафе / ресторан до ХХ м²</td>
+          <td>Дезинсекция + дератизация</td>
+          <td>от ХХХХ ₽</td>
+        </tr>
+        <tr>
+          <td>Склад / производство</td>
+          <td>Индивидуальный план</td>
+          <td>по расчёту</td>
+        </tr>
+        <tr>
+          <td>Акарицидная обработка участка</td>
+          <td>Клещи, насекомые</td>
+          <td>от ХХХ ₽ / сотка</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="price-note">
+      Точные цены вы получите после короткого опроса специалиста. Оставьте заявку — подберём решение под ваш объект.
+    </div>
+    <div style="margin-top:14px;">
+      <button class="btn btn-primary">Рассчитать точную стоимость</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="container">
+    <h2 class="section-title">Ответы на частые вопросы</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Опасна ли обработка для детей и домашних животных?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          Используем препараты, допущенные к применению в жилых и общественных помещениях. При соблюдении рекомендаций по подготовке и проветриванию обработка безопасна.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Нужно ли покидать помещение во время обработки?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          В большинстве случаев — да, на 2–4 часа. Точные инструкции даём перед выездом, учитывая вид обработки и составы.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Даёте ли вы гарантию на услуги?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          Предусмотрен гарантийный период. При соблюдении рекомендаций возможна повторная обработка в рамках гарантии.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Можете ли работать ночью или в выходные?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          Да, для бизнеса и объектов с непрерывным режимом согласуем удобное время обработки.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Предоставляете ли вы документы для проверок?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          Да, выдаём акты выполненных работ, журналы, рекомендации, при необходимости заключаем долгосрочный договор.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- О КОМПАНИИ -->
+<section id="about" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">О компании «Дез щит 360»</h2>
+    <div class="about-grid">
+      <div>
+        <p class="section-subtitle">
+          Центр дезинфектологии «Дез щит 360» — команда специалистов, которая делает дезинфекцию понятной, прозрачной и эффективной для жителей и бизнеса Крыма.
+        </p>
+        <ul class="about-list">
+          <li>Профильное обучение и практический опыт сотрудников.</li>
+          <li>Соблюдение санитарных норм и технологических регламентов.</li>
+          <li>Индивидуальный подбор схем обработки под каждый объект.</li>
+          <li>Уважительное отношение к частным клиентам и репутации партнёров.</li>
+        </ul>
+      </div>
+      <div class="about-card">
+        <div><strong>Мы за долгосрочные отношения.</strong></div>
+        <div>Проводим разовые и регулярные обработки.</div>
+        <div>Работаем с сетями и крупными площадями по всему Крыму.</div>
+        <div>Консультируем до и после обработки, помогаем выстроить систему санитарной защиты.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<section id="contacts" class="section">
+  <div class="container">
+    <h2 class="section-title">Контакты и заявка</h2>
+    <div class="contacts-grid">
+      <div>
+        <div class="contacts-list">
+          <div>
+            <span class="contacts-label">Телефон:</span> <a href="tel:+7XXXXXXXXXX">+7 (___) ___-__-__</a>
+          </div>
+          <div>
+            <span class="contacts-label">Мессенджеры:</span> WhatsApp, Telegram
+          </div>
+          <div>
+            <span class="contacts-label">E-mail:</span> info@dezshield360.ru
+          </div>
+          <div>
+            <span class="contacts-label">Адрес офиса:</span> Симферополь / Севастополь (указать фактические адреса)
+          </div>
+          <div>
+            <span class="contacts-label">График:</span> ежедневно 8:00–22:00, срочные выезды по согласованию
+          </div>
+        </div>
+        <div class="map-placeholder">
+          Здесь интерактивная карта с отмеченными офисами и зоной обслуживания.
+        </div>
+      </div>
+      <form class="contacts-form">
+        <div class="contacts-label">Оставьте заявку — перезвоним и подберём решение</div>
+        <div>
+          <div class="field-label">Ваше имя</div>
+          <input type="text" class="field-input" placeholder="Имя">
+        </div>
+        <div>
+          <div class="field-label">Телефон</div>
+          <input type="tel" class="field-input" placeholder="+7 (___) ___-__-__">
+        </div>
+        <div>
+          <div class="field-label">Город</div>
+          <input type="text" class="field-input" placeholder="Симферополь, Севастополь, другой город Крыма">
+        </div>
+        <div>
+          <div class="field-label">Тип объекта и проблема</div>
+          <textarea class="field-textarea" rows="3" placeholder="Например: кафе, тараканы на кухне; квартира, клопы; склад, мыши и т.д."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+        <div class="hero-form-note">
+          Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>© Дез щит 360, Центр дезинфектологии. Крым.</div>
+    <div class="footer-links">
+      <a href="#services">Услуги</a>
+      <a href="#prices">Цены</a>
+      <a href="#guarantees">Гарантии</a>
+      <a href="#contacts">Контакты</a>
+      <a href="#">Политика конфиденциальности</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Простой аккордеон для FAQ
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    item.addEventListener('click', function() {
+      item.classList.toggle('active');
+      const toggle = item.querySelector('.faq-toggle');
+      if (toggle) toggle.textContent = item.classList.contains('active') ? '−' : '+';
+    });
+  });
+</script>
+
 </body>
 </html>
+
 
 
 
