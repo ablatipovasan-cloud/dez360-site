@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Дез щит 360 — Дезинфекция, дезинсекция, дератизация в Симферополе, Севастополе и по всему Крыму</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Центр дезинфектологии «Дез щит 360» — профессиональная дезинфекция, дезинсекция, дератизация, акарицидная обработка, чистка вентиляции, удаление запахов и плесени в Симферополе, Севастополе и по всему Крыму. Лицензия, гарантии, быстрый выезд, официальные документы." />
+  <meta name="description" content="Центр дезинфектологии «Дез щит 360» — профессиональная дезинфекция, дезинсекция, дератизация, чистка и дезинфекция вентиляции, акарицидная обработка, удаление запахов и плесени в Симферополе, Севастополе и по всему Крыму. Лицензия, гарантии, быстрый выезд, официальные документы." />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -208,7 +208,7 @@
       max-width: 720px;
     }
 
-    /* HERO with banner image */
+    /* HERO */
 
     .hero { background: var(--bg-soft); padding: 26px 16px 26px; }
 
@@ -264,41 +264,6 @@
 
     .hero-note { font-size: 11px; color: var(--text-secondary); }
 
-    .hero-form {
-      background: #ffffff;
-      padding: 14px 14px 12px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-soft);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .hero-form-title {
-      font-family: 'Manrope', sans-serif;
-      font-weight: 600;
-      font-size: 15px;
-      color: var(--primary-dark);
-      margin-bottom: 2px;
-    }
-
-    .field-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 2px; }
-
-    .field-input, .field-select, .field-textarea {
-      width: 100%; padding: 7px 9px; border-radius: 8px; border: 1px solid #D1E5EA;
-      font-size: 12px; outline: none; transition: all 0.15s ease; resize: vertical;
-    }
-
-    .field-input:focus, .field-select:focus, .field-textarea:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(0,122,140,0.12);
-    }
-
-    .hero-form .btn-primary { width: 100%; margin-top: 4px; font-size: 13px; padding: 8px 10px; }
-    .hero-form-note { font-size: 9px; color: var(--text-secondary); margin-top: 2px; }
-
-    /* Right-side banner */
-
     .hero-photo {
       position: relative;
       border-radius: var(--radius);
@@ -333,7 +298,7 @@
       border-radius: 999px; background: rgba(0,122,140,0.92); font-size: 9px; margin-bottom: 4px;
     }
 
-    /* SERVICES */
+    /* SERVICES CARDS */
 
     .services-grid {
       display: grid;
@@ -394,6 +359,53 @@
       font-size: 10px;
     }
 
+    /* SERVICE DETAILS (таб-панель) */
+
+    .service-details {
+      margin-top: 24px;
+    }
+
+    .service-detail {
+      display: none;
+      padding: 16px 14px;
+      background: #ffffff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      font-size: 12px;
+      gap: 8px;
+    }
+
+    .service-detail.active {
+      display: grid;
+      grid-template-columns: minmax(0,1.8fr) minmax(240px,1.2fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .service-detail-title {
+      font-family: 'Manrope', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .service-detail-list {
+      padding-left: 18px;
+      margin-top: 6px;
+    }
+
+    .service-detail-side {
+      font-size: 11px;
+      background: #F8FCFD;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #E1EFF3;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
     /* CLIENTS */
 
     .clients-grid {
@@ -416,7 +428,7 @@
     .client-title { font-weight: 600; font-size: 11px; color: var(--primary-dark); }
     .client-label { font-size: 9px; color: var(--primary); }
 
-    /* GEOGRAPHY */
+    /* GEO */
 
     .geo-wrap { display: grid; grid-template-columns: minmax(0,1.7fr) minmax(260px,1.3fr); gap: 20px; align-items: center; }
     .geo-list { font-size: 12px; color: var(--text-main); padding-left: 16px; }
@@ -486,6 +498,7 @@
       .guarantees-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
       .cases-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
       .geo-wrap, .about-grid, .contacts-grid { grid-template-columns: 1fr; }
+      .service-detail.active { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
@@ -636,7 +649,7 @@
           <li>Официальные акты для проверяющих органов</li>
         </ul>
         <div class="service-actions">
-          <a href="#service-disinfection" class="service-link">Подробнее о дезинфекции</a>
+          <a href="#service-details" class="service-link" data-service="disinfection">Подробнее о дезинфекции</a>
           <a href="#contacts" class="btn btn-primary service-order-btn">Заказать</a>
         </div>
       </div>
@@ -653,7 +666,7 @@
           <li>Гарантийный период и поддержка</li>
         </ul>
         <div class="service-actions">
-          <a href="#service-insects" class="service-link">Подробнее о дезинсекции</a>
+          <a href="#service-details" class="service-link" data-service="insects">Подробнее о дезинсекции</a>
           <a href="#contacts" class="btn btn-primary service-order-btn">Избавиться от насекомых</a>
         </div>
       </div>
@@ -670,7 +683,7 @@
           <li>Документы для СЭС и проверок</li>
         </ul>
         <div class="service-actions">
-          <a href="#service-rodents" class="service-link">Подробнее о дератизации</a>
+          <a href="#service-details" class="service-link" data-service="rodents">Подробнее о дератизации</a>
           <a href="#contacts" class="btn btn-primary service-order-btn">Защитить объект</a>
         </div>
       </div>
@@ -687,7 +700,7 @@
           <li>Возвращаем ощущение свежего воздуха</li>
         </ul>
         <div class="service-actions">
-          <a href="#service-odor" class="service-link">Подробнее о дезодорации</a>
+          <a href="#service-details" class="service-link" data-service="odor">Подробнее о дезодорации</a>
           <a href="#contacts" class="btn btn-primary service-order-btn">Убрать запах</a>
         </div>
       </div>
@@ -704,7 +717,7 @@
           <li>Удобный график выезда</li>
         </ul>
         <div class="service-actions">
-          <a href="#service-transport" class="service-link">Подробнее о транспорте</a>
+          <a href="#service-details" class="service-link" data-service="transport">Подробнее о транспорте</a>
           <a href="#contacts" class="btn btn-primary service-order-btn">Обработать транспорт</a>
         </div>
       </div>
@@ -721,83 +734,196 @@
           <li>Защита детских и рекреационных зон</li>
         </ul>
         <div class="service-actions">
-          <a href="#service-mold" class="service-link">Подробнее об обработке</a>
+          <a href="#service-details" class="service-link" data-service="mold">Подробнее об обработке</a>
           <a href="#contacts" class="btn btn-primary service-order-btn">Заказать обработку</a>
         </div>
       </div>
 
-      <!-- НОВЫЙ СЕРВИС: ВЕНТИЛЯЦИЯ -->
       <div class="service-card">
         <div class="service-label">Инженерные системы</div>
         <div class="service-title">Дезинфекция и чистка систем вентиляции</div>
         <div class="service-text">
-          Профессиональная очистка и обеззараживание вентканалов, воздуховодов и климатических систем
-          в жилых и коммерческих помещениях.
+          Комплексная очистка и обеззараживание вентиляции и воздуховодов в жилых и коммерческих объектах.
         </div>
         <ul class="service-list">
-          <li>Удаление пыли, жира, плесени и патогенной микрофлоры</li>
+          <li>Удаление жира, пыли, плесени и патогенов</li>
           <li>Снижение рисков ОРВИ, аллергий и запахов</li>
-          <li>Соответствие СанПиН и требованиям проверяющих органов</li>
+          <li>Соответствие требованиям СанПиН и проверок</li>
         </ul>
         <div class="service-actions">
-          <a href="#service-ventilation" class="service-link">Подробнее о чистке вентиляции</a>
+          <a href="#service-details" class="service-link" data-service="ventilation">Подробнее о вентиляции</a>
           <a href="#contacts" class="btn btn-primary service-order-btn">Заказать чистку</a>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ДЕТАЛИ УСЛУГ (якоря для "Подробнее") + детальный блок вентиляции -->
-<section id="service-ventilation" class="section section-alt">
-  <div class="container">
-    <h2 class="section-title">Дезинфекция и чистка систем вентиляции</h2>
-    <p class="section-subtitle">
-      Грязная вентиляция — скрытый источник пыли, спор плесени, бактерий и неприятных запахов.
-      Для кафе, производств, медучреждений и отелей это ещё и прямой риск штрафов и претензий.
-      «Дез щит 360» проводит комплексную механическую и химическую обработку вентиляционных систем
-      по требованиям санитарных норм.
-    </p>
+    <!-- ТАБЫ ПОДРОБНОГО ОПИСАНИЯ -->
+    <div id="service-details" class="service-details">
 
-    <div class="about-grid" style="gap:20px;">
-      <div>
-        <h3 class="section-title" id="service-disinfection" style="font-size:18px; margin-bottom:8px;">Что входит в работу</h3>
-        <ul class="about-list" style="margin-bottom:14px;">
-          <li>Диагностика состояния каналов и оборудования с фотофиксацией загрязнений.</li>
-          <li>Механическая чистка воздуховодов, решёток, вентканалов, вытяжек, кухонных зонтів.</li>
-          <li>Обезжиривание и удаление жировых отложений на участках общественного питания.</li>
-          <li>Обработка дезинфицирующими средствами против бактерий, грибка и плесени.</li>
-          <li>Точечная дезинсекция при наличии насекомых в шахтах и вытяжках.</li>
-          <li>При необходимости — обработка внутренних поверхностей антикоррозийными и защитными составами.</li>
-        </ul>
-
-        <h3 class="section-title" style="font-size:18px; margin-bottom:8px;">Для каких объектов</h3>
-        <ul class="about-list">
-          <li id="service-insects">Кафе, рестораны, кухни общепита, фуд-корты.</li>
-          <li id="service-rodents">Продуктовые магазины, кулинарии, пекарни.</li>
-          <li id="service-transport">Склады, логистические центры, производства.</li>
-          <li id="service-mold">Медицинские и образовательные учреждения.</li>
-          <li>Отели, санатории, SPA, фитнес-центры.</li>
-          <li>Жилые дома, ЖК, частные коттеджи с приточно-вытяжной вентиляцией.</li>
-        </ul>
-      </div>
-
-      <div class="about-card">
-        <div><strong>Почему вентиляцию важно чистить регулярно:</strong></div>
-        <div id="service-odor">
-          • Снижается риск распространения инфекций и аллергенов по всему зданию.<br>
-          • Уходит запах кухни, сырости, табака, который «гуляет» по этажам.<br>
-          • Оборудование работает тише и дольше, без перегрузок из-за засоров.<br>
-          • При проверке Роспотребнадзора и других служб вы показываете акты выполненных работ.
+      <div class="service-detail" data-service="disinfection">
+        <div>
+          <div class="service-detail-title">Дезинфекция от вирусов, бактерий и инфекций</div>
+          <p>
+            Проводим целевую обработку помещений, где важна санитарная чистота: квартиры, офисы,
+            медкабинеты, салоны красоты, фитнес-клубы, склады, пищевое производство.
+            Используем сертифицированные препараты и профессиональные генераторы холодного и горячего тумана.
+          </p>
+          <ul class="service-detail-list">
+            <li>Диагностика рисков и подбор схемы обработки под тип объекта.</li>
+            <li>Обработка воздуха, пола, стен, контактных поверхностей, санузлов.</li>
+            <li>Снижение микробной нагрузки до нормативов СанПиН.</li>
+            <li>Безопасные режимы для жилых помещений, детей и домашних животных.</li>
+            <li>Выдача актов выполненных работ для СЭС и внутренних проверок.</li>
+          </ul>
         </div>
-        <div style="margin-top:6px;">
-          По итогам чистки и дезинфекции систем вентиляции выдаём акт,
-          при необходимости — график регламентных обработок.
-        </div>
-        <div style="margin-top:10px;">
-          <button class="btn btn-primary" data-scroll="#contacts">Заказать дезинфекцию вентиляции</button>
+        <div class="service-detail-side">
+          <strong>Когда особенно актуально:</strong>
+          <span>• После болезней и вспышек ОРВИ.</span>
+          <span>• Перед открытием объекта или сменой арендатора.</span>
+          <span>• Для медцентров, салонов, HoReCa и пищевых производств.</span>
+          <button class="btn btn-primary" data-scroll="#contacts">Заказать дезинфекцию</button>
         </div>
       </div>
+
+      <div class="service-detail" data-service="insects">
+        <div>
+          <div class="service-detail-title">Дезинсекция от тараканов, клопов и других насекомых</div>
+          <p>
+            Устраняем насекомых системно: без «подкормки» проблемы и бессмысленных бытовых средств.
+            Работаем анонимно, аккуратно, с контролем и гарантией.
+          </p>
+          <ul class="service-detail-list">
+            <li>Обследуем помещение и выявляем источники заселения.</li>
+            <li>Применяем профессиональные инсектициды и гелевые препараты.</li>
+            <li>Обрабатываем труднодоступные зоны, щели, мебель, коммуникации.</li>
+            <li>Выдаём понятные рекомендации по профилактике.</li>
+            <li>В гарантийный срок при необходимости проводим повторную обработку.</li>
+          </ul>
+        </div>
+        <div class="service-detail-side">
+          <strong>Результат:</strong>
+          <span>• Насекомые перестают появляться.</span>
+          <span>• Репутация гостиницы или заведения сохранена.</span>
+          <button class="btn btn-primary" data-scroll="#contacts">Избавиться от насекомых</button>
+        </div>
+      </div>
+
+      <div class="service-detail" data-service="rodents">
+        <div>
+          <div class="service-detail-title">Дератизация от крыс и мышей</div>
+          <p>
+            Строим барьер против грызунов для домов, складов, магазинов и производств.
+            Используем приманочные станции, мониторинг и защиту периметра.
+          </p>
+          <ul class="service-detail-list">
+            <li>Анализ путей проникновения и кормовой базы.</li>
+            <li>Установка закрытых приманочных станций, безопасных для людей и животных.</li>
+            <li>Регулярный контроль и обновление приманок.</li>
+            <li>Подготовка документации для контролирующих органов.</li>
+          </ul>
+        </div>
+        <div class="service-detail-side">
+          <strong>Важно:</strong>
+          <span>• Работаем аккуратно, без запаха и шума.</span>
+          <button class="btn btn-primary" data-scroll="#contacts">Защитить объект</button>
+        </div>
+      </div>
+
+      <div class="service-detail" data-service="odor">
+        <div>
+          <div class="service-detail-title">Дезодорация и удаление сложных запахов</div>
+          <p>
+            Убираем не только запах, но и причину. Подходит для квартир после ЧП,
+            подъездов, подвалов, автомобилей, складов и помещений общепита.
+          </p>
+          <ul class="service-detail-list">
+            <li>Поиск источника запаха: органика, сырость, табак, гарь, продукты разложения.</li>
+            <li>Комбинация дезинфекции, озонирования и специальных нейтрализаторов.</li>
+            <li>Работаем до результата, а не «для галочки».</li>
+          </ul>
+        </div>
+        <div class="service-detail-side">
+          <strong>Результат:</strong>
+          <span>• Чистый воздух без тяжёлых ароматов и химического перегруза.</span>
+          <button class="btn btn-primary" data-scroll="#contacts">Убрать запах</button>
+        </div>
+      </div>
+
+      <div class="service-detail" data-service="transport">
+        <div>
+          <div class="service-detail-title">Дезинфекция автотранспорта</div>
+          <p>
+            Обрабатываем личные авто, спецтранспорт, машины доставки, рефрижераторы,
+            служебный транспорт предприятий и госструктур.
+          </p>
+          <ul class="service-detail-list">
+            <li>Очистка и дезинфекция салона, кузова, зоны погрузки.</li>
+            <li>Специальные решения для транспорта, перевозящего продукты и людей.</li>
+            <li>Оформление необходимых актов для проверок.</li>
+          </ul>
+        </div>
+        <div class="service-detail-side">
+          <strong>Подходит для:</strong>
+          <span>• Служб доставки, такси, перевозчиков, catering.</span>
+          <button class="btn btn-primary" data-scroll="#contacts">Обработать транспорт</button>
+        </div>
+      </div>
+
+      <div class="service-detail" data-service="mold">
+        <div>
+          <div class="service-detail-title">Удаление плесени и акарицидная обработка</div>
+          <p>
+            Решаем проблему плесени и клещей не косметически, а технологично:
+            с поиском причины и защитой от повторного появления.
+          </p>
+          <ul class="service-detail-list">
+            <li>Диагностика причин сырости и зон поражения.</li>
+            <li>Удаление плесени с поверхностей с применением антисептиков.</li>
+            <li>Обработка подвалов, санузлов, чердаков, утеплителей.</li>
+            <li>Акарицидная обработка участков от клещей.</li>
+          </ul>
+        </div>
+        <div class="service-detail-side">
+          <strong>Эффект:</strong>
+          <span>• Чище воздух, меньше аллергий, безопасная территория.</span>
+          <button class="btn btn-primary" data-scroll="#contacts">Заказать обработку</button>
+        </div>
+      </div>
+
+      <div class="service-detail" data-service="ventilation">
+        <div>
+          <div class="service-detail-title">Дезинфекция и чистка систем вентиляции</div>
+          <p>
+            Вентиляция и вытяжки собирают пыль, жир, споры плесени и бактерии.
+            Через воздуховоды это всё возвращается в помещения — люди чаще болеют,
+            появляется затхлый запах, растут риски для проверок.
+            «Дез щит 360» проводит комплексную механическую чистку и дезинфекцию систем вентиляции
+            в соответствии с санитарными требованиями.
+          </p>
+          <ul class="service-detail-list">
+            <li>Первичный осмотр, фотофиксация загрязнений, согласование объёмов.</li>
+            <li>Механическая чистка воздуховодов, шахт, решёток, кухонных зонтів и вытяжек.</li>
+            <li>Удаление жировых отложений в системах общепита, предотвращение возгораний.</li>
+            <li>Обработка дезсредствами против бактерий, грибка, плесени и биоплёнок.</li>
+            <li>Локальная дезинсекция при наличии насекомых внутри каналов.</li>
+            <li>При необходимости — нанесение защитных составов и составление графика регламентных работ.</li>
+          </ul>
+        </div>
+        <div class="service-detail-side">
+          <strong>Для кого особенно важно:</strong>
+          <span>• Кафе, рестораны, пекарни и фуд-корты.</span>
+          <span>• Продуктовые магазины, склады и производства.</span>
+          <span>• Медицинские и образовательные учреждения.</span>
+          <span>• Отели, санатории, SPA и фитнес-клубы.</span>
+          <span>• Современные жилые комплексы с приточно-вытяжной вентиляцией.</span>
+          <strong>Что вы получаете:</strong>
+          <span>• Чистый воздух и отсутствие затхлых, кухонных и технических запахов.</span>
+          <span>• Меньше жалоб сотрудников и гостей.</span>
+          <span>• Акты выполненных работ для Роспотребнадзора и внутренних аудитов.</span>
+          <button class="btn btn-primary" data-scroll="#contacts">Заказать чистку вентиляции</button>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -895,7 +1021,7 @@
   </div>
 </section>
 
-<!-- ГАРАНТИИ И ЛИЦЕНЗИИ -->
+<!-- ГАРАНТИИ -->
 <section id="guarantees" class="section section-alt">
   <div class="container">
     <h2 class="section-title">Гарантии и преимущества «Дез щит 360»</h2>
@@ -925,7 +1051,7 @@
     <h3 class="section-title" style="font-size:18px; margin-top:24px;">Документы и отчётность</h3>
     <p class="section-subtitle">
       По запросу предоставляем копии регистрационных документов, сертификатов на препараты и образцы актов.
-      Это упрощает прохождение проверок и показывает вашу ответственность перед клиентами и контролирующими органами.
+      Это помогает уверенно проходить проверки и демонстрировать ответственность.
     </p>
     <div class="licenses-row">
       <div class="license-card">
@@ -938,7 +1064,7 @@
       </div>
       <div class="license-card">
         <div class="license-box"></div>
-        <div>Протоколы обучения и инструктажей персонала</div>
+        <div>Протоколы обучения персонала</div>
       </div>
       <div class="license-card">
         <div class="license-box"></div>
@@ -1062,7 +1188,7 @@
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          Обычно достаточно выйти на 2–4 часа. Точный регламент объясняем заранее, чтобы для вас всё прошло спокойно и предсказуемо.
+          Обычно достаточно выйти на 2–4 часа. Точный регламент объясняем заранее, чтобы всё прошло спокойно и предсказуемо.
         </div>
       </div>
       <div class="faq-item">
@@ -1089,7 +1215,7 @@
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          Да. Предоставляем акты выполненных работ, договор, журналы учёта и при необходимости подтверждающие документы на препараты.
+          Да. Предоставляем акты выполненных работ, договор, журналы учёта и документы на препараты.
         </div>
       </div>
     </div>
@@ -1103,14 +1229,14 @@
     <div class="about-grid">
       <div>
         <p class="section-subtitle">
-          «Дез щит 360» — специализированный центр дезинфектологии в Крыму. 
-          Мы не подрабатываем «по вечерам» — это наша основная деятельность и зона ответственности.
+          «Дез щит 360» — специализированный центр дезинфектологии в Крыму.
+          Это наша профессия, а не подработка. Мы отвечаем за результат своим именем.
         </p>
         <ul class="about-list">
           <li>Работаем официально как ИП Кавера Е.Н.</li>
           <li>Соблюдаем санитарные нормы и используем проверенные методики.</li>
-          <li>Обслуживаем частные лица, бизнес и ответственные объекты.</li>
-          <li>Держим в фокусе вашу безопасность, репутацию и комфорт.</li>
+          <li>Обслуживаем частных клиентов и ответственные объекты.</li>
+          <li>Ориентируемся на долгосрочное сотрудничество и рекомендации.</li>
         </ul>
       </div>
       <div class="about-card">
@@ -1215,7 +1341,7 @@
     });
   }
 
-  // Smooth scroll для всех ссылок/кнопок с data-scroll или href="#..."
+  // Плавный скролл
   function smoothScrollTo(targetId) {
     const target = document.querySelector(targetId);
     if (!target) return;
@@ -1232,10 +1358,37 @@
     });
   });
 
+  // Табы "Подробнее" по услугам
+  const serviceDetails = document.querySelectorAll('.service-detail');
+
+  function showServiceDetail(serviceKey) {
+    if (!serviceKey) return;
+    let hasMatch = false;
+    serviceDetails.forEach(block => {
+      if (block.dataset.service === serviceKey) {
+        block.classList.add('active');
+        hasMatch = true;
+      } else {
+        block.classList.remove('active');
+      }
+    });
+    if (hasMatch) smoothScrollTo('#service-details');
+  }
+
+  document.querySelectorAll('.service-link[data-service]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const key = link.getAttribute('data-service');
+      showServiceDetail(key);
+    });
+  });
+
+  // Плавный скролл для якорных ссылок, кроме тех, что управляют табами
   document.querySelectorAll('a[href^="#"]').forEach(link => {
+    if (link.hasAttribute('data-service')) return;
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
-      if (href.length > 1) {
+      if (href && href.length > 1) {
         const target = document.querySelector(href);
         if (target) {
           e.preventDefault();
@@ -1245,9 +1398,9 @@
     });
   });
 
-  // Простой аккордеон для FAQ
-  document.querySelectorAll('.faq-item').forEach(function(item) {
-    item.addEventListener('click', function() {
+  // FAQ аккордеон
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => {
       item.classList.toggle('active');
       const toggle = item.querySelector('.faq-toggle');
       if (toggle) toggle.textContent = item.classList.contains('active') ? '−' : '+';
