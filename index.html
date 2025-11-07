@@ -19,11 +19,7 @@
       --shadow-soft: 0 10px 28px rgba(0,0,0,0.06);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -32,10 +28,7 @@
       line-height: 1.5;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    a { text-decoration: none; color: inherit; }
 
     .top-bar {
       background: var(--primary-dark);
@@ -47,9 +40,7 @@
       align-items: center;
     }
 
-    .top-bar span {
-      opacity: 0.9;
-    }
+    .top-bar span { opacity: 0.9; }
 
     .top-bar-contacts {
       display: flex;
@@ -112,9 +103,7 @@
       justify-content: center;
     }
 
-    nav a:hover {
-      color: var(--primary);
-    }
+    nav a:hover { color: var(--primary); }
 
     .header-actions {
       display: flex;
@@ -131,9 +120,7 @@
       flex-direction: column;
     }
 
-    .phone a {
-      color: var(--primary-dark);
-    }
+    .phone a { color: var(--primary-dark); }
 
     .btn {
       padding: 8px 14px;
@@ -146,27 +133,13 @@
       white-space: nowrap;
     }
 
-    .btn-primary {
-      background: var(--primary);
-      color: #ffffff;
-    }
+    .btn-primary { background: var(--primary); color: #ffffff; }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
 
-    .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-1px);
-    }
+    .btn-alert { background: var(--accent-alert); color: #ffffff; }
+    .btn-alert:hover { filter: brightness(0.95); transform: translateY(-1px); }
 
-    .btn-alert {
-      background: var(--accent-alert);
-      color: #ffffff;
-    }
-
-    .btn-alert:hover {
-      filter: brightness(0.95);
-      transform: translateY(-1px);
-    }
-
-    /* Mobile burger */
+    /* Burger */
 
     .burger {
       display: none;
@@ -175,6 +148,7 @@
       flex-direction: column;
       justify-content: space-between;
       cursor: pointer;
+      margin-left: auto;
     }
 
     .burger span {
@@ -195,9 +169,7 @@
       box-shadow: 0 8px 18px rgba(0,0,0,0.06);
     }
 
-    .mobile-nav a {
-      color: var(--primary-dark);
-    }
+    .mobile-nav a { color: var(--primary-dark); }
 
     .mobile-nav-cta {
       display: flex;
@@ -212,18 +184,10 @@
       font-size: 13px;
     }
 
-    .section {
-      padding: 40px 16px;
-    }
+    .section { padding: 40px 16px; }
+    .section-alt { background: var(--bg-soft); }
 
-    .section-alt {
-      background: var(--bg-soft);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    .container { max-width: 1200px; margin: 0 auto; }
 
     .section-title {
       font-family: 'Manrope', sans-serif;
@@ -240,21 +204,20 @@
       max-width: 720px;
     }
 
-    /* HERO */
+    /* HERO with banner image */
 
-    .hero {
-      background: var(--bg-soft);
-      padding: 26px 16px 26px;
-    }
+    .hero { background: var(--bg-soft); padding: 26px 16px 26px; }
 
     .hero-inner {
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: minmax(0, 1.8fr) minmax(260px, 1.2fr);
+      grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1.4fr);
       gap: 26px;
-      align-items: center;
+      align-items: stretch;
     }
+
+    .hero-left { display: flex; flex-direction: column; justify-content: center; }
 
     .hero-title {
       font-family: 'Manrope', sans-serif;
@@ -292,23 +255,10 @@
       box-shadow: 0 3px 8px rgba(0,0,0,0.04);
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-      margin-bottom: 4px;
-    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 4px; }
+    .hero-actions .btn-primary { font-size: 13px; padding: 8px 16px; }
 
-    .hero-actions .btn-primary {
-      font-size: 13px;
-      padding: 8px 16px;
-    }
-
-    .hero-note {
-      font-size: 11px;
-      color: var(--text-secondary);
-    }
+    .hero-note { font-size: 11px; color: var(--text-secondary); }
 
     .hero-form {
       background: #ffffff;
@@ -328,550 +278,178 @@
       margin-bottom: 2px;
     }
 
-    .field-label {
-      font-size: 11px;
-      color: var(--text-secondary);
-      margin-bottom: 2px;
+    .field-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 2px; }
+
+    .field-input, .field-select, .field-textarea {
+      width: 100%; padding: 7px 9px; border-radius: 8px; border: 1px solid #D1E5EA;
+      font-size: 12px; outline: none; transition: all 0.15s ease; resize: vertical;
     }
 
-    .field-input,
-    .field-select,
-    .field-textarea {
-      width: 100%;
-      padding: 7px 9px;
-      border-radius: 8px;
-      border: 1px solid #D1E5EA;
-      font-size: 12px;
-      outline: none;
-      transition: all 0.15s ease;
-      resize: vertical;
-    }
-
-    .field-input:focus,
-    .field-select:focus,
-    .field-textarea:focus {
+    .field-input:focus, .field-select:focus, .field-textarea:focus {
       border-color: var(--primary);
       box-shadow: 0 0 0 2px rgba(0,122,140,0.12);
     }
 
-    .hero-form .btn-primary {
-      width: 100%;
-      margin-top: 4px;
-      font-size: 13px;
-      padding: 8px 10px;
+    .hero-form .btn-primary { width: 100%; margin-top: 4px; font-size: 13px; padding: 8px 10px; }
+    .hero-form-note { font-size: 9px; color: var(--text-secondary); margin-top: 2px; }
+
+    /* Right-side banner */
+
+    .hero-photo {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      min-height: 260px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      background: #000;
     }
 
-    .hero-form-note {
-      font-size: 9px;
-      color: var(--text-secondary);
-      margin-top: 2px;
+    .hero-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;
+    }
+
+    .hero-photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top right, rgba(11,57,84,0.75), rgba(0,122,140,0.15), rgba(0,0,0,0));
+      pointer-events: none;
+    }
+
+    .hero-photo-caption {
+      position: absolute; left: 14px; bottom: 14px; right: 14px;
+      color: #ffffff; font-size: 10px; line-height: 1.4; z-index: 2;
+    }
+
+    .hero-photo-caption strong { display: block; font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+
+    .hero-badge-inline {
+      display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px;
+      border-radius: 999px; background: rgba(0,122,140,0.92); font-size: 9px; margin-bottom: 4px;
     }
 
     /* SERVICES */
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
+    .services-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 
     .service-card {
-      background: #ffffff;
-      border-radius: var(--radius);
-      padding: 12px 10px 10px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-size: 12px;
+      background: #ffffff; border-radius: var(--radius); padding: 12px 10px 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04); display: flex; flex-direction: column; gap: 6px; font-size: 12px;
     }
 
-    .service-label {
-      display: inline-flex;
-      padding: 2px 7px;
-      border-radius: 999px;
-      background: var(--bg-soft);
-      font-size: 9px;
-      color: var(--primary);
-      margin-bottom: 1px;
-    }
+    .service-label { display: inline-flex; padding: 2px 7px; border-radius: 999px; background: var(--bg-soft); font-size: 9px; color: var(--primary); margin-bottom: 1px; }
+    .service-title { font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 14px; color: var(--primary-dark); }
+    .service-text { font-size: 12px; color: var(--text-secondary); }
+    .service-list { font-size: 11px; color: var(--text-main); padding-left: 15px; }
 
-    .service-title {
-      font-family: 'Manrope', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      color: var(--primary-dark);
-    }
-
-    .service-text {
-      font-size: 12px;
-      color: var(--text-secondary);
-    }
-
-    .service-list {
-      font-size: 11px;
-      color: var(--text-main);
-      padding-left: 15px;
-    }
-
-    .service-actions {
-      margin-top: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-    }
-
-    .service-link {
-      font-size: 11px;
-      color: var(--primary);
-      cursor: pointer;
-    }
-
-    .service-link:hover {
-      text-decoration: underline;
-    }
+    .service-actions { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 11px; }
+    .service-link { font-size: 11px; color: var(--primary); cursor: pointer; }
+    .service-link:hover { text-decoration: underline; }
 
     /* CLIENTS */
 
-    .clients-grid {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 10px;
-      font-size: 11px;
-    }
-
-    .client-card {
-      background: #ffffff;
-      border-radius: 10px;
-      padding: 8px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .client-title {
-      font-weight: 600;
-      font-size: 11px;
-      color: var(--primary-dark);
-    }
-
-    .client-label {
-      font-size: 9px;
-      color: var(--primary);
-    }
+    .clients-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; font-size: 11px; }
+    .client-card { background: #ffffff; border-radius: 10px; padding: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.03); display: flex; flex-direction: column; gap: 3px; }
+    .client-title { font-weight: 600; font-size: 11px; color: var(--primary-dark); }
+    .client-label { font-size: 9px; color: var(--primary); }
 
     /* GEOGRAPHY */
 
-    .geo-wrap {
-      display: grid;
-      grid-template-columns: minmax(0,1.7fr) minmax(260px,1.3fr);
-      gap: 20px;
-      align-items: center;
-    }
-
-    .geo-list {
-      font-size: 12px;
-      color: var(--text-main);
-      padding-left: 16px;
-    }
-
-    .geo-highlight {
-      display: inline-flex;
-      padding: 4px 9px;
-      background: #ffffff;
-      border-radius: 999px;
-      font-size: 10px;
-      color: var(--primary-dark);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-      margin-top: 8px;
-    }
-
-    .geo-map-placeholder {
-      border-radius: var(--radius);
-      background: #ffffff;
-      box-shadow: var(--shadow-soft);
-      padding: 14px;
-      font-size: 10px;
-      color: var(--text-secondary);
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      text-align: center;
-    }
+    .geo-wrap { display: grid; grid-template-columns: minmax(0,1.7fr) minmax(260px,1.3fr); gap: 20px; align-items: center; }
+    .geo-list { font-size: 12px; color: var(--text-main); padding-left: 16px; }
+    .geo-highlight { display: inline-flex; padding: 4px 9px; background: #ffffff; border-radius: 999px; font-size: 10px; color: var(--primary-dark); box-shadow: 0 4px 10px rgba(0,0,0,0.04); margin-top: 8px; }
+    .geo-map-placeholder { border-radius: var(--radius); background: #ffffff; box-shadow: var(--shadow-soft); padding: 14px; font-size: 10px; color: var(--text-secondary); display: flex; flex-direction: column; gap: 4px; text-align: center; }
 
     /* GUARANTEES */
 
-    .guarantees-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-    }
+    .guarantees-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .guarantee-card { background: #ffffff; border-radius: 10px; padding: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.03); font-size: 11px; display: flex; flex-direction: column; gap: 3px; }
+    .guarantee-title { font-weight: 600; color: var(--primary-dark); font-size: 12px; }
 
-    .guarantee-card {
-      background: #ffffff;
-      border-radius: 10px;
-      padding: 10px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-      font-size: 11px;
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .guarantee-title {
-      font-weight: 600;
-      color: var(--primary-dark);
-      font-size: 12px;
-    }
-
-    .licenses-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      font-size: 10px;
-      margin-top: 6px;
-    }
-
-    .license-card {
-      background: #ffffff;
-      border-radius: 8px;
-      padding: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      width: 130px;
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      align-items: flex-start;
-    }
-
-    .license-box {
-      width: 100%;
-      height: 54px;
-      border-radius: 6px;
-      border: 1px dashed #D1E5EA;
-      background: #F8FCFD;
-    }
+    .licenses-row { display: flex; gap: 10px; flex-wrap: wrap; font-size: 10px; margin-top: 6px; }
+    .license-card { background: #ffffff; border-radius: 8px; padding: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); width: 130px; display: flex; flex-direction: column; gap: 3px; align-items: flex-start; }
+    .license-box { width: 100%; height: 54px; border-radius: 6px; border: 1px dashed #D1E5EA; background: #F8FCFD; }
 
     /* CASES */
 
-    .cases-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 12px;
-      font-size: 11px;
-    }
-
-    .case-card {
-      background: #ffffff;
-      border-radius: 10px;
-      padding: 10px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .case-label {
-      font-size: 9px;
-      color: var(--primary);
-    }
-
-    .case-title {
-      font-weight: 600;
-      color: var(--primary-dark);
-      font-size: 11px;
-    }
+    .cases-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; font-size: 11px; }
+    .case-card { background: #ffffff; border-radius: 10px; padding: 10px; box-shadow: 0 4px 14px rgba(0,0,0,0.04); display: flex; flex-direction: column; gap: 5px; }
+    .case-label { font-size: 9px; color: var(--primary); }
+    .case-title { font-weight: 600; color: var(--primary-dark); font-size: 11px; }
 
     /* PRICES */
 
-    .price-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 12px;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: var(--shadow-soft);
-      overflow: hidden;
-    }
-
-    .price-table th,
-    .price-table td {
-      padding: 8px 10px;
-      border-bottom: 1px solid #EEF4F6;
-      text-align: left;
-    }
-
-    .price-table th {
-      background: var(--bg-soft);
-      font-weight: 600;
-      color: var(--primary-dark);
-    }
-
-    .price-note {
-      font-size: 10px;
-      color: var(--text-secondary);
-      margin-top: 6px;
-    }
+    .price-table { width: 100%; border-collapse: collapse; font-size: 12px; background: #ffffff; border-radius: 10px; box-shadow: var(--shadow-soft); overflow: hidden; }
+    .price-table th, .price-table td { padding: 8px 10px; border-bottom: 1px solid #EEF4F6; text-align: left; }
+    .price-table th { background: var(--bg-soft); font-weight: 600; color: var(--primary-dark); }
+    .price-note { font-size: 10px; color: var(--text-secondary); margin-top: 6px; }
 
     /* FAQ */
 
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .faq-item {
-      background: #ffffff;
-      border-radius: 8px;
-      padding: 8px 9px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      cursor: pointer;
-    }
-
-    .faq-question {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--primary-dark);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .faq-answer {
-      font-size: 10px;
-      color: var(--text-secondary);
-      margin-top: 3px;
-      display: none;
-    }
-
-    .faq-item.active .faq-answer {
-      display: block;
-    }
-
-    .faq-toggle {
-      font-size: 16px;
-      color: var(--primary);
-    }
+    .faq-list { display: flex; flex-direction: column; gap: 6px; }
+    .faq-item { background: #ffffff; border-radius: 8px; padding: 8px 9px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); cursor: pointer; }
+    .faq-question { font-size: 12px; font-weight: 500; color: var(--primary-dark); display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+    .faq-answer { font-size: 10px; color: var(--text-secondary); margin-top: 3px; display: none; }
+    .faq-item.active .faq-answer { display: block; }
+    .faq-toggle { font-size: 16px; color: var(--primary); }
 
     /* ABOUT */
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1.8fr) minmax(260px,1.2fr);
-      gap: 18px;
-      align-items: flex-start;
-    }
-
-    .about-list {
-      font-size: 12px;
-      color: var(--text-main);
-      padding-left: 16px;
-    }
-
-    .about-card {
-      background: #ffffff;
-      border-radius: var(--radius);
-      padding: 10px;
-      box-shadow: var(--shadow-soft);
-      font-size: 11px;
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
+    .about-grid { display: grid; grid-template-columns: minmax(0,1.8fr) minmax(260px,1.2fr); gap: 18px; align-items: flex-start; }
+    .about-list { font-size: 12px; color: var(--text-main); padding-left: 16px; }
+    .about-card { background: #ffffff; border-radius: var(--radius); padding: 10px; box-shadow: var(--shadow-soft); font-size: 11px; display: flex; flex-direction: column; gap: 3px; }
 
     /* CONTACTS */
 
-    .contacts-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1.4fr) minmax(260px,1.6fr);
-      gap: 18px;
-      align-items: flex-start;
-    }
-
-    .contacts-list {
-      font-size: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      color: var(--text-main);
-    }
-
-    .contacts-label {
-      font-weight: 600;
-      color: var(--primary-dark);
-    }
-
-    .contacts-form {
-      background: #ffffff;
-      padding: 10px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-soft);
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      font-size: 11px;
-    }
-
-    .map-placeholder {
-      margin-top: 8px;
-      width: 100%;
-      height: 130px;
-      border-radius: 8px;
-      background: var(--bg-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9px;
-      color: var(--text-secondary);
-      text-align: center;
-      padding: 8px;
-    }
+    .contacts-grid { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(260px,1.6fr); gap: 18px; align-items: flex-start; }
+    .contacts-list { font-size: 12px; display: flex; flex-direction: column; gap: 5px; color: var(--text-main); }
+    .contacts-label { font-weight: 600; color: var(--primary-dark); }
+    .contacts-form { background: #ffffff; padding: 10px; border-radius: var(--radius); box-shadow: var(--shadow-soft); display: flex; flex-direction: column; gap: 7px; font-size: 11px; }
+    .map-placeholder { margin-top: 8px; width: 100%; height: 130px; border-radius: 8px; background: var(--bg-soft); display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--text-secondary); text-align: center; padding: 8px; }
 
     /* FOOTER */
 
-    footer {
-      padding: 14px 16px 18px;
-      background: #0B3954;
-      color: #ffffff;
-      font-size: 10px;
-    }
+    footer { padding: 14px 16px 18px; background: #0B3954; color: #ffffff; font-size: 10px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
+    .footer-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .footer-links a { color: #C4D6E5; }
+    .footer-legal { color: #C4D6E5; font-size: 9px; line-height: 1.4; }
 
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: flex-start;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: #C4D6E5;
-    }
-
-    .footer-legal {
-      color: #C4D6E5;
-      font-size: 9px;
-      line-height: 1.4;
-    }
-
-    /* RESPONSIVE */
+    /* Responsive */
 
     @media (max-width: 992px) {
-      .services-grid {
-        grid-template-columns: repeat(2, minmax(0,1fr));
-      }
-      .clients-grid {
-        grid-template-columns: repeat(3, minmax(0,1fr));
-      }
-      .guarantees-grid {
-        grid-template-columns: repeat(2, minmax(0,1fr));
-      }
-      .cases-grid {
-        grid-template-columns: repeat(2, minmax(0,1fr));
-      }
-      .geo-wrap,
-      .about-grid,
-      .contacts-grid {
-        grid-template-columns: 1fr;
-      }
+      .services-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .clients-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+      .guarantees-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .cases-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .geo-wrap, .about-grid, .contacts-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
-      .top-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 3px;
-        font-size: 10px;
-      }
+      .top-bar { flex-direction: column; align-items: flex-start; gap: 3px; font-size: 10px; }
+      .top-bar-contacts { flex-wrap: wrap; gap: 6px; }
+      .header-inner { padding: 8px 12px; gap: 10px; }
+      nav { display: none; }
+      .burger { display: flex; }
+      .header-actions { display: none; }
+      .mobile-nav.show { display: flex; }
 
-      .top-bar-contacts {
-        flex-wrap: wrap;
-        gap: 6px;
-      }
+      .hero-inner { grid-template-columns: 1fr; gap: 14px; }
+      .hero { padding: 20px 14px 18px; }
+      .hero-left { order: 2; }
+      .hero-photo { order: 1; min-height: 220px; }
+      .hero-title { font-size: 20px; }
+      .hero-subtitle { font-size: 13px; }
+      .hero-bullets { font-size: 10px; }
+      .hero-note { font-size: 10px; }
 
-      .header-inner {
-        padding: 8px 12px;
-        gap: 10px;
-      }
-
-      nav {
-        display: none;
-      }
-
-      .burger {
-        display: flex;
-        margin-left: auto;
-      }
-
-      .header-actions {
-        display: none;
-      }
-
-      .mobile-nav.show {
-        display: flex;
-      }
-
-      .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 18px;
-      }
-
-      .hero {
-        padding: 22px 14px 20px;
-      }
-
-      .hero-title {
-        font-size: 20px;
-      }
-
-      .hero-subtitle {
-        font-size: 13px;
-      }
-
-      .hero-bullets {
-        font-size: 10px;
-      }
-
-      .hero-note {
-        font-size: 10px;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .clients-grid {
-        grid-template-columns: repeat(2, minmax(0,1fr));
-      }
-
-      .cases-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section {
-        padding: 28px 14px;
-      }
-
-      .section-title {
-        font-size: 19px;
-      }
-
-      .section-subtitle {
-        font-size: 12px;
-      }
+      .services-grid { grid-template-columns: 1fr; }
+      .clients-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .cases-grid { grid-template-columns: 1fr; }
+      .section { padding: 26px 14px; }
+      .section-title { font-size: 19px; }
+      .section-subtitle { font-size: 12px; }
     }
   </style>
 </head>
@@ -935,89 +513,43 @@
 
 <section class="hero">
   <div class="hero-inner">
-    <div>
+    <div class="hero-left">
       <h1 class="hero-title">
         Дезинфекция, дезинсекция и дератизация в Симферополе, Севастополе и по всему Крыму
       </h1>
       <p class="hero-subtitle">
-        Если в доме, офисе или на объекте появились насекомые, грызуны, неприятный запах или плесень — просто позвоните нам.
-        «Дез щит 360» быстро, безопасно и официально решит проблему с гарантией результата.
+        На фото — наша команда на объекте: защищённая форма, профессиональное оборудование, уверенные лица.
+        Именно такие специалисты приедут к вам, аккуратно и официально решая проблему с вредителями и запахами.
       </p>
       <div class="hero-bullets">
-        <div class="hero-badge">Лицензированная служба дезинфекции</div>
-        <div class="hero-badge">Выезд от 1 часа по Крыму</div>
+        <div class="hero-badge">Лицензированный центр дезинфектологии</div>
+        <div class="hero-badge">Выезд от 1 часа по всему Крыму</div>
         <div class="hero-badge">Безопасно для детей и животных</div>
-        <div class="hero-badge">Акты и договоры для проверок</div>
+        <div class="hero-badge">Документы для СЭС и проверок</div>
       </div>
       <div class="hero-actions">
         <button class="btn btn-primary">Получить расчет за 3 минуты</button>
         <span style="font-size:11px; color:var(--text-secondary);">
-          Оставьте номер — мы мягко проведём вас к готовому решению без стресса и лишних трат.
+          Оставьте номер — мы спокойно проведём вас от тревоги к понятному решению под ваш объект.
         </span>
       </div>
       <div class="hero-note">
-        Представьте свой объект чистым, тихим и безопасным — без шорохов, укусов и запахов. 
-        Сделайте шаг к этому сейчас: отправьте заявку, остальное мы возьмём на себя.
+        Представьте: вы заходите в помещение и видите только чистоту и порядок. Оставьте заявку — «Дез щит 360» возьмёт
+        ответственность на себя.
       </div>
     </div>
 
-    <form class="hero-form">
-      <div class="hero-form-title">Быстрый расчет стоимости</div>
-      <div class="section-subtitle" style="margin-bottom:4px; font-size:10px; padding:0;">
-        Опишите ситуацию — вежливый специалист подберёт оптимальный способ обработки и назовёт честную цену.
+    <div class="hero-photo">
+      <img src="images/banner-dezshield360.jpg" alt="Команда специалистов дезинфекции «Дез щит 360» на объекте">
+      <div class="hero-photo-overlay"></div>
+      <div class="hero-photo-caption">
+        <div class="hero-badge-inline">
+          <span>Профессиональная команда</span>
+        </div>
+        <strong>Реальные специалисты, реальное оборудование.</strong>
+        Каждый выезд — в защитной форме, с сертифицированными препаратами и чётким планом обработки.
       </div>
-      <div>
-        <div class="field-label">Ваше имя</div>
-        <input type="text" class="field-input" placeholder="Как к вам обращаться?">
-      </div>
-      <div>
-        <div class="field-label">Телефон</div>
-        <input type="tel" class="field-input" placeholder="+7 978 550 05 57">
-      </div>
-      <div>
-        <div class="field-label">Город</div>
-        <select class="field-select">
-          <option>Симферополь</option>
-          <option>Севастополь</option>
-          <option>Ялта</option>
-          <option>Евпатория</option>
-          <option>Феодосия</option>
-          <option>Керчь</option>
-          <option>Другой город Крыма</option>
-        </select>
-      </div>
-      <div>
-        <div class="field-label">Тип объекта</div>
-        <select class="field-select">
-          <option>Квартира / дом</option>
-          <option>Арендное жильё</option>
-          <option>Кафе / ресторан</option>
-          <option>Магазин / супермаркет</option>
-          <option>Склад / производство</option>
-          <option>Отель / хостел / санаторий</option>
-          <option>Медицинское учреждение</option>
-          <option>Детский сад / школа / колледж</option>
-          <option>Участок / территория</option>
-          <option>Автотранспорт</option>
-        </select>
-      </div>
-      <div>
-        <div class="field-label">Что вас беспокоит?</div>
-        <select class="field-select">
-          <option>Тараканы, клопы, муравьи, блохи</option>
-          <option>Крысы, мыши</option>
-          <option>Запах (гарь, сырость, разложение и др.)</option>
-          <option>Плесень</option>
-          <option>Вирусы / бактерии</option>
-          <option>Клещи (акарицидная обработка)</option>
-          <option>Нужен комплекс под ключ</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary">Рассчитать стоимость</button>
-      <div class="hero-form-note">
-        Нажимая кнопку, вы позволяете нам связаться с вами по заявке. Без спама, только по делу.
-      </div>
-    </form>
+    </div>
   </div>
 </section>
 
@@ -1523,7 +1055,7 @@
 <footer>
   <div class="footer-inner">
     <div>
-      © «Дез щит 360», Центр дезинфектологии,  г. Симферополь, ул. Екатерининская, 51.
+      © «Дез щит 360», Центр дезинфектологии, г. Симферополь, ул. Екатерининская, 51.
       <div class="footer-legal">
         ИП Кавера Е.Н. · Тел.: +7 978 550 05 57, +7 978 573 27 08 · E-mail: dezschit360@mail.ru
       </div>
@@ -1546,15 +1078,12 @@
   if (burger) {
     burger.addEventListener('click', () => {
       mobileNav.classList.toggle('show');
-      burger.classList.toggle('open');
     });
   }
 
-  // Закрытие мобильного меню по клику на ссылку
   document.querySelectorAll('#mobileNav a').forEach(link => {
     link.addEventListener('click', () => {
       mobileNav.classList.remove('show');
-      burger.classList.remove('open');
     });
   });
 
