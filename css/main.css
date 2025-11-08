@@ -84,6 +84,11 @@ header {
   color: var(--primary-dark);
 }
 
+.logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
 .logo-icon {
   width: 28px;
   height: 28px;
@@ -957,3 +962,4 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
