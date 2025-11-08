@@ -67,7 +67,7 @@ header {
 .header-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 10px 14px;
+  padding: 14px 14px;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -962,6 +962,7 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
