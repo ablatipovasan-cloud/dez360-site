@@ -481,8 +481,89 @@
     </div>
   </div>
 </section>
+<section id="faq" class="section">
+  <div class="container">
+    <h2 class="section-title">Частые вопросы о дезинфекции в Крыму</h2>
+    <p class="section-subtitle">
+      Собрали ответы на популярные вопросы клиентов из Симферополя, Севастополя и по всему Крыму.
+      Если чего-то не хватает — позвоните, подскажем по вашей ситуации.
+    </p>
 
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Вы работаете официально и предоставляете документы для СЭС и Роспотребнадзора?</span>
+          <span class="faq-toggle">−</span>
+        </div>
+        <div class="faq-answer">
+          Да. «Дез щит 360» оформляет договор, акты выполненных работ, протоколы, при необходимости —
+          журнал учёта и рекомендации. Документы подходят для кафе, магазинов, складов, медучреждений,
+          гостиниц, детских садов и школ.
+        </div>
+      </div>
 
+      <div class="faq-item collapsed">
+        <div class="faq-question">
+          <span>Насколько безопасны ваши препараты для людей, детей и животных?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          Используем только сертифицированные средства, разрешённые для применения в жилых и детских
+          учреждениях. Подбираем концентрацию под объект, объясняем правила проветривания и выхода в помещение.
+          При соблюдении рекомендаций обработка безопасна.
+        </div>
+      </div>
+
+      <div class="faq-item collapsed">
+        <div class="faq-question">
+          <span>Сколько держится эффект обработки?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          Зависит от типа вредителя и условий объекта. В среднем:
+          от насекомых — до 6 месяцев и дольше при соблюдении санитарных норм,
+          от грызунов — при поддержании барьерной защиты,
+          по вентиляции — по регламенту 1–2 раза в год.
+          Даём понятные рекомендации, чтобы эффект сохранялся максимально долго.
+        </div>
+      </div>
+
+      <div class="faq-item collapsed">
+        <div class="faq-question">
+          <span>Выезжаете ли вы по всему Крыму или только по Симферополю?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          База в Симферополе, работаем в Севастополе, Евпатории, Ялте, Феодосии, Керчи и по всему Крыму.
+          Для срочных заявок согласуем ближайшее окно и маршрут, чтобы не терять время.
+        </div>
+      </div>
+
+      <div class="faq-item collapsed">
+        <div class="faq-question">
+          <span>Как подготовить помещение к дезинфекции?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          Обычно достаточно убрать открытые продукты, закрыть посуду, спрятать вещи первой необходимости.
+          Остальное подскажем по телефону перед выездом или на месте. Для бизнеса отправим чек-лист подготовки.
+        </div>
+      </div>
+
+      <div class="faq-item collapsed">
+        <div class="faq-question">
+          <span>Какие гарантии вы даёте?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          Работаем по договору, соблюдаем регламенты и используем профессиональное оборудование.
+          При соблюдении рекомендаций предоставляем гарантийный период и, при необходимости,
+          повторный выезд по условиям договора.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <section id="contacts" class="section">
   <div class="container">
     <h2 class="section-title">Контакты «Дез щит 360»</h2>
@@ -606,9 +687,34 @@
     });
   });
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const faqItems = document.querySelectorAll('.faq-item');
 
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const toggle = item.querySelector('.faq-toggle');
+
+      question.addEventListener('click', () => {
+        // Сворачиваем открытый
+        faqItems.forEach(other => {
+          if (other !== item) {
+            other.classList.add('collapsed');
+            const t = other.querySelector('.faq-toggle');
+            if (t) t.textContent = '+';
+          }
+        });
+
+        // Переключаем текущий
+        const isCollapsed = item.classList.toggle('collapsed');
+        if (toggle) toggle.textContent = isCollapsed ? '+' : '−';
+      });
+    });
+  });
+</script>
 </body>
 </html>
+
 
 
 
