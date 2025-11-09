@@ -680,8 +680,67 @@
     </div>
   </div>
 </footer>
+  .footer {
+  background: #f5fafb;
+  margin-top: 40px;
+  padding: 20px 0 18px;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.footer-brand {
+  font-weight: 600;
+  font-size: 18px;
+  color: #004b5b;
+}
+
+.footer-sub,
+.footer-legal,
+.footer-copy {
+  margin-top: 2px;
+}
+
+.footer-links {
+  text-align: right;
+}
+
+.footer-link {
+  display: block;
+  color: var(--primary);
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .footer-links {
+    text-align: left;
+  }
+}
+
 </body>
 </html>
+
 
 
 
