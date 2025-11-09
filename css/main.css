@@ -878,6 +878,37 @@ footer {
   gap: 8px;
   flex-wrap: wrap;
 }
+.footer-link {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+.footer-brand {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.footer-sub,
+.footer-legal,
+.footer-copy {
+    margin-top: 2px;
+}
+
+/* Подпись под формами */
+.form-note {
+    margin-top: 8px;
+    font-size: 11px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.form-note a {
+    color: #007A8C; /* твой основной цвет */
+    text-decoration: underline;
+}
 
 .footer-links a {
   color: #C4D6E5;
@@ -1006,6 +1037,7 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
