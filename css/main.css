@@ -78,39 +78,32 @@ header {
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-family: 'Manrope', sans-serif;
-  font-weight: 700;
-  color: var(--primary-dark);
+  gap: 10px;
 }
 
-.logo-img {
-  height: 60px;       /* логотип крупнее */
+.logo-icon-img {
+  height: 52px;   /* можно 44–52 подобрать на глаз */
   width: auto;
   display: block;
-  margin-top: -10px;  /* приподнимаем над строкой */
-  margin-bottom: -10px; /* и вниз, чтобы не раздуло шапку */
 }
 
-}
-.logo-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 10px;
-  background: var(--primary);
+.logo-text {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 700;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-title {
+  font-weight: 600;
+  font-size: 22px;
+  color: #004B5B;
 }
 
 .logo-sub {
-  font-size: 10px;
-  font-weight: 400;
-  color: var(--text-secondary);
+  font-size: 12px;
+  color: #6B7B85;
 }
+
 
 /* Навигация (desktop) */
 
@@ -966,6 +959,7 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
