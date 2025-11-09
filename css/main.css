@@ -67,7 +67,7 @@ header {
 .header-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 24px 14px;
+  padding: 10px 14px;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -85,9 +85,13 @@ header {
 }
 
 .logo-img {
-  height: 64px;
+  height: 60px;       /* логотип крупнее */
   width: auto;
   display: block;
+  margin-top: -10px;  /* приподнимаем над строкой */
+  margin-bottom: -10px; /* и вниз, чтобы не раздуло шапку */
+}
+
 }
 .logo-icon {
   width: 28px;
@@ -962,6 +966,7 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
