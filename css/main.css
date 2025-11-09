@@ -82,7 +82,7 @@ header {
 }
 
 .logo-icon-img {
-  height: 52px;   /* можно 44–52 подобрать на глаз */
+  height: 44px;   /* можно 44–52 подобрать на глаз */
   width: auto;
   display: block;
 }
@@ -959,6 +959,7 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
