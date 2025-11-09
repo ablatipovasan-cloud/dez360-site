@@ -120,20 +120,35 @@
 </section>
 </main>
 
-<footer>
-  <div class="footer-inner">
-    <div>© «Дез щит 360»</div>
-    <div class="footer-links"><a href="/#services">Услуги</a><a href="/#contacts">Контакты</a></div>
-  </div>
-</footer>
-
 <script>
 const b7=document.getElementById('burger'),m7=document.getElementById('mobileNav');
 if(b7)b7.addEventListener('click',()=>m7.classList.toggle('show'));
 document.querySelectorAll('[data-scroll]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(el.getAttribute('data-scroll'));if(!t)return;const top=t.getBoundingClientRect().top+window.pageYOffset-80;window.scrollTo({top,behavior:'smooth'});m7.classList.remove('show');}));
 </script>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <div class="footer-brand">Дез щит 360</div>
+      <div class="footer-sub">Центр дезинфектологии · Симферополь · Крым</div>
+      <div class="footer-legal">
+        ИП Кавера Е.Н., г. Симферополь, ул. Екатерининская, 51
+      </div>
+      <div class="footer-copy">
+        © 2025 «Дез щит 360». Все права защищены.
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="../policy.html" class="footer-link">Политика конфиденциальности</a>
+      <a href="tel:+79785500557" class="footer-link">+7 978 550 05 57</a>
+      <a href="tel:+79785732708" class="footer-link">+7 978 573 27 08</a>
+      <a href="mailto:dezschit360@mail.ru" class="footer-link">dezschit360@mail.ru</a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
+
 
 
 
