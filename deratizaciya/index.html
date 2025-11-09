@@ -92,6 +92,17 @@
         <p style="margin-top:10px;">
           Мы не используем открытые приманки, опасные для людей и животных. Все решения согласуем с вами.
         </p>
+        .form-note {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.form-note a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
       </div>
       <div class="about-card">
         <strong>Подходит для:</strong>
@@ -126,6 +137,11 @@
         <div><div class="field-label">Тип объекта</div><textarea class="field-textarea" rows="3" placeholder="Склад, магазин, дом, производство..."></textarea></div>
         <button type="submit" class="btn btn-primary">Получить коммерческое предложение</button>
       </form>
+      <p class="form-note">
+  Нажимая кнопку, вы соглашаетесь с
+  <a href="../policy.html" target="_blank">политикой конфиденциальности</a>.
+</p>
+
       <div class="contacts-list">
         <div><span class="contacts-label">Телефон:</span> <a href="tel:+79785500557">+7 978 550 05 57</a></div>
         <div><span class="contacts-label">E-mail:</span> <a href="mailto:dezschit360@mail.ru">dezschit360@mail.ru</a></div>
@@ -137,24 +153,35 @@
 </section>
 </main>
 
-<footer>
-  <div class="footer-inner">
-    <div>© «Дез щит 360», Центр дезинфектологии, г. Симферополь, ул. Екатерининская, 51.
-      <div class="footer-legal">ИП Кавера Е.Н. · Тел.: +7 978 550 05 57, +7 978 573 27 08 · E-mail: dezschit360@mail.ru</div>
-    </div>
-    <div class="footer-links">
-      <a href="/#services">Услуги</a><a href="/#prices">Цены</a><a href="/#guarantees">Гарантии</a><a href="/#contacts">Контакты</a>
-    </div>
-  </div>
-</footer>
-
 <script>
 const b3=document.getElementById('burger');const m3=document.getElementById('mobileNav');
 if(b3){b3.addEventListener('click',()=>m3.classList.toggle('show'))}
 document.querySelectorAll('[data-scroll]').forEach(el=>{el.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(el.getAttribute('data-scroll'));if(!t)return;const o=80;const top=t.getBoundingClientRect().top+window.pageYOffset-o;window.scrollTo({top,behavior:'smooth'});if(m3)m3.classList.remove('show');});});
 </script>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <div class="footer-brand">Дез щит 360</div>
+      <div class="footer-sub">Центр дезинфектологии · Симферополь · Крым</div>
+      <div class="footer-legal">
+        ИП Кавера Е.Н., г. Симферополь, ул. Екатерининская, 51
+      </div>
+      <div class="footer-copy">
+        © 2025 «Дез щит 360». Все права защищены.
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="../policy.html" class="footer-link">Политика конфиденциальности</a>
+      <a href="tel:+79785500557" class="footer-link">+7 978 550 05 57</a>
+      <a href="tel:+79785732708" class="footer-link">+7 978 573 27 08</a>
+      <a href="mailto:dezschit360@mail.ru" class="footer-link">dezschit360@mail.ru</a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
+
 
 
 
