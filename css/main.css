@@ -962,7 +962,44 @@ nav a:hover {
   font-size: 13px;
   line-height: 1.5;
   color: #37515f;
+}/* Навигация внутренних страниц (назад / услуги) */
+
+.page-nav {
+  max-width: 1200px;
+  margin: 0 auto 16px auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #6B7B85;
 }
+
+.page-nav-link {
+  color: #007A8C;              /* фирменный оттенок */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease, transform 0.15s ease;
+}
+
+.page-nav-link:hover {
+  color: #004B5A;
+  transform: translateY(-1px);
+}
+
+.page-nav-separator {
+  color: #B0BEC5;
+}
+
+/* На маленьких экранах делаем компактнее */
+@media (max-width: 600px) {
+  .page-nav {
+    font-size: 12px;
+    padding: 0 12px;
+    margin-bottom: 12px;
+  }
+}
+
 /* ---- FOOTER ---- */
 
 footer {
@@ -1146,6 +1183,7 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
