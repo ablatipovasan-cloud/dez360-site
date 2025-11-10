@@ -307,6 +307,37 @@ nav a:hover {
   margin-bottom: 20px;
   max-width: 720px;
 }
+.page-nav {
+    background: #f5fafc;
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+}
+
+.page-nav .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 18px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.page-nav-link {
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #007A8C;
+    text-decoration: none;
+    border: 1px solid rgba(0,122,140,0.15);
+    transition: all 0.2s ease;
+}
+
+.page-nav-link:hover {
+    background: #007A8C;
+    color: #ffffff;
+    border-color: #007A8C;
+}
 
 /* ---- HERO ---- */
 
@@ -1096,6 +1127,7 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
