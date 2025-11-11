@@ -98,7 +98,7 @@ header {
 
 .header-nav a.is-active {
   background: #007A8C;     /* активный таб */
-  color: #fff;
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -112,7 +112,7 @@ header {
 }
 
 .logo-icon-img {
-  height: 58px;   /* можно 44–52 подобрать на глаз */
+  height: 52px;   /* можно 44–52 подобрать на глаз */
   width: auto;
   display: block;
 }
@@ -1199,6 +1199,7 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
