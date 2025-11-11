@@ -72,29 +72,36 @@ header {
   align-items: center;
   gap: 20px;
 }
+/* ----- HEADER NAV (табы в шапке) ----- */
+
 .header-nav {
   display: flex;
   gap: 12px;
   align-items: center;
-}.header-nav a {
-    padding: 6px 14px;
-    border-radius: 999px;
-    text-decoration: none;
-    color: #37515f;
-    font-size: 14px;
-    transition: all 0.2s ease;
+  margin-left: 40px;
+}
+
+.header-nav a {
+  padding: 6px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #37515f;           /* основной текст */
+  font-size: 14px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .header-nav a:hover {
-    background: rgba(0,122,140,0.08);
-    color: #007A8C;
+  background: rgba(0, 122, 140, 0.08);  /* лёгкий подсвет */
+  color: #007A8C;
 }
 
 .header-nav a.is-active {
-    background: #007A8C;
-    color: #ffffff;
-    font-weight: 600;
+  background: #007A8C;     /* активный таб */
+  color: #fff;
+  font-weight: 600;
 }
+
 
 /* Logo */
 
@@ -330,39 +337,43 @@ nav a:hover {
   margin-bottom: 20px;
   max-width: 720px;
 }
+/* ----- PAGE NAV (На главную / Все услуги) ----- */
+
 .page-nav {
-    background: #f5fafc;
-    border-bottom: 1px solid rgba(0,0,0,0.03);
+  width: 100%;
+  background: #f7fbfd;
+  border-bottom: 1px solid rgba(0,0,0,0.03);
 }
 
-.page-nav .container  {
- 
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px 18px;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    align-items: center;
+.page-nav .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .page-nav-link {
-    font-size: 13px;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: #ffffff;
-    color: #007A8C;
-    text-decoration: none;
-    border: 1px solid rgba(0,122,140,0.15);
-    transition: all 0.2s ease;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #007A8C;
+  text-decoration: none;
+  border: 1px solid rgba(0,122,140,0.15);
+  transition: all 0.15s ease;
 }
 
 .page-nav-link:hover {
-    background: #007A8C;
-    color: #ffffff;
-    border-color: #007A8C;
+  background: #007A8C;
+  color: #ffffff;
 }
 
+.page-nav-separator {
+  font-size: 12px;
+  color: #8E9BA5;
+}
 /* ---- HERO ---- */
 
 .hero {
@@ -1188,6 +1199,7 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
