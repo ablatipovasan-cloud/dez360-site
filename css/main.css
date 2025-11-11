@@ -62,7 +62,7 @@ body {
     text-decoration: underline;
 }
 
-/* ---- HEADER ---- */
+
 /* ---- HEADER ---- */
 
 .top-bar {
@@ -96,12 +96,14 @@ body {
   text-decoration: underline;
 }
 
+/* ---- HEADER ---- */
+
 header {
   position: sticky;
   top: 0;
   z-index: 50;
   background: #ffffff;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
 }
 
 .header-inner {
@@ -110,9 +112,10 @@ header {
   padding: 10px 14px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
 }
+
+/* Логотип */
 
 .logo {
   display: flex;
@@ -124,159 +127,169 @@ header {
 
 .logo-icon-img {
   height: 56px;
+  width: auto;
   display: block;
 }
 
 .logo-text {
   display: flex;
   flex-direction: column;
+  line-height: 1.1;
 }
 
 .logo-title {
   font-weight: 600;
   font-size: 24px;
-  color: #0B3954;
 }
 
 .logo-sub {
   font-size: 12px;
-  color: #748899;
+  color: #7b8b9e;
 }
+
+/* Навигация (десктоп) */
 
 .header-nav {
   display: flex;
-  gap: 18px;
+  gap: 10px;
   flex: 1;
   justify-content: center;
+  font-size: 14px;
 }
 
 .header-nav a {
   padding: 6px 14px;
   border-radius: 999px;
-  font-size: 14px;
-  color: #37515f;
   text-decoration: none;
+  color: #37515f;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .header-nav a:hover {
-  background: rgba(0,122,140,0.08);
-  color: #007A8C;
+  background: rgba(0, 122, 140, 0.08);
+  color: #007aac;
 }
 
 .header-nav a.is-active {
-  background: #007A8C;
+  background: #007aac;
   color: #ffffff;
   font-weight: 600;
 }
 
+/* Телефоны и кнопка (десктоп) */
+
 .header-actions {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  font-size: 12px;
 }
 
-.phone {
-  font-weight: 600;
-  font-size: 13px;
-  color: #007A8C;
+.header-actions .phone {
+  color: #007aac;
   text-decoration: none;
 }
 
-.phone:hover {
+.header-actions .phone:hover {
   text-decoration: underline;
 }
 
-/* по умолчанию бургер и мобильное меню скрыты на десктопе */
+.header-actions .btn-alert {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #ff6b3d;
+  color: #ffffff;
+  font-size: 12px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Бургер и мобильное меню */
+
 .burger {
   display: none;
+  flex-direction: column;
+  gap: 4px;
+  width: 24px;
+  height: 18px;
+  margin-left: 8px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.burger span {
+  height: 3px;
+  border-radius: 2px;
+  background: #007aac;
+  transition: all 0.2s ease;
 }
 
 .mobile-nav {
   display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 14px 16px;
+  background: #ffffff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
 }
 
-/* ---- MOBILE HEADER ---- */
+.mobile-nav a {
+  text-decoration: none;
+  color: #37515f;
+  font-size: 14px;
+}
+
+.mobile-nav-cta {
+  margin-top: 4px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #ff6b3d;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* состояния при открытом меню */
+
+.mobile-nav.is-open {
+  display: flex;
+}
+
+.burger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.is-open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.burger.is-open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Адаптив: на мобилке прячем десктопное меню, показываем бургер */
 
 @media (max-width: 768px) {
-
-  .top-bar-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-  }
-
   .header-inner {
-    padding: 8px 14px;
+    padding: 10px 12px;
+    gap: 12px;
   }
 
   .header-nav {
-    display: none; /* прячем верхнее меню */
+    display: none;
   }
 
   .header-actions {
-    gap: 6px;
-  }
-
-  .phone {
-    font-size: 12px;
-  }
-
-  .btn.btn-alert {
-    padding: 6px 10px;
-    font-size: 11px;
+    display: none;
   }
 
   .burger {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 24px;
-    height: 18px;
-    border: none;
-    background: none;
-    padding: 0;
-    margin-left: 4px;
-    cursor: pointer;
-  }
-
-  .burger span {
-    display: block;
-    height: 3px;
-    border-radius: 999px;
-    background: #0B3954;
-  }
-
-  .mobile-nav {
-    position: fixed;
-    inset: 60px 12px 16px 12px;
-    background: #ffffff;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.12);
-    border-radius: 16px;
-    padding: 16px;
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 999;
-  }
-
-  .mobile-nav a {
-    padding: 10px 12px;
-    border-radius: 12px;
-    text-decoration: none;
-    color: #0B3954;
-    background: rgba(0,122,140,0.04);
-  }
-
-  .mobile-nav a:hover {
-    background: rgba(0,122,140,0.12);
-  }
-
-  .mobile-nav.is-open {
-    display: flex;
   }
 }
-
 
 /* ---- HERO ---- */
 
@@ -1153,6 +1166,7 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
