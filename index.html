@@ -21,6 +21,7 @@
 
 <header>
   <div class="header-inner">
+    <!-- Логотип -->
     <a href="index.html" class="logo">
       <img src="/media/logo-360.png" alt="Дез щит 360" class="logo-icon-img">
       <div class="logo-text">
@@ -29,6 +30,7 @@
       </div>
     </a>
 
+    <!-- Главное меню (десктоп) -->
     <nav class="header-nav">
       <a href="#services" class="is-active">Услуги</a>
       <a href="#clients">Для бизнеса</a>
@@ -39,17 +41,22 @@
       <a href="#contacts">Контакты</a>
     </nav>
 
+    <!-- Телефоны + кнопка (десктоп) -->
     <div class="header-actions">
       <a href="tel:+79785500557" class="phone">+7 978 550 05 57</a>
       <a href="tel:+79785732708" class="phone">+7 978 573 27 08</a>
       <a href="#contacts" class="btn btn-alert">Срочный выезд</a>
     </div>
 
+    <!-- Бургер (мобилка) -->
     <button class="burger" id="burger" aria-label="Открыть меню">
-      <span></span><span></span><span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
   </div>
 
+  <!-- Мобильное меню -->
   <div class="mobile-nav" id="mobileNav">
     <a href="#services">Услуги</a>
     <a href="#clients">Для бизнеса</a>
@@ -61,7 +68,6 @@
     <a href="#contacts" class="mobile-nav-cta">Срочный выезд</a>
   </div>
 </header>
-
 
 <section class="hero">
   <div class="hero-inner">
@@ -591,16 +597,6 @@
 </section>
 
 <script>
-    const burger = document.getElementById('burger');
-    const mobileNav = document.getElementById('mobileNav');
-
-    if (burger && mobileNav) {
-        burger.addEventListener('click', () => {
-            mobileNav.classList.toggle('is-open');
-            burger.classList.toggle('is-open');
-        });
-    }
-</script>
   function smoothScrollTo(targetId) {
     const target = document.querySelector(targetId);
     if (!target) return;
@@ -681,8 +677,20 @@
     </div>
   </div>
 </footer>
+<script>
+  const burger = document.getElementById('burger');
+  const mobileNav = document.getElementById('mobileNav');
+
+  if (burger && mobileNav) {
+    burger.addEventListener('click', function () {
+      burger.classList.toggle('is-open');
+      mobileNav.classList.toggle('is-open');
+    });
+  }
+</script>
 </body>
 </html>
+
 
 
 
