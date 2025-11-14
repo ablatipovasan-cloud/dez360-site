@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Дезинсекция в Симферополе и Крыму — Дез щит 360</title>
-  <meta name="description" content="Профессиональная дезинсекция квартир, домов, бизнеса в Симферополе, Севастополе и по всему Крыму. Сертифицированные препараты, документы для СЭС." />
-
-  <!-- Шрифты (как на главной) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
-
-  <!-- ВАЖНО: для внутренних страниц путь к CSS относительный -->
-  <link rel="stylesheet" href="../css/main.css" />
+  <meta charset="UTF-8">
+  <title>Дезинфекция в Симферополе, Севастополе и по Крыму — Дез щит 360</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Профессиональная дезинфекция квартир, домов, офисов и коммерческих объектов в Симферополе, Севастополе и по всему Крыму. Сертифицированные препараты, акты для СЭС, выезд в день обращения.">
+  <!-- единый CSS сайта -->
+  <link rel="stylesheet" href="../css/main.css">
+  <!-- Шрифт (как на главной) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Manrope:wght@600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- Верхняя плашка -->
+
+  <!-- Верхняя информационная полоска -->
   <div class="top-bar">
     <div class="top-bar-inner">
-      <span>Ежедневно 8:00–22:00</span>
+      <span>Центр дезинфектологии «Дез щит 360» — профессиональная защита от вредителей и инфекций в Крыму</span>
       <div class="top-bar-contacts">
+        <span>Ежедневно 8:00–22:00</span>
         <a href="tel:+79785500557">+7 978 550 05 57</a>
         <a href="tel:+79785732708">+7 978 573 27 08</a>
       </div>
     </div>
   </div>
 
-<header>
-  <div class="header-inner">
+  <!-- Шапка с логотипом и навигацией -->
+  <header>
+    <div class="header-inner">
       <a href="../index.html" class="logo">
-        <img src="../media/logo-360.png" alt="Дез щит 360" class="logo-icon-img" />
+        <img src="../media/logo-360.png" alt="Дез щит 360" class="logo-icon-img">
         <div class="logo-text">
           <div class="logo-title">Дез щит 360</div>
           <div class="logo-sub">Центр дезинфектологии · Симферополь · Крым</div>
         </div>
       </a>
-   <!-- Десктоп-меню -->
+
+      <!-- Главное меню (десктоп) -->
       <nav class="header-nav">
-        <a href="../index.html#services">Услуги</a>
+        <a href="../index.html#services" class="is-active">Услуги</a>
         <a href="../index.html#clients">Для бизнеса</a>
         <a href="../index.html#prices">Цены</a>
         <a href="../index.html#guarantees">Гарантии</a>
@@ -46,197 +46,229 @@
         <a href="../index.html#contacts">Контакты</a>
       </nav>
 
-    <div class="header-actions">
-      <div class="phone">
-        <a href="tel:+79785500557">+7 978 550 05 57</a>
-        <a href="tel:+79785732708">+7 978 573 27 08</a>
+      <!-- Кнопки справа -->
+      <div class="header-actions">
+        <div class="phone"><a href="tel:+79785500557">+7 978 550 05 57</a><a href="tel:+79785732708">+7 978 573 27 08</a></div>
+        <a href="../index.html#contacts" class="btn btn-alert" data-scroll="#contacts">Срочный выезд</a>
+        <div class="burger" id="burger" aria-label="Открыть меню"><span></span><span></span><span></span></div>
       </div>
-     <a href="../index.html#order" class="btn btn-alert">Срочный выезд</a>
     </div>
-    <!-- Бургер -->
-      <button class="burger" id="burger" aria-label="Открыть меню">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  <!-- Мобильное меню -->
-    <nav class="mobile-nav" id="mobileNav" hidden>
-      <a href="../index.html#services">Услуги</a>
+
+    <!-- Мобильное меню -->
+    <div class="mobile-nav" id="mobileNav">
+      <a href="../index.html#services" class="is-active">Услуги</a>
       <a href="../index.html#clients">Для бизнеса</a>
       <a href="../index.html#prices">Цены</a>
       <a href="../index.html#guarantees">Гарантии</a>
       <a href="../index.html#faq">FAQ</a>
       <a href="../index.html#about">О компании</a>
       <a href="../index.html#contacts">Контакты</a>
-      <a href="tel:+79785500557" class="mobile-nav-cta">Позвонить</a>
-    </nav>
+
+      <div class="mobile-nav-cta">
+        <a href="tel:+79785500557">+7 978 550 05 57</a>
+        <a href="tel:+79785732708">+7 978 573 27 08</a>
+      </div>
+    </div>
   </header>
-<!-- Навигация страницы (крошки/кнопки) -->
+
+  <!-- Хлебные крошки / навигация страницы -->
   <div class="page-nav">
     <div class="container page-nav__container">
       <a href="../index.html" class="page-nav-link">← На главную</a>
-      <span class="page-nav-separator">/</span>
+      <span class="page-nav-separator">·</span>
       <a href="../index.html#services" class="page-nav-link">Все услуги</a>
     </div>
   </div>
- <!-- Герой-блок внутренней -->
-  <section class="hero">
-    <div class="hero-inner container">
+
+  <!-- Hero-блок услуги -->
+  <section class="hero section-alt">
+    <div class="container hero-inner">
       <div class="hero-left">
-        <h1 class="hero-title">Дезинсекция в Симферополе, Севастополе и по всему Крыму</h1>
+        <h1 class="hero-title">Дезинфекция помещений в Симферополе, Севастополе и по всему Крыму</h1>
         <p class="hero-subtitle">
-          Уничтожение тараканов, клопов, блох и муравьёв сертифицированными препаратами. Документы для СЭС.
+          Профессиональная дезинфекция квартир, домов, офисов, салонов, медкабинетов, складов и производств.
+          Снижаем микробную нагрузку до нормативов, работаем официально, предоставляем акты для СЭС.
         </p>
 
         <div class="hero-bullets">
-          <div class="hero-badge"><span>Лицензированный центр</span></div>
-          <div class="hero-badge"><span>Выезд в день обращения</span></div>
-          <div class="hero-badge"><span>Безопасно для детей и животных</span></div>
-          <div class="hero-badge"><span>Акты и протоколы</span></div>
+          <div class="hero-badge">Сертифицированные дезсредства</div>
+          <div class="hero-badge">Холодный и горячий туман</div>
+          <div class="hero-badge">Выезд по всему Крыму</div>
+          <div class="hero-badge">Документы для проверок</div>
         </div>
 
         <div class="hero-actions">
-          <a href="../index.html#contacts" class="btn btn-primary">Рассчитать стоимость</a>
+          <button class="btn btn-primary" data-scroll="#contacts">Рассчитать стоимость дезинфекции</button>
+          <div class="hero-note">Нажимая кнопку, вы соглашаетесь с <a href="../policy.html" target="_blank">политикой конфиденциальности</a>.</div>
         </div>
-
-        <p class="hero-note">Нажимая кнопку, вы соглашаетесь с
-          <a href="../policy.html" target="_blank">политикой конфиденциальности</a>.
-        </p>
       </div>
-<main>
-<section class="hero hero-inner-page">
-  <div class="container">
-    <h1 class="section-title">Дезинсекция от тараканов, клопов и других насекомых в Крыму</h1>
-    <p class="section-subtitle">
-      Устраняем насекомых системно: без запаха, с гарантией и официальными документами.
-      Работаем в Симферополе, Севастополе, Ялте, Евпатории и по всему Крыму.
-    </p>
-    <div class="hero-bullets">
-      <div class="hero-badge">Анонимный выезд</div>
-      <div class="hero-badge">Профпрепараты и гелевые системы</div>
-      <div class="hero-badge">Гарантийный период</div>
-    </div>
-    <button class="btn btn-primary" data-scroll="#order">Избавиться от насекомых</button>
-  <p class="form-note">
-  Нажимая кнопку, вы соглашаетесь с
-  <a href="../policy.html" target="_blank">политикой конфиденциальности</a>.
-</p>
-</div>
-</section>
-<!-- Секция с содержанием услуги -->
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">Когда нужна дезинсекция</h2>
-      <ul class="about-list">
-        <li>Обнаружили тараканов, клопов, блох, муравьёв.</li>
-        <li>Перед открытием/переездом бизнеса.</li>
-        <li>После длительного простоя помещения.</li>
-      </ul>
 
-      <h3 class="section-title" style="margin-top:28px;">Что входит</h3>
-      <ul class="faq-list">
-        <li class="faq-item">
-          <div class="faq-question">Осмотр и подбор препаратов</div>
-        </li>
-        <li class="faq-item">
-          <div class="faq-question">Обработка поверхностей и контактных зон</div>
-        </li>
-        <li class="faq-item">
-          <div class="faq-question">Рекомендации по защите/проветриванию</div>
-        </li>
-        <li class="faq-item">
-          <div class="faq-question">Акты выполненных работ</div>
-        </li>
-      </ul>
+      <figure class="hero-photo">
+        <!-- Можно поменять картинку при желании -->
+        <img src="../media/works/dezinfektor-gym.jpg" alt="Специалист «Дез щит 360» — дезинфекция объекта" class="hero-photo-img">
+        <figcaption class="hero-photo-caption">
+          <strong>Профессиональная команда</strong>
+          Документируем обработку, применяем сертифицированные препараты и чёткий регламент обработки.
+        </figcaption>
+      </figure>
     </div>
   </section>
 
+  <!-- Когда нужна дезинфекция -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Когда нужна дезинфекция</h2>
 
-<!-- Реальные объекты в Крыму (фото/видео) -->
+      <div class="about-grid">
+        <ul class="about-list">
+          <li>После заболеваний в семье, офисе или коллективе.</li>
+          <li>Перед открытием или перезапуском кафе, салона, фитнес-клуба.</li>
+          <li>После затоплений, загрязнений, антисанитарии.</li>
+          <li>Для медкабинетов, косметологических и стоматологических центров.</li>
+          <li>Для складов и производств пищевой продукции.</li>
+        </ul>
+
+        <div class="faq-item">
+          <div class="faq-question">Что включено</div>
+          <div class="faq-answer" style="display:block">
+            <ul class="faq-list">
+              <li>Осмотр и подбор дезсредств.</li>
+              <li>Обработка поверхностей, воздуха, контактных зон.</li>
+              <li>Рекомендации по проветриванию и дополнительной защите.</li>
+              <li>Акт выполненных работ и при необходимости — договор обслуживания.</li>
+            </ul>
+            <div class="price-note" style="margin-top:8px">Безопасно: средства, разрешённые для жилых и детских помещений, при соблюдении наших инструкций.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Реальные объекты (медиа-сетка) -->
   <section class="section section-alt">
     <div class="container">
       <h2 class="section-title">Реальные объекты в Крыму</h2>
-      <p class="section-subtitle">Показываем реальные выезды нашей команды.</p>
+      <p class="section-subtitle">Ниже — примеры работ (без данных клиентов): фрагменты видео и фото, единый размер карточек и аккуратная обрезка медиа.</p>
 
       <div class="media-grid">
-        <!-- Карточка ФОТО -->
+        <!-- Фото карточка -->
         <figure class="media-card">
           <div class="media-photo-wrap">
-            <img src="../media/works/dezinsekciya-1.jpg"
-                 alt="Дезинсекция квартиры — Симферополь"
-                 class="media-photo" />
-            <div class="media-badge">Дез щит 360</div>
+            <img class="media-photo" src="../media/works/dezinfektor-gym.jpg" alt="Дезинфекция тренажёрного зала — Дез щит 360">
           </div>
+          <div class="media-badge">Дез щит 360</div>
           <figcaption class="media-card figcaption">
-            Квартира, Симферополь. Уничтожение тараканов.
+            Обработка фитнес-клуба: холодный туман, акцент на раздевалки и душевые. Работаем в полном комплекте СИЗ, по регламенту СанПиН.
           </figcaption>
         </figure>
 
-     <!-- Карточка ВИДЕО -->
+        <!-- Видео карточка 1 -->
         <figure class="media-card">
           <div class="media-photo-wrap">
-            <video class="media-video" controls preload="metadata"
-                   poster="../media/works/dezinsekciya-cover.jpg">
-              <source src="../media/works/dezinsekciya-objekt.mp4" type="video/mp4" />
+            <video class="media-video" controls preload="metadata" poster="../media/works/dezinfektor-gym.jpg">
+              <!-- Поменяй имя файла, если у тебя другое -->
+              <source src="../media/works/dezinsekciya-ht.mp4" type="video/mp4">
               Ваш браузер не поддерживает видео.
             </video>
-            <div class="media-badge">Дез щит 360</div>
           </div>
+          <div class="media-badge">Дез щит 360</div>
           <figcaption class="media-card figcaption">
-            Обработка объекта. Документы для проверок.
+            Дезинфекция помещений медучреждения. Разрешённые препараты, документы для Роспотребнадзора.
+          </figcaption>
+        </figure>
+
+        <!-- Видео карточка 2 -->
+        <figure class="media-card">
+          <div class="media-photo-wrap">
+            <video class="media-video" controls preload="metadata" poster="../media/works/dezinfektor-gym.jpg">
+              <!-- Поменяй имя файла, если у тебя другое -->
+              <source src="../media/works/dezinsekciya-ht.mp4" type="video/mp4">
+              Ваш браузер не поддерживает видео.
+            </video>
+          </div>
+          <div class="media-badge">Дез щит 360</div>
+          <figcaption class="media-card figcaption">
+            Комплексная обработка коммерческого объекта в Крыму: зоны приёма, склады, санитарные узлы. Протокол и гарантия.
           </figcaption>
         </figure>
       </div>
     </div>
   </section>
 
+  <!-- Контактная форма (якорь для кнопок “Рассчитать”) -->
+  <section id="contacts" class="section">
+    <div class="container contacts-grid">
+      <div>
+        <h2 class="section-title">Заказать дезинфекцию</h2>
+        <form class="contacts-form">
+          <div class="field">
+            <label class="field-label" for="name">Ваше имя</label>
+            <input id="name" type="text" class="field-input" placeholder="Иван">
+          </div>
 
+          <div class="field">
+            <label class="field-label" for="phone">Телефон</label>
+            <input id="phone" type="text" class="field-input" placeholder="+7 999 123-45-67">
+          </div>
 
-<section id="order" class="section">
-  <div class="container">
-    <h2 class="section-title">Заказать дезинсекцию</h2>
-    <p class="section-subtitle">Оставьте контакты — мы предложим конкретное решение под ваш случай, без навязывания лишнего.</p>
-    <div class="contacts-grid">
-      <form class="contacts-form">
-        <div class="contacts-label">Быстрая заявка</div>
-        <div><div class="field-label">Имя</div><input type="text" class="field-input" placeholder="Имя"></div>
-        <div><div class="field-label">Телефон</div><input type="tel" class="field-input" placeholder="+7 978 ..."></div>
-        <div><div class="field-label">Город</div><input type="text" class="field-input" placeholder="Город в Крыму"></div>
-        <div><div class="field-label">Опишите проблему</div><textarea class="field-textarea" rows="3" placeholder="Тараканы, клопы, сколько комнат, сколько времени длится проблема..."></textarea></div>
-        <button type="submit" class="btn btn-primary">Получить расчет</button>
-        <div class="hero-form-note">Конфиденциальность гарантирована.</div>
-      </form>
+          <div class="field">
+            <label class="field-label" for="comment">Описание объекта / адрес</label>
+            <textarea id="comment" class="field-textarea" rows="2" placeholder="Квартира, дом, магазин, площадь, адрес…"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Жду расчёт</button>
+          <div class="form-note">Нажимая кнопку, вы соглашаетесь с <a href="../policy.html" target="_blank">политикой конфиденциальности</a>.</div>
+        </form>
+      </div>
+
       <div class="contacts-list">
-        <div><span class="contacts-label">Телефон:</span> <a href="tel:+79785500557">+7 978 550 05 57</a>, <a href="tel:+79785732708">+7 978 573 27 08</a></div>
-        <div><span class="contacts-label">E-mail:</span> <a href="mailto:dezschit360@mail.ru">dezschit360@mail.ru</a></div>
-        <div><span class="contacts-label">Адрес:</span> г. Симферополь, ул. Екатерининская, 51</div>
-        <div><span class="contacts-label">Юр. данные:</span> ИП Кавера Е.Н.</div>
+        <div class="contacts-label">Позвонить:</div>
+        <a class="contacts-item" href="tel:+79785500557">+7 978 550 05 57</a>
+        <a class="contacts-item" href="tel:+79785732708">+7 978 573 27 08</a>
+
+        <div class="contacts-label">Адрес / почта:</div>
+        <div class="contacts-item">Республика Крым, г. Симферополь, ул. Екатерининская, 51</div>
+        <a class="contacts-item" href="mailto:dezshieldmail@ru">dezshieldmail@ru</a>
       </div>
     </div>
-  </div>
-</section>
-</main>
+  </section>
 
-<footer>
-  <div class="footer-inner">
-    <div>© «Дез щит 360», Центр дезинфектологии, г. Симферополь, ул. Екатерининская, 51.
-      <div class="footer-legal">ИП Кавера Е.Н. · Тел.: +7 978 550 05 57, +7 978 573 27 08 · E-mail: dezschit360@mail.ru</div>
+  <!-- Подвал -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">Дез щит 360</div>
+      <div class="footer-sub">Центр дезинфектологии · Крым</div>
+      <div class="footer-links">
+        <a class="footer-link" href="../policy.html" target="_blank">Политика конфиденциальности</a>
+        <a class="footer-link" href="../index.html#services">Услуги</a>
+        <a class="footer-link" href="../index.html#contacts">Контакты</a>
+      </div>
+      <div class="footer-legal">© 2025. Все права защищены.</div>
     </div>
-    <div class="footer-links">
-      <a href="/#services">Услуги</a><a href="/#prices">Цены</a>
-      <a href="/#guarantees">Гарантии</a><a href="/#contacts">Контакты</a>
-      <a href="#">Политика конфиденциальности</a>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<script>
-const burger2=document.getElementById('burger');const mobileNav2=document.getElementById('mobileNav');
-if(burger2){burger2.addEventListener('click',()=>mobileNav2.classList.toggle('show'))}
-function smoothScrollTo2(id){const t=document.querySelector(id);if(!t)return;const o=80;const top=t.getBoundingClientRect().top+window.pageYOffset-o;window.scrollTo({top,behavior:'smooth'});if(mobileNav2)mobileNav2.classList.remove('show');}
-document.querySelectorAll('[data-scroll]').forEach(el=>{el.addEventListener('click',e=>{e.preventDefault();smoothScrollTo2(el.getAttribute('data-scroll'));});});
-</script>
+  <!-- Небольшой JS для бургера и плавного скролла -->
+  <script>
+    // мобильное меню
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+    burger && burger.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+
+    // плавный скролл по data-scroll="#id"
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('[data-scroll]');
+      if (!a) return;
+      e.preventDefault();
+      const sel = a.getAttribute('data-scroll');
+      const el  = document.querySelector(sel);
+      if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  </script>
 </body>
 </html>
+
 
 
 
