@@ -1089,6 +1089,27 @@ footer {
   }
 }
 
+/* ===== FLOAT BACK BUTTON ===== */
+.float-back{
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 1500;
+  padding: 10px 14px;
+  background: #0B7285;           /* var(--primary-dark) если используешь переменные */
+  color: #fff;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(0,0,0,.18);
+  font-size: 14px;
+  line-height: 1;
+  text-decoration: none;
+  transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
+}
+.float-back:hover{ transform: translateY(-2px); filter: brightness(1.05); }
+@media (max-width: 560px){
+  .float-back{ left: 10px; bottom: 10px; padding: 9px 12px; font-size: 13px; }
+}
+
 
 
 
