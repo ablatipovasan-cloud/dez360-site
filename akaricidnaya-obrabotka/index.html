@@ -39,19 +39,60 @@
     </div>
   </section>
 
-  <section class="section section-alt">
-    <div class="container">
-      <h2 class="section-title">Реальные объекты</h2>
+  <section id="media" class="section">
+  <div class="container">
+    <h2 class="section-title">Реальные объекты</h2>
       <div class="media-grid">
-        <figure class="media-card"><div class="media-photo-wrap"><img class="media-photo" src="../media/works/hero-akaricid.jpg" alt="Опрыскивание участка"/></div><figcaption class="media-card figcaption">Опрыскивание придомовой территории.</figcaption></figure>
-        <figure class="media-card"><div class="media-photo-wrap"><video class="media-video" controls preload="metadata" poster="../media/works/mascot.png"><source src="../media/works/akaricid-vid.mp4" type="video/mp4"/>Ваш браузер не поддерживает видео.</video></div><figcaption class="media-card figcaption">Ландшафтная обработка от клещей.</figcaption></figure>
-         <figure class="media-card"><div class="media-photo-wrap"><video class="media-video" controls preload="metadata" poster="../media/works/mascot.png"><source src="../media/works/akaricidnaya-obrabotka1.mp4" type="video/mp4"/>Ваш браузер не поддерживает видео.</video></div><figcaption class="media-card figcaption">Обработка парковых зон от клещей.</figcaption></figure>
-         <figure class="media-card"><div class="media-photo-wrap"><video class="media-video" controls preload="metadata" poster="../media/works/mascot.png"><source src="../media/works/akaricidnaya-obrabotka2.mp4" type="video/mp4"/>Ваш браузер не поддерживает видео.</video></div><figcaption class="media-card figcaption">Обработка парковых зон от клещей.</figcaption></figure>
-         <figure class="media-card"><div class="media-photo-wrap"><video class="media-video" controls preload="metadata" poster="../media/works/mascot.png"><source src="../media/works/komarpans1.mp4" type="video/mp4"/>Ваш браузер не поддерживает видео.</video></div><figcaption class="media-card figcaption">Обработка гостиниц, пансианатов от мух и комаров.</figcaption></figure>
-         <figure class="media-card"><div class="media-photo-wrap"><video class="media-video" controls preload="metadata" poster="../media/works/mascot.png"><source src="../media/works/restkafedez.mp4" type="video/mp4"/>Ваш браузер не поддерживает видео.</video></div><figcaption class="media-card figcaption">Обработка рестаранов, кафе, летних площадок от мух, комаров.</figcaption></figure>
-      
+        <div class="media-card">
+        <div class="media-ratio">
+          <video class="media-obj" src="../media/works/akaricid-vid.mp4" controls playsinline></video>
+        </div>
+        <div class="media-caption">Обработка парковых зон от клещей.</div>
       </div>
-    </div>
+        <div class="container">
+    <h2 class="section-title">Реальные объекты</h2>
+      <div class="media-grid">
+        <div class="media-card">
+        <div class="media-ratio">
+          <video class="media-obj" src="../media/works/akaricidnaya-obrabotka1.mp4" controls playsinline></video>
+        </div>
+        <div class="media-caption">Обработка парковых зон от клещей.</div>
+      </div>  
+        <div class="container">
+    <h2 class="section-title">Реальные объекты</h2>
+      <div class="media-grid">
+        <div class="media-card">
+        <div class="media-ratio">
+          <video class="media-obj" src="../media/works/akaricidnaya-obrabotka2.mp4" controls playsinline></video>
+        </div>
+        <div class="media-caption">Обработка парковых зон от клещей.</div>
+      </div>  
+        <div class="container">
+    <h2 class="section-title">Реальные объекты</h2>
+      <div class="media-grid">
+        <div class="media-card">
+        <div class="media-ratio">
+          <video class="media-obj" src="../media/works/komarpans1.mp4" controls playsinline></video>
+        </div>
+        <div class="media-caption">Обработка парковых зон от клещей.</div>
+      </div>  
+        <div class="container">
+    <h2 class="section-title">Реальные объекты</h2>
+      <div class="media-grid">
+        <div class="media-card">
+        <div class="media-ratio">
+          <video class="media-obj" src="../media/works/restkafedez.mp4" controls playsinline></video>
+        </div>
+        <div class="media-caption">Обработка парковых зон от клещей.</div>
+      </div>  
+      
+    <div class="media-card">
+  <div class="media-ratio">
+   <img class="media-obj" src="../media/works/hero-akaricid.jpg" alt="Опрыскивание придомовой территории">
+        </div>
+        <div class="media-caption">Опрыскивание придомовой территории.</div>
+      </div>
+      </div>
   </section>
 
   <section id="order" class="section">
@@ -70,9 +111,37 @@
   </section>
 
   <footer><div class="footer-inner container"><div class="footer-brand">Дез щит 360</div><div class="footer-links"><a href="../policy.html">Политика конфиденциальности</a><a href="tel:+79785500557">+7 978 550 05 57</a><a href="tel:+79785732708">+7 978 573 27 08</a></div><div class="footer-copy">© 2025, Дез щит 360</div></div></footer>
-  <script>(function(){const b=document.getElementById('burger'),m=document.getElementById('mobileNav');if(b&&m){b.addEventListener('click',()=>{m.classList.toggle('open');document.body.classList.toggle('menu-open')})}document.querySelectorAll('[data-scroll]').forEach(e=>e.addEventListener('click',function(ev){ev.preventDefault();const t=document.querySelector(this.getAttribute('data-scroll'));if(!t)return;window.scrollTo({top:t.getBoundingClientRect().top+pageYOffset-80,behavior:'smooth'})}))})();</script>
+  <script>
+/* Помечаем вертикальные фото/видео, чтобы карточка стала 9:16 */
+(function () {
+  function markVertical(card){
+    var m = card.querySelector('.media-obj');
+    if(!m) return;
+    if(m.tagName === 'VIDEO'){
+      if (m.videoWidth && m.videoHeight){
+        if (m.videoHeight > m.videoWidth) card.classList.add('is-vertical');
+      }else{
+        m.addEventListener('loadedmetadata', function(){
+          if (m.videoHeight > m.videoWidth) card.classList.add('is-vertical');
+        }, {once:true});
+      }
+    }else{
+      if (m.naturalWidth && m.naturalHeight){
+        if (m.naturalHeight > m.naturalWidth) card.classList.add('is-vertical');
+      }else{
+        m.addEventListener('load', function(){
+          if (m.naturalHeight > m.naturalWidth) card.classList.add('is-vertical');
+        }, {once:true});
+      }
+    }
+  }
+  document.querySelectorAll('.media-card').forEach(markVertical);
+})();
+</script>
+
 </body>
 </html>
+
 
 
 
