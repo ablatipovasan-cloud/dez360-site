@@ -1,43 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Дезинфекция в Симферополе, Севастополе и по Крыму — Дез щит 360</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Профессиональная дезинфекция квартир, домов, офисов и коммерческих объектов в Симферополе, Севастополе и по всему Крыму. Сертифицированные препараты, акты для СЭС, выезд в день обращения.">
-  <!-- единый CSS сайта -->
-  <link rel="stylesheet" href="../css/main.css">
-  <!-- Шрифт (как на главной) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Manrope:wght@600;800&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <title>Дезинсекция в Симферополе, Севастополе и по всему Крыму — Дез щит 360</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+        content="Профессиональная дезинсекция квартир, домов, офисов и коммерческих объектов в Симферополе, Севастополе и по всему Крыму. Сертифицированные препараты, безопасно для людей и животных, документы для СЭС." />
+  <!-- общий стиль из корня сайта -->
+  <link rel="stylesheet" href="../css/main.css" />
+
+  <!-- Небольшие правки именно для внутренних страниц -->
+  <style>
+    /* Крошки (кнопки сверху) */
+    .page-nav { max-width: 1200px; margin: 0 auto 16px; padding: 0 16px; display:flex; gap:12px; align-items:center; }
+    .page-nav a { font-size: 13px; padding: 6px 12px; border-radius: 999px; text-decoration: none; background: #fff; color:#007A8C; border:1px solid rgba(0,122,140,.15); transition:.15s; }
+    .page-nav a:hover { background:#007A8C; color:#fff; }
+
+    /* Фикс видео: ничего не обрезаем, вписываем по содержимому, единая ширина */
+    .media-grid .media-video {
+      width: 100%;
+      height: auto;              /* главная фишка — сбрасываем фиксированную высоту */
+      aspect-ratio: 16/9;        /* поддерживаем аккуратные пропорции */
+      object-fit: contain;       /* НЕ обрезать — вписывать целиком */
+      background: #000;          /* аккуратная рамка-подложка */
+      border-radius: 12px;
+    }
+    /* если в твоём main.css есть правило .media-video { height: 260px; object-fit: cover; } —
+       это переопределение сверху его победит за счёт более позднего подключения */
+  </style>
 </head>
+
 <body>
 
-  <!-- Верхняя информационная полоска -->
+  <!-- Верхняя информационная плашка -->
   <div class="top-bar">
     <div class="top-bar-inner">
-      <span>Центр дезинфектологии «Дез щит 360» — профессиональная защита от вредителей и инфекций в Крыму</span>
+      <span>Ежедневно 8:00–22:00</span>
       <div class="top-bar-contacts">
-        <span>Ежедневно 8:00–22:00</span>
         <a href="tel:+79785500557">+7 978 550 05 57</a>
         <a href="tel:+79785732708">+7 978 573 27 08</a>
       </div>
     </div>
   </div>
 
-  <!-- Шапка с логотипом и навигацией -->
+  <!-- Шапка -->
   <header>
     <div class="header-inner">
       <a href="../index.html" class="logo">
-        <img src="../media/logo-360.png" alt="Дез щит 360" class="logo-icon-img">
+        <img src="../media/logo-360.png" alt="Дез щит 360" class="logo-icon-img" />
         <div class="logo-text">
           <div class="logo-title">Дез щит 360</div>
           <div class="logo-sub">Центр дезинфектологии · Симферополь · Крым</div>
         </div>
       </a>
 
-      <!-- Главное меню (десктоп) -->
+      <!-- Навигация (подсветка активного раздела class="is-active") -->
       <nav class="header-nav">
-        <a href="../index.html#services" class="is-active">Услуги</a>
+        <a href="../index.html#services">Услуги</a>
         <a href="../index.html#clients">Для бизнеса</a>
         <a href="../index.html#prices">Цены</a>
         <a href="../index.html#guarantees">Гарантии</a>
@@ -46,228 +65,200 @@
         <a href="../index.html#contacts">Контакты</a>
       </nav>
 
-      <!-- Кнопки справа -->
       <div class="header-actions">
         <div class="phone"><a href="tel:+79785500557">+7 978 550 05 57</a><a href="tel:+79785732708">+7 978 573 27 08</a></div>
-        <a href="../index.html#contacts" class="btn btn-alert" data-scroll="#contacts">Срочный выезд</a>
-        <div class="burger" id="burger" aria-label="Открыть меню"><span></span><span></span><span></span></div>
+        <button class="btn btn-alert" data-scroll="#contacts">Срочный выезд</button>
+      </div>
+
+      <!-- Бургер (моб.) -->
+      <div class="burger" id="burger" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
       </div>
     </div>
 
     <!-- Мобильное меню -->
     <div class="mobile-nav" id="mobileNav">
-      <a href="../index.html#services" class="is-active">Услуги</a>
+      <a href="../index.html#services">Услуги</a>
       <a href="../index.html#clients">Для бизнеса</a>
       <a href="../index.html#prices">Цены</a>
       <a href="../index.html#guarantees">Гарантии</a>
       <a href="../index.html#faq">FAQ</a>
       <a href="../index.html#about">О компании</a>
       <a href="../index.html#contacts">Контакты</a>
-
-      <div class="mobile-nav-cta">
-        <a href="tel:+79785500557">+7 978 550 05 57</a>
-        <a href="tel:+79785732708">+7 978 573 27 08</a>
-      </div>
+      <a class="mobile-nav-cta btn btn-primary" data-scroll="#contacts">Срочный выезд</a>
     </div>
   </header>
 
-  <!-- Хлебные крошки / навигация страницы -->
+  <!-- Крошки -->
   <div class="page-nav">
-    <div class="container page-nav__container">
-      <a href="../index.html" class="page-nav-link">← На главную</a>
-      <span class="page-nav-separator">·</span>
-      <a href="../index.html#services" class="page-nav-link">Все услуги</a>
-    </div>
+    <a href="../index.html">На главную</a>
+    <a href="../index.html#services">Все услуги</a>
   </div>
 
-  <!-- Hero-блок услуги -->
-  <section class="hero section-alt">
-    <div class="container hero-inner">
+  <!-- HERO блока услуги -->
+  <section class="hero">
+    <div class="hero-inner">
       <div class="hero-left">
-        <h1 class="hero-title">Дезинфекция помещений в Симферополе, Севастополе и по всему Крыму</h1>
+        <h1 class="hero-title">Дезинсекция помещений в Симферополе, Севастополе и по всему Крыму</h1>
         <p class="hero-subtitle">
-          Профессиональная дезинфекция квартир, домов, офисов, салонов, медкабинетов, складов и производств.
-          Снижаем микробную нагрузку до нормативов, работаем официально, предоставляем акты для СЭС.
+          Профессиональная обработка квартир, домов, офисов, салонов и производств. Работаем безопасно,
+          с сертифицированными препаратами, предоставляем акты для СЭС.
         </p>
 
         <div class="hero-bullets">
-          <div class="hero-badge">Сертифицированные дезсредства</div>
-          <div class="hero-badge">Холодный и горячий туман</div>
-          <div class="hero-badge">Выезд по всему Крыму</div>
-          <div class="hero-badge">Документы для проверок</div>
+          <div class="hero-badge"><span>Сертифицированные дес.средства</span></div>
+          <div class="hero-badge"><span>Холодный и горячий туман</span></div>
+          <div class="hero-badge"><span>Выезд по всему Крыму</span></div>
+          <div class="hero-badge"><span>Документы для проверок</span></div>
         </div>
 
         <div class="hero-actions">
-          <button class="btn btn-primary" data-scroll="#contacts">Рассчитать стоимость дезинфекции</button>
+          <button class="btn btn-primary" data-scroll="#order">Рассчитать стоимость</button>
           <div class="hero-note">Нажимая кнопку, вы соглашаетесь с <a href="../policy.html" target="_blank">политикой конфиденциальности</a>.</div>
         </div>
       </div>
 
+      <!-- Фото справа (можно заменить на своё) -->
       <figure class="hero-photo">
-        <!-- Можно поменять картинку при желании -->
-        <img src="../media/works/dezinfektor-gym.jpg" alt="Специалист «Дез щит 360» — дезинфекция объекта" class="hero-photo-img">
+        <img src="../media/hero/hero-dezinsekciya.jpg" alt="Бригада «Дез щит 360» — дезинсекция" />
         <figcaption class="hero-photo-caption">
-          <strong>Профессиональная команда</strong>
-          Документируем обработку, применяем сертифицированные препараты и чёткий регламент обработки.
+          <strong>Профессиональная команда</strong><br />
+          Работаем открыто и официально. Сертифицированные препараты и чёткий регламент.
         </figcaption>
       </figure>
     </div>
   </section>
 
-  <!-- Когда нужна дезинфекция -->
+  <!-- Когда нужна дезинсекция -->
   <section class="section">
     <div class="container">
-      <h2 class="section-title">Когда нужна дезинфекция</h2>
-
+      <h2 class="section-title">Когда нужна дезинсекция</h2>
       <div class="about-grid">
         <ul class="about-list">
-          <li>После заболеваний в семье, офисе или коллективе.</li>
-          <li>Перед открытием или перезапуском кафе, салона, фитнес-клуба.</li>
-          <li>После затоплений, загрязнений, антисанитарии.</li>
-          <li>Для медкабинетов, косметологических и стоматологических центров.</li>
-          <li>Для складов и производств пищевой продукции.</li>
+          <li>Насекомые в жилье и местах общего пользования.</li>
+          <li>Перед открытием/перезапуском кафе, салона, фитнес-клуба.</li>
+          <li>После завоза новой продукции, складских операций.</li>
+          <li>Медкабинеты, косметологические и стоматологические центры.</li>
         </ul>
-
         <div class="faq-item">
           <div class="faq-question">Что включено</div>
           <div class="faq-answer" style="display:block">
-            <ul class="faq-list">
-              <li>Осмотр и подбор дезсредств.</li>
-              <li>Обработка поверхностей, воздуха, контактных зон.</li>
-              <li>Рекомендации по проветриванию и дополнительной защите.</li>
-              <li>Акт выполненных работ и при необходимости — договор обслуживания.</li>
-            </ul>
-            <div class="price-note" style="margin-top:8px">Безопасно: средства, разрешённые для жилых и детских помещений, при соблюдении наших инструкций.</div>
+            Осмотр и подбор препарата, обработка поверхностей и контактных зон, рекомендации.
+            По запросу — акт выполненных работ, договор обслуживания.
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Реальные объекты (медиа-сетка) -->
+  <!-- Реальные объекты (фото/видео) -->
   <section class="section section-alt">
     <div class="container">
       <h2 class="section-title">Реальные объекты в Крыму</h2>
-      <p class="section-subtitle">Ниже — примеры работ (без данных клиентов): фрагменты видео и фото, единый размер карточек и аккуратная обрезка медиа.</p>
 
       <div class="media-grid">
-        <!-- Фото карточка -->
+        <!-- Фото -->
         <figure class="media-card">
           <div class="media-photo-wrap">
-            <img class="media-photo" src="../media/works/dezinfektor-gym.jpg" alt="Дезинфекция тренажёрного зала — Дез щит 360">
+            <img class="media-photo"
+                 src="../media/works/dezinsekciya-ht.jpg"
+                 alt="Дезинсекция торговой галереи — тёплый туман" />
           </div>
-          <div class="media-badge">Дез щит 360</div>
           <figcaption class="media-card figcaption">
-            Обработка фитнес-клуба: холодный туман, акцент на раздевалки и душевые. Работаем в полном комплекте СИЗ, по регламенту СанПиН.
+            Обработка торговой галереи. Безопасно для посетителей и персонала.
           </figcaption>
         </figure>
 
-        <!-- Видео карточка 1 -->
+        <!-- Видео (исправленное — без обрезания головы) -->
         <figure class="media-card">
           <div class="media-photo-wrap">
-            <video class="media-video" controls preload="metadata" poster="../media/works/dezinfektor-gym.jpg">
-              <!-- Поменяй имя файла, если у тебя другое -->
-              <source src="../media/works/dezinsekciya-ht.mp4" type="video/mp4">
+            <video class="media-video" controls preload="metadata"
+                   poster="../media/works/fotologo-dez.png">
+              <source src="../media/works/dezinsekciya-tc.mp4" type="video/mp4" />
               Ваш браузер не поддерживает видео.
             </video>
           </div>
-          <div class="media-badge">Дез щит 360</div>
           <figcaption class="media-card figcaption">
-            Дезинфекция помещений медучреждения. Разрешённые препараты, документы для Роспотребнадзора.
+            Дезинсекция коммерческого объекта: входные группы, коридоры, склад.
           </figcaption>
         </figure>
 
-        <!-- Видео карточка 2 -->
-        <figure class="media-card">
-          <div class="media-photo-wrap">
-            <video class="media-video" controls preload="metadata" poster="../media/works/dezinfektor-gym.jpg">
-              <!-- Поменяй имя файла, если у тебя другое -->
-              <source src="../media/works/dezinsekciya-tc.mp4" type="video/mp4">
-              Ваш браузер не поддерживает видео.
-            </video>
-          </div>
-          <div class="media-badge">Дез щит 360</div>
-          <figcaption class="media-card figcaption">
-            Комплексная обработка коммерческого объекта в Крыму: зоны приёма, склады, санитарные узлы. Протокол и гарантия.
-          </figcaption>
-        </figure>
+        <!-- Ещё видео/фото по желанию по этому же шаблону -->
       </div>
     </div>
   </section>
 
-  <!-- Контактная форма (якорь для кнопок “Рассчитать”) -->
-  <section id="contacts" class="section">
-    <div class="container contacts-grid">
-      <div>
-        <h2 class="section-title">Заказать дезинфекцию</h2>
+  <!-- Форма заказа (якорь для кнопки) -->
+  <section id="order" class="section">
+    <div class="container">
+      <h2 class="section-title">Заказать дезинсекцию</h2>
+      <div class="contacts-grid">
         <form class="contacts-form">
-          <div class="field">
-            <label class="field-label" for="name">Ваше имя</label>
-            <input id="name" type="text" class="field-input" placeholder="Иван">
-          </div>
+          <label class="field-label" for="name">Как к вам обращаться</label>
+          <input id="name" class="field-input" type="text" placeholder="Имя" />
 
-          <div class="field">
-            <label class="field-label" for="phone">Телефон</label>
-            <input id="phone" type="text" class="field-input" placeholder="+7 999 123-45-67">
-          </div>
+          <label class="field-label" for="phone">Телефон</label>
+          <input id="phone" class="field-input" type="tel" placeholder="+7 ___ ___ __ __" />
 
-          <div class="field">
-            <label class="field-label" for="comment">Описание объекта / адрес</label>
-            <textarea id="comment" class="field-textarea" rows="2" placeholder="Квартира, дом, магазин, площадь, адрес…"></textarea>
-          </div>
+          <label class="field-label" for="task">Коротко о задаче</label>
+          <textarea id="task" class="field-textarea" rows="3"
+                    placeholder="Квартира, офис, магазин… Площадь/этаж/особенности."></textarea>
 
-          <button type="submit" class="btn btn-primary">Жду расчёт</button>
-          <div class="form-note">Нажимая кнопку, вы соглашаетесь с <a href="../policy.html" target="_blank">политикой конфиденциальности</a>.</div>
+          <button type="submit" class="btn btn-primary">Отправить заявку</button>
         </form>
-      </div>
 
-      <div class="contacts-list">
-        <div class="contacts-label">Позвонить:</div>
-        <a class="contacts-item" href="tel:+79785500557">+7 978 550 05 57</a>
-        <a class="contacts-item" href="tel:+79785732708">+7 978 573 27 08</a>
+        <div class="contacts-list">
+          <div class="contacts-label">Позвонить</div>
+          <a href="tel:+79785500557" class="phone">+7 978 550 05 57</a>
+          <a href="tel:+79785732708" class="phone">+7 978 573 27 08</a>
 
-        <div class="contacts-label">Адрес / почта:</div>
-        <div class="contacts-item">Республика Крым, г. Симферополь, ул. Екатерининская, 51</div>
-        <a class="contacts-item" href="mailto:dezshieldmail@ru">dezshieldmail@ru</a>
+          <div class="contacts-label">Адрес / почта</div>
+          <div>г. Симферополь, ул. Екатерининская, 51</div>
+          <a class="email" href="mailto:dezschit360@gmail.ru">dezschit360@gmail.ru</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Подвал -->
   <footer>
-    <div class="footer-inner">
+    <div class="footer-inner container">
       <div class="footer-brand">Дез щит 360</div>
-      <div class="footer-sub">Центр дезинфектологии · Крым</div>
       <div class="footer-links">
-        <a class="footer-link" href="../policy.html" target="_blank">Политика конфиденциальности</a>
-        <a class="footer-link" href="../index.html#services">Услуги</a>
-        <a class="footer-link" href="../index.html#contacts">Контакты</a>
+        <a href="../policy.html">Политика конфиденциальности</a>
+        <a href="tel:+79785500557">+7 978 550 05 57</a>
+        <a href="tel:+79785732708">+7 978 573 27 08</a>
       </div>
-      <div class="footer-legal">© 2025. Все права защищены.</div>
+      <div class="footer-copy">© 2025, Дез щит 360. Все права защищены.</div>
     </div>
   </footer>
 
-  <!-- Небольшой JS для бургера и плавного скролла -->
+  <!-- маленький JS для бургера и плавного скролла -->
   <script>
-    // мобильное меню
-    const burger = document.getElementById('burger');
-    const mobileNav = document.getElementById('mobileNav');
-    burger && burger.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
-    });
-
-    // плавный скролл по data-scroll="#id"
-    document.addEventListener('click', (e) => {
-      const a = e.target.closest('[data-scroll]');
-      if (!a) return;
-      e.preventDefault();
-      const sel = a.getAttribute('data-scroll');
-      const el  = document.querySelector(sel);
-      if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
-    });
+    (function () {
+      const burger = document.getElementById('burger');
+      const mobile = document.getElementById('mobileNav');
+      if (burger && mobile) {
+        burger.addEventListener('click', () => {
+          mobile.classList.toggle('open');
+          document.body.classList.toggle('menu-open');
+        });
+      }
+      document.querySelectorAll('[data-scroll]').forEach(el => {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          const id = this.getAttribute('data-scroll');
+          const t = document.querySelector(id);
+          if (!t) return;
+          const y = t.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        });
+      });
+    })();
   </script>
 </body>
 </html>
+
 
 
 
