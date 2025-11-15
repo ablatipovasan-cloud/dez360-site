@@ -1145,6 +1145,21 @@ footer {
 .media-card.is-vertical .media-ratio { aspect-ratio: 9 / 16; }
 .media-card .media-obj { width: 100%; height: 100%; object-fit: cover; display: block; }
 
+/* === Fix: геро-фото на внутренних услугах (в т.ч. Вентиляция) === */
+.hero-photo img,
+.hero-photo video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* заполняем контейнер без чёрных полей */
+  display: block;
+}
+
+.hero-photo {
+  aspect-ratio: 16 / 9;  /* единый формат для обложки */
+  overflow: hidden;
+  border-radius: 16px;    /* как и на остальных карточках/героях */
+}
+
 
 
 
