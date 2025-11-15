@@ -753,10 +753,36 @@
       mobileNav.classList.toggle('is-open');
     });
   }
+ </script>
+  <script>
+  (function(){
+    const sub = document.getElementById('navBiz'); if(!sub) return;
+    const link = sub.querySelector('.nav-link');
+    function isTouchOrNarrow(){
+      return window.matchMedia('(max-width:1024px)').matches || ('ontouchstart' in window);
+    }
+    link.addEventListener('click', function(e){
+      if(!isTouchOrNarrow()) return;
+      e.preventDefault();
+      const opened = sub.classList.contains('is-open');
+      document.querySelectorAll('.has-sub.is-open').forEach(x=>x.classList.remove('is-open'));
+      sub.classList.toggle('is-open', !opened);
+      link.setAttribute('aria-expanded', String(!opened));
+    });
+    document.addEventListener('click', function(e){
+      if(!sub.classList.contains('is-open')) return;
+      if(!sub.contains(e.target)){ sub.classList.remove('is-open'); link.setAttribute('aria-expanded','false'); }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape'){ sub.classList.remove('is-open'); link.setAttribute('aria-expanded','false'); }
+    });
+  })();
+  </script>
 </script>
 
 </body>
 </html>
+
 
 
 
