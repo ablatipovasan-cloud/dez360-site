@@ -33,13 +33,100 @@
     <!-- Главное меню (десктоп) -->
     <nav class="header-nav">
       <a href="#services" class="is-active">Услуги</a>
-      <a href="#clients">Для бизнеса</a>
       <a href="#prices">Цены</a>
       <a href="#guarantees">Гарантии</a>
       <a href="#faq">FAQ</a>
       <a href="#about">О компании</a>
       <a href="#contacts">Контакты</a>
     </nav>
+<!-- NAV ITEM: ДЛЯ БИЗНЕСА с подпунктами -->
+<div class="nav-item has-sub" id="navBiz">
+  <a href="/biz/" class="nav-link" aria-haspopup="true" aria-expanded="false">
+    Для бизнеса
+    <svg viewBox="0 0 16 16" class="nav-caret" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+  </a>
+
+  <!-- МЕГАМЕНЮ -->
+  <div class="mega" role="menu" aria-label="Для бизнеса">
+    <div class="mega-grid">
+      <a class="mega-item" href="/biz/pest-kontrol/">
+        <span class="mi-ico">🔎</span>
+        <span class="mi-text">
+          <strong>Пест-контроль</strong>
+          <em>Регулярный мониторинг и отчётность</em>
+        </span>
+      </a>
+
+      <a class="mega-item" href="/deratizaciya/">
+        <span class="mi-ico">🐭</span>
+        <span class="mi-text">
+          <strong>Дератизация</strong>
+          <em>Крысы и мыши, барьерная защита</em>
+        </span>
+      </a>
+
+      <a class="mega-item" href="/dezinsekciya/">
+        <span class="mi-ico">🐞</span>
+        <span class="mi-text">
+          <strong>Дезинсекция</strong>
+          <em>Тараканы, клопы, муравьи и др.</em>
+        </span>
+      </a>
+
+      <a class="mega-item" href="/dezinsekciya/komary-muhi/">
+        <span class="mi-ico">🦟</span>
+        <span class="mi-text">
+          <strong>Комары и мухи</strong>
+          <em>Улицы, террасы, летние площадки</em>
+        </span>
+      </a>
+
+      <a class="mega-item" href="/dezinficaciya/">
+        <span class="mi-ico">🛡️</span>
+        <span class="mi-text">
+          <strong>Дезинфекция</strong>
+          <em>Объекты общепита, медицина, склады</em>
+        </span>
+      </a>
+
+      <a class="mega-item" href="/biz/dokumenty-dlya-rpn/">
+        <span class="mi-ico">📄</span>
+        <span class="mi-text">
+          <strong>Документы для Роспотребнадзора</strong>
+          <em>Журналы, акты, программы производственного контроля</em>
+        </span>
+      </a>
+
+      
+
+      <a class="mega-item" href="/ozonirovanie/">
+        <span class="mi-ico">🫧</span>
+        <span class="mi-text">
+          <strong>Озонирование</strong>
+          <em>Удаление запахов и бактерий</em>
+        </span>
+      </a>
+
+      <a class="mega-item" href="/deozodoraciya/">
+        <span class="mi-ico">🌿</span>
+        <span class="mi-text">
+          <strong>Дезодорация</strong>
+          <em>Посторонние запахи на производстве</em>
+        </span>
+      </a>
+
+      <a class="mega-item" href="/ventilyaciya/">
+        <span class="mi-ico">🌀</span>
+        <span class="mi-text">
+          <strong>Вентиляция и вытяжка</strong>
+          <em>Очистка/дезинфекция систем</em>
+        </span>
+      </a>
+
+      </a>
+    </div>
+  </div>
+</div>
 
     <!-- Телефоны + кнопка (десктоп) -->
     <div class="header-actions">
@@ -688,8 +775,47 @@
     });
   }
 </script>
+<script>
+(function(){
+  const sub = document.getElementById('navBiz');
+  if(!sub) return;
+  const link = sub.querySelector('.nav-link');
+
+  // На тач-устройствах (или узких экранах) открываем по клику.
+  function isTouchOrNarrow(){
+    return window.matchMedia('(max-width:1024px)').matches || ('ontouchstart' in window);
+  }
+
+  link.addEventListener('click', function(e){
+    if (!isTouchOrNarrow()) return; // на десктопе оставим поведение по умолчанию (hover)
+    e.preventDefault();
+    const opened = sub.classList.contains('is-open');
+    document.querySelectorAll('.has-sub.is-open').forEach(x => x.classList.remove('is-open'));
+    sub.classList.toggle('is-open', !opened);
+    link.setAttribute('aria-expanded', String(!opened));
+  });
+
+  // Клик вне — закрыть
+  document.addEventListener('click', function(e){
+    if (!sub.classList.contains('is-open')) return;
+    if (!sub.contains(e.target)) {
+      sub.classList.remove('is-open');
+      link.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Esc — закрыть
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){
+      sub.classList.remove('is-open');
+      link.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
 </body>
 </html>
+
 
 
 
