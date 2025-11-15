@@ -1114,10 +1114,50 @@ footer {
   .float-back{ left: 10px; bottom: 10px; padding: 9px 12px; font-size: 13px; }
 }
 
+<script>
+(function(){
+  const sub = document.getElementById('navBiz');
+  if(!sub) return;
+  const link = sub.querySelector('.nav-link');
+
+  // На тач-устройствах (или узких экранах) открываем по клику.
+  function isTouchOrNarrow(){
+    return window.matchMedia('(max-width:1024px)').matches || ('ontouchstart' in window);
+  }
+
+  link.addEventListener('click', function(e){
+    if (!isTouchOrNarrow()) return; // на десктопе оставим поведение по умолчанию (hover)
+    e.preventDefault();
+    const opened = sub.classList.contains('is-open');
+    document.querySelectorAll('.has-sub.is-open').forEach(x => x.classList.remove('is-open'));
+    sub.classList.toggle('is-open', !opened);
+    link.setAttribute('aria-expanded', String(!opened));
+  });
+
+  // Клик вне — закрыть
+  document.addEventListener('click', function(e){
+    if (!sub.classList.contains('is-open')) return;
+    if (!sub.contains(e.target)) {
+      sub.classList.remove('is-open');
+      link.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Esc — закрыть
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){
+      sub.classList.remove('is-open');
+      link.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
+
 /* страховка, если где-то переопределили */
 .media-card .media-ratio { aspect-ratio: 16 / 9; width: 100%; background: #000; overflow: hidden; border-radius: 12px; }
 .media-card.is-vertical .media-ratio { aspect-ratio: 9 / 16; }
 .media-card .media-obj { width: 100%; height: 100%; object-fit: cover; display: block; }
+
 
 
 
