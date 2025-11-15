@@ -31,7 +31,7 @@
           <div class="logo-title">Дез щит 360</div>
           <div class="logo-sub">Центр дезинфектологии · Симферополь · Крым</div>
         </div>
-      </a>
+    
 
       <!-- навигация; пункт «Для бизнеса» уже с мегаменю из прошлой правки -->
       <nav class="header-nav">
@@ -83,44 +83,41 @@
     </div>
   </div>
 
-  <!-- Hero -->
-  <section class="hero section-alt">
-    <div class="hero-inner container">
-      <div class="hero-left">
-        <h1 class="hero-title">Решения для бизнеса</h1>
-        <p class="hero-subtitle">Пест-контроль, дератизация, дезинсекция, дезинфекция и документация для проверок. Работаем официально, предоставляем акты и журналы.</p>
-        <div class="hero-bullets">
-          <span class="hero-badge">Регулярный мониторинг</span>
-          <span class="hero-badge">Отчётность для Роспотребнадзора</span>
-          <span class="hero-badge">Сертифицированные препараты</span>
-        </div>
-        <div class="hero-actions">
-          <a href="/index.html#contacts" class="btn btn-primary">Запросить коммерческое предложение</a>
-          <span class="hero-note">Срок ответа — в день обращения.</span>
-        </div>
+ <!-- HERO: Для бизнеса -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <h1 class="hero-title">Решения для бизнеса</h1>
+      <p class="hero-subtitle">
+        Пест-контроль, дератизация, дезинсекция и документация для проверок.
+        Работаем официально, предоставляем акты и журналы.
+      </p>
+
+      <div class="hero-bullets">
+        <div class="hero-badge">Регулярный мониторинг</div>
+        <div class="hero-badge">Отчётность для Роспотребнадзора</div>
+        <div class="hero-badge">Сертифицированные препараты</div>
       </div>
 
-      <div class="hero-photo">
-        <img src="/media/hero/biz-hero.jpg" alt="Пест-контроль и защита объектов" />
-        <div class="hero-photo-overlay"></div>
-        <div class="hero-photo-caption">
-          <strong>Под ключ</strong>
-          <span class="hero-badge-inline">Акты, журналы, ППК</span>
-        </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contacts">Запросить коммерческое предложение</a>
+        <span class="form-note">Срок ответа — в день обращения.</span>
       </div>
     </div>
-  </section>
 
-  <!-- Сетка услуг для бизнеса -->
-  <section id="biz" class="section">
+    <!-- справа можно оставить превью-видео или картинку -->
+    <div class="hero-photo">
+      <video class="media-obj" src="../media/works/pest-kontrol.mp4"
+             controls playsinline muted preload="metadata"
+             poster="../media/works/pest-kontrol-poster.jpg"></video>
+    </div>
+  </div>
+</section>
+
+<!-- СЕТКА КАРТОЧЕК -->
+<section class="section">
   <div class="container">
-     <nav class="page-nav" aria-label="Навигация">
-      <a href="/index.html" class="page-nav-link">На главную</a>
-      <span class="page-nav-separator">/</span>
-      <span class="page-nav-link" aria-current="page">Для бизнеса</span>
-    </nav>
-    
-      <h2 class="section-title">Решения для бизнеса</h2>
+    <h2 class="section-title">Решения для бизнеса</h2>
     <p class="section-subtitle">Регулярный мониторинг, отчётность и акты — работаем официально и безопасно.</p>
 
     <div class="biz-grid">
@@ -129,32 +126,38 @@
         <p>Мониторинг, bait-станции, журналы, акты.</p>
       </a>
 
-          <a class="biz-item" href="/biz/deratizaciya/">
+      <a class="biz-item" href="/biz/deratizaciya/">
         <h3>Дератизация</h3>
-        <p>Крысы и мыши, барьерная защита объектов локализация очагов, безопасная раскладка родентицидов.</p>
-        </a>
+        <p>Крысы и мыши, барьерная защита объектов, безопасная раскладка родентицидов.</p>
+      </a>
 
-        <a class="biz-item" href="/biz/dezinsekciya/">
-          <h3>Дезинсекция</h3>
-        <p>Тараканы, клопы, муравьи</p>
-          <p>Профессиональные инсектициды, горячий/холодный туман гелевые обработки</p>
-        </a>
+      <a class="biz-item" href="/biz/dezinsekciya/">
+        <h3>Дезинсекция</h3>
+        <p>Тараканы, клопы, муравьи. Профессиональные инсектициды, туман, гели.</p>
+      </a>
 
-        <a class="biz-item" href="/biz/dezinsekciya/">
-          <h3>Дезинсекция</h3>
-          <p>Вирусы, бактерии, плесень</p>
-          <p>Обработка помещений, ППК, рекомендации по режимам.</p>
-        </a>
+      <a class="biz-item" href="/biz/dezinfekciya/">
+        <h3>Дезинфекция</h3>
+        <p>Вирусы, бактерии, плесень. Обработка помещений, ППК, рекомендации по режимам.</p>
+      </a>
 
-        <a class="biz-item" href="/biz/dokumenty-dlya-rpn/">
-          <h3>Документы</h3>
-          <p>Роспотребнадзор</p>
-          <p>Журналы, акты, программы производственного контроля.</p>
-        </a>
+      <a class="biz-item" href="/biz/dokumenty/">
+        <h3>Документы</h3>
+        <p>Роспотребнадзор: журналы, акты, программы производственного контроля.</p>
+      </a>
 
-      </div>
+      <a class="biz-item" href="/biz/komary-i-mukhi/">
+        <h3>Комары и мухи</h3>
+        <p>Террасы, аллеи, уличные зоны, летние площадки.</p>
+      </a>
     </div>
-  </section>
+
+    <p class="section-subtitle" style="margin-top:16px;">
+      Нужна смета или договор на обслуживание? <a href="#contacts">Запросить КП</a>
+    </p>
+  </div>
+</section>
+
 
   <!-- Короткий блок CTA -->
   <section class="section section-alt">
