@@ -1165,8 +1165,22 @@ footer {
 .hero .hero-photo img,
 .hero .hero-photo video { width: 100%; height: auto; display: block; }
 
-/* скрыть подпись, которая даёт чёрный прямоугольник и текст */
-.hero .hero-photo figcaption { display: none; }
+/* Вариант: сделать подпись маленьким бейджем в углу */
+.hero .hero-photo { position: relative; }
+.hero .hero-photo figcaption{
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  background: rgba(0,0,0,.55);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.25;
+  max-width: 48%;
+}
+
+
 
 
 
