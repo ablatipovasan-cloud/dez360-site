@@ -1160,6 +1160,14 @@ footer {
 .media-card.is-vertical .media-ratio { aspect-ratio: 9 / 16; }
 .media-card .media-obj { width: 100%; height: 100%; object-fit: cover; display: block; }
 
+/* --- HERO: убрать чёрную подпись-оверлей у обложек на страницах /biz --- */
+.hero .hero-photo { position: relative; }
+.hero .hero-photo img,
+.hero .hero-photo video { width: 100%; height: auto; display: block; }
+
+/* скрыть подпись, которая даёт чёрный прямоугольник и текст */
+.hero .hero-photo figcaption { display: none; }
+
 
 
 
