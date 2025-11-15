@@ -1136,24 +1136,15 @@ footer {
   box-shadow:0 10px 28px rgba(0,0,0,.12);
   transition:.2s ease;
 }
-.biz-item strong{
-  display:block;
-  font-weight:700;
-  font-size:16px;
-  margin-bottom:6px;
-}
-.biz-item span{
-  display:block;
-  font-size:13px;
-  color:#667085;
-  line-height:1.5;
-}
+.biz-item h3{ margin:0 0 6px; font-size:18px; color:#0b2748; }
+.biz-item p{ margin:0; color:#667885; font-size:14px; }
 .header-nav a.is-active { color:#0b6bff; font-weight:600; }
 
 /* страховка, если где-то переопределили */
 .media-card .media-ratio { aspect-ratio: 16 / 9; width: 100%; background: #000; overflow: hidden; border-radius: 12px; }
 .media-card.is-vertical .media-ratio { aspect-ratio: 9 / 16; }
 .media-card .media-obj { width: 100%; height: 100%; object-fit: cover; display: block; }
+
 
 
 
