@@ -1190,33 +1190,31 @@ footer {
    Если где-то стоит другой (напр. biz-vent), это тоже страница бизнеса —
    добавь туда второй класс "biz" (например: <body class="biz biz-vent">). */
 
-/* Контейнер обложки: фиксируем пропорции и обрезаем излишки */
+/* Только для страниц с body.biz */
 body.biz .hero-photo {
   position: relative;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
   border-radius: 16px;
+  overflow: hidden;
 }
 
-/* Картинка/видео заполняют контейнер без чёрных полей */
 body.biz .hero-photo img,
 body.biz .hero-photo video {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
+  object-fit: cover; /* можно убрать, если авто-высота устраивает */
 }
 
-/* Прячем подпись, чтобы не давала чёрную плашку */
-body.biz .hero-photo figcaption {
-  display: none;
-}
+/* Прячем подпись, чтобы не было чёрного прямоугольника/текста */
+body.biz .hero-photo figcaption { display: none !important; }
+
 
 /* Дополнительно: на очень узких экранах можно чуть поднять
    пропорцию, если хочется более «квадратно» */
 @media (max-width: 480px) {
   body.biz .hero-photo { aspect-ratio: 4 / 3; }
 }
+
 
 
 
