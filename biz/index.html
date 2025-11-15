@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Для бизнеса — Дез щит 360</title>
+  <meta name="description" content="Пест-контроль и комплексная защита объектов бизнеса: дератизация, дезинсекция, дезинфекция, документы для Роспотребнадзора и др." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+
+  <!-- верхняя синяя плашка + телефоны (как на главной) -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <span>Центр дезинфектологии «Дез щит 360» — профессиональная защита от вредителей и инфекций в Крыму</span>
+      <div class="top-bar-contacts">
+        <span>Ежедневно 8:00–22:00</span>
+        <a href="tel:+79785500557">+7 978 550 05 57</a>
+        <a href="tel:+79785732708">+7 978 573 27 08</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- шапка сайта (как на главной) -->
+  <header>
+    <div class="header-inner container">
+      <a href="/index.html" class="logo">
+        <img src="/media/logo-360.png" alt="Дез щит 360" class="logo-icon-img" />
+        <div class="logo-text">
+          <div class="logo-title">Дез щит 360</div>
+          <div class="logo-sub">Центр дезинфектологии · Симферополь · Крым</div>
+        </div>
+      </a>
+
+      <!-- навигация; пункт «Для бизнеса» уже с мегаменю из прошлой правки -->
+      <nav class="header-nav">
+        <a href="/index.html#services">Услуги</a>
+        <div class="nav-item has-sub" id="navBiz">
+          <a href="/biz/" class="nav-link">Для бизнеса
+            <svg viewBox="0 0 16 16" class="nav-caret"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </a>
+          <!-- Мегаменю подключится тем же HTML, что я прислал ранее -->
+          <!-- Можно оставить пустым: на этой странице оно не обязательно -->
+        </div>
+        <a href="/ceny/">Цены</a>
+        <a href="/garantii/">Гарантии</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/o-kompanii/">О компании</a>
+        <a href="/kontakty/">Контакты</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="phone" href="tel:+79785500557">+7 978 550 05 57</a>
+        <a class="phone" href="tel:+79785732708">+7 978 573 27 08</a>
+        <a href="/index.html#contacts" class="btn btn-alert">Срочный выезд</a>
+      </div>
+
+      <button class="burger" id="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+    </div>
+
+    <!-- мобильное меню (если используется на сайте) -->
+    <div class="mobile-nav" id="mobileNav">
+      <a href="/index.html#services">Услуги</a>
+      <a href="/biz/">Для бизнеса</a>
+      <a href="/ceny/">Цены</a>
+      <a href="/garantii/">Гарантии</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/o-kompanii/">О компании</a>
+      <a href="/kontakty/">Контакты</a>
+      <a class="mobile-nav-cta btn btn-alert" href="/index.html#contacts">Срочный выезд</a>
+    </div>
+  </header>
+
+  <!-- Хлебные крошки -->
+  <div class="page-nav">
+    <div class="container page-nav__container">
+      <a href="/index.html" class="page-nav-link">На главную</a>
+      <span class="page-nav-separator">/</span>
+      <a href="/index.html#services" class="page-nav-link">Все услуги</a>
+      <span class="page-nav-separator">/</span>
+      <span class="page-nav-link is-active">Для бизнеса</span>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero section-alt">
+    <div class="hero-inner container">
+      <div class="hero-left">
+        <h1 class="hero-title">Решения для бизнеса</h1>
+        <p class="hero-subtitle">Пест-контроль, дератизация, дезинсекция, дезинфекция и документация для проверок. Работаем официально, предоставляем акты и журналы.</p>
+        <div class="hero-bullets">
+          <span class="hero-badge">Регулярный мониторинг</span>
+          <span class="hero-badge">Отчётность для Роспотребнадзора</span>
+          <span class="hero-badge">Сертифицированные препараты</span>
+        </div>
+        <div class="hero-actions">
+          <a href="/index.html#contacts" class="btn btn-primary">Запросить коммерческое предложение</a>
+          <span class="hero-note">Срок ответа — в день обращения.</span>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <img src="/media/hero/biz-hero.jpg" alt="Пест-контроль и защита объектов" />
+        <div class="hero-photo-overlay"></div>
+        <div class="hero-photo-caption">
+          <strong>Под ключ</strong>
+          <span class="hero-badge-inline">Акты, журналы, ППК</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Сетка услуг для бизнеса -->
+  <section class="section" id="biz-services">
+    <div class="container">
+      <h2 class="section-title">Услуги и направления</h2>
+      <div class="services-grid">
+        <!-- используем существующую карточку .service-card -->
+        <a class="service-card" href="/biz/pest-kontrol/">
+          <div class="service-label">Пест-контроль</div>
+          <div class="service-title">Мониторинг и отчётность</div>
+          <div class="service-text">План осмотров, проставки станций, журналы, акты, отчёты для проверок.</div>
+        </a>
+
+        <a class="service-card" href="/deratizaciya/">
+          <div class="service-label">Дератизация</div>
+          <div class="service-title">Крысы и мыши</div>
+          <div class="service-text">Барьерная защита, локализация очагов, безопасная раскладка родентицидов.</div>
+        </a>
+
+        <a class="service-card" href="/dezinsekciya/">
+          <div class="service-label">Дезинсекция</div>
+          <div class="service-title">Тараканы, клопы, муравьи</div>
+          <div class="service-text">Профессиональные инсектициды, горячий/холодный туман.</div>
+        </a>
+
+        <a class="service-card" href="/dezinficaciya/">
+          <div class="service-label">Дезинфекция</div>
+          <div class="service-title">Вирусы, бактерии, плесень</div>
+          <div class="service-text">Обработка помещений, ППК, рекомендации по режимам.</div>
+        </a>
+
+        <a class="service-card" href="/biz/dokumenty-dlya-rpn/">
+          <div class="service-label">Документы</div>
+          <div class="service-title">Роспотребнадзор</div>
+          <div class="service-text">Журналы, акты, программы производственного контроля.</div>
+        </a>
+
+        <a class="service-card" href="/fumigaciya/">
+          <div class="service-label">Фумигация</div>
+          <div class="service-title">Склады и тара</div>
+          <div class="service-text">Обработка фумигантами по регламентам безопасности.</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Короткий блок CTA -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="go-wrap">
+        <div class="go-highlight">
+          Нужна смета или договор на обслуживание?
+        </div>
+        <a class="btn btn-primary" href="/index.html#contacts">Запросить КП</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- футер (как на главной) -->
+  <footer>
+    <div class="footer-inner container">
+      <div class="footer-brand">Дез щит 360</div>
+      <div class="footer-links">
+        <a href="/policy.html">Политика конфиденциальности</a>
+        <a href="tel:+79785500557">+7 978 550 05 57</a>
+        <a href="tel:+79785732708">+7 978 573 27 08</a>
+      </div>
+      <div class="footer-copy">© 2025, Дез щит 360</div>
+    </div>
+  </footer>
+
+  <!-- скрипт для мобильного поведения «Для бизнеса» (как в прошлой правке) -->
+  <script>
+  (function(){
+    const sub = document.getElementById('navBiz'); if(!sub) return;
+    const link = sub.querySelector('.nav-link');
+    function isTouchOrNarrow(){
+      return window.matchMedia('(max-width:1024px)').matches || ('ontouchstart' in window);
+    }
+    link.addEventListener('click', function(e){
+      if(!isTouchOrNarrow()) return;
+      e.preventDefault();
+      const opened = sub.classList.contains('is-open');
+      document.querySelectorAll('.has-sub.is-open').forEach(x=>x.classList.remove('is-open'));
+      sub.classList.toggle('is-open', !opened);
+      link.setAttribute('aria-expanded', String(!opened));
+    });
+    document.addEventListener('click', function(e){
+      if(!sub.classList.contains('is-open')) return;
+      if(!sub.contains(e.target)){ sub.classList.remove('is-open'); link.setAttribute('aria-expanded','false'); }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape'){ sub.classList.remove('is-open'); link.setAttribute('aria-expanded','false'); }
+    });
+  })();
+  </script>
+</body>
+</html>
