@@ -1206,7 +1206,7 @@ body.biz .hero-photo video {
 }
 
 /* Прячем подпись, чтобы не было чёрного прямоугольника/текста */
-body.biz .hero-photo figcaption { display: none !important; }
+body.biz .hero-photo figcaption { display: none; }
 
 
 /* Дополнительно: на очень узких экранах можно чуть поднять
@@ -1214,6 +1214,7 @@ body.biz .hero-photo figcaption { display: none !important; }
 @media (max-width: 480px) {
   body.biz .hero-photo { aspect-ratio: 4 / 3; }
 }
+
 
 
 
