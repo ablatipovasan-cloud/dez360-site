@@ -1147,21 +1147,7 @@ footer {
   border-radius: 16px;
 }
 
-/* Сильнее любого старого правила */
-.hero-photo img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  display: block !important;
-}
 
-/* карточки "Все услуги": мягкая подгонка, чтобы на мобилке не тянуло */
-.media-card .media-obj {
-  width: 100%;
-  height: auto;          /* ключевой момент — не 100% */
-  display: block;
-  object-fit: cover;     /* работает только если есть фиксированная высота, так что не мешает */
-}
 
 /* --- HERO: убрать чёрную подпись-оверлей у обложек на страницах /biz --- */
 .hero .hero-photo { position: relative; }
@@ -1171,10 +1157,7 @@ footer {
 /* скрыть подпись, которая даёт чёрный прямоугольник и текст */
 .hero .hero-photo figcaption { display: none; }
 
-/* hero: скрываем подпись, чтобы не лезла чёрная плашка */
-.hero-photo figcaption { 
-  display: none !important;
-}
+
 
 /* Единые правила только для hero-фото (без влияния на карточки) */
 .hero-photo {
@@ -1198,6 +1181,41 @@ footer {
     height: 420px;         /* можно 380–460 по вкусу */
     object-fit: cover;     /* ровная обрезка без черных полей */
   }
+}
+
+/* ===== Герой-блоки только внутри /biz/ страниц ===== */
+
+/* Для всех страниц раздела бизнеса: поставим класс на <body>.
+   У тебя на страницах уже есть что-то вроде: <body class="biz">.
+   Если где-то стоит другой (напр. biz-vent), это тоже страница бизнеса —
+   добавь туда второй класс "biz" (например: <body class="biz biz-vent">). */
+
+/* Контейнер обложки: фиксируем пропорции и обрезаем излишки */
+body.biz .hero-photo {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+/* Картинка/видео заполняют контейнер без чёрных полей */
+body.biz .hero-photo img,
+body.biz .hero-photo video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Прячем подпись, чтобы не давала чёрную плашку */
+body.biz .hero-photo figcaption {
+  display: none;
+}
+
+/* Дополнительно: на очень узких экранах можно чуть поднять
+   пропорцию, если хочется более «квадратно» */
+@media (max-width: 480px) {
+  body.biz .hero-photo { aspect-ratio: 4 / 3; }
 }
 
 
