@@ -1113,50 +1113,47 @@ footer {
 @media (max-width: 560px){
   .float-back{ left: 10px; bottom: 10px; padding: 9px 12px; font-size: 13px; }
 }
+/* ===== Для бизнеса: сетка карточек ===== */
+.biz-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:14px;
+}
+@media (max-width:1080px){ .biz-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
+@media (max-width:560px){ .biz-grid{ grid-template-columns:1fr; } }
 
-<script>
-(function(){
-  const sub = document.getElementById('navBiz');
-  if(!sub) return;
-  const link = sub.querySelector('.nav-link');
-
-  // На тач-устройствах (или узких экранах) открываем по клику.
-  function isTouchOrNarrow(){
-    return window.matchMedia('(max-width:1024px)').matches || ('ontouchstart' in window);
-  }
-
-  link.addEventListener('click', function(e){
-    if (!isTouchOrNarrow()) return; // на десктопе оставим поведение по умолчанию (hover)
-    e.preventDefault();
-    const opened = sub.classList.contains('is-open');
-    document.querySelectorAll('.has-sub.is-open').forEach(x => x.classList.remove('is-open'));
-    sub.classList.toggle('is-open', !opened);
-    link.setAttribute('aria-expanded', String(!opened));
-  });
-
-  // Клик вне — закрыть
-  document.addEventListener('click', function(e){
-    if (!sub.classList.contains('is-open')) return;
-    if (!sub.contains(e.target)) {
-      sub.classList.remove('is-open');
-      link.setAttribute('aria-expanded', 'false');
-    }
-  });
-
-  // Esc — закрыть
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape'){
-      sub.classList.remove('is-open');
-      link.setAttribute('aria-expanded', 'false');
-    }
-  });
-})();
-</script>
+.biz-item{
+  display:block;
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
+  padding:16px;
+  text-decoration:none; /* убираем подчёркивание */
+  color:inherit;        /* наследуем цвет текста */
+}
+.biz-item:hover{
+  transform: translateY(-2px);
+  box-shadow:0 10px 28px rgba(0,0,0,.12);
+  transition:.2s ease;
+}
+.biz-item strong{
+  display:block;
+  font-weight:700;
+  font-size:16px;
+  margin-bottom:6px;
+}
+.biz-item span{
+  display:block;
+  font-size:13px;
+  color:#667085;
+  line-height:1.5;
+}
 
 /* страховка, если где-то переопределили */
 .media-card .media-ratio { aspect-ratio: 16 / 9; width: 100%; background: #000; overflow: hidden; border-radius: 12px; }
 .media-card.is-vertical .media-ratio { aspect-ratio: 9 / 16; }
 .media-card .media-obj { width: 100%; height: 100%; object-fit: cover; display: block; }
+
 
 
 
