@@ -662,7 +662,7 @@ footer {
 
 /* --- HERO (дезодорация): не навязываем 16:9, убираем подпись/оверлей --- */
 .hero-inner-page .hero-photo {            /* только для hero на внутренних страницах */
-  aspect-ratio: 1 / 1;                     /* отменяем принудительное 16/9 */
+  aspect-ratio: auto;                     /* отменяем принудительное 16/9 */
 }
 
 .hero .hero-photo figcaption,
@@ -685,6 +685,7 @@ footer {
     object-fit: cover;                    /* без чёрных полей */
   }
 }
+
 
 
 
