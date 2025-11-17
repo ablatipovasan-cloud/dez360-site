@@ -192,22 +192,30 @@
 
   <!-- Небольшой JS для бургера -->
   <script>
-    (function () {
-      const burger   = document.getElementById('burger');
-      const mobile   = document.getElementById('mobileNav');
-      if (!burger || !mobile) return;
+     (function(){
+    const burger = document.getElementById('burger');
+    const nav    = document.getElementById('mobileNav');
 
-      function toggle() {
-        burger.classList.toggle('is-open');
-        mobile.classList.toggle('is-open');
-      }
+   if(!burger || !nav) return;
+
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('is-open');
+      nav.classList.toggle('is-open');
+      // Для доступности
+      const opened = nav.classList.contains('is-open');
+      nav.setAttribute('aria-hidden', opened ? 'false' : 'true');
+    });
+
       burger.addEventListener('click', toggle);
-      // Закрытие по клику на ссылку
-      mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        // Закрываем меню по клику на ссылку
+    nav.querySelectorAll('a,[data-scroll]').forEach(el=>{
+      el.addEventListener('click', ()=>{
         burger.classList.remove('is-open');
-        mobile.classList.remove('is-open');
-      }));
-    })();
+        nav.classList.remove('is-open');
+        nav.setAttribute('aria-hidden','true');
+      });
+    });
+  })();
   </script>
 </body>
 </html>
