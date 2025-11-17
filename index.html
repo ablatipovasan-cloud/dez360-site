@@ -6,9 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Центр дезинфектологии «Дез щит 360» — профессиональная дезинфекция, дезинсекция, дератизация, чистка и дезинфекция вентиляции, акарицидная обработка, удаление запахов и плесени в Симферополе, Севастополе и по всему Крыму. Лицензия, гарантии, быстрый выезд, официальные документы." />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="/css/main.css?v=5">
+  <link rel="stylesheet" href="/css/main.css?v=5">
 </head>
 <body>
+
+<!-- Верхняя полоска -->
 <div class="top-bar">
   <div class="top-bar-inner">
     <span>Ежедневно 8:00–22:00</span>
@@ -19,10 +21,11 @@
   </div>
 </div>
 
+<!-- ===== HEADER ===== -->
 <header>
   <div class="header-inner">
     <!-- Логотип -->
-    <a href="index.html" class="logo">
+    <a href="/index.html" class="logo">
       <img src="/media/logo-360.png" alt="Дез щит 360" class="logo-icon-img">
       <div class="logo-text">
         <div class="logo-title">Дез щит 360</div>
@@ -32,17 +35,14 @@
 
     <!-- Главное меню (десктоп) -->
     <nav class="header-nav">
-  <a href="#services" class="is-active">Услуги</a>
-  <a href="/biz/">Для бизнеса</a> <!-- ВАЖНО: ссылка на страницу -->
-  <a href="#prices">Цены</a>
-  <a href="#guarantees">Гарантии</a>
-  <a href="#faq">FAQ</a>
-  <a href="#about">О компании</a>
-  <a href="#contacts">Контакты</a>
-</nav>
-
-  </div>
-</div>
+      <a href="#services" class="is-active">Услуги</a>
+      <a href="/biz/">Для бизнеса</a>
+      <a href="#prices">Цены</a>
+      <a href="#guarantees">Гарантии</a>
+      <a href="#faq">FAQ</a>
+      <a href="#about">О компании</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
 
     <!-- Телефоны + кнопка (десктоп) -->
     <div class="header-actions">
@@ -53,25 +53,29 @@
 
     <!-- Бургер (мобилка) -->
     <button class="burger" id="burger" aria-label="Открыть меню">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
   </div>
 
   <!-- Мобильное меню -->
-  <div class="mobile-nav" id="mobileNav">
+  <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
     <a href="#services">Услуги</a>
-   <a href="/biz/">Для бизнеса</a>
+    <a href="/biz/">Для бизнеса</a>
     <a href="#prices">Цены</a>
     <a href="#guarantees">Гарантии</a>
     <a href="#faq">FAQ</a>
     <a href="#about">О компании</a>
     <a href="#contacts">Контакты</a>
-    <a href="#contacts" class="mobile-nav-cta">Срочный выезд</a>
-  </div>
+    <div class="mobile-nav-cta">
+      <a href="tel:+79785500557" class="btn btn-primary">+7 978 550 05 57</a>
+      <a href="tel:+79785732708" class="btn btn-primary">+7 978 573 27 08</a>
+      <button class="btn btn-alert" data-scroll="#contacts">Срочный выезд</button>
+    </div>
+  </nav>
 </header>
+<!-- ===== /HEADER ===== -->
 
+<!-- ===== HERO ===== -->
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-left">
@@ -90,13 +94,10 @@
       </div>
       <div class="hero-actions">
         <button class="btn btn-primary" data-scroll="#contacts">Получить расчет за 3 минуты</button>
-        <span style="font-size:11px;color:var(--text-secondary);">
-         <p class="form-note">
-  Нажимая кнопку, вы соглашаетесь с
-  <a href="policy.html" target="_blank">политикой конфиденциальности</a>.
-</p>
-          Оставьте номер — мы спокойно проведём вас от тревоги к понятному решению под ваш объект.
-        </span>
+        <p class="form-note" style="margin:8px 0 0">
+          Нажимая кнопку, вы соглашаетесь с
+          <a href="policy.html" target="_blank">политикой конфиденциальности</a>.
+        </p>
       </div>
       <div class="hero-note">
         Представьте помещение без насекомых, грызунов, плесени и запахов. «Дез щит 360» берёт ответственность за результат.
@@ -104,7 +105,7 @@
     </div>
 
     <div class="hero-photo">
-      <img src="media/banner-dezshield360.jpg"
+      <img src="/media/banner-dezshield360.jpg"
            alt="Команда центра дезинфектологии «Дез щит 360» — дезинфекция и дезинсекция в Симферополе, Севастополе и Крыму">
       <div class="hero-photo-overlay"></div>
       <div class="hero-photo-caption">
@@ -117,7 +118,6 @@
     </div>
   </div>
 </section>
-
 <section id="services" class="section">
   <div class="container">
     <h2 class="section-title">Услуги центра дезинфектологии «Дез щит 360»</h2>
@@ -600,67 +600,7 @@
     </div>
   </div>
 </section>
-
-<script>
-  function smoothScrollTo(targetId) {
-    const target = document.querySelector(targetId);
-    if (!target) return;
-    const offset = 80;
-    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-    window.scrollTo({ top, behavior: 'smooth' });
-    if (mobileNav) mobileNav.classList.remove('show');
-  }
-  document.querySelectorAll('[data-scroll]').forEach(el => {
-    el.addEventListener('click', e => {
-      e.preventDefault();
-      smoothScrollTo(el.getAttribute('data-scroll'));
-    });
-  });
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
-      const href = link.getAttribute('href');
-      if (href && href.length > 1) {
-        const target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          smoothScrollTo(href);
-        }
-      }
-    });
-  });
-  document.querySelectorAll('.faq-item').forEach(item => {
-    item.addEventListener('click', () => {
-      item.classList.toggle('active');
-      const toggle = item.querySelector('.faq-toggle');
-      if (toggle) toggle.textContent = item.classList.contains('active') ? '−' : '+';
-    });
-  });
-</script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const faqItems = document.querySelectorAll('.faq-item');
-
-    faqItems.forEach(item => {
-      const question = item.querySelector('.faq-question');
-      const toggle = item.querySelector('.faq-toggle');
-
-      question.addEventListener('click', () => {
-        // Сворачиваем открытый
-        faqItems.forEach(other => {
-          if (other !== item) {
-            other.classList.add('collapsed');
-            const t = other.querySelector('.faq-toggle');
-            if (t) t.textContent = '+';
-          }
-        });
-
-        // Переключаем текущий
-        const isCollapsed = item.classList.toggle('collapsed');
-        if (toggle) toggle.textContent = isCollapsed ? '+' : '−';
-      });
-    });
-  });
-
+<!-- ===== FOOTER (всегда ДО скриптов) ===== -->
 <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-left">
@@ -673,54 +613,92 @@
         © 2025 «Дез щит 360». Все права защищены.
       </div>
     </div>
-
     <div class="footer-links">
-      <a href="policy.html" class="footer-link">Политика конфиденциальности</a>
+      <a href="/policy.html" class="footer-link">Политика конфиденциальности</a>
       <a href="tel:+79785500557" class="footer-link">+7 978 550 05 57</a>
       <a href="tel:+79785732708" class="footer-link">+7 978 573 27 08</a>
       <a href="mailto:dezschit360@mail.ru" class="footer-link">dezschit360@mail.ru</a>
     </div>
   </div>
 </footer>
+<!-- ===== SCRIPTS ===== -->
 <script>
-  const burger = document.getElementById('burger');
-  const mobileNav = document.getElementById('mobileNav');
-
-  if (burger && mobileNav) {
-    burger.addEventListener('click', function () {
-      burger.classList.toggle('is-open');
-      mobileNav.classList.toggle('is-open');
-    });
+  // Плавный скролл
+  function smoothScrollTo(targetId){
+    const target = document.querySelector(targetId);
+    if (!target) return;
+    const offset = 80;
+    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+    // закрываем моб-меню, если открыто
+    const mobileNav = document.getElementById('mobileNav');
+    if (mobileNav) mobileNav.classList.remove('is-open');
+    const burger = document.getElementById('burger');
+    if (burger) burger.classList.remove('is-open');
   }
- </script>
-  <script>
-  (function(){
-    const sub = document.getElementById('navBiz'); if(!sub) return;
-    const link = sub.querySelector('.nav-link');
-    function isTouchOrNarrow(){
-      return window.matchMedia('(max-width:1024px)').matches || ('ontouchstart' in window);
-    }
-    link.addEventListener('click', function(e){
-      if(!isTouchOrNarrow()) return;
+
+  document.querySelectorAll('[data-scroll]').forEach(el=>{
+    el.addEventListener('click', e=>{
       e.preventDefault();
-      const opened = sub.classList.contains('is-open');
-      document.querySelectorAll('.has-sub.is-open').forEach(x=>x.classList.remove('is-open'));
-      sub.classList.toggle('is-open', !opened);
-      link.setAttribute('aria-expanded', String(!opened));
+      smoothScrollTo(el.getAttribute('data-scroll'));
     });
-    document.addEventListener('click', function(e){
-      if(!sub.classList.contains('is-open')) return;
-      if(!sub.contains(e.target)){ sub.classList.remove('is-open'); link.setAttribute('aria-expanded','false'); }
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(link=>{
+    link.addEventListener('click', e=>{
+      const href = link.getAttribute('href');
+      if (href && href.length>1) {
+        const target = document.querySelector(href);
+        if (target) { e.preventDefault(); smoothScrollTo(href); }
+      }
     });
-    document.addEventListener('keydown', function(e){
-      if(e.key==='Escape'){ sub.classList.remove('is-open'); link.setAttribute('aria-expanded','false'); }
+  });
+
+  // Бургер + мобильное меню
+  (function(){
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+    if (!burger || !mobileNav) return;
+
+    burger.addEventListener('click', ()=>{
+      const opened = mobileNav.classList.toggle('is-open');
+      burger.classList.toggle('is-open', opened);
+      mobileNav.setAttribute('aria-hidden', opened ? 'false' : 'true');
+    });
+
+    mobileNav.querySelectorAll('a,[data-scroll]').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        mobileNav.classList.remove('is-open');
+        burger.classList.remove('is-open');
+        mobileNav.setAttribute('aria-hidden','true');
+      });
     });
   })();
-  </script>
-</script>
 
+  // FAQ (аккордеон с одиночным открытием)
+  (function(){
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item=>{
+      const question = item.querySelector('.faq-question');
+      const toggle = item.querySelector('.faq-toggle');
+      if (!question) return;
+
+      question.addEventListener('click', ()=>{
+        faqItems.forEach(other=>{
+          if (other!==item) {
+            other.classList.add('collapsed');
+            const t = other.querySelector('.faq-toggle');
+            if (t) t.textContent = '+';
+          }
+        });
+        const isCollapsed = item.classList.toggle('collapsed');
+        if (toggle) toggle.textContent = isCollapsed ? '+' : '−';
+      });
+    });
+  })();
+</script>
 </body>
 </html>
+
 
 
 
