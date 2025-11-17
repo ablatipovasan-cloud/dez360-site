@@ -5,7 +5,7 @@
   <title>Дезинфекция автотранспорта — Симферополь, Севастополь, Крым | Дез щит 360</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Дезинфекция легкового, служебного и спецтранспорта, рефрижераторов и доставки. Акты для СЭС и ведомств, безопасные препараты."/>
-  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/main.css?v=4">
   <style>.page-nav{max-width:1200px;margin:0 auto 16px;padding:0 16px;display:flex;gap:12px}.page-nav a{font-size:13px;padding:6px 12px;border-radius:999px;text-decoration:none;background:#fff;color:#007A8C;border:1px solid rgba(0,122,140,.15);transition:.15s}.page-nav a:hover{background:#007A8C;color:#fff}.media-grid .media-video{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#000;border-radius:12px}</style>
 </head>
 <body>
@@ -39,11 +39,52 @@
     <div class="container">
       <h2 class="section-title">Реальные объекты</h2>
       <div class="media-grid">
-        <figure class="media-card"><div class="media-photo-wrap"><img class="media-photo" src="../media/works/dezavto-1.png" alt="Дезинфекция салона"/></div><figcaption class="media-card figcaption">Салон и багажный отсек.</figcaption></figure>
-        <figure class="media-card"><div class="media-photo-wrap"><video class="media-video" controls preload="metadata" poster="../media/works/dezavto-1.png"><source src="../media/works/dezinfekciya-avto.mp4" type="video/mp4"/>Ваш браузер не поддерживает видео.</video></div><figcaption class="media-card figcaption">Туман в салоне — безопасная обработка.</figcaption></figure>
-     
-        <figure class="media-card"><div class="media-photo-wrap"><video class="media-video" controls preload="metadata" poster="../media/works/dezavto-1.png"><source src="../media/works/dezavto-2.mp4" type="video/mp4"/>Ваш браузер не поддерживает видео.</video></div><figcaption class="media-card figcaption">Туман в салоне — безопасная обработка.</figcaption></figure>
-      </div>
+        <figure class="media-card is-vertical">
+        <div class="media-ratio">
+          <img
+            class="media-obj"
+            src="../media/works/dezavto-1.png" 
+            alt="Дезинфекция салона" 
+            loading="lazy" decoding="async"
+            width="900" height="1600">
+        </div>
+        <figcaption class="media-caption">
+          Салон и багажный отсек.
+        </figcaption>
+      </figure>
+         <figure class="media-card is-vertical">
+        <div class="media-ratio">
+          <video
+            class="media-obj media-video"
+            controls
+            playsinline
+            preload="metadata"
+            poster="../media/works/dezavto-1.png"> <!-- ЗАМЕНИ на свой постер -->
+            <source src="../media/works/dezinfekciya-avto.mp4" type="video/mp4"> <!-- ЗАМЕНИ на свой ролик -->
+            Ваш браузер не поддерживает видео.
+          </video>
+        </div>
+        <figcaption class="media-caption">
+         Туман в салоне — безопасная обработка.
+        </figcaption>
+      </figure>
+        
+<figure class="media-card is-vertical">
+        <div class="media-ratio">
+          <video
+            class="media-obj media-video"
+            controls
+            playsinline
+            preload="metadata"
+            poster="../media/works/dezavto-1.png"> <!-- ЗАМЕНИ на свой постер -->
+            <source src="../media/works/dezavto-2.mp4" type="video/mp4"> <!-- ЗАМЕНИ на свой ролик -->
+            Ваш браузер не поддерживает видео.
+          </video>
+        </div>
+        <figcaption class="media-caption">
+         Туман в салоне — безопасная обработка.
+        </figcaption>
+      </figure> 
       </div>
     </div>
   </section>
@@ -67,6 +108,7 @@
   <script>(function(){const b=document.getElementById('burger'),m=document.getElementById('mobileNav');if(b&&m){b.addEventListener('click',()=>{m.classList.toggle('open');document.body.classList.toggle('menu-open')})}document.querySelectorAll('[data-scroll]').forEach(e=>e.addEventListener('click',function(ev){ev.preventDefault();const t=document.querySelector(this.getAttribute('data-scroll'));if(!t)return;window.scrollTo({top:t.getBoundingClientRect().top+pageYOffset-80,behavior:'smooth'})}))})();</script>
 </body>
 </html>
+
 
 
 
