@@ -36,58 +36,54 @@
   </section>
 
   <section class="section section-alt">
-    <div class="container">
-      <h2 class="section-title">Реальные объекты</h2>
-      <div class="media-grid">
-        <figure class="media-card is-vertical">
+  <div class="container">
+    <h2 class="section-title">Реальные объекты</h2>
+
+    <div class="media-grid">
+
+      <!-- ВЕРТИКАЛЬНОЕ ФОТО 9:16 -->
+      <figure class="media-card is-vertical">
         <div class="media-ratio">
-          <img
-            class="media-obj"
-            src="../media/works/dezavto-1.png" 
-            alt="Дезинфекция салона" 
-            loading="lazy" decoding="async"
-            width="900" height="1600">
+          <img class="media-obj"
+               src="../media/works/dezavto-1.png"
+               alt="Обработка вертикальных поверхностей, кухня"
+               loading="lazy" decoding="async"
+               width="900" height="1600">
         </div>
         <figcaption class="media-caption">
-          Салон и багажный отсек.
+          Обработка вертикальных поверхностей, кухня.
         </figcaption>
       </figure>
-         <figure class="media-card is-vertical">
+
+      <!-- ГОРИЗОНТАЛЬНОЕ ВИДЕО 16:9 -->
+      <figure class="media-card">
         <div class="media-ratio">
-          <video
-            class="media-obj media-video"
-            controls
-            playsinline
-            preload="metadata"
-            poster="../media/works/dezavto-1.png"> <!-- ЗАМЕНИ на свой постер -->
-            <source src="../media/works/dezinfekciya-avto.mp4" type="video/mp4"> <!-- ЗАМЕНИ на свой ролик -->
-            Ваш браузер не поддерживает видео.
+          <video class="media-obj" controls playsinline preload="metadata"
+                 poster="../media/works/photo-dez-avto.jpg">
+            <source src="../media/works/dezinfekciya-avto.mp4" type="video/mp4">
           </video>
         </div>
         <figcaption class="media-caption">
-         Туман в салоне — безопасная обработка.
+          Туман в салоне — безопасная обработка.
         </figcaption>
       </figure>
-        
-<figure class="media-card is-vertical">
+
+      <!-- ЕЩЁ ОДНО ГОРИЗОНТАЛЬНОЕ ВИДЕО 16:9 -->
+      <figure class="media-card">
         <div class="media-ratio">
-          <video
-            class="media-obj media-video"
-            controls
-            playsinline
-            preload="metadata"
-            poster="../media/works/dezavto-1.png"> <!-- ЗАМЕНИ на свой постер -->
-            <source src="../media/works/dezavto-2.mp4" type="video/mp4"> <!-- ЗАМЕНИ на свой ролик -->
-            Ваш браузер не поддерживает видео.
+          <video class="media-obj" controls playsinline preload="metadata"
+                 poster="../media/works/dezavto-1.png">
+            <source src="../media/works/dezavto-2.mp4" type="video/mp4">
           </video>
         </div>
         <figcaption class="media-caption">
-         Туман в салоне — безопасная обработка.
+          Туман в салоне — безопасная обработка.
         </figcaption>
-      </figure> 
-      </div>
+      </figure>
+
     </div>
-  </section>
+  </div>
+</section>
 
   <section id="order" class="section">
     <div class="container">
@@ -108,6 +104,7 @@
   <script>(function(){const b=document.getElementById('burger'),m=document.getElementById('mobileNav');if(b&&m){b.addEventListener('click',()=>{m.classList.toggle('open');document.body.classList.toggle('menu-open')})}document.querySelectorAll('[data-scroll]').forEach(e=>e.addEventListener('click',function(ev){ev.preventDefault();const t=document.querySelector(this.getAttribute('data-scroll'));if(!t)return;window.scrollTo({top:t.getBoundingClientRect().top+pageYOffset-80,behavior:'smooth'})}))})();</script>
 </body>
 </html>
+
 
 
 
