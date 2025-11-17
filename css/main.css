@@ -185,9 +185,6 @@ header {
   flex-direction:column;
   gap:8px;
 }
-
-.mobile-nav a { color: #37515f; font-size: 14px; }
-
 .mobile-nav-cta {
   margin-top: 4px;
   padding: 8px 14px;
@@ -325,6 +322,8 @@ body.biz .hero-photo figcaption { display: none; }
 @media (max-width: 480px) {
   body.biz .hero-photo { aspect-ratio: 4 / 3; }
 }
+/* ЛИБО удалить полностью, ЛИБО сузить область применения */
+body.biz .header-nav a.is-active { color:#0b6bff; }
 
 /* ---- SERVICES ---- */
 .services-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
@@ -420,11 +419,14 @@ body.biz .hero-photo figcaption { display: none; }
 
 /* ---- FAQ ---- */
 .faq-list { display: flex; flex-direction: column; gap: 6px; }
-.faq-item { background: #ffffff; border-radius: 8px; padding: 8px 9px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); cursor: pointer; }
-.faq-question { font-size: 12px; font-weight: 500; color: var(--primary-dark); display: flex; justify-content: space-between; align-items: center; gap: 6px; }
-.faq-answer { font-size: 10px; color: var(--text-secondary); margin-top: 3px; display: none; }
-.faq-item.active .faq-answer { display: block; }
-.faq-toggle { font-size: 16px; color: var(--primary); }
+.faq-item { background:#fff; border-radius:8px; padding:8px 9px; box-shadow:0 4px 12px rgba(0,0,0,.03); cursor:pointer; }
+.faq-question { font-size:12px; font-weight:500; color:var(--primary-dark); display:flex; justify-content:space-between; align-items:center; gap:6px; }
+.faq-answer { font-size:10px; color:var(--text-secondary); margin-top:3px; display:none; }
+
+/* Показываем ответ, когда НЕТ класса collapsed */
+.faq-item:not(.collapsed) .faq-answer { display:block; }
+
+.faq-toggle { font-size:16px; color:var(--primary); }
 
 /* ---- ABOUT ---- */
 .about-grid { display: grid; grid-template-columns: minmax(0,1.8fr) minmax(260px,1.2fr); gap: 18px; align-items: flex-start; }
@@ -453,63 +455,31 @@ body.biz .hero-photo figcaption { display: none; }
 .field-input:focus, .field-textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(0,122,140,0.12); }
 .hero-form-note { font-size: 9px; color: var(--text-secondary); margin-top: 2px; }
 
-/* ---- MEDIA GRID ---- */
-.media-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
 
-img.media, video.media {
-  width: 100%;
-  border-radius: 10px;
-  display: block;
-}
+
+
 
 /* ===== MEDIA CARDS (photo/video) ===== */
-.media-card{
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.06);
-  padding: 12px;
-}
-.media-caption{
-  font-size: 14px;
-  color: var(--text-main, #233);
-  margin-top: 10px;
-}
-
-/* По умолчанию 16:9 */
+/* Карточка медиа: по умолчанию 16:9, вертикальные — 9:16 */
 .media-card .media-ratio{
-  aspect-ratio: 16 / 9;
-  width: 100%;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #000;
-}
-.media-card .media-obj{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-/* Видео/фото в карточках: растягиваем поверх контейнера */
-.media-card .media-ratio{
-  position: relative;            /* было: только aspect-ratio */
-  overflow: hidden;              /* чтобы скругления работали */
-}
-
-.media-card .media-obj{
-  position: absolute;
-  inset: 0;                      /* top/right/bottom/left: 0 */
-  width: 100%;
-  height: 100%;
-  object-fit: cover;             /* без искажений, без полос */
-  display: block;
-}
-
-.media-card video.media-obj{     /* на паузе чёрный фон, без серого */
+  aspect-ratio:16/9;
+  position:relative;
+  width:100%;
+  border-radius:12px;
+  overflow:hidden;
   background:#000;
 }
+.media-card.is-vertical .media-ratio{ aspect-ratio:9/16; }
 
-/* Вертикальные — 9:16 */
-.media-card.is-vertical .media-ratio{ aspect-ratio: 9 / 16; }
+.media-card .media-obj{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.media-card video.media-obj{ background:#000; }
 
 /* Сетка карточек медиа */
 .media-grid{
@@ -669,10 +639,7 @@ footer {
   aspect-ratio: auto;                     /* отменяем принудительное 16/9 */
 }
 
-.hero .hero-photo figcaption,
-.hero .hero-photo .hero-photo-caption {   /* на всякий случай оба варианта */
-  display: none !important;               /* скрыть чёрную плашку с текстом */
-}
+
 
 /* гарантируем аккуратное заполнение баннера */
 .hero-inner-page .hero-photo img,
@@ -689,7 +656,9 @@ footer {
     object-fit: cover;                    /* без чёрных полей */
   }
 }
-
+/* только для внутренних (hero-inner-page) */
+.hero-inner-page .hero-photo figcaption,
+.hero-inner-page .hero-photo .hero-photo-caption { display:none !important; }
 /* ====== COMPACT HEADER FIX (главная и вообще на десктопе) ====== */
 
 /* 1) Во избежание разъезда из-за дублирующихся правил .top-bar — оставляем одно,
@@ -764,6 +733,7 @@ header + .hero-inner-page{
   padding: 4px 14px !important;
   gap: 10px;
 }
+
 
 
 
