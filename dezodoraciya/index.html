@@ -66,25 +66,49 @@
 </header>
 
 <main>
+<!-- HERO: Дезодорация (фото справа) -->
 <section class="hero hero-inner-page">
-  <div class="container">
-    <h1 class="section-title">Дезодорация и удаление сложных запахов в Крыму</h1>
-    <p class="section-subtitle">
-      Комплексная обработка помещений после пожаров, затоплений, длительной аренды,
-      запаха табака, животных, биологических загрязнений.
-    </p>
-    <div class="hero-bullets">
-      <div class="hero-badge">Работаем с тяжёлыми случаями</div>
-      <div class="hero-badge">Комбинация методов</div>
-      <div class="hero-badge">Без навязчивого «химического» аромата</div>
+  <div class="container hero-inner">
+    
+    <!-- ЛЕВАЯ КОЛОНКА: текст -->
+    <div class="hero-left">
+      <h1 class="hero-title">Дезодорация и удаление сложных запахов в Крыму</h1>
+      <p class="hero-subtitle">
+        Устраняем запах гари, плесени, табака, животных и биологических загрязнений.
+        Комбинируем методы: дезинфекция поверхностей и обработка воздуха.
+      </p>
+
+      <div class="hero-bullets">
+        <span class="hero-badge">Сложные случаи «под ключ»</span>
+        <span class="hero-badge">Озон + туман + нейтрализаторы</span>
+        <span class="hero-badge">Без навязчивых ароматизаторов</span>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#order">Убрать запах</a>
+      </div>
+
+      <p class="hero-note">
+        Нажимая кнопку, вы соглашаетесь с
+        <a href="../policy.html" target="_blank">политикой конфиденциальности</a>.
+      </p>
     </div>
-    <button class="btn btn-primary" data-scroll="#order">Убрать запах</button>
- <p class="form-note">
-  Нажимая кнопку, вы соглашаетесь с
-  <a href="../policy.html" target="_blank">политикой конфиденциальности</a>.
-</p>
- </div>
+
+    <!-- ПРАВАЯ КОЛОНКА: баннер-фото -->
+    <figure class="hero-photo">
+      <img
+        src="../media/works/dez-suhtum.jpg"  <!-- ЗАМЕНИ путь на свой файл -->
+        alt="Профессиональная дезодорация: обработка туманом и озоном">
+      <!-- подпись скрыта твоим CSS (figcaption display:none) -->
+      <figcaption class="hero-photo-caption">
+        <strong>Профессиональная команда</strong>
+        Работаем официально и безопасно.
+      </figcaption>
+    </figure>
+
+  </div>
 </section>
+
 
 <section class="section">
   <div class="container">
@@ -111,28 +135,69 @@
     </div>
   </div>
 </section>
-
 <section class="section section-alt">
-    <div class="container">
-      <h2 class="section-title">Реальные объекты</h2>
-      <div class="media-grid">
-      <!-- фото/видео -->
+  <div class="container">
+    <h2 class="section-title">Реальные объекты</h2>
+
+    <div class="media-grid">
+
+      
+
+      <!-- 2) Фото вертикальное 9:16 -->
       <figure class="media-card is-vertical">
-  <div class="media-ratio">
-    <img
-      class="media-obj"
-      src="../media/works/dez-suhtum1.jpg"
-      alt="Обработка вертикальных поверхностей, кухня"
-      loading="lazy" decoding="async"
-      width="900" height="1600">
-  </div>
-  <figcaption class="media-caption">
-    Обработка вертикальных поверхностей, кухня.
-  </figcaption>
-</figure>
-</div>
+        <div class="media-ratio">
+          <img
+            class="media-obj"
+            src="../media/works/dez-suhtum1.jpg"  <!-- твой текущий файл (вертикальное фото) -->
+            alt="Дезодорация квартиры после курильщика"
+            loading="lazy" decoding="async"
+            width="900" height="1600">
+        </div>
+        <figcaption class="media-caption">
+          Обработка стен и мебели, устранение стойкого запаха.
+        </figcaption>
+      </figure>
+
+      <!-- 3) Видео горизонтальное 16:9 -->
+      <figure class="media-card">
+        <div class="media-ratio">
+          <video
+            class="media-obj media-video"
+            controls
+            playsinline
+            preload="metadata"
+            poster="../media/works/dez-suhtum.jpg"> <!-- ЗАМЕНИ на свой постер -->
+            <source src="../media/works/dezodoraciya-kafe.mp4" type="video/mp4"> <!-- ЗАМЕНИ на свой ролик -->
+            Ваш браузер не поддерживает видео.
+          </video>
+        </div>
+        <figcaption class="media-caption">
+          Озонирование и нейтрализация запахов после пожара.
+        </figcaption>
+      </figure>
+
+      <!-- 4) Видео вертикальное 9:16 -->
+      <figure class="media-card is-vertical">
+        <div class="media-ratio">
+          <video
+            class="media-obj media-video"
+            controls
+            playsinline
+            preload="metadata"
+            poster="../media/works/dezodor-mist-vert-poster.jpg"> <!-- ЗАМЕНИ на свой постер -->
+            <source src="../media/works/dezodor-mist-vert.mp4" type="video/mp4"> <!-- ЗАМЕНИ на свой ролик -->
+            Ваш браузер не поддерживает видео.
+          </video>
+        </div>
+        <figcaption class="media-caption">
+          Холодный туман для труднодоступных зон (вертикальный формат).
+        </figcaption>
+      </figure>
+
+    </div>
   </div>
 </section>
+
 
 <section id="order" class="section">
   <div class="container">
@@ -173,6 +238,7 @@ document.querySelectorAll('[data-scroll]').forEach(el=>el.addEventListener('clic
 </script>
 </body>
 </html>
+
 
 
 
