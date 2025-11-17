@@ -173,13 +173,17 @@ header {
   transition: all 0.2s ease;
 }
 
-.mobile-nav {
-  display: none;
-  flex-direction: column;
-  gap: 8px;
-  padding: 12px 14px 16px;
-  background: #ffffff;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+/* Мобильное меню скрыто по умолчанию */
+.mobile-nav{
+  display:none;
+  position:absolute;
+  left:0; right:0; top:100%;   /* под шапкой */
+  background:#fff;
+  box-shadow:0 10px 20px rgba(0,0,0,.08);
+  z-index:1200;
+  padding:12px 14px 16px;
+  flex-direction:column;
+  gap:8px;
 }
 
 .mobile-nav a { color: #37515f; font-size: 14px; }
@@ -760,6 +764,7 @@ header + .hero-inner-page{
   padding: 4px 14px !important;
   gap: 10px;
 }
+
 
 
 
