@@ -660,6 +660,32 @@ footer {
 .biz-item p{ margin:0; color:#667885; font-size:14px; }
 .header-nav a.is-active { color:#0b6bff; font-weight:600; }
 
+/* --- HERO (дезодорация): не навязываем 16:9, убираем подпись/оверлей --- */
+.hero-inner-page .hero-photo {            /* только для hero на внутренних страницах */
+  aspect-ratio: auto;                     /* отменяем принудительное 16/9 */
+}
+
+.hero .hero-photo figcaption,
+.hero .hero-photo .hero-photo-caption {   /* на всякий случай оба варианта */
+  display: none !important;               /* скрыть чёрную плашку с текстом */
+}
+
+/* гарантируем аккуратное заполнение баннера */
+.hero-inner-page .hero-photo img,
+.hero-inner-page .hero-photo video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .hero-inner-page .hero-photo img,
+  .hero-inner-page .hero-photo video {
+    height: 420px;                        /* общая высота баннера */
+    object-fit: cover;                    /* без чёрных полей */
+  }
+}
+
 
 
 
