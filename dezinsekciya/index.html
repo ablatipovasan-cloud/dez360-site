@@ -7,7 +7,7 @@
   <meta name="description"
         content="Профессиональная дезинсекция квартир, домов, офисов и коммерческих объектов в Симферополе, Севастополе и по всему Крыму. Сертифицированные препараты, безопасно для людей и животных, документы для СЭС." />
   <!-- общий стиль из корня сайта -->
-  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/main.css?v=4">
 
   <!-- Небольшие правки именно для внутренних страниц -->
   <style>
@@ -158,41 +158,41 @@
 
       <div class="media-grid">
         <!-- Фото -->
-        <figure class="media-card">
-          <div class="media-photo-wrap">
-            <img class="media-photo"
+        <figure class="media-card is-vertical">
+  <div class="media-ratio">
+    <img
+      class="media-obj"
                  src="../media/works/dezinfektor-gym.jpg"
-                 alt="Дезинсекция торговой галереи — холодный туман" />
+                 alt="Дезинсекция торговой галереи — холодный туман" 
+     loading="lazy" decoding="async"
+      width="900" height="1600"> 
           </div>
-          <figcaption class="media-card figcaption">
-            Обработка торговой галереи. Безопасно для посетителей и персонала.
-          </figcaption>
-        </figure>
+          <figcaption class="media-caption">
+    Обработка вертикальных поверхностей, кухня.
+  </figcaption>
+</figure>
 
         <!-- Видео (исправленное — без обрезания головы) -->
-        <figure class="media-card">
-          <div class="media-photo-wrap">
-            <video class="media-video" controls preload="metadata"
-                   poster="../media/works/dezinfektor-gym.jpg">
-              <source src="../media/works/dezinsekciya-tc.mp4" type="video/mp4" />
-              Ваш браузер не поддерживает видео.
+       <figure class="media-card is-vertical"> <!-- или без is-vertical для горизонтального -->
+  <div class="media-ratio">
+    <video class="media-obj" controls playsinline preload="metadata" poster="../media/works/dezinfektor-gym.jpg">
+              <source src="../media/works/dezinsekciya-tc.mp4" type="video/mp4">
             </video>
           </div>
-          <figcaption class="media-card figcaption">
+          <figcaption class="media-caption">
             Дезинсекция коммерческого объекта: входные группы, коридоры, склад.
           </figcaption>
         </figure>
 
         <!-- Ещё видео/фото по желанию по этому же шаблону -->
-        <figure class="media-card">
-          <div class="media-photo-wrap">
-            <video class="media-video" controls preload="metadata"
-                   poster="../media/works/dezinfektor-gym.jpg">
-              <source src="../media/works/dezinsekciya-ht.mp4" type="video/mp4" />
+        <figure class="media-card is-vertical"> <!-- или без is-vertical для горизонтального -->
+  <div class="media-ratio">
+    <video class="media-obj" controls playsinline preload="metadata" poster="../media/works/dezinfektor-gym.jpg">
+              <source src="../media/works/dezinsekciya-ht.mp4" type="video/mp4">
               Ваш браузер не поддерживает видео.
             </video>
           </div>
-          <figcaption class="media-card figcaption">
+          <figcaption class="media-caption">
             Дезинсекция квартиры с большой степенью заражения.
           </figcaption>
         </figure>
@@ -270,6 +270,7 @@
   </script>
 </body>
 </html>
+
 
 
 
