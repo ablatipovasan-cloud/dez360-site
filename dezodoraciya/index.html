@@ -11,15 +11,30 @@
   <!-- Оверрайд только для этой страницы -->
   <style>
     /* Герой: аккуратная сетка и обрезка баннера */
-    .hero.hero-inner-page { padding-top: 28px; padding-bottom: 24px; }
-    .hero .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
-    .hero-inner { display: grid; grid-template-columns: minmax(0,1.6fr) minmax(280px,1.4fr); gap: 26px; align-items: stretch; }
-
-    .hero .hero-photo { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 16/9; background: transparent; box-shadow: 0 10px 28px rgba(0,0,0,.06); }
-    .hero .hero-photo img,
-    .hero .hero-photo video { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
-    .hero .hero-photo figcaption { display: none; }
-
+    .hero .hero-photo{
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    /* убираем фикс. пропорцию, даём адекватную высоту */
+    aspect-ratio: auto;
+    min-height: 420px;           /* можно 360–480 по вкусу */
+    background: var(--bg-soft);  /* чтобы «поля» были в цвет секции */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 28px rgba(0,0,0,.06);
+  }
+  .hero .hero-photo img,
+  .hero .hero-photo video{
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;  /* главное изменение: показываем картинку целиком */
+    object-position: center;
+    display: block;
+  }
+ .hero .hero-photo figcaption{ display:none; }
     /* Медиа-сетка: 16:9 по умолчанию, 9:16 для вертикали */
     .media-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
     @media (max-width:1080px){ .media-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
@@ -33,10 +48,8 @@
 
     /* Мобила: фото вверх, текст ниже */
     @media (max-width:768px){
-      .hero-inner{ grid-template-columns: 1fr; gap:14px; }
-      .hero-left{ order:2; }
-      .hero-photo{ order:1; aspect-ratio:auto; min-height:220px; }
-    }
+    .hero .hero-photo{ min-height: 260px; }
+  }
   </style>
 </head>
 
@@ -312,6 +325,7 @@
   </script>
 </body>
 </html>
+
 
 
 
