@@ -686,6 +686,81 @@ footer {
   }
 }
 
+/* ====== COMPACT HEADER FIX (главная и вообще на десктопе) ====== */
+
+/* 1) Во избежание разъезда из-за дублирующихся правил .top-bar — оставляем одно,
+      а здесь принудительно задаём компактные отступы и размер шрифта. */
+.top-bar{
+  padding: 4px 0 !important;
+  line-height: 1.1;
+  font-size: 11px !important;
+}
+
+/* 2) Сам хедер делаем компактнее */
+header{
+  padding: 0 !important;            /* убираем возможные внешние паддинги */
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+}
+
+/* Внутренности шапки */
+.header-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 14px !important;     /* было щедрее — делаем компактнее */
+  min-height: 64px;                 /* устойчивая высота без «болтания» */
+  display: flex;
+  align-items: center;
+  gap: 16px;                        /* было 24px — уменьшаем */
+}
+
+/* Логотип уменьшаем, чтобы шапка не «росла» по высоте */
+.logo-icon-img{
+  height: 48px !important;          /* было 56px */
+  width: auto;
+  display: block;
+}
+
+/* Навигация — чуть плотнее */
+.header-nav{
+  gap: 8px;                         /* было 10px+ */
+  font-size: 15px;
+}
+.header-nav a{
+  padding: 6px 10px;                /* было 6px 14px — делаем компактнее */
+  border-radius: 999px;
+}
+
+/* Блок с телефонами/кнопкой — плотнее по вертикали */
+.header-actions{
+  gap: 4px;
+  font-size: 12px;
+}
+.header-actions .btn-alert{
+  padding: 6px 12px;
+}
+
+/* 3) Устраняем лишнюю «белую полосу» между шапкой и первым блоком */
+header + .hero,
+header + .hero-inner-page{
+  margin-top: 0 !important;
+}
+
+/* 4) На очень широких экранах слегка ужмём ещё отступы,
+      чтобы визуально не казалось, что шапка «толще» контента */
+@media (min-width: 1280px){
+  .header-inner{ padding: 8px 10px !important; }
+}
+
+/* 5) Если где-то осталось второе объявление .top-bar (у тебя оно действительно
+      встречалось дважды) — этим правилом мы гарантированно перекроем
+      любые расхождения высоты/отступов: */
+.top-bar-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4px 14px !important;
+  gap: 10px;
+}
+
 
 
 
