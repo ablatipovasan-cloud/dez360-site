@@ -322,8 +322,7 @@ body.biz .hero-photo figcaption { display: none; }
 @media (max-width: 480px) {
   body.biz .hero-photo { aspect-ratio: 4 / 3; }
 }
-/* ЛИБО удалить полностью, ЛИБО сузить область применения */
-body.biz .header-nav a.is-active { color:#0b6bff; }
+
 
 /* ---- SERVICES ---- */
 .services-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
@@ -514,18 +513,16 @@ body.biz .header-nav a.is-active { color:#0b6bff; }
   font-size: 13px; color: #6B7B85;
 }
 
-.page-nav-link {
-  color: #007A8C;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease, transform 0.15s ease;
+/* Чуть мягче анимация и без «подпрыгивания» на тач-устройствах */
+.page-nav-link { transition: color .2s ease, transform .15s ease; }
+@media (hover: none) {
+  .page-nav-link:hover { transform: none; } /* на телефонах без срабатывания hover */
 }
 
-.page-nav-link:hover { color: #004B5A; transform: translateY(-1px); }
-.page-nav-separator { color: #B0BEC5; }
-
-@media (max-width: 600px) {
-  .page-nav { font-size: 12px; padding: 0 12px; margin-bottom: 12px; }
+/* Учитываем настройку «уменьшить анимацию» */
+@media (prefers-reduced-motion: reduce) {
+  .page-nav-link { transition: none; }
+  .page-nav-link:hover { transform: none; }
 }
 
 /* ---- FOOTER ---- */
@@ -733,6 +730,7 @@ header + .hero-inner-page{
   padding: 4px 14px !important;
   gap: 10px;
 }
+
 
 
 
