@@ -174,9 +174,30 @@
   document.querySelectorAll('.media-card').forEach(markVertical);
 })();
 </script>
+<script>
+  (function () {
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+    if (!burger || !mobileNav) return;
+
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('is-open');
+      mobileNav.classList.toggle('is-open');
+    });
+
+    // Закрывать меню по клику на пункт
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('is-open');
+        mobileNav.classList.remove('is-open');
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
+
 
 
 
