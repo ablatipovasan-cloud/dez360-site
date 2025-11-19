@@ -6,7 +6,7 @@
   <meta name="description" content="Профессиональное удаление плесени и грибка в Симферополе, Севастополе и по всему Крыму. Обработка стен, подвалов, санузлов, чердаков. Поиск причины, защита от повторного появления." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/main.css?v=6"/>
   <style>.hero-inner-page{padding-top:32px;padding-bottom:24px;}</style>
 </head>
 <body>
@@ -19,54 +19,56 @@
   </div>
 </div>
 <header>
- <nav class="page-nav">
-    <div class="container">
-        <a href="/" class="page-nav-link">← На главную</a>
-        <a href="/#services" class="page-nav-link">Все услуги</a>
-    </div>
-</nav>
- <div class="header-inner">
-      <div class="logo">
-       <img src="../media/logo-360.png" alt="Дез щит 360" class="logo-icon-img">
-        <div class="logo-text">
-          <div class="logo-title">Дез щит 360</div>
-          <div class="logo-sub">Центр дезинфектологии · Симферополь · Крым</div>
-        </div>
+  <div class="header-inner">
+    <!-- Логотип -->
+    <a href="/" class="logo" aria-label="На главную">
+      <img src="/media/logo-360.png" alt="Дез щит 360" class="logo-icon-img">
+      <div class="logo-text">
+        <div class="logo-title">Дез щит 360</div>
+        <div class="logo-sub">Центр дезинфектологии · Симферополь · Крым</div>
       </div>
+    </a>
 
+    <!-- Десктоп-меню -->
+    <nav class="header-nav">
+      <a href="/#services">Услуги</a>
+      <a href="/biz/">Для бизнеса</a>
+      <a href="/#prices">Цены</a>
+      <a href="/#guarantees">Гарантии</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/#about">О компании</a>
+      <a href="/#contacts">Контакты</a>
+    </nav>
 
-    <nav>
-  <a href="../index.html#services">Услуги</a>
-  <a href="../index.html#clients">Для бизнеса</a>
-  <a href="../index.html#prices">Цены</a>
-  <a href="../index.html#guarantees">Гарантии</a>
-  <a href="../index.html#faq">FAQ</a>
-  <a href="../index.html#about">О компании</a>
-  <a href="../index.html#contacts">Контакты</a>
-</nav>
-
+    <!-- Телефоны + кнопка (десктоп) -->
     <div class="header-actions">
-      <div class="phone"><a href="tel:+79785500557">+7 978 550 05 57</a><a href="tel:+79785732708">+7 978 573 27 08</a></div>
-      <button class="btn btn-alert" data-scroll="#order">Срочный выезд</button>
+      <a href="tel:+79785500557" class="phone">+7 978 550 05 57</a>
+      <a href="tel:+79785732708" class="phone">+7 978 573 27 08</a>
+      <a href="/#contacts" class="btn btn-alert">Срочный выезд</a>
     </div>
-    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+
+    <!-- Бургер (мобилка) -->
+    <button class="burger" id="burger" aria-label="Открыть меню">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+
+  <!-- Мобильное меню -->
   <div class="mobile-nav" id="mobileNav">
-  <a href="../index.html#services">Услуги</a>
-  <a href="../index.html#clients">Для бизнеса</a>
-  <a href="../index.html#prices">Цены</a>
-  <a href="../index.html#guarantees">Гарантии</a>
-  <a href="../index.html#faq">FAQ</a>
-  <a href="../index.html#about">О компании</a>
-  <a href="../index.html#contacts">Контакты</a>
-    <div class="mobile-nav-cta">
-      <a href="tel:+79785500557" class="btn btn-primary">Позвонить</a>
-      <a href="tel:+79785732708" class="btn btn-primary">Позвонить</a>
-      <button class="btn btn-alert" data-scroll="#order">Срочный выезд</button>
-    </div>
+    <a href="/#services">Услуги</a>
+    <a href="/biz/">Для бизнеса</a>
+    <a href="/#prices">Цены</a>
+    <a href="/#guarantees">Гарантии</a>
+    <a href="/#faq">FAQ</a>
+    <a href="/#about">О компании</a>
+    <a href="/#contacts">Контакты</a>
+    <a href="/#contacts" class="mobile-nav-cta">Срочный выезд</a>
   </div>
 </header>
-
+<!-- FLOAT BACK: fixed "На главную" -->
+<a class="float-back" href="/index.html" aria-label="На главную">
+  ← На главную
+</a>
 <main>
 <section class="hero-inner-page">
   <div class="container">
@@ -145,8 +147,30 @@ const b6=document.getElementById('burger'),m6=document.getElementById('mobileNav
 if(b6)b6.addEventListener('click',()=>m6.classList.toggle('show'));
 document.querySelectorAll('[data-scroll]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(el.getAttribute('data-scroll'));if(!t)return;const top=t.getBoundingClientRect().top+window.pageYOffset-80;window.scrollTo({top,behavior:'smooth'});m6.classList.remove('show');}));
 </script>
+<script>
+  (function () {
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+    if (!burger || !mobileNav) return;
+
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('is-open');
+      mobileNav.classList.toggle('is-open');
+    });
+
+    // Закрывать меню по клику на пункт
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('is-open');
+        mobileNav.classList.remove('is-open');
+      });
+    });
+  })();
+</script>
+
 </body>
 </html>
+
 
 
 
