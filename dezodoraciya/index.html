@@ -6,7 +6,7 @@
   <meta name="description" content="Профессиональная дезодорация и устранение сложных запахов (гарь, плесень, табак, разложение, животные) в Симферополе, Севастополе и по всему Крыму. Комплекс: дезинфекция + нейтрализация запахов." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/main.css?v=3" />
+  <link rel="stylesheet" href="../css/main.css?v=6" />
 
   <!-- Оверрайд только для этой страницы -->
   <style>
@@ -65,58 +65,58 @@
   </div>
 
   <!-- Хедер -->
-  <header>
-    <nav class="page-nav">
-      <div class="container">
-        <a href="/" class="page-nav-link">← На главную</a>
-        <a href="/#services" class="page-nav-link">Все услуги</a>
+<header>
+  <div class="header-inner">
+    <!-- Логотип -->
+    <a href="/" class="logo" aria-label="На главную">
+      <img src="/media/logo-360.png" alt="Дез щит 360" class="logo-icon-img">
+      <div class="logo-text">
+        <div class="logo-title">Дез щит 360</div>
+        <div class="logo-sub">Центр дезинфектологии · Симферополь · Крым</div>
       </div>
+    </a>
+
+    <!-- Десктоп-меню -->
+    <nav class="header-nav">
+      <a href="/#services">Услуги</a>
+      <a href="/biz/">Для бизнеса</a>
+      <a href="/#prices">Цены</a>
+      <a href="/#guarantees">Гарантии</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/#about">О компании</a>
+      <a href="/#contacts">Контакты</a>
     </nav>
 
-    <div class="header-inner">
-      <a class="logo" href="/">
-        <img src="../media/logo-360.png" alt="Дез щит 360" class="logo-icon-img" />
-        <div class="logo-text">
-          <div class="logo-title">Дез щит 360</div>
-          <div class="logo-sub">Центр дезинфектологии · Симферополь · Крым</div>
-        </div>
-      </a>
-
-      <nav class="header-nav">
-        <a href="../index.html#services">Услуги</a>
-        <a href="../index.html#clients">Для бизнеса</a>
-        <a href="../index.html#prices">Цены</a>
-        <a href="../index.html#guarantees">Гарантии</a>
-        <a href="../index.html#faq">FAQ</a>
-        <a href="../index.html#about">О компании</a>
-        <a href="../index.html#contacts">Контакты</a>
-      </nav>
-
-      <div class="header-actions">
-        <a class="phone" href="tel:+79785500557">+7 978 550 05 57</a>
-        <a class="phone" href="tel:+79785732708">+7 978 573 27 08</a>
-        <a class="btn btn-alert" href="#order">Срочный выезд</a>
-      </div>
-
-      <button class="burger" id="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+    <!-- Телефоны + кнопка (десктоп) -->
+    <div class="header-actions">
+      <a href="tel:+79785500557" class="phone">+7 978 550 05 57</a>
+      <a href="tel:+79785732708" class="phone">+7 978 573 27 08</a>
+      <a href="/#contacts" class="btn btn-alert">Срочный выезд</a>
     </div>
 
-    <div class="mobile-nav" id="mobileNav">
-      <a href="../index.html#services">Услуги</a>
-      <a href="../index.html#clients">Для бизнеса</a>
-      <a href="../index.html#prices">Цены</a>
-      <a href="../index.html#guarantees">Гарантии</a>
-      <a href="../index.html#faq">FAQ</a>
-      <a href="../index.html#about">О компании</a>
-      <a href="../index.html#contacts">Контакты</a>
-      <div class="mobile-nav-cta">
-        <a href="tel:+79785500557" class="btn btn-primary">Позвонить</a>
-        <a href="tel:+79785732708" class="btn btn-primary">Позвонить</a>
-        <a class="btn btn-alert" href="#order">Срочный выезд</a>
-      </div>
-    </div>
-  </header>
+    <!-- Бургер (мобилка) -->
+    <button class="burger" id="burger" aria-label="Открыть меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 
+  <!-- Мобильное меню -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="/#services">Услуги</a>
+    <a href="/biz/">Для бизнеса</a>
+    <a href="/#prices">Цены</a>
+    <a href="/#guarantees">Гарантии</a>
+    <a href="/#faq">FAQ</a>
+    <a href="/#about">О компании</a>
+    <a href="/#contacts">Контакты</a>
+    <a href="/#contacts" class="mobile-nav-cta">Срочный выезд</a>
+  </div>
+</header>
+
+<!-- FLOAT BACK: fixed "На главную" -->
+<a class="float-back" href="/index.html" aria-label="На главную">
+  ← На главную
+</a>
   <main>
     <!-- HERO -->
     <section class="hero hero-inner-page">
@@ -323,8 +323,30 @@
       });
     });
   </script>
+<script>
+  (function () {
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+    if (!burger || !mobileNav) return;
+
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('is-open');
+      mobileNav.classList.toggle('is-open');
+    });
+
+    // Закрывать меню по клику на пункт
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('is-open');
+        mobileNav.classList.remove('is-open');
+      });
+    });
+  })();
+</script>
+
 </body>
 </html>
+
 
 
 
