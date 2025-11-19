@@ -70,19 +70,30 @@
   ← На главную
 </a>
 <main>
-<section class="hero-inner-page">
-  <div class="container">
-    <h1 class="section-title">Удаление плесени и обработка стен в Крыму</h1>
+<section class="hero hero-inner-page">
+      <div class="container hero-inner">
+        <div class="hero-left">
+          <h1 class="section-title">Удаление плесени и обработка стен в Крыму</h1>
     <p class="section-subtitle">
       Устраняем плесень в квартирах, домах, подвалах, санузлах, служебных помещениях.
       Работаем с причиной, а не только с пятнами.
     </p>
     <button class="btn btn-primary" data-scroll="#order">Заказать обработку от плесени</button>
- <p class="form-note">
-  Нажимая кнопку, вы соглашаетесь с
-  <a href="../policy.html" target="_blank">политикой конфиденциальности</a>.
-</p>
-</div>
+<p class="hero-note">
+            Нажимая кнопку, вы соглашаетесь с
+            <a href="../policy.html" target="_blank">политикой конфиденциальности</a>.
+          </p>
+        </div>
+<!-- Баннер справа -->
+        <figure class="hero-photo">
+          <!-- Если исходник квадрат/вертикаль — обрежем корректно до 16:9 -->
+          <img
+            src="../media/works/Logo-best1.png"
+            alt="Профессиональное удаление плесени и грибка. Обработка химическим, механическим способом,озоном" />
+          <figcaption>Команда работает официально и безопасно.</figcaption>
+        </figure>
+      </div>
+
 </section>
 
 <section class="section">
@@ -110,8 +121,64 @@
 <section class="section section-alt">
   <div class="container">
     <h2 class="section-title">Фото работ</h2>
-    <div class="media-grid"></div>
-  </div>
+    <div class="media-grid">
+ <!-- Фото горизонтальное 16:9 -->
+          <figure class="media-card is-vertical">
+            <div class="media-ratio">
+              <img
+                class="media-obj"
+                src="../media/works/dez-suhtum.png"
+                alt="Обработка холодным туманом в помещении"
+                loading="lazy" decoding="async" />
+            </div>
+            <figcaption class="media-caption">
+              Холодный туман для глубокой проработки поверхностей.
+            </figcaption>
+          </figure>
+
+          <!-- Фото вертикальное 9:16 -->
+          <figure class="media-card is-vertical">
+            <div class="media-ratio">
+              <img
+                class="media-obj"
+                src="../media/works/Logo-best1.png"
+                alt="Дезодорация квартиры после курильщика"
+                loading="lazy" decoding="async" />
+            </div>
+            <figcaption class="media-caption">
+              Обработка стен и мебели, устранение стойкого запаха.
+            </figcaption>
+          </figure>
+
+          <!-- Видео горизонтальное 16:9 -->
+          <figure class="media-card is-vertical">
+            <div class="media-ratio">
+              <video class="media-obj" controls playsinline preload="metadata"
+                     poster="../media/works/Logo-best1.png">
+                <source src="../media/works/dezodoraciya-kafe.mp4" type="video/mp4" />
+                Ваш браузер не поддерживает видео.
+              </video>
+            </div>
+            <figcaption class="media-caption">
+              Нейтрализация запахов на объекте общепита.
+            </figcaption>
+          </figure>
+
+          <!-- Видео вертикальное 9:16 -->
+          <figure class="media-card is-vertical">
+            <div class="media-ratio">
+              <video class="media-obj" controls playsinline preload="metadata"
+                     poster="../media/works/Logo-best1.png">
+                <source src="../media/works/dezodor-mist-vert.mp4" type="video/mp4" />
+                Ваш браузер не поддерживает видео.
+              </video>
+            </div>
+            <figcaption class="media-caption">
+              Вертикальный кейс: туман для труднодоступных зон.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
 </section>
 
 <section id="order" class="section">
@@ -170,6 +237,7 @@ document.querySelectorAll('[data-scroll]').forEach(el=>el.addEventListener('clic
 
 </body>
 </html>
+
 
 
 
