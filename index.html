@@ -21,7 +21,6 @@
   </div>
 </div>
 
-<!-- ===== HEADER ===== -->
 <header>
   <div class="header-inner">
     <!-- Логотип -->
@@ -33,25 +32,25 @@
       </div>
     </a>
 
-    <!-- Главное меню (десктоп) -->
+    <!-- Десктоп-меню -->
     <nav class="header-nav" aria-label="Основное меню">
-      <a href="#services" class="is-active">Услуги</a>
+      <a href="/index.html#services" class="is-active">Услуги</a>
       <a href="/biz/">Для бизнеса</a>
-      <a href="#prices">Цены</a>
-      <a href="#guarantees">Гарантии</a>
-      <a href="#faq">FAQ</a>
-      <a href="#about">О компании</a>
-      <a href="#contacts">Контакты</a>
+      <a href="/index.html#prices">Цены</a>
+      <a href="/index.html#guarantees">Гарантии</a>
+      <a href="/index.html#faq">FAQ</a>
+      <a href="/index.html#about">О компании</a>
+      <a href="/index.html#contacts">Контакты</a>
     </nav>
 
-    <!-- Телефоны + кнопка (десктоп) -->
+    <!-- Телефоны + CTA -->
     <div class="header-actions">
       <a href="tel:+79785500557" class="phone">+7 978 550 05 57</a>
       <a href="tel:+79785732708" class="phone">+7 978 573 27 08</a>
-      <a href="#contacts" class="btn btn-alert">Срочный выезд</a>
+      <a href="/index.html#contacts" class="btn btn-alert">Срочный выезд</a>
     </div>
 
-    <!-- Бургер (мобилка) -->
+    <!-- Бургер -->
     <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -59,23 +58,21 @@
 
   <!-- Мобильное меню -->
   <nav class="mobile-nav" id="mobileNav" aria-label="Мобильное меню" aria-hidden="true">
-    <a href="#services">Услуги</a>
+    <a href="/index.html#services">Услуги</a>
     <a href="/biz/">Для бизнеса</a>
-    <a href="#prices">Цены</a>
-    <a href="#guarantees">Гарантии</a>
-    <a href="#faq">FAQ</a>
-    <a href="#about">О компании</a>
-    <a href="#contacts">Контакты</a>
-
+    <a href="/index.html#prices">Цены</a>
+    <a href="/index.html#guarantees">Гарантии</a>
+    <a href="/index.html#faq">FAQ</a>
+    <a href="/index.html#about">О компании</a>
+    <a href="/index.html#contacts">Контакты</a>
     <div class="mobile-nav-cta">
       <a href="tel:+79785500557" class="btn btn-primary">+7 978 550 05 57</a>
       <a href="tel:+79785732708" class="btn btn-primary">+7 978 573 27 08</a>
-      <button class="btn btn-alert" data-scroll="#contacts">Срочный выезд</button>
+      <a class="btn btn-alert" href="/index.html#contacts">Срочный выезд</a>
     </div>
   </nav>
 </header>
 <!-- ===== /HEADER ===== -->
-
 
 <!-- ===== HERO ===== -->
 <section class="hero">
@@ -623,9 +620,8 @@
     </div>
   </div>
 </footer>
-<!-- ===== SCRIPTS ===== -->
 <script>
-  // Плавный скролл
+  // Плавный скролл по якорям
   (function () {
     function smoothScrollTo(targetId) {
       const target = document.querySelector(targetId);
@@ -634,7 +630,7 @@
       const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
       window.scrollTo({ top, behavior: 'smooth' });
 
-      // Закрыть моб-меню, если открыто
+      // закрыть моб-меню, если было открыто
       const nav = document.getElementById('mobileNav');
       const burger = document.getElementById('burger');
       if (nav && burger) {
@@ -645,7 +641,7 @@
       }
     }
 
-    // data-scroll на кнопках
+    // кнопки с data-scroll
     document.querySelectorAll('[data-scroll]').forEach(el => {
       el.addEventListener('click', e => {
         e.preventDefault();
@@ -653,7 +649,7 @@
       });
     });
 
-    // Якорные ссылки вида href="#..."
+    // ссылки вида href="#..."
     document.querySelectorAll('a[href^="#"]').forEach(link => {
       link.addEventListener('click', e => {
         const href = link.getAttribute('href');
@@ -665,13 +661,12 @@
     });
   })();
 
-  // Бургер + мобильное меню
+  // Бургер и мобильное меню
   (function () {
     const burger    = document.getElementById('burger');
     const mobileNav = document.getElementById('mobileNav');
     if (!burger || !mobileNav) return;
 
-    // Начальные ARIA
     burger.setAttribute('aria-expanded', 'false');
     mobileNav.setAttribute('aria-hidden', 'true');
 
@@ -682,7 +677,7 @@
       mobileNav.setAttribute('aria-hidden', opened ? 'false' : 'true');
     });
 
-    // Закрывать меню по клику на пункт
+    // закрывать меню при выборе пункта
     mobileNav.querySelectorAll('a,[data-scroll]').forEach(a => {
       a.addEventListener('click', () => {
         burger.classList.remove('is-open');
@@ -693,34 +688,34 @@
     });
   })();
 
-  // FAQ (аккордеон: открыт только один)
+  // FAQ (аккордеон, один открыт)
   (function () {
     const items = document.querySelectorAll('.faq-item');
     if (!items.length) return;
 
     items.forEach(item => {
-      const btn = item.querySelector('.faq-question');
-      const toggle = item.querySelector('.faq-toggle');
-      if (!btn) return;
+      const q = item.querySelector('.faq-question');
+      const t = item.querySelector('.faq-toggle');
+      if (!q) return;
 
-      btn.addEventListener('click', () => {
+      q.addEventListener('click', () => {
         items.forEach(other => {
           if (other !== item) {
             other.classList.add('collapsed');
-            const t = other.querySelector('.faq-toggle');
-            if (t) t.textContent = '+';
+            const ot = other.querySelector('.faq-toggle');
+            if (ot) ot.textContent = '+';
           }
         });
-        const isCollapsed = item.classList.toggle('collapsed');
-        if (toggle) toggle.textContent = isCollapsed ? '+' : '−';
+        const collapsed = item.classList.toggle('collapsed');
+        if (t) t.textContent = collapsed ? '+' : '−';
       });
     });
   })();
 </script>
 
-
 </body>
 </html>
+
 
 
 
