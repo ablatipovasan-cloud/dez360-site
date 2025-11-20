@@ -1,20 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <title>Дезинфекция автотранспорта — Симферополь, Севастополь, Крым | Дез щит 360</title>
+  <meta charset="UTF-8" />
+  <title>Дезинфекция автотранспорта в Крыму — Дез щит 360</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Дезинфекция легкового, служебного и спецтранспорта, рефрижераторов и доставки. Акты для СЭС и ведомств, безопасные препараты."/>
-  <link rel="stylesheet" href="../css/main.css?v=6"/>
-  <style>.page-nav{max-width:1200px;margin:0 auto 16px;padding:0 16px;display:flex;gap:12px}.page-nav a{font-size:13px;padding:6px 12px;border-radius:999px;text-decoration:none;background:#fff;color:#007A8C;border:1px solid rgba(0,122,140,.15);transition:.15s}.page-nav a:hover{background:#007A8C;color:#fff}.media-grid .media-video{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#000;border-radius:12px}</style>
+  <meta name="description" content="Профессиональная дезинфекция автотранспорта в Симферополе, Севастополе и по всему Крыму. Легковые, микроавтобусы, служебный транспорт, рефрижераторы. Акты для проверок." />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css?v=5">
 </head>
 <body>
-  <div class="top-bar"><div class="top-bar-inner"><span>Ежедневно 8:00–22:00</span><div class="top-bar-contacts"><a href="tel:+79785500557">+7 978 550 05 57</a><a href="tel:+79785732708">+7 978 573 27 08</a></div></div></div>
 
-  <header>
+<!-- Верхняя полоска -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <span>Ежедневно 8:00–22:00</span>
+    <div class="top-bar-contacts">
+      <a href="tel:+79785500557">+7 978 550 05 57</a>
+      <a href="tel:+79785732708">+7 978 573 27 08</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HEADER (унифицированный) ===== -->
+<header>
   <div class="header-inner">
-    <!-- Логотип -->
-    <a href="/" class="logo" aria-label="На главную">
+    <a href="/index.html" class="logo" aria-label="На главную">
       <img src="/media/logo-360.png" alt="Дез щит 360" class="logo-icon-img">
       <div class="logo-text">
         <div class="logo-title">Дез щит 360</div>
@@ -22,151 +32,261 @@
       </div>
     </a>
 
-    <!-- Десктоп-меню -->
-    <nav class="header-nav">
-      <a href="/#services">Услуги</a>
+    <nav class="header-nav" aria-label="Основное меню">
+      <a href="/index.html#services" class="is-active">Услуги</a>
       <a href="/biz/">Для бизнеса</a>
-      <a href="/#prices">Цены</a>
-      <a href="/#guarantees">Гарантии</a>
-      <a href="/#faq">FAQ</a>
-      <a href="/#about">О компании</a>
-      <a href="/#contacts">Контакты</a>
+      <a href="/index.html#prices">Цены</a>
+      <a href="/index.html#guarantees">Гарантии</a>
+      <a href="/index.html#faq">FAQ</a>
+      <a href="/index.html#about">О компании</a>
+      <a href="/index.html#contacts">Контакты</a>
     </nav>
 
-    <!-- Телефоны + кнопка (десктоп) -->
     <div class="header-actions">
       <a href="tel:+79785500557" class="phone">+7 978 550 05 57</a>
       <a href="tel:+79785732708" class="phone">+7 978 573 27 08</a>
-      <a href="/#contacts" class="btn btn-alert">Срочный выезд</a>
+      <a href="/index.html#contacts" class="btn btn-alert">Срочный выезд</a>
     </div>
 
-    <!-- Бургер (мобилка) -->
-    <button class="burger" id="burger" aria-label="Открыть меню">
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 
-  <!-- Мобильное меню -->
-  <div class="mobile-nav" id="mobileNav">
-    <a href="/#services">Услуги</a>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Мобильное меню" aria-hidden="true">
+    <a href="/index.html#services class">Услуги</a>
     <a href="/biz/">Для бизнеса</a>
-    <a href="/#prices">Цены</a>
-    <a href="/#guarantees">Гарантии</a>
-    <a href="/#faq">FAQ</a>
-    <a href="/#about">О компании</a>
-    <a href="/#contacts">Контакты</a>
-    <a href="/#contacts" class="mobile-nav-cta">Срочный выезд</a>
-  </div>
-</header>
-<!-- FLOAT BACK: fixed "На главную" -->
-<a class="float-back" href="/index.html" aria-label="На главную">
-  ← На главную
-</a>
-
-  <div class="page-nav"><a href="../index.html">На главную</a><a href="../index.html#services">Все услуги</a></div>
-
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-left">
-        <h1 class="hero-title">Дезинфекция автотранспорта</h1>
-        <p class="hero-subtitle">Легковой, служебный и спецтранспорт, рефрижераторы и доставка. Сертифицированные препараты и акты для проверок.</p>
-        <div class="hero-bullets"><div class="hero-badge"><span>Обработка салона и кузова</span></div><div class="hero-badge"><span>Быстро и официально</span></div><div class="hero-badge"><span>Акты для СЭС и ведомств</span></div></div>
-        <div class="hero-actions"><button class="btn btn-primary" data-scroll="#order">Рассчитать стоимость</button></div>
-      </div>
-      <figure class="hero-photo"><img src="../media/works/dezavto-1.png" alt="Дезинфекция транспорта — Дез щит 360"/><figcaption class="hero-photo-caption"><strong>Чисто и безопасно</strong><br/>Готовим к перевозке людей и продуктов.</figcaption></figure>
+    <a href="/index.html#prices">Цены</a>
+    <a href="/index.html#guarantees">Гарантии</a>
+    <a href="/index.html#faq">FAQ</a>
+    <a href="/index.html#about">О компании</a>
+    <a href="/index.html#contacts">Контакты</a>
+    <div class="mobile-nav-cta">
+      <a href="tel:+79785500557" class="btn btn-primary">+7 978 550 05 57</a>
+      <a href="tel:+79785732708" class="btn btn-primary">+7 978 573 27 08</a>
+      <a class="btn btn-alert" href="/index.html#contacts">Срочный выезд</a>
     </div>
-  </section>
+  </nav>
+</header>
+<!-- ===== /HEADER ===== -->
 
-  <section class="section section-alt">
+<!-- Хлебные крошки -->
+<div class="page-nav">
+  <a href="/index.html" class="page-nav-link">На главную</a>
+  <span class="page-nav-separator">/</span>
+  <a href="/index.html#services" class="page-nav-link">Все услуги</a>
+  <span class="page-nav-separator">/</span>
+  <span class="page-nav-link is-active">Дезинфекция автотранспорта</span>
+</div>
+
+<!-- ===== HERO внутренней страницы (без жёсткого кропа) ===== -->
+<section class="hero hero-inner-page">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <h1 class="hero-title">Дезинфекция автотранспорта по Крыму</h1>
+      <p class="hero-subtitle">
+        Легковые, микроавтобусы, служебные машины, спецтранспорт, рефрижераторы.
+        Аккуратно, быстро, с актами и отметками для проверок.
+      </p>
+      <div class="hero-bullets">
+        <div class="hero-badge">Профпрепараты и регламенты</div>
+        <div class="hero-badge">Акты/журналы для Роспотребнадзора</div>
+        <div class="hero-badge">Выезд в день обращения</div>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#order">Заказать обработку</a>
+      </div>
+      <p class="form-note">Нажимая кнопку, вы соглашаетесь с <a href="/policy.html" target="_blank">политикой конфиденциальности</a>.</p>
+    </div>
+
+    <figure class="hero-photo">
+      <!-- поставь свой баннер (любая пропорция; на десктопе высота выровнена CSS’ом) -->
+      <img src="/media/works/dezavto-1.png" alt="Дезинфекция автотранспорта — обработка салона и багажного отделения">
+      <figcaption class="hero-photo-caption" style="display:none">—</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===== Что обрабатываем ===== -->
+<section class="section">
   <div class="container">
-    <h2 class="section-title">Реальные объекты</h2>
-
-    <div class="media-grid">
-
-      <!-- ВЕРТИКАЛЬНОЕ ФОТО 9:16 -->
-      <figure class="media-card is-vertical">
-        <div class="media-ratio">
-          <img class="media-obj"
-               src="../media/works/dezavto-1.png"
-               alt="Обработка вертикальных поверхностей, кухня"
-               loading="lazy" decoding="async"
-               width="900" height="1600">
-        </div>
-        <figcaption class="media-caption">
-          Обработка вертикальных поверхностей, кухня.
-        </figcaption>
-      </figure>
-
-      <!-- ГОРИЗОНТАЛЬНОЕ ВИДЕО 16:9 -->
-      <figure class="media-card is-vertical">
-        <div class="media-ratio">
-          <video class="media-obj" controls playsinline preload="metadata"
-                 poster="../media/works/photo-dez-avto.jpg">
-            <source src="../media/works/dezinfekciya-avto.mp4" type="video/mp4">
-          </video>
-        </div>
-        <figcaption class="media-caption">
-          Туман в салоне — безопасная обработка.
-        </figcaption>
-      </figure>
-
-      <!-- ЕЩЁ ОДНО ГОРИЗОНТАЛЬНОЕ ВИДЕО 16:9 -->
-      <figure class="media-card  is-vertical">
-        <div class="media-ratio">
-          <video class="media-obj" controls playsinline preload="metadata"
-                 poster="../media/works/dezavto-1.png">
-            <source src="../media/works/dezavto-2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <figcaption class="media-caption">
-          Туман в салоне — безопасная обработка.
-        </figcaption>
-      </figure>
-
+    <h2 class="section-title">Что и как обрабатываем</h2>
+    <div class="about-grid">
+      <div>
+        <ul class="about-list">
+          <li>Салоны легковых авто, такси, служебный транспорт.</li>
+          <li>Микроавтобусы и автобусы, каршеринги, спецтехника.</li>
+          <li>Рефрижераторы и фургоны под продукты.</li>
+          <li>Запахи, плесень, вирусы и бактерии — комплексно.</li>
+        </ul>
+        <p style="margin-top:10px">Используем щадящие, сертифицированные средства. Делаем отметки, выдаём акты.</p>
+      </div>
+      <div class="about-card">
+        <strong>Этапы:</strong>
+        <div>• Осмотр и согласование схемы.</div>
+        <div>• Механическая очистка контактных зон.</div>
+        <div>• Туман/распыление, экспозиция.</div>
+        <div>• Проветривание и выдача документов.</div>
+      </div>
     </div>
   </div>
 </section>
 
-  <section id="order" class="section">
-    <div class="container">
-      <h2 class="section-title">Заказать обработку транспорта</h2>
-      <div class="contacts-grid">
-        <form class="contacts-form">
-          <label class="field-label" for="name">Имя</label><input id="name" class="field-input" type="text" placeholder="Как к вам обращаться"/>
-          <label class="field-label" for="phone">Телефон</label><input id="phone" class="field-input" type="tel" placeholder="+7 ___ ___ __ __"/>
-          <label class="field-label" for="task">Коротко о задаче</label><textarea id="task" class="field-textarea" rows="3" placeholder="Тип транспорта, количество, сроки..."></textarea>
-          <button class="btn btn-primary">Отправить заявку</button>
-        </form>
-        <div class="contacts-list"><div class="contacts-label">Позвонить</div><a class="phone" href="tel:+79785500557">+7 978 550 05 57</a><a class="phone" href="tel:+79785732708">+7 978 573 27 08</a><div class="contacts-label">Адрес / почта</div><div>г. Симферополь, ул. Екатерининская, 51</div><a class="email" href="mailto:dezschit360@gmail.ru">dezschit360@gmail.ru</a></div>
+<!-- ===== Реальные объекты: фото/видео ===== -->
+<section class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Реальные объекты</h2>
+
+    <div class="media-grid">
+      <!-- Фото 16:9 -->
+      <figure class="media-card">
+        <div class="media-ratio">
+          <img class="media-obj" src="/media/works/photo-dez-avto.jpg" alt="ОБРАБОТКА СПЕЦТРАНСПОРТА" 16:9" loading="lazy" decoding="async">
+        </div>
+        <figcaption>Салон СПЕЦТРАНСПОРТА — обработка контактных поверхностей.</figcaption>
+      </figure>
+
+      <!-- Видео 16:9 -->
+      <figure class="media-card">
+        <div class="media-ratio">
+          <video class="media-obj" controls playsinline preload="metadata" poster="/media/works/Logo-best1.png">
+            <source src="/media/works/dezinfekciya-avto.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption>Холодный туман в салоне: равномерная обработка труднодоступных зон.</figcaption>
+      </figure>
+
+      <!-- Фото вертикальное 9:16 -->
+      <figure class="media-card is-vertical">
+        <div class="media-ratio">
+          <img class="media-obj" src="/media/works/transport-detail-916.jpg" alt="Точечная обработка элементов салона (вертикальный формат)" loading="lazy" decoding="async">
+        </div>
+        <figcaption>Точечная обработка руля, приборной панели, ручек.</figcaption>
+      </figure>
+
+      <!-- Видео вертикальное 9:16 -->
+      <figure class="media-card is-vertical">
+        <div class="media-ratio">
+          <video class="media-obj" controls playsinline preload="metadata" poster="/media/works/Logo-best1.png">
+            <source src="/media/works/dezavto-2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption>Багажное отделение: экспозиция и проветривание (вертикальный формат).</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Заказ ===== -->
+<section id="order" class="section">
+  <div class="container">
+    <h2 class="section-title">Заказать дезинфекцию автотранспорта</h2>
+    <div class="contacts-grid">
+      <form class="contacts-form">
+        <div class="contacts-label">Оставьте заявку — рассчитаем стоимость и ближайшее время выезда</div>
+        <div><div class="field-label">Имя</div><input class="field-input" type="text" placeholder="Имя"></div>
+        <div><div class="field-label">Телефон</div><input class="field-input" type="tel" placeholder="+7 978 ..."></div>
+        <div><div class="field-label">Город</div><input class="field-input" type="text" placeholder="Симферополь, Севастополь ..."></div>
+        <div><div class="field-label">Тип транспорта</div><input class="field-input" type="text" placeholder="Легковой, микроавтобус, рефрижератор..."></div>
+        <button class="btn btn-primary" type="submit">Получить расчёт</button>
+      </form>
+      <div class="contacts-list">
+        <div><span class="contacts-label">Телефон:</span> <a href="tel:+79785500557">+7 978 550 05 57</a></div>
+        <div><span class="contacts-label">Телефон:</span> <a href="tel:+79785732708">+7 978 573 27 08</a></div>
+        <div><span class="contacts-label">E-mail:</span> <a href="mailto:dezschit360@mail.ru">dezschit360@mail.ru</a></div>
+        <div><span class="contacts-label">Адрес:</span> г. Симферополь, ул. Екатерининская, 51</div>
+        <div><span class="contacts-label">ИП:</span> Кавера Е.Н.</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer><div class="footer-inner container"><div class="footer-brand">Дез щит 360</div><div class="footer-links"><a href="../policy.html">Политика конфиденциальности</a><a href="tel:+79785500557">+7 978 550 05 57</a><a href="tel:+79785732708">+7 978 573 27 08</a></div><div class="footer-copy">© 2025, Дез щит 360</div></div></footer>
-  <script>(function(){const b=document.getElementById('burger'),m=document.getElementById('mobileNav');if(b&&m){b.addEventListener('click',()=>{m.classList.toggle('open');document.body.classList.toggle('menu-open')})}document.querySelectorAll('[data-scroll]').forEach(e=>e.addEventListener('click',function(ev){ev.preventDefault();const t=document.querySelector(this.getAttribute('data-scroll'));if(!t)return;window.scrollTo({top:t.getBoundingClientRect().top+pageYOffset-80,behavior:'smooth'})}))})();</script>
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <div class="footer-brand">Дез щит 360</div>
+      <div class="footer-sub">Центр дезинфектологии · Симферополь · Крым</div>
+      <div class="footer-legal">ИП Кавера Е.Н., г. Симферополь, ул. Екатерининская, 51</div>
+      <div class="footer-copy">© 2025 «Дез щит 360». Все права защищены.</div>
+    </div>
+    <div class="footer-links">
+      <a href="/policy.html" class="footer-link">Политика конфиденциальности</a>
+      <a href="tel:+79785500557" class="footer-link">+7 978 550 05 57</a>
+      <a href="tel:+79785732708" class="footer-link">+7 978 573 27 08</a>
+      <a href="mailto:dezschit360@mail.ru" class="footer-link">dezschit360@mail.ru</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== SCRIPTS (единые для всех страниц) ===== -->
 <script>
+  // Плавный скролл по якорям
+  (function () {
+    function smoothScrollTo(targetId) {
+      const target = document.querySelector(targetId);
+      if (!target) return;
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+
+      const nav = document.getElementById('mobileNav');
+      const burger = document.getElementById('burger');
+      if (nav && burger) {
+        nav.classList.remove('is-open');
+        burger.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+        nav.setAttribute('aria-hidden', 'true');
+      }
+    }
+    document.querySelectorAll('[data-scroll]').forEach(el => {
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        smoothScrollTo(el.getAttribute('data-scroll'));
+      });
+    });
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (href && href.length > 1) {
+          const target = document.querySelector(href);
+          if (target) { e.preventDefault(); smoothScrollTo(href); }
+        }
+      });
+    });
+  })();
+
+  // Бургер + мобильное меню
   (function () {
     const burger = document.getElementById('burger');
     const mobileNav = document.getElementById('mobileNav');
     if (!burger || !mobileNav) return;
 
+    burger.setAttribute('aria-expanded', 'false');
+    mobileNav.setAttribute('aria-hidden', 'true');
+
     burger.addEventListener('click', () => {
-      burger.classList.toggle('is-open');
-      mobileNav.classList.toggle('is-open');
+      const opened = mobileNav.classList.toggle('is-open');
+      burger.classList.toggle('is-open', opened);
+      burger.setAttribute('aria-expanded', opened ? 'true' : 'false');
+      mobileNav.setAttribute('aria-hidden', opened ? 'false' : 'true');
     });
 
-    // Закрывать меню по клику на пункт
-    mobileNav.querySelectorAll('a').forEach(a => {
+    mobileNav.querySelectorAll('a,[data-scroll]').forEach(a => {
       a.addEventListener('click', () => {
         burger.classList.remove('is-open');
         mobileNav.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
       });
     });
   })();
-</script>
 
+ 
+</script>
 </body>
 </html>
+
 
 
 
