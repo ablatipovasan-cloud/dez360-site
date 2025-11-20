@@ -1,127 +1,89 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Удаление плесени в Крыму — обработка стен и помещений | Дез щит 360</title>
-  <meta name="description" content="Профессиональное удаление плесени и грибка в Симферополе, Севастополе и по всему Крыму. Обработка стен, подвалов, санузлов, чердаков. Поиск причины, защита от повторного появления." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Удаление плесени — Дез щит 360</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Удаляем плесень в санузлах, подвалах, на стенах. Ищем причину сырости, дезинфицируем поверхности, даём рекомендации." />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/main.css?v=6"/>
-  <style>.hero-inner-page{padding-top:32px;padding-bottom:24px;}</style>
+  <link rel="stylesheet" href="/css/main.css?v=5">
 </head>
 <body>
-<div class="top-bar">
-  <span>Удаление плесени и грибка в Крыму</span>
-  <div class="top-bar-contacts">
-    <span>8:00–22:00</span>
-    <span><a href="tel:+79785500557" style="color:#fff;">+7 978 550 05 57</a></span>
-    <span><a href="tel:+79785732708" style="color:#fff;">+7 978 573 27 08</a></span>
-  </div>
-</div>
+
+<div class="top-bar"><div class="top-bar-inner"><span>Ежедневно 8:00–22:00</span><div class="top-bar-contacts"><a href="tel:+79785500557">+7 978 550 05 57</a><a href="tel:+79785732708">+7 978 573 27 08</a></div></div></div>
+
 <header>
   <div class="header-inner">
-    <!-- Логотип -->
-    <a href="/" class="logo" aria-label="На главную">
+    <a href="/index.html" class="logo" aria-label="На главную">
       <img src="/media/logo-360.png" alt="Дез щит 360" class="logo-icon-img">
-      <div class="logo-text">
-        <div class="logo-title">Дез щит 360</div>
-        <div class="logo-sub">Центр дезинфектологии · Симферополь · Крым</div>
-      </div>
+      <div class="logo-text"><div class="logo-title">Дез щит 360</div><div class="logo-sub">Центр дезинфектологии · Симферополь · Крым</div></div>
     </a>
-
-    <!-- Десктоп-меню -->
-    <nav class="header-nav">
-      <a href="/#services">Услуги</a>
+    <nav class="header-nav" aria-label="Основное меню">
+      <a href="/index.html#services" class="is-active">Услуги</a>
       <a href="/biz/">Для бизнеса</a>
-      <a href="/#prices">Цены</a>
-      <a href="/#guarantees">Гарантии</a>
-      <a href="/#faq">FAQ</a>
-      <a href="/#about">О компании</a>
-      <a href="/#contacts">Контакты</a>
+      <a href="/index.html#prices">Цены</a>
+      <a href="/index.html#guarantees">Гарантии</a>
+      <a href="/index.html#faq">FAQ</a>
+      <a href="/index.html#about">О компании</a>
+      <a href="/index.html#contacts">Контакты</a>
     </nav>
-
-    <!-- Телефоны + кнопка (десктоп) -->
-    <div class="header-actions">
-      <a href="tel:+79785500557" class="phone">+7 978 550 05 57</a>
-      <a href="tel:+79785732708" class="phone">+7 978 573 27 08</a>
-      <a href="/#contacts" class="btn btn-alert">Срочный выезд</a>
-    </div>
-
-    <!-- Бургер (мобилка) -->
-    <button class="burger" id="burger" aria-label="Открыть меню">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="header-actions"><a href="tel:+79785500557" class="phone">+7 978 550 05 57</a><a href="tel:+79785732708" class="phone">+7 978 573 27 08</a><a href="/index.html#contacts" class="btn btn-alert">Срочный выезд</a></div>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
-
-  <!-- Мобильное меню -->
-  <div class="mobile-nav" id="mobileNav">
-    <a href="/#services">Услуги</a>
-    <a href="/biz/">Для бизнеса</a>
-    <a href="/#prices">Цены</a>
-    <a href="/#guarantees">Гарантии</a>
-    <a href="/#faq">FAQ</a>
-    <a href="/#about">О компании</a>
-    <a href="/#contacts">Контакты</a>
-    <a href="/#contacts" class="mobile-nav-cta">Срочный выезд</a>
-  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Мобильное меню" aria-hidden="true">
+    <a href="/index.html#services">Услуги</a><a href="/biz/">Для бизнеса</a><a href="/index.html#prices">Цены</a><a href="/index.html#guarantees">Гарантии</a><a href="/index.html#faq">FAQ</a><a href="/index.html#about">О компании</a><a href="/index.html#contacts">Контакты</a>
+    <div class="mobile-nav-cta"><a href="tel:+79785500557" class="btn btn-primary">+7 978 550 05 57</a><a href="tel:+79785732708" class="btn btn-primary">+7 978 573 27 08</a><a class="btn btn-alert" href="/index.html#contacts">Срочный выезд</a></div>
+  </nav>
 </header>
-<!-- FLOAT BACK: fixed "На главную" -->
-<a class="float-back" href="/index.html" aria-label="На главную">
-  ← На главную
-</a>
-<main>
-<section class="hero hero-inner-page">
-      <div class="container hero-inner">
-        <div class="hero-left">
-          <h1 class="section-title">Удаление плесени и обработка стен в Крыму</h1>
-    <p class="section-subtitle">
-      Устраняем плесень в квартирах, домах, подвалах, санузлах, служебных помещениях.
-      Работаем с причиной, а не только с пятнами.
-    </p>
-    <button class="btn btn-primary" data-scroll="#order">Заказать обработку от плесени</button>
-<p class="hero-note">
-            Нажимая кнопку, вы соглашаетесь с
-            <a href="../policy.html" target="_blank">политикой конфиденциальности</a>.
-          </p>
-        </div>
-<!-- Баннер справа -->
-        <figure class="hero-photo">
-          <!-- Если исходник квадрат/вертикаль — обрежем корректно до 16:9 -->
-          <img
-            src="../media/works/Logo-best1.png"
-            alt="Профессиональное удаление плесени и грибка. Обработка химическим, механическим способом,озоном" />
-          <figcaption>Команда работает официально и безопасно.</figcaption>
-        </figure>
-      </div>
 
+<div class="page-nav"><a href="/index.html" class="page-nav-link">На главную</a><span class="page-nav-separator">/</span><a href="/index.html#services" class="page-nav-link">Все услуги</a><span class="page-nav-separator">/</span><span class="page-nav-link is-active">Удаление плесени</span></div>
+
+<section class="hero hero-inner-page">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <h1 class="hero-title">Удаление плесени</h1>
+      <p class="hero-subtitle">Санузлы, подвал, стены. Устраняем причину сырости, дезинфицируем поверхности, защищаем зону.</p>
+      <div class="hero-bullets"><div class="hero-badge">Поиск причины</div><div class="hero-badge">Дезинфекция</div><div class="hero-badge">Рекомендации по защите</div></div>
+      <div class="hero-actions"><a class="btn btn-primary" href="#order">Заказать обработку</a></div>
+      <p class="form-note">Нажимая кнопку, вы соглашаетесь с <a href="/policy.html" target="_blank">политикой конфиденциальности</a>.</p>
+    </div>
+    <figure class="hero-photo"><img src="/media/works/hero-grib.jpg" alt="Удаление плесени на стенах"><figcaption class="hero-photo-caption" style="display:none">—</figcaption></figure>
+  </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <h2 class="section-title">Как мы работаем</h2>
+    <h2 class="section-title">Что делаем</h2>
     <div class="about-grid">
       <div>
         <ul class="about-list">
-          <li>Осмотр очагов, поиск источника сырости.</li>
-          <li>Механическое удаление поражений (где возможно).</li>
-          <li>Обработка антисептическими и фунгицидными составами.</li>
-          <li>Рекомендации по вентиляции и утеплению.</li>
+          <li>Поиск и устранение источников сырости.</li>
+          <li>Механическая и химическая очистка.</li>
+          <li>Дезинфекция и обработка против повторного роста.</li>
+          <li>Рекомендации по вентиляции и режиму.</li>
         </ul>
       </div>
       <div class="about-card">
-        <strong>Результат:</strong>
-        <div>• Снижение риска аллергий и заболеваний.</div>
-        <div>• Визуально чистые поверхности.</div>
-        <div>• Понятный план профилактики.</div>
+        <strong>Этапы:</strong>
+        <div>• Осмотр и диагностика.</div>
+        <div>• Локальная очистка и обработка.</div>
+        <div>• Проветривание и контроль.</div>
+        <div>• Рекомендации по профилактике.</div>
       </div>
     </div>
   </div>
 </section>
 
 <section class="section section-alt">
-  <div class="container">
-    <h2 class="section-title">Фото работ</h2>
+  <div class="container"><h2 class="section-title">Реальные объекты</h2>
     <div class="media-grid">
+      <figure class="media-card"><div class="media-ratio"><img class="media-obj" src="/media/works/gribok-2.jpg" alt="Стены после очистки 16:9" loading="lazy" decoding="async"></div><figcaption>Снятие поражённого слоя и обработка.</figcaption></figure>
+      <figure class="media-card"><div class="media-ratio"><video class="media-obj" controls playsinline preload="metadata" poster="/media/works/Logo-best1.png"><source src="/media/works/mold-clean-169.mp4" type="video/mp4"></video></div><figcaption>Дезинфекция и экспозиция.</figcaption></figure>
+      <figure class="media-card is-vertical"><div class="media-ratio"><img class="media-obj" src="/media/works/gribok-3.jpg" alt="Углы и швы (вертикально)" loading="lazy" decoding="async"></div><figcaption>Обработка углов и швов.</figcaption></figure>
+      <figure class="media-card is-vertical"><div class="media-ratio"><video class="media-obj" controls playsinline preload="metadata" poster="/media/works/Logo-best1.png"><source src="/media/works/mold-vert.mp4" type="video/mp4"></video></div><figcaption>Контроль влажности (вертикально).</figcaption></figure>
+    </div>
+  </div>
+</section>
  <!-- Фото горизонтальное 16:9 -->
           <figure class="media-card is-vertical">
             <div class="media-ratio">
@@ -237,6 +199,7 @@ document.querySelectorAll('[data-scroll]').forEach(el=>el.addEventListener('clic
 
 </body>
 </html>
+
 
 
 
