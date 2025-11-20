@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Центр дезинфектологии «Дез щит 360» — профессиональная дезинфекция, дезинсекция, дератизация, чистка и дезинфекция вентиляции, акарицидная обработка, удаление запахов и плесени в Симферополе, Севастополе и по всему Крыму. Лицензия, гарантии, быстрый выезд, официальные документы." />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/main.css?v=7">
+  <link rel="stylesheet" href="/css/main.css?v=8">
 </head>
 <body>
 
@@ -621,100 +621,35 @@
   </div>
 </footer>
 <script>
-  // Плавный скролл по якорям
-  (function () {
-    function smoothScrollTo(targetId) {
-      const target = document.querySelector(targetId);
-      if (!target) return;
-      const offset = 80;
-      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
+(function () {
+  const burger    = document.getElementById('burger');
+  const mobileNav = document.getElementById('mobileNav');
+  if (!burger || !mobileNav) return;
 
-      // закрыть моб-меню, если было открыто
-      const nav = document.getElementById('mobileNav');
-      const burger = document.getElementById('burger');
-      if (nav && burger) {
-        nav.classList.remove('is-open');
-        burger.classList.remove('is-open');
-        burger.setAttribute('aria-expanded', 'false');
-        nav.setAttribute('aria-hidden', 'true');
-      }
-    }
+  burger.setAttribute('aria-expanded', 'false');
+  mobileNav.setAttribute('aria-hidden', 'true');
 
-    // кнопки с data-scroll
-    document.querySelectorAll('[data-scroll]').forEach(el => {
-      el.addEventListener('click', e => {
-        e.preventDefault();
-        smoothScrollTo(el.getAttribute('data-scroll'));
-      });
+  burger.addEventListener('click', () => {
+    const opened = mobileNav.classList.toggle('is-open');
+    burger.classList.toggle('is-open', opened);
+    burger.setAttribute('aria-expanded', opened ? 'true' : 'false');
+    mobileNav.setAttribute('aria-hidden', opened ? 'false' : 'true');
+  });
+
+  mobileNav.querySelectorAll('a,[data-scroll]').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.classList.remove('is-open');
+      mobileNav.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+      mobileNav.setAttribute('aria-hidden', 'true');
     });
-
-    // ссылки вида href="#..."
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', e => {
-        const href = link.getAttribute('href');
-        if (href && href.length > 1) {
-          const target = document.querySelector(href);
-          if (target) { e.preventDefault(); smoothScrollTo(href); }
-        }
-      });
-    });
-  })();
-
-  // Бургер и мобильное меню
-  (function () {
-    const burger    = document.getElementById('burger');
-    const mobileNav = document.getElementById('mobileNav');
-    if (!burger || !mobileNav) return;
-
-    burger.setAttribute('aria-expanded', 'false');
-    mobileNav.setAttribute('aria-hidden', 'true');
-
-    burger.addEventListener('click', () => {
-      const opened = mobileNav.classList.toggle('is-open');
-      burger.classList.toggle('is-open', opened);
-      burger.setAttribute('aria-expanded', opened ? 'true' : 'false');
-      mobileNav.setAttribute('aria-hidden', opened ? 'false' : 'true');
-    });
-
-    // закрывать меню при выборе пункта
-    mobileNav.querySelectorAll('a,[data-scroll]').forEach(a => {
-      a.addEventListener('click', () => {
-        burger.classList.remove('is-open');
-        mobileNav.classList.remove('is-open');
-        burger.setAttribute('aria-expanded', 'false');
-        mobileNav.setAttribute('aria-hidden', 'true');
-      });
-    });
-  })();
-
-  // FAQ (аккордеон, один открыт)
-  (function () {
-    const items = document.querySelectorAll('.faq-item');
-    if (!items.length) return;
-
-    items.forEach(item => {
-      const q = item.querySelector('.faq-question');
-      const t = item.querySelector('.faq-toggle');
-      if (!q) return;
-
-      q.addEventListener('click', () => {
-        items.forEach(other => {
-          if (other !== item) {
-            other.classList.add('collapsed');
-            const ot = other.querySelector('.faq-toggle');
-            if (ot) ot.textContent = '+';
-          }
-        });
-        const collapsed = item.classList.toggle('collapsed');
-        if (t) t.textContent = collapsed ? '+' : '−';
-      });
-    });
-  })();
+  });
+})();
 </script>
 
 </body>
 </html>
+
 
 
 
