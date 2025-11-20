@@ -81,4 +81,40 @@
     initSmoothAnchors();
   });
 })();
+function ensureBizLink() {
+  // мобильное меню
+  const m = document.getElementById('mobileNav');
+  if (m && !m.querySelector('a[href="/biz/"]')) {
+    const a = document.createElement('a');
+    a.href = '/biz/';
+    a.textContent = 'Для бизнеса';
+    // вставим вторым пунктом, сразу после "Услуги", если он есть
+    const services = m.querySelector('a[href="/index.html#services"], a[href="#services"]');
+    if (services && services.parentNode === m) {
+      m.insertBefore(a, services.nextSibling);
+    } else {
+      m.insertBefore(a, m.firstChild);
+    }
+  }
+
+  // десктоп-меню
+  const d = document.querySelector('.header-nav');
+  if (d && !d.querySelector('a[href="/biz/"]')) {
+    const a = document.createElement('a');
+    a.href = '/biz/';
+    a.textContent = 'Для бизнеса';
+    // вставим вторым пунктом
+    if (d.children.length >= 1) {
+      d.insertBefore(a, d.children[1]);
+    } else {
+      d.appendChild(a);
+    }
+  }
+}
+document.addEventListener('DOMContentLoaded', async () => {
+  await injectIncludes();
+  ensureBizLink();        // ← добавили сюда
+  initHeaderBehavior();
+  initSmoothAnchors();
+});
 
