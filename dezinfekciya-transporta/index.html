@@ -54,7 +54,7 @@
   </div>
 
   <nav class="mobile-nav" id="mobileNav" aria-label="Мобильное меню" aria-hidden="true">
-    <a href="/index.html#services class">Услуги</a>
+    <a href="/index.html#services">Услуги</a>
     <a href="/biz/">Для бизнеса</a>
     <a href="/index.html#prices">Цены</a>
     <a href="/index.html#guarantees">Гарантии</a>
@@ -141,16 +141,16 @@
       <!-- Фото 16:9 -->
       <figure class="media-card">
         <div class="media-ratio">
-          <img class="media-obj" src="/media/works/photo-dez-avto.jpg" alt="ОБРАБОТКА СПЕЦТРАНСПОРТА" 16:9" loading="lazy" decoding="async">
+          <img class="media-obj" src="/media/works/dezavto-1.png" alt="Обработка салона легкового авто 16:9" loading="lazy" decoding="async">
         </div>
-        <figcaption>Салон СПЕЦТРАНСПОРТА — обработка контактных поверхностей.</figcaption>
+        <figcaption>Салон легкового авто — обработка контактных поверхностей.</figcaption>
       </figure>
 
       <!-- Видео 16:9 -->
       <figure class="media-card">
         <div class="media-ratio">
-          <video class="media-obj" controls playsinline preload="metadata" poster="/media/works/Logo-best1.png">
-            <source src="/media/works/dezinfekciya-avto.mp4" type="video/mp4">
+          <video class="media-obj" controls playsinline preload="metadata" poster="/media/works/transport-poster-169.jpg">
+            <source src="/media/works/dezavto-2.mp4" type="video/mp4">
           </video>
         </div>
         <figcaption>Холодный туман в салоне: равномерная обработка труднодоступных зон.</figcaption>
@@ -159,7 +159,7 @@
       <!-- Фото вертикальное 9:16 -->
       <figure class="media-card is-vertical">
         <div class="media-ratio">
-          <img class="media-obj" src="/media/works/transport-detail-916.jpg" alt="Точечная обработка элементов салона (вертикальный формат)" loading="lazy" decoding="async">
+          <img class="media-obj" src="/media/works/photo-dez-avto.jpg" alt="Точечная обработка элементов салона (вертикальный формат)" loading="lazy" decoding="async">
         </div>
         <figcaption>Точечная обработка руля, приборной панели, ручек.</figcaption>
       </figure>
@@ -167,17 +167,17 @@
       <!-- Видео вертикальное 9:16 -->
       <figure class="media-card is-vertical">
         <div class="media-ratio">
-          <video class="media-obj" controls playsinline preload="metadata" poster="/media/works/Logo-best1.png">
-            <source src="/media/works/dezavto-2.mp4" type="video/mp4">
+          <video class="media-obj" controls playsinline preload="metadata" poster="/media/works/transport-vert-poster.jpg">
+            <source src="/media/works/dezinfekciya-avto.mp4" type="video/mp4">
           </video>
         </div>
-        <figcaption>Багажное отделение: экспозиция и проветривание (вертикальный формат).</figcaption>
+        <figcaption>Салон СПЕЦТРАНСПОРТА — обработка контактных поверхностей.Багажное отделение: экспозиция и проветривание (вертикальный формат).</figcaption>
       </figure>
     </div>
   </div>
 </section>
 
-<!-- ===== Заказ ===== -->
+   <!-- ===== Заказ ===== -->
 <section id="order" class="section">
   <div class="container">
     <h2 class="section-title">Заказать дезинфекцию автотранспорта</h2>
@@ -282,10 +282,31 @@
     });
   })();
 
- 
+  // FAQ (если будет на странице)
+  (function () {
+    const items = document.querySelectorAll('.faq-item');
+    if (!items.length) return;
+    items.forEach(item => {
+      const q = item.querySelector('.faq-question');
+      const t = item.querySelector('.faq-toggle');
+      if (!q) return;
+      q.addEventListener('click', () => {
+        items.forEach(other => {
+          if (other !== item) {
+            other.classList.add('collapsed');
+            const ot = other.querySelector('.faq-toggle');
+            if (ot) ot.textContent = '+';
+          }
+        });
+        const collapsed = item.classList.toggle('collapsed');
+        if (t) t.textContent = collapsed ? '+' : '−';
+      });
+    });
+  })();
 </script>
 </body>
 </html>
+
 
 
 
