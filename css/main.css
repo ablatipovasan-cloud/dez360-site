@@ -193,7 +193,7 @@ header {
   color: #ffffff;
   text-align: center;
 }
-
+.mobile-nav a{ display:block; padding:10px 14px; font-size:14px; color:#37515f; }
 /* состояния при открытом меню */
 .mobile-nav.is-open { display: flex; }
 .burger.is-open span:nth-child(2) { opacity: 0; }
@@ -730,6 +730,7 @@ header + .hero-inner-page{
   padding: 4px 14px !important;
   gap: 10px;
 }
+
 
 
 
