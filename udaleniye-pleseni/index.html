@@ -84,121 +84,43 @@
     </div>
   </div>
 </section>
- <!-- Фото горизонтальное 16:9 -->
-          <figure class="media-card is-vertical">
-            <div class="media-ratio">
-              <img
-                class="media-obj"
-                src="../media/works/dez-suhtum.png"
-                alt="Обработка холодным туманом в помещении"
-                loading="lazy" decoding="async" />
-            </div>
-            <figcaption class="media-caption">
-              Холодный туман для глубокой проработки поверхностей.
-            </figcaption>
-          </figure>
-
-          <!-- Фото вертикальное 9:16 -->
-          <figure class="media-card is-vertical">
-            <div class="media-ratio">
-              <img
-                class="media-obj"
-                src="../media/works/Logo-best1.png"
-                alt="Дезодорация квартиры после курильщика"
-                loading="lazy" decoding="async" />
-            </div>
-            <figcaption class="media-caption">
-              Обработка стен и мебели, устранение стойкого запаха.
-            </figcaption>
-          </figure>
-
-          <!-- Видео горизонтальное 16:9 -->
-          <figure class="media-card is-vertical">
-            <div class="media-ratio">
-              <video class="media-obj" controls playsinline preload="metadata"
-                     poster="../media/works/Logo-best1.png">
-                <source src="../media/works/dezodoraciya-kafe.mp4" type="video/mp4" />
-                Ваш браузер не поддерживает видео.
-              </video>
-            </div>
-            <figcaption class="media-caption">
-              Нейтрализация запахов на объекте общепита.
-            </figcaption>
-          </figure>
-
-          <!-- Видео вертикальное 9:16 -->
-          <figure class="media-card is-vertical">
-            <div class="media-ratio">
-              <video class="media-obj" controls playsinline preload="metadata"
-                     poster="../media/works/Logo-best1.png">
-                <source src="../media/works/dezodor-mist-vert.mp4" type="video/mp4" />
-                Ваш браузер не поддерживает видео.
-              </video>
-            </div>
-            <figcaption class="media-caption">
-              Вертикальный кейс: туман для труднодоступных зон.
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-</section>
-
 <section id="order" class="section">
   <div class="container">
-    <h2 class="section-title">Оставить заявку на удаление плесени</h2>
+    <h2 class="section-title">Заказать удаление плесени</h2>
     <div class="contacts-grid">
       <form class="contacts-form">
-        <div class="contacts-label">Опишите ситуацию</div>
+        <div class="contacts-label">Опишите проблему — предложим алгоритм</div>
         <div><div class="field-label">Имя</div><input class="field-input" type="text"></div>
         <div><div class="field-label">Телефон</div><input class="field-input" type="tel"></div>
         <div><div class="field-label">Город</div><input class="field-input" type="text"></div>
-        <div><div class="field-label">Где плесень</div><textarea class="field-textarea" rows="3"></textarea></div>
-        <button class="btn btn-primary" type="submit">Получить расчет</button>
+        <div><div class="field-label">Зона поражения</div><input class="field-input" type="text"></div>
+        <button class="btn btn-primary" type="submit">Получить расчёт</button>
       </form>
       <div class="contacts-list">
         <div><span class="contacts-label">Телефон:</span> <a href="tel:+79785500557">+7 978 550 05 57</a></div>
+        <div><span class="contacts-label">Телефон:</span> <a href="tel:+79785732708">+7 978 573 27 08</a></div>
         <div><span class="contacts-label">E-mail:</span> <a href="mailto:dezschit360@mail.ru">dezschit360@mail.ru</a></div>
+        <div><span class="contacts-label">Адрес:</span> г. Симферополь, ул. Екатерининская, 51</div>
+        <div><span class="contacts-label">ИП:</span> Кавера Е.Н.</div>
       </div>
     </div>
   </div>
 </section>
-</main>
 
-<footer>
-  <div class="footer-inner">
-    <div>© «Дез щит 360»</div>
-    <div class="footer-links"><a href="/#services">Услуги</a><a href="/#contacts">Контакты</a></div>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-left"><div class="footer-brand">Дез щит 360</div><div class="footer-sub">Центр дезинфектологии · Симферополь · Крым</div><div class="footer-legal">ИП Кавера Е.Н., г. Симферополь, ул. Екатерининская, 51</div><div class="footer-copy">© 2025 «Дез щит 360». Все права защищены.</div></div>
+    <div class="footer-links"><a href="/policy.html" class="footer-link">Политика конфиденциальности</a><a href="tel:+79785500557" class="footer-link">+7 978 550 05 57</a><a href="tel:+79785732708" class="footer-link">+7 978 573 27 08</a><a href="mailto:dezschit360@mail.ru" class="footer-link">dezschit360@mail.ru</a></div>
   </div>
 </footer>
 
 <script>
-const b6=document.getElementById('burger'),m6=document.getElementById('mobileNav');
-if(b6)b6.addEventListener('click',()=>m6.classList.toggle('show'));
-document.querySelectorAll('[data-scroll]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(el.getAttribute('data-scroll'));if(!t)return;const top=t.getBoundingClientRect().top+window.pageYOffset-80;window.scrollTo({top,behavior:'smooth'});m6.classList.remove('show');}));
+(function(){function s(e){const t=document.querySelector(e);if(!t)return;const n=80,o=t.getBoundingClientRect().top+window.pageYOffset-n;window.scrollTo({top:o,behavior:"smooth"});const r=document.getElementById("mobileNav"),a=document.getElementById("burger");r&&a&&(r.classList.remove("is-open"),a.classList.remove("is-open"),a.setAttribute("aria-expanded","false"),r.setAttribute("aria-hidden","true"))}document.querySelectorAll("[data-scroll]").forEach(e=>{e.addEventListener("click",t=>{t.preventDefault(),s(e.getAttribute("data-scroll"))})}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",t=>{const n=e.getAttribute("href");if(n&&n.length>1){const o=document.querySelector(n);o&&(t.preventDefault(),s(n))}})})})();
+(function(){const e=document.getElementById("burger"),t=document.getElementById("mobileNav");if(!e||!t)return;e.setAttribute("aria-expanded","false"),t.setAttribute("aria-hidden","true"),e.addEventListener("click",()=>{const a=t.classList.toggle("is-open");e.classList.toggle("is-open",a),e.setAttribute("aria-expanded",a?"true":"false"),t.setAttribute("aria-hidden",a?"false":"true")}),t.querySelectorAll("a,[data-scroll]").forEach(a=>{a.addEventListener("click",()=>{e.classList.remove("is-open"),t.classList.remove("is-open"),e.setAttribute("aria-expanded","false"),t.setAttribute("aria-hidden","true")})})})();
 </script>
-<script>
-  (function () {
-    const burger = document.getElementById('burger');
-    const mobileNav = document.getElementById('mobileNav');
-    if (!burger || !mobileNav) return;
-
-    burger.addEventListener('click', () => {
-      burger.classList.toggle('is-open');
-      mobileNav.classList.toggle('is-open');
-    });
-
-    // Закрывать меню по клику на пункт
-    mobileNav.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        burger.classList.remove('is-open');
-        mobileNav.classList.remove('is-open');
-      });
-    });
-  })();
-</script>
-
 </body>
 </html>
+
 
 
 
