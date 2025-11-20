@@ -26,10 +26,11 @@
     </div>
   </div>
 
- <header>
+ <!-- ===== HEADER ===== -->
+<header>
   <div class="header-inner">
     <!-- Логотип -->
-    <a href="/" class="logo" aria-label="На главную">
+    <a href="/index.html" class="logo" aria-label="На главную">
       <img src="/media/logo-360.png" alt="Дез щит 360" class="logo-icon-img">
       <div class="logo-text">
         <div class="logo-title">Дез щит 360</div>
@@ -38,41 +39,47 @@
     </a>
 
     <!-- Десктоп-меню -->
-    <nav class="header-nav">
-      <a href="/#services">Услуги</a>
+    <nav class="header-nav" aria-label="Основное меню">
+      <a href="/index.html#services" class="is-active">Услуги</a>
       <a href="/biz/">Для бизнеса</a>
-      <a href="/#prices">Цены</a>
-      <a href="/#guarantees">Гарантии</a>
-      <a href="/#faq">FAQ</a>
-      <a href="/#about">О компании</a>
-      <a href="/#contacts">Контакты</a>
+      <a href="/index.html#prices">Цены</a>
+      <a href="/index.html#guarantees">Гарантии</a>
+      <a href="/index.html#faq">FAQ</a>
+      <a href="/index.html#about">О компании</a>
+      <a href="/index.html#contacts">Контакты</a>
     </nav>
 
-    <!-- Телефоны + кнопка (десктоп) -->
+    <!-- Телефоны + CTA -->
     <div class="header-actions">
       <a href="tel:+79785500557" class="phone">+7 978 550 05 57</a>
       <a href="tel:+79785732708" class="phone">+7 978 573 27 08</a>
-      <a href="/#contacts" class="btn btn-alert">Срочный выезд</a>
+      <a href="/index.html#contacts" class="btn btn-alert">Срочный выезд</a>
     </div>
 
-    <!-- Бургер (мобилка) -->
-    <button class="burger" id="burger" aria-label="Открыть меню">
+    <!-- Бургер -->
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 
   <!-- Мобильное меню -->
-  <div class="mobile-nav" id="mobileNav">
-    <a href="/#services">Услуги</a>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Мобильное меню" aria-hidden="true">
+    <a href="/index.html#services">Услуги</a>
     <a href="/biz/">Для бизнеса</a>
-    <a href="/#prices">Цены</a>
-    <a href="/#guarantees">Гарантии</a>
-    <a href="/#faq">FAQ</a>
-    <a href="/#about">О компании</a>
-    <a href="/#contacts">Контакты</a>
-    <a href="/#contacts" class="mobile-nav-cta">Срочный выезд</a>
-  </div>
+    <a href="/index.html#prices">Цены</a>
+    <a href="/index.html#guarantees">Гарантии</a>
+    <a href="/index.html#faq">FAQ</a>
+    <a href="/index.html#about">О компании</a>
+    <a href="/index.html#contacts">Контакты</a>
+    <div class="mobile-nav-cta">
+      <a href="tel:+79785500557" class="btn btn-primary">+7 978 550 05 57</a>
+      <a href="tel:+79785732708" class="btn btn-primary">+7 978 573 27 08</a>
+      <a class="btn btn-alert" href="/index.html#contacts">Срочный выезд</a>
+    </div>
+  </nav>
 </header>
+<!-- ===== /HEADER ===== -->
+
 <!-- FLOAT BACK: fixed "На главную" -->
 <a class="float-back" href="/index.html" aria-label="На главную">
   ← На главную
@@ -192,30 +199,93 @@
   </footer>
 
   <script>
-    (function(){
-      const b=document.getElementById('burger'), m=document.getElementById('mobileNav');
-      if(b&&m){b.addEventListener('click',()=>{m.classList.toggle('open');document.body.classList.toggle('menu-open')})}
-      document.querySelectorAll('[data-scroll]').forEach(e=>e.addEventListener('click',function(ev){ev.preventDefault();
-        const t=document.querySelector(this.getAttribute('data-scroll')); if(!t)return;
-        window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-80,behavior:'smooth'});}));
-    })();
-  </script>
-  <script>
+  // Плавный скролл по якорям
   (function () {
-    const burger = document.getElementById('burger');
+    function smoothScrollTo(targetId) {
+      const target = document.querySelector(targetId);
+      if (!target) return;
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+
+      // закрыть моб-меню, если было открыто
+      const nav = document.getElementById('mobileNav');
+      const burger = document.getElementById('burger');
+      if (nav && burger) {
+        nav.classList.remove('is-open');
+        burger.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+        nav.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    // кнопки с data-scroll
+    document.querySelectorAll('[data-scroll]').forEach(el => {
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        smoothScrollTo(el.getAttribute('data-scroll'));
+      });
+    });
+
+    // ссылки вида href="#..."
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (href && href.length > 1) {
+          const target = document.querySelector(href);
+          if (target) { e.preventDefault(); smoothScrollTo(href); }
+        }
+      });
+    });
+  })();
+
+  // Бургер и мобильное меню
+  (function () {
+    const burger    = document.getElementById('burger');
     const mobileNav = document.getElementById('mobileNav');
     if (!burger || !mobileNav) return;
 
+    burger.setAttribute('aria-expanded', 'false');
+    mobileNav.setAttribute('aria-hidden', 'true');
+
     burger.addEventListener('click', () => {
-      burger.classList.toggle('is-open');
-      mobileNav.classList.toggle('is-open');
+      const opened = mobileNav.classList.toggle('is-open');
+      burger.classList.toggle('is-open', opened);
+      burger.setAttribute('aria-expanded', opened ? 'true' : 'false');
+      mobileNav.setAttribute('aria-hidden', opened ? 'false' : 'true');
     });
 
-    // Закрывать меню по клику на пункт
-    mobileNav.querySelectorAll('a').forEach(a => {
+    // закрывать меню при выборе пункта
+    mobileNav.querySelectorAll('a,[data-scroll]').forEach(a => {
       a.addEventListener('click', () => {
         burger.classList.remove('is-open');
         mobileNav.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+      });
+    });
+  })();
+
+  // FAQ (аккордеон, один открыт)
+  (function () {
+    const items = document.querySelectorAll('.faq-item');
+    if (!items.length) return;
+
+    items.forEach(item => {
+      const q = item.querySelector('.faq-question');
+      const t = item.querySelector('.faq-toggle');
+      if (!q) return;
+
+      q.addEventListener('click', () => {
+        items.forEach(other => {
+          if (other !== item) {
+            other.classList.add('collapsed');
+            const ot = other.querySelector('.faq-toggle');
+            if (ot) ot.textContent = '+';
+          }
+        });
+        const collapsed = item.classList.toggle('collapsed');
+        if (t) t.textContent = collapsed ? '+' : '−';
       });
     });
   })();
@@ -223,6 +293,7 @@
 
 </body>
 </html>
+
 
 
 
