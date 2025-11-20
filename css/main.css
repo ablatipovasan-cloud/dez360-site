@@ -731,6 +731,23 @@ header + .hero-inner-page{
   gap: 10px;
 }
 
+/* ===== FIX: бургер не виден на мобилке ===== */
+@media (max-width: 768px) {
+  /* даём контейнеру шапки «растолкать» контент по краям */
+  .header-inner{
+    justify-content: space-between;
+  }
+
+  /* чтобы текст логотипа не распирал строку */
+  .logo{ min-width: 0; }
+  .logo-text{ overflow: hidden; text-overflow: ellipsis; }
+  .logo-sub{ display: none; }         /* убираем подзаголовок на узких */
+  .logo-title{ font-size: 20px; }     /* компактнее заголовок */
+
+  /* страхуемся: бургер утапливаем вправо */
+  .burger{ display: flex; margin-left: auto; }
+}
+
 
 
 
