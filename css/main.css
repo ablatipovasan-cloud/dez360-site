@@ -746,9 +746,7 @@ header + .hero-inner-page{
 /* ===== FIX: бургер не виден на мобилке ===== */
 @media (max-width: 768px) {
   /* даём контейнеру шапки «растолкать» контент по краям */
-  .header-inner{
-    justify-content: space-between;
-  }
+  .header-inner{ justify-content: space-between; }
 
   /* чтобы текст логотипа не распирал строку */
   .logo{ min-width: 0; }
@@ -759,33 +757,29 @@ header + .hero-inner-page{
   /* страхуемся: бургер утапливаем вправо */
   .burger{ display: flex; margin-left: auto; }
 }
-/* === Mobile nav: полноэкранная шторка с затемнением === */
+
+/* === Mobile nav backdrop (единственный блок) === */
 .nav-backdrop{
-  position: fixed; inset: 0; background: rgba(0,0,0,.35);
-  opacity: 0; pointer-events: none; transition: opacity .2s ease; z-index: 1199;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+  z-index: 1199;           /* подложка ниже меню (у меню z-index:1200) */
 }
 .nav-backdrop.is-open{ opacity: 1; pointer-events: auto; }
 
 /* Блокировка прокрутки фона при открытом меню */
 .body-lock{ overflow:hidden; touch-action:none; }
 
-
-  opacity:0; pointer-events:none; transform:translateY(-8%);
-}
-/* на всякий случай, чтобы скрытый backdrop точно скрывался */
+/* служебное */
 [hidden]{ display:none !important; }
 
+/* подсветка пункта «Для бизнеса» (по желанию) */
 .mobile-nav a[href="/biz/"]{ font-weight:600; }
-/* Подложка под мобильное меню */
-.nav-backdrop{
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.35);
-  backdrop-filter: blur(2px);
-  z-index: 1100; /* .mobile-nav у тебя z-index:1200 — меню всегда выше подложки */
-}
-/* ВРЕМЕННОЕ ДЕБАГ-ПРАВИЛО: принудительно покажем мобильное меню */
-#mobileNav.mobile-nav { display: flex !important; z-index: 2000 !important; position: absolute !important; }
+
 
 
 
