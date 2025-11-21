@@ -885,6 +885,31 @@ header + .hero-inner-page{
 .mobile-caret:hover{ filter:brightness(0.97); }
 .mobile-caret[aria-expanded="true"]{ transform:rotate(180deg); }
 
+/* ===== Mobile shortcut: "Для бизнеса" всегда под рукой ===== */
+.for-biz-shortcut{
+  display:none;                 /* на десктопе скрыта */
+  font-weight:600;
+  color:#0B3954;
+  background:#E6F5F7;
+  padding:8px 12px;
+  border-radius:999px;
+  white-space:nowrap;
+  text-decoration:none;
+  transition:filter .15s ease, transform .15s ease;
+}
+.for-biz-shortcut:active{ transform: translateY(1px); }
+
+@media (max-width:768px){
+  .for-biz-shortcut{
+    display:inline-block;       /* показать на мобилке */
+    margin-left:auto;           /* уводим вправо от логотипа */
+    margin-right:8px;           /* немного места перед бургером */
+    font-size:14px;
+  }
+  /* чтобы бургер встал после ярлычка и не прилипал к краю */
+  .burger{ margin-left:0; }
+}
+
 
 
 
