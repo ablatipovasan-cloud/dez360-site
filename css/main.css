@@ -194,6 +194,14 @@ header {
   text-align: center;
 }
 .mobile-nav a[href="/biz/"]{ font-weight:600; }
+/* Подложка под мобильное меню */
+.nav-backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(2px);
+  z-index: 1100; /* .mobile-nav у тебя z-index:1200 — меню всегда выше подложки */
+}
 
 /* состояния при открытом меню */
 .mobile-nav.is-open { display: flex; }
@@ -817,6 +825,7 @@ header + .hero-inner-page{
 }
 /* на всякий случай, чтобы скрытый backdrop точно скрывался */
 [hidden]{ display:none !important; }
+
 
 
 
