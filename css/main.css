@@ -835,6 +835,35 @@ header + .hero-inner-page{
 
 .mobile-nav{ background:#fff !important; }
 .nav-backdrop{ background:rgba(0,0,0,.35) !important; }
+/* === HERO: мобильная правка (фикс "чёрного квадрата") === */
+@media (max-width: 768px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .hero-left { order: 2; }
+  .hero-photo {
+    order: 1;
+    min-height: 260px;           /* контейнер с фиксированной минимальной высотой */
+  }
+  .hero-photo img,
+  .hero-photo video {
+    height: 100%;                /* <— ключ: заполняем контейнер по высоте */
+    width: 100%;
+    object-fit: cover;           /* без искажений */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-photo-overlay {
+    background: linear-gradient(
+      to top right,
+      rgba(11,57,84,0.55),
+      rgba(0,122,140,0.12),
+      rgba(0,0,0,0)
+    );
+  }
+}
 
 
 
