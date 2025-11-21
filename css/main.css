@@ -580,27 +580,7 @@ footer {
 }
 
 /* Мобильные: компактный хедер и блоки */
-@media (max-width: 768px) {
-  .top-bar { padding: 6px 14px; font-size: 10px; }
-  .header-inner { padding: 10px 14px; gap: 10px; }
 
-  .header-nav, .header-actions { display: none; }
-  .burger { display: flex; }
-
-  .hero-inner { grid-template-columns: 1fr; gap: 14px; }
-  .hero-left { order: 2; }
-  .hero-photo { order: 1; min-height: 220px; }
-
-  .hero-title { font-size: 20px; }
-  .hero-subtitle { font-size: 13px; }
-  .hero-note { font-size: 10px; }
-
-  .section { padding: 24px 14px; }
-  .section-title { font-size: 18px; }
-  .section-subtitle { font-size: 12px; }
-
-  .page-nav { max-width: 100%; margin: 0 14px 14px; }
-}
 
 /* ===== FLOAT BACK BUTTON ===== */
 .float-back{
@@ -779,6 +759,67 @@ header + .hero-inner-page{
 
 /* подсветка пункта «Для бизнеса» (по желанию) */
 .mobile-nav a[href="/biz/"]{ font-weight:600; }
+
+/* ===== Mobile nav: внутреннее оформление ===== */
+
+/* Верхушка меню: мини-бренд + крестик */
+.mobile-nav-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:6px 2px 10px;
+  border-bottom:1px solid #eef4f6;
+  margin-bottom:6px;
+}
+.brand-mini{ display:flex; align-items:center; gap:8px; font-weight:600; color:#0B3954; }
+.brand-mini img{ width:auto; height:28px; display:block; }
+.mobile-nav-close{
+  appearance:none; border:0; background:#F3F7F9; color:#0B3954;
+  width:32px; height:32px; border-radius:10px; font-size:18px; line-height:1;
+  cursor:pointer;
+}
+.mobile-nav-close:hover{ filter:brightness(0.97); }
+
+/* Секции и заголовки секций */
+.mobile-section{ padding:6px 0; }
+.mobile-section-title{
+  font-size:12px; color:#6b7b8d; text-transform:uppercase;
+  letter-spacing:.04em; margin:4px 2px 8px;
+}
+
+/* Ссылки-пункты (a) уже оформлены выше — оставляем. */
+
+/* Кнопки-аккордеоны */
+.mobile-link{
+  display:block; width:100%; text-align:left;
+  padding:10px 14px; font-size:15px; color:#37515f;
+  background:none; border:0; border-radius:10px; cursor:pointer;
+}
+.mobile-link:hover{ background:#f3f7f9; }
+
+/* Стрелочка у раскрывашки */
+.mobile-link .chev{ margin-left:6px; transition:transform .2s ease; }
+.mobile-link[aria-expanded="true"] .chev{ transform:rotate(180deg); }
+
+/* Подменю */
+.mobile-sub{
+  margin:6px 0 2px;
+  padding-left:10px;
+  display:flex; flex-direction:column; gap:4px;
+}
+.mobile-sublink{
+  display:block; padding:8px 12px; font-size:14px; color:#37515f; border-radius:8px;
+  border-left:2px solid #E6F5F7; margin-left:4px;
+}
+.mobile-sublink:hover{ background:#F8FBFD; }
+
+/* Телефоны в блоке «Связаться» */
+.mobile-phone{
+  display:block; padding:10px 12px; font-size:16px;
+  color:#173B57; font-weight:600; border-radius:10px;
+}
+.mobile-phone:hover{ background:#F3F7F9; }
 
 
 
