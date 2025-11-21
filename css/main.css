@@ -152,72 +152,61 @@ header {
   white-space: nowrap;
 }
 
-/* === Mobile menu (единственный блок) === */
-.burger {
+/* === mobile menu === */
+.burger{
   display:none; flex-direction:column; gap:4px; width:24px; height:18px;
   margin-left:8px; padding:0; border:0; background:none; cursor:pointer;
 }
 .burger span{ height:3px; border-radius:2px; background:#007aac; transition:.2s; }
-/* Мобильное меню по умолчанию скрыто */
-.mobile-nav{
-  display:none;
-  position:absolute;
-  left:0; right:0; top:100%;           /* прямо под шапкой */
-  background:#fff;
-  box-shadow:0 10px 20px rgba(0,0,0,.08);
-  z-index:1200;
-  padding:12px 14px 16px;
-  flex-direction:column;
-  gap:8px;
-}
-
-.mobile-nav a{
-  display:block;
-  padding:10px 14px;
-  font-size:15px;
-  color:#37515f;
-  border-radius:10px;
-}
-
-.mobile-nav a:hover{
-  background:#f3f7f9;
-}
-
-.mobile-nav-cta{
-  margin-top:8px;
-  padding:12px 16px;
-  border-radius:999px;
-  background:#ff6b3d;
-  color:#fff;
-  text-align:center;
-  font-weight:600;
-}
-
-/* когда открыто бургером */
-.mobile-nav.is-open{ display:flex; }
 .burger.is-open span:nth-child(2){ opacity:0; }
 .burger.is-open span:nth-child(1){ transform:translateY(6px) rotate(45deg); }
 .burger.is-open span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
 
-/* на мобилках прячем десктоп-элементы, показываем бургер */
+/* панель меню: фиксированная, поверх всей страницы */
+.mobile-nav{
+  position:fixed;
+  top:0; right:-100%; bottom:0; left:auto;            /* уезжает за экран */
+  width:86vw; max-width:420px;
+  background:#fff;
+  padding:16px;
+  overflow:auto;
+  z-index:1201;                                       /* выше бэкдропа */
+  box-shadow:-10px 0 28px rgba(0,0,0,.18);
+  display:block;                                      /* не прячем display */
+  transition:right .25s ease;
+}
+.mobile-nav.is-open{ right:0; }
+
+/* элементы внутри меню (можно оставить твои классы) */
+.mobile-nav a{ display:block; padding:10px 14px; font-size:15px; color:#37515f; border-radius:10px; }
+.mobile-nav a:hover{ background:#f3f7f9; }
+.mobile-nav-cta{ margin-top:8px; padding:12px 16px; border-radius:999px; background:#ff6b3d; color:#fff; text-align:center; font-weight:600; }
+
+/* полупрозрачная подложка по всей странице */
+.nav-backdrop{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.35);
+  backdrop-filter:blur(2px);
+  opacity:0; pointer-events:none;
+  transition:opacity .2s ease;
+  z-index:1200;                                       /* ниже панели */
+}
+.nav-backdrop.is-open{ opacity:1; pointer-events:auto; }
+
+/* блокируем прокрутку фона, когда меню открыто */
+.body-lock{ overflow:hidden; touch-action:none; }
+
+/* на мобилках показываем бургер, прячем десктоп-навигацию/действия */
 @media (max-width:768px){
   .header-nav, .header-actions{ display:none; }
-  .burger{ display:flex; }
-}
-.mobile-nav .mobile-group{
-  margin-top:4px;
-  font-size:12px;
-  color:#6b7b8d;
-  padding:0 2px;
-  text-transform:uppercase;
-  letter-spacing:.04em;
+  .burger{ display:flex; margin-left:auto; }
 }
 
-.mobile-nav hr{
-  border:0;
-  border-top:1px solid #eef4f6;
-  margin:6px 0;
+/* на десктопе саму мобильную панель можно скрыть на всякий */
+@media (min-width:769px){
+  .mobile-nav{ display:none; }
 }
+
 
 /* ---- HERO ---- */
 .hero {
@@ -820,6 +809,7 @@ header + .hero-inner-page{
   color:#173B57; font-weight:600; border-radius:10px;
 }
 .mobile-phone:hover{ background:#F3F7F9; }
+
 
 
 
