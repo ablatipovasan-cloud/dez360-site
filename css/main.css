@@ -827,6 +827,9 @@ header + .hero-inner-page{
   backdrop-filter: blur(2px);
   z-index: 1100; /* .mobile-nav у тебя z-index:1200 — меню всегда выше подложки */
 }
+/* ВРЕМЕННОЕ ДЕБАГ-ПРАВИЛО: принудительно покажем мобильное меню */
+#mobileNav.mobile-nav { display: flex !important; z-index: 2000 !important; position: absolute !important; }
+
 
 
 
