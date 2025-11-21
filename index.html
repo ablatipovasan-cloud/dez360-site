@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Центр дезинфектологии «Дез щит 360» — профессиональная дезинфекция, дезинсекция, дератизация, чистка и дезинфекция вентиляции, акарицидная обработка, удаление запахов и плесени в Симферополе, Севастополе и по всему Крыму. Лицензия, гарантии, быстрый выезд, официальные документы." />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/main.css?v=9">
+  <link rel="stylesheet" href="/css/main.css?v=10">
 </head>
 <body>
 
@@ -57,50 +57,54 @@
   </div>
 
   <!-- Мобильное меню -->
-  <!-- Мобильное меню -->
-<div class="nav-backdrop" id="navBackdrop" hidden></div>
-<nav class="mobile-nav" id="mobileNav" aria-label="Мобильное меню" aria-hidden="true">
-  <div class="mobile-nav-head">
-    <div class="brand-mini">
-      <img src="/media/logo-360.png" alt="" />
-      <span>Дез щит 360</span>
+    <!-- Мобильное меню -->
+  <nav class="mobile-nav" id="mobileNav" aria-label="Мобильное меню" aria-hidden="true">
+    <div class="mobile-nav-head">
+      <div class="brand-mini">
+        <img src="/media/logo-360.png" alt="">
+        <span>Дез щит 360</span>
+      </div>
+      <button class="mobile-nav-close" id="navClose" aria-label="Закрыть меню">✕</button>
     </div>
-    <button class="mobile-nav-close" id="navClose" aria-label="Закрыть меню">✕</button>
-  </div>
 
-  <div class="mobile-section">
-    <div class="mobile-section-title">Разделы</div>
-    <a href="/index.html#services" class="mobile-link">Услуги</a>
-    <button class="mobile-link mobile-link-expand" id="bizToggle" aria-expanded="false">
-      Для бизнеса
-      <span class="chev">▾</span>
-    </button>
-    <div class="mobile-sub" id="bizSub" hidden>
-      <a href="/biz/" class="mobile-sublink">Все решения</a>
-      <a href="/biz/pest-kontrol/" class="mobile-sublink">Пест-контроль</a>
-      <a href="/biz/deratizaciya/" class="mobile-sublink">Дератизация</a>
-      <a href="/biz/dezinsekciya/" class="mobile-sublink">Дезинсекция</a>
-      <a href="/biz/dezinfekciya/" class="mobile-sublink">Дезинфекция</a>
-      <a href="/biz/dokumenty/" class="mobile-sublink">Документы</a>
-      <a href="/biz/komary-i-muhi/" class="mobile-sublink">Комары и мухи</a>
-      <a href="/biz/ventilyaciya/" class="mobile-sublink">Вентиляция</a>
+    <div class="mobile-section">
+      <div class="mobile-section-title">Разделы</div>
+
+      <a href="/index.html#services" class="mobile-link">Услуги</a>
+
+      <button class="mobile-link mobile-link-expand" id="bizToggle" aria-expanded="false">
+        Для бизнеса <span class="chev">▾</span>
+      </button>
+      <div class="mobile-sub" id="bizSub" hidden>
+        <a href="/biz/" class="mobile-sublink">Все решения</a>
+        <a href="/biz/pest-kontrol/" class="mobile-sublink">Пест-контроль</a>
+        <a href="/biz/deratizaciya/" class="mobile-sublink">Дератизация</a>
+        <a href="/biz/dezinsekciya/" class="mobile-sublink">Дезинсекция</a>
+        <a href="/biz/dezinfekciya/" class="mobile-sublink">Дезинфекция</a>
+        <a href="/biz/dokumenty/" class="mobile-sublink">Документы</a>
+        <a href="/biz/komary-i-muhi/" class="mobile-sublink">Комары и мухи</a>
+        <a href="/biz/ventilyaciya/" class="mobile-sublink">Вентиляция</a>
+      </div>
+
+      <a href="/index.html#prices" class="mobile-link">Цены</a>
+      <a href="/index.html#guarantees" class="mobile-link">Гарантии</a>
+      <a href="/index.html#faq" class="mobile-link">FAQ</a>
+      <a href="/index.html#about" class="mobile-link">О компании</a>
+      <a href="/index.html#contacts" class="mobile-link">Контакты</a>
     </div>
-    <a href="/index.html#prices" class="mobile-link">Цены</a>
-    <a href="/index.html#guarantees" class="mobile-link">Гарантии</a>
-    <a href="/index.html#faq" class="mobile-link">FAQ</a>
-    <a href="/index.html#about" class="mobile-link">О компании</a>
-    <a href="/index.html#contacts" class="mobile-link">Контакты</a>
-  </div>
 
-  <div class="mobile-section">
-    <div class="mobile-section-title">Связаться</div>
-    <a href="tel:+79785500557" class="mobile-phone">+7 978 550 05 57</a>
-    <a href="tel:+79785732708" class="mobile-phone">+7 978 573 27 08</a>
-    <a href="/index.html#contacts" class="mobile-nav-cta">Срочный выезд</a>
-  </div>
-</nav>
-<div class="nav-backdrop" id="navBackdrop" hidden></div>
+    <div class="mobile-section">
+      <div class="mobile-section-title">Связаться</div>
+      <a href="tel:+79785500557" class="mobile-phone">+7 978 550 05 57</a>
+      <a href="tel:+79785732708" class="mobile-phone">+7 978 573 27 08</a>
+      <a href="/index.html#contacts" class="mobile-nav-cta">Срочный выезд</a>
+    </div>
+  </nav>
+
+  <!-- Подложка (ОДНА, сразу после nav) -->
+  <div class="nav-backdrop" id="navBackdrop" hidden></div>
 </header>
+
 <!-- ===== /HEADER ===== -->
 
 <!-- ===== HERO ===== -->
@@ -651,9 +655,13 @@
 </footer>
 <script>
 (function () {
-  const burger     = document.getElementById('burger');
-  const mobileNav  = document.getElementById('mobileNav');
-  const backdrop   = document.getElementById('navBackdrop');
+  const burger    = document.getElementById('burger');
+  const mobileNav = document.getElementById('mobileNav');
+  const backdrop  = document.getElementById('navBackdrop');
+  const closeBtn  = document.getElementById('navClose');
+  const bizToggle = document.getElementById('bizToggle');
+  const bizSub    = document.getElementById('bizSub');
+
   if (!burger || !mobileNav || !backdrop) return;
 
   function closeMenu(){
@@ -677,12 +685,26 @@
   // закрыть по клику на пункт меню
   mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
+  // закрыть по крестику
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
   // закрыть по клику на подложку
   backdrop.addEventListener('click', closeMenu);
+
+  // раскрыть/свернуть подпункты «Для бизнеса»
+  if (bizToggle && bizSub) {
+    bizToggle.addEventListener('click', () => {
+      const open = bizSub.hasAttribute('hidden');
+      bizSub.toggleAttribute('hidden');
+      bizToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
 })();
 </script>
+
 </body>
 </html>
+
 
 
 
