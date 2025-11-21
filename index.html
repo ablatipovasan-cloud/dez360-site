@@ -99,7 +99,7 @@
     <a href="/index.html#contacts" class="mobile-nav-cta">Срочный выезд</a>
   </div>
 </nav>
-
+<div class="nav-backdrop" id="navBackdrop" hidden></div>
 </header>
 <!-- ===== /HEADER ===== -->
 
@@ -654,52 +654,36 @@
   const burger     = document.getElementById('burger');
   const mobileNav  = document.getElementById('mobileNav');
   const backdrop   = document.getElementById('navBackdrop');
-  const closeBtn   = document.getElementById('navClose');
-  const bizToggle  = document.getElementById('bizToggle');
-  const bizSub     = document.getElementById('bizSub');
   if (!burger || !mobileNav || !backdrop) return;
 
-  function openNav(){
-    burger.classList.add('is-open');
-    mobileNav.classList.add('is-open');
-    backdrop.classList.add('is-open');
-    mobileNav.setAttribute('aria-hidden','false');
-    document.body.classList.add('body-lock');
-  }
-  function closeNav(){
+  function closeMenu(){
     burger.classList.remove('is-open');
     mobileNav.classList.remove('is-open');
-    backdrop.classList.remove('is-open');
     mobileNav.setAttribute('aria-hidden','true');
+    backdrop.classList.remove('is-open');
+    backdrop.hidden = true;
     document.body.classList.remove('body-lock');
   }
 
   burger.addEventListener('click', () => {
-    mobileNav.classList.contains('is-open') ? closeNav() : openNav();
-  });
-  backdrop.addEventListener('click', closeNav);
-  if (closeBtn) closeBtn.addEventListener('click', closeNav);
-
-  // закрывать по клику на пункт/якорь
-  mobileNav.querySelectorAll('a,[data-scroll]').forEach(el=>{
-    el.addEventListener('click', closeNav);
+    const opened = mobileNav.classList.toggle('is-open');
+    burger.classList.toggle('is-open', opened);
+    mobileNav.setAttribute('aria-hidden', opened ? 'false' : 'true');
+    backdrop.hidden = !opened;
+    backdrop.classList.toggle('is-open', opened);
+    document.body.classList.toggle('body-lock', opened);
   });
 
-  // раскрывающийся «Для бизнеса»
-  if (bizToggle && bizSub){
-    bizToggle.addEventListener('click', () => {
-      const expanded = bizToggle.getAttribute('aria-expanded') === 'true';
-      bizToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      bizSub.hidden = expanded;
-      bizToggle.querySelector('.chev').textContent = expanded ? '▾' : '▴';
-    });
-  }
+  // закрыть по клику на пункт меню
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // закрыть по клику на подложку
+  backdrop.addEventListener('click', closeMenu);
 })();
 </script>
-
-
 </body>
 </html>
+
 
 
 
