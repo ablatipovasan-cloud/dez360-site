@@ -865,6 +865,26 @@ header + .hero-inner-page{
   }
 }
 
+/* Мобильное меню: строка со ссылкой и отдельной кнопкой-стрелкой */
+.mobile-link-split{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.mobile-caret{
+  appearance:none;
+  border:0;
+  background:#F3F7F9;
+  color:#37515f;
+  width:40px; height:40px;
+  border-radius:10px;
+  font-size:18px; line-height:1;
+  cursor:pointer;
+  flex:0 0 40px;
+}
+.mobile-caret:hover{ filter:brightness(0.97); }
+.mobile-caret[aria-expanded="true"]{ transform:rotate(180deg); }
+
 
 
 
