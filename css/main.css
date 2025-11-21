@@ -809,6 +809,14 @@ header + .hero-inner-page{
 /* Блокировка прокрутки фона при открытом меню */
 .body-lock{ overflow:hidden; touch-action:none; }
 
+/* Mobile nav: финальные перекрытия */
+.mobile-nav{ display:flex !important; }         /* базово видимая как flex-контейнер */
+.mobile-nav:not(.is-open){
+  opacity:0; pointer-events:none; transform:translateY(-8%);
+}
+/* на всякий случай, чтобы скрытый backdrop точно скрывался */
+[hidden]{ display:none !important; }
+
 
 
 
