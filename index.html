@@ -769,8 +769,8 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduceMotion) return;
 
-  const MAX_TILT = 12;          // градусы наклона
-  const EASING   = 0.12;       // «догоняющее» сглаживание
+  const MAX_TILT = 14;          // градусы наклона
+  const EASING   = 0.14;       // «догоняющее» сглаживание
 
   document.querySelectorAll('.service-card').forEach(card => {
     let raf = null;
@@ -825,6 +825,7 @@
 
 </body>
 </html>
+
 
 
 
