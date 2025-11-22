@@ -1304,6 +1304,149 @@ header + .hero-inner-page{
   .service-card:focus-within{ transform: translateY(-2px) scale(1.01); }
 }
 
+/* ===========================================
+   ЕДИНАЯ ОБЪЁМНАЯ КАРТОЧКА ДЛЯ ВСЕХ БЛОКОВ
+   (клиенты, гарантии, кейсы, FAQ, about, контакты,
+    таблица цен и пр.)
+   =========================================== */
+
+/* 1) Базовый стиль «карточки» — применим сразу к нужным селекторам */
+.client-card,
+.guarantee-card,
+.case-card,
+.faq-item,
+.about-card,
+.contacts-form,
+.map-placeholder,
+#prices .price-table {
+  position: relative;
+  background: #fff;
+  border: 1px solid rgba(11,57,84,.06);
+  border-radius: var(--radius);
+  box-shadow:
+    0 2px 0 rgba(255,255,255,.9) inset,
+    0 8px 22px rgba(0,0,0,.05),
+    0 24px 40px rgba(0,0,0,.04);
+  transform: translateZ(0);
+  transform-origin: center center;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease, filter .22s ease;
+  will-change: transform;
+}
+
+/* таблица цен изначально «плоская», делаем мягче углы и убираем артефакты */
+#prices .price-table {
+  overflow: hidden;               /* чтобы радиус работал и для шапки */
+  border-radius: var(--radius);
+}
+
+/* 2) Тонкий градиентный «ореол» по периметру */
+.client-card::before,
+.guarantee-card::before,
+.case-card::before,
+.faq-item::before,
+.about-card::before,
+.contacts-form::before,
+.map-placeholder::before,
+#prices .price-table::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: calc(var(--radius) + 2px);
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,122,140,.10), rgba(0,122,140,0)) border-box;
+  -webkit-mask:
+     linear-gradient(#fff 0 0) padding-box,
+     linear-gradient(#fff 0 0) border-box;
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  border: 2px solid transparent;
+  opacity: .85;
+}
+
+/* 3) Наведение: лёгкое увеличение + усиленная тень */
+@media (hover:hover){
+  .client-card:hover,
+  .guarantee-card:hover,
+  .case-card:hover,
+  .faq-item:hover,
+  .about-card:hover,
+  .contacts-form:hover,
+  .map-placeholder:hover,
+  #prices .price-table:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+      0 14px 28px rgba(0,0,0,.10),
+      0 36px 64px rgba(0,0,0,.06);
+    border-color: rgba(11,57,84,.16);
+    background:#fff;
+  }
+}
+
+/* 4) Клавиатура/тач — когда внутри блока попал фокус */
+.client-card:focus-within,
+.guarantee-card:focus-within,
+.case-card:focus-within,
+.faq-item:focus-within,
+.about-card:focus-within,
+.contacts-form:focus-within,
+.map-placeholder:focus-within,
+#prices .price-table:focus-within {
+  transform: translateY(-3px) scale(1.015);
+  box-shadow:
+    0 12px 24px rgba(0,0,0,.10),
+    0 30px 52px rgba(0,0,0,.06);
+  border-color: rgba(11,57,84,.18);
+  outline: none;
+}
+
+/* 5) Небольшие «приятности» внутри блоков при hover */
+@media (hover:hover){
+  .client-card:hover .client-title,
+  .guarantee-card:hover .guarantee-title,
+  .case-card:hover .case-title {
+    color: var(--primary);
+    filter: saturate(1.05);
+  }
+}
+
+/* 6) Мобилки — чуть мягче, чтобы не «дёргалось» при касании */
+@media (max-width: 560px){
+  .client-card:hover,
+  .guarantee-card:hover,
+  .case-card:hover,
+  .faq-item:hover,
+  .about-card:hover,
+  .contacts-form:hover,
+  .map-placeholder:hover,
+  #prices .price-table:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+  .client-card:focus-within,
+  .guarantee-card:focus-within,
+  .case-card:focus-within,
+  .faq-item:focus-within,
+  .about-card:focus-within,
+  .contacts-form:focus-within,
+  .map-placeholder:focus-within,
+  #prices .price-table:focus-within {
+    transform: translateY(-2px) scale(1.01);
+  }
+}
+
+/* 7) Уважаем системную настройку «уменьшить анимацию» */
+@media (prefers-reduced-motion: reduce){
+  .client-card,
+  .guarantee-card,
+  .case-card,
+  .faq-item,
+  .about-card,
+  .contacts-form,
+  .map-placeholder,
+  #prices .price-table {
+    transition: none !important;
+  }
+}
+
 
 
 
