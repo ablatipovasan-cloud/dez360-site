@@ -910,6 +910,76 @@ header + .hero-inner-page{
   .burger{ margin-left:0; }
 }
 
+/* ===== Объёмные карточки услуг + ховер-эффект ===== */
+.services-grid{ gap: 18px; }
+
+.service-card{
+  position: relative;
+  border-radius: 16px;                     /* чуть круглее */
+  background: linear-gradient(180deg,#ffffff 0%, #f9fbfc 100%); /* лёгкий градиент */
+  border: 1px solid rgba(11,57,84,.06);    /* тонкий контур */
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.8) inset,    /* внутренний блик */
+    0 8px 20px rgba(0,0,0,.06),
+    0 20px 40px rgba(0,0,0,.05);           /* «глубина» */
+  transform: translateZ(0);                /* сгладить рендер */
+  transform-origin: center;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  will-change: transform, box-shadow;
+}
+
+/* небольшая верхняя «кромка» для объёма */
+.service-card::before{
+  content:"";
+  position:absolute; inset:0;
+  border-radius:16px;
+  pointer-events:none;
+  box-shadow: 0 2px 0 rgba(255,255,255,.9) inset;
+}
+
+/* hover/focus — увеличиваем и усиливаем тень */
+@media (hover:hover){
+  .service-card:hover{
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.9) inset,
+      0 10px 24px rgba(0,0,0,.09),
+      0 28px 56px rgba(0,0,0,.08);
+    border-color: rgba(11,57,84,.12);
+  }
+}
+
+/* доступность: фокус с клавиатуры */
+.service-card:focus-within{
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(0,122,140,.16),         /* подсветка фокуса */
+    0 8px 20px rgba(0,0,0,.06),
+    0 20px 40px rgba(0,0,0,.05);
+}
+
+/* на тач-устройствах — эффект по тапу */
+@media (hover:none){
+  .service-card:active{
+    transform: translateY(-2px) scale(1.01);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.9) inset,
+      0 10px 24px rgba(0,0,0,.09),
+      0 28px 56px rgba(0,0,0,.08);
+  }
+}
+
+/* немного воздуха внутри карточки */
+.service-title{ font-size: 15px; }
+.service-card{ padding: 14px 12px 12px; }
+
+/* уважение системной настройке «меньше анимации» */
+@media (prefers-reduced-motion: reduce){
+  .service-card{ transition: none; }
+  .service-card:hover,
+  .service-card:active{ transform: none; }
+}
+
 
 
 
