@@ -1091,6 +1091,61 @@ header + .hero-inner-page{
     transition: none !important;
   }
 }
+/* ===== Карточный блок секции ===== */
+.section-card{
+  position: relative;
+  padding: 18px 16px;
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid rgba(11,57,84,.08);
+  box-shadow:
+    0 2px 0 rgba(255,255,255,.8) inset,
+    0 10px 24px rgba(0,0,0,.06),
+    0 28px 56px rgba(0,0,0,.05);
+}
+
+/* компактнее заголовки внутри карточки */
+.section-card .section-title{ margin-bottom: 8px; }
+.section-card .section-subtitle{ margin-bottom: 14px; }
+
+/* Акцентная обводка и мягкое свечение (для важного блока) */
+.section-card--accent::before{
+  content:"";
+  position:absolute; inset: -1px;
+  border-radius: 20px;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(0,122,140,.16), rgba(0,122,140,0)) border-box;
+  -webkit-mask:
+     linear-gradient(#fff 0 0) padding-box, 
+     linear-gradient(#fff 0 0) border-box;
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  border: 2px solid transparent; /* “видимый” градиентный кант */
+}
+.section-card--accent::after{
+  content:"";
+  position:absolute; inset:-12px;
+  border-radius: 26px;
+  box-shadow: 0 30px 60px rgba(0,122,140,.10);
+  pointer-events:none;
+}
+
+/* на больших — чуть больше “воздуха” */
+@media (min-width: 768px){
+  .section-card{ padding: 22px 22px; }
+}
+@media (min-width: 1024px){
+  .section-card{ padding: 26px 28px; }
+}
+
+/* уважение prefers-reduced-motion — тени/градиенты статичны */
+@media (prefers-reduced-motion: reduce){
+  .section-card, .section-card--accent::before, .section-card--accent::after{
+    transition: none !important;
+  }
+}
+
 
 
 
