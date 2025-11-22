@@ -704,65 +704,7 @@
     });
   }
 })();
-
-  /* ===== 3D tilt + spotlight для .service-card ===== */
-.services-grid{ perspective: 1000px; } /* сцена */
-
-.service-card{
-  transform-style: preserve-3d;
-  will-change: transform, box-shadow;
-  transition: transform .18s ease, box-shadow .18s ease;
-  /* то, что мы добавляли раньше: объём + тени */
-  border-radius: 16px;
-  background: linear-gradient(180deg,#ffffff 0%, #f9fbfc 100%);
-  border: 1px solid rgba(11,57,84,.06);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.8) inset,
-    0 8px 20px rgba(0,0,0,.06),
-    0 20px 40px rgba(0,0,0,.05);
-}
-
-/* «подсветка» курсором — управляется переменными из JS */
-.service-card::after{
-  content:"";
-  position:absolute; inset:-2px;
-  border-radius: 18px;
-  pointer-events:none;
-  background:
-    radial-gradient(220px 160px at var(--spot-x, 50%) var(--spot-y, 0%),
-      rgba(0,122,140,.10), rgba(0,122,140,0) 60%);
-  opacity: var(--spot-o, 0);
-  transition: opacity .18s ease;
-}
-
-/* активное состояние: чуть сильнее тени */
-@media (hover:hover){
-  .service-card.is-tilting{
-    box-shadow:
-      0 1px 0 rgba(255,255,255,.9) inset,
-      0 12px 28px rgba(0,0,0,.10),
-      0 32px 64px rgba(0,0,0,.08);
-  }
-}
-
-/* тач — лёгкий «прыжок» */
-@media (hover:none){
-  .service-card:active{ transform: translateY(-2px) scale(1.01); }
-}
-
-/* доступность */
-.service-card:focus-within{
-  outline: none;
-  box-shadow:
-    0 0 0 3px rgba(0,122,140,.16),
-    0 10px 24px rgba(0,0,0,.08);
-}
-
-/* уважаем prefers-reduced-motion */
-@media (prefers-reduced-motion: reduce){
-  .service-card,
-  .service-card::after{ transition: none !important; }
-}
+  
 <script>
 (function(){
   // отключаем на системах с "reduce motion"
@@ -825,6 +767,7 @@
 
 </body>
 </html>
+
 
 
 
