@@ -1145,6 +1145,164 @@ header + .hero-inner-page{
     transition: none !important;
   }
 }
+/* === Карточный вид для всех секций ===
+   Работает для .section > .container И/ИЛИ для явной .section-card */
+.section > .container,
+.section-card{
+  position: relative;
+  background:#fff;
+  border-radius: 18px;
+  border:1px solid rgba(11,57,84,.08);
+  box-shadow:
+    0 2px 0 rgba(255,255,255,.8) inset,
+    0 10px 24px rgba(0,0,0,.06),
+    0 28px 56px rgba(0,0,0,.05);
+  padding: 18px 16px;
+
+  /* подготовка к анимации */
+  transform: translateZ(0);              /* аптайм и без сдвига лэйаута */
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  will-change: transform;
+}
+
+/* Акцентная «аура» — по умолчанию мягкая; для .section-card--accent — ярче */
+.section > .container::before,
+.section-card::before{
+  content:"";
+  position:absolute; inset:-1px;
+  border-radius:20px; pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(0,122,140,.12), rgba(0,122,140,0)) border-box;
+  -webkit-mask:
+     linear-gradient(#fff 0 0) padding-box,
+     linear-gradient(#fff 0 0) border-box;
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  border:2px solid transparent;
+}
+.section-card--accent::before{
+  background:
+    linear-gradient(180deg, rgba(0,122,140,.2), rgba(0,122,140,0)) border-box;
+}
+
+/* Ховер/фокус: лёгкое увеличение и усиление тени.
+   Включаем только там, где есть hover (мышь), и на клавиатуре по focus-within. */
+@media (hover:hover){
+  .section > .container:hover,
+  .section-card:hover{
+    transform: translateY(-2px) scale(1.01);
+    box-shadow:
+      0 12px 28px rgba(0,0,0,.10),
+      0 36px 64px rgba(0,0,0,.06);
+    border-color: rgba(11,57,84,.16);
+  }
+}
+.section > .container:focus-within,
+.section-card:focus-within{
+  transform: translateY(-2px) scale(1.01);
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.10),
+    0 36px 64px rgba(0,0,0,.06);
+  border-color: rgba(11,57,84,.18);
+  outline: none;
+}
+
+/* На больших экранах — чуть больше «воздуха» внутри карточек */
+@media (min-width:768px){
+  .section > .container, .section-card{ padding:22px 22px; }
+}
+@media (min-width:1024px){
+  .section > .container, .section-card{ padding:26px 28px; }
+}
+
+/* Если какой-то раздел не нужно превращать в карточку, повесь класс .section--flat */
+.section.section--flat > .container{
+  background: transparent; border:0; box-shadow:none; padding:0;
+}
+.section.section--flat > .container::before{ content:none; }
+
+/* Уважение prefers-reduced-motion: отключаем анимации */
+@media (prefers-reduced-motion: reduce){
+  .section > .container,
+  .section-card{ transition: none !important; }
+}
+
+/* === УСИЛЯЕМ КАРТОЧКИ УСЛУГ === */
+.services-grid { gap: 18px; } /* чуть больше воздуха между карточками */
+
+.service-card{
+  position: relative;
+  background:#fff;
+  border:1px solid rgba(11,57,84,.06);
+  box-shadow:
+    0 2px 0 rgba(255,255,255,.9) inset,
+    0 8px 22px rgba(0,0,0,.05),
+    0 24px 40px rgba(0,0,0,.04);
+  border-radius: var(--radius);
+  padding: 14px 12px 12px;
+
+  /* плавные анимации и идеальная отрисовка */
+  transform: translateZ(0);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
+  will-change: transform;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* тонкий «ореол» по периметру для глубины */
+.service-card::before{
+  content:"";
+  position:absolute; inset:-1px;
+  border-radius: calc(var(--radius) + 2px);
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(0,122,140,.10), rgba(0,122,140,0)) border-box;
+  -webkit-mask:
+     linear-gradient(#fff 0 0) padding-box,
+     linear-gradient(#fff 0 0) border-box;
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  border:2px solid transparent;
+  opacity:.85;
+}
+
+/* эффект наведения/фокуса: лёгкое увеличение + усиленная тень */
+@media (hover:hover){
+  .service-card:hover{
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+      0 14px 28px rgba(0,0,0,.10),
+      0 36px 64px rgba(0,0,0,.06);
+    border-color: rgba(11,57,84,.16);
+    background:#fff;
+  }
+}
+
+/* клавиатура/тач: когда внутри карточки есть фокус (ссылки/кнопки) */
+.service-card:focus-within{
+  transform: translateY(-4px) scale(1.02);
+  box-shadow:
+    0 14px 28px rgba(0,0,0,.10),
+    0 36px 64px rgba(0,0,0,.06);
+  border-color: rgba(11,57,84,.18);
+  outline: none;
+}
+
+/* компактные улучшения внутри карточек на hover */
+@media (hover:hover){
+  .service-card:hover .service-title{ color: var(--primary); }
+  .service-card:hover .service-order-btn{ filter: saturate(1.05) brightness(1.03); }
+}
+
+/* уважаем prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce){
+  .service-card{ transition: none !important; }
+}
+
+/* маленькие экраны — помягче поднятие, чтобы не «дёргалось» */
+@media (max-width:560px){
+  .service-card{ padding: 12px 10px; }
+  .service-card:focus-within{ transform: translateY(-2px) scale(1.01); }
+}
 
 
 
