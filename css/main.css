@@ -237,6 +237,7 @@ header {
   padding: 26px 16px 26px;
 }
 
+/* сетка внутри hero по умолчанию (десктоп) */
 .hero-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -246,7 +247,9 @@ header {
   align-items: stretch;
 }
 
-.hero-inner-page { background: var(--bg-soft); }
+.hero-inner-page {
+  background: var(--bg-soft);
+}
 
 .hero-left {
   display: flex;
@@ -271,22 +274,44 @@ header {
 }
 
 .hero-bullets {
-  display: flex; flex-wrap: wrap; gap: 8px 10px;
-  font-size: 12px; margin-bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  font-size: 12px;
+  margin-bottom: 12px;
 }
 
 .hero-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 4px 10px; background: #ffffff; border-radius: 999px;
-  font-size: 11px; color: var(--primary-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: #ffffff;
+  border-radius: 999px;
+  font-size: 11px;
+  color: var(--primary-dark);
   box-shadow: 0 3px 8px rgba(0,0,0,0.04);
 }
 
-.hero-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 4px; }
-.hero-actions .btn-primary { font-size: 13px; padding: 8px 16px; }
-.hero-note { font-size: 11px; color: var(--text-secondary); }
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 4px;
+}
 
-/* Hero photo / баннер для внутренних страниц */
+.hero-actions .btn-primary {
+  font-size: 13px;
+  padding: 8px 16px;
+}
+
+.hero-note {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+/* hero-photo для внутренних страниц */
 .hero-photo {
   position: relative;
   border-radius: var(--radius);
@@ -322,15 +347,23 @@ header {
 
 .hero-photo-caption {
   position: absolute;
-  left: 14px; bottom: 14px; right: 14px;
-  color: #ffffff; font-size: 10px; line-height: 1.4; z-index: 2;
+  left: 14px;
+  bottom: 14px;
+  right: 14px;
+  color: #ffffff;
+  font-size: 10px;
+  line-height: 1.4;
+  z-index: 2;
 }
 
 .hero-photo-caption strong {
-  display: block; font-size: 12px; font-weight: 600; margin-bottom: 2px;
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 2px;
 }
 
-/* Чуть ровнее на широких — общая высота */
+/* чуть ровнее внутренние баннеры на широких */
 @media (min-width: 992px) {
   .hero-photo img,
   .hero-photo video {
@@ -343,49 +376,113 @@ header {
   --hero-img: url('/media/banner-dezshield360.jpg');
 }
 
-/* ===== HERO SPLIT: картинка справа (десктоп) и сверху (мобилка) с рассеиванием ===== */
+/* ===== HERO (главная): фото + рассеивание ===== */
 
-/* базово (мобилка first) */
-.hero--split{
+/* базовый вариант (мобилка first) */
+.hero.hero--split{
   position: relative;
   overflow: hidden;
-  background: var(--bg-soft);
-}
-
-/* верхняя полоса с фото + плавное затухание в фон */
-.hero--split::before{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  top:0;
-  height:260px;
   background:
+    /* плавное выбеливание к низу */
     linear-gradient(
       to bottom,
-      rgba(230,245,247,0) 60%,
+      rgba(230,245,247,0) 0%,
+      rgba(230,245,247,0.80) 55%,
       #E6F5F7 100%
     ),
     var(--hero-img);
-  background-repeat:no-repeat;
-  background-size:cover;
-  background-position:center top;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
 }
 
-/* смещаем контент ниже изображения */
-.hero--split .hero-inner{
-  position:relative;
-  z-index:1;
-  padding-top:280px;
+/* МОБИЛЬНАЯ ВЕРСИЯ hero--split */
+@media (max-width: 768px){
+  /* одна колонка */
+  .hero.hero--split .hero-inner{
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px 16px 24px;
+  }
+
+  /* под текстом лёгкая “карточка”, чтобы не терялся на фото */
+  .hero.hero--split .hero-left{
+    background: rgba(246,250,251,0.94);
+    border-radius: 16px;
+    padding: 14px 12px;
+  }
+
+  /* правый столбец на мобиле не нужен */
+  .hero.hero--split .hero-right-spacer{
+    display: none;
+  }
 }
 
-/* ---- ТОЛЬКО страницы бизнеса (body.biz …) ---- */
-body.biz .hero-photo figcaption { display: none; }
+/* ДЕСКТОП hero--split: фото справа, слева рассеивание в фон */
+@media (min-width: 992px){
+  .hero.hero--split{
+    background:
+      /* плавный переход слева от однотонного к прозрачному */
+      linear-gradient(
+        to right,
+        #E6F5F7 0%,
+        #E6F5F7 42%,
+        rgba(230,245,247,0.94) 58%,
+        rgba(230,245,247,0) 78%,
+        rgba(230,245,247,0) 100%
+      ),
+      /* лёгкое выбеливание снизу вверх */
+      linear-gradient(
+        to bottom,
+        rgba(230,245,247,0) 0%,
+        rgba(230,245,247,0.90) 55%,
+        #E6F5F7 100%
+      ),
+      var(--hero-img);
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: auto 118%, cover;
+  }
 
-@media (max-width: 480px) {
-  body.biz .hero-photo { aspect-ratio: 4 / 3; }
+  .hero.hero--split .hero-inner{
+    padding: 26px 16px 26px;
+  }
 }
 
+/* ОБЩИЕ мобильные правки hero (для всех, где есть .hero-photo) */
+@media (max-width: 768px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* для hero с отдельным .hero-photo (внутренние страницы) */
+  .hero:not(.hero--split) .hero-left {
+    order: 2;
+  }
+  .hero:not(.hero--split) .hero-photo {
+    order: 1;
+    min-height: 260px;
+  }
+
+  .hero:not(.hero--split) .hero-photo img,
+  .hero:not(.hero--split) .hero-photo video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .hero-photo-overlay {
+    background: linear-gradient(
+      to top right,
+      rgba(11,57,84,0.55),
+      rgba(0,122,140,0.12),
+      rgba(0,0,0,0)
+    );
+  }
+}
+
+/* ---- SERVICES ---- */
 
 /* ---- SERVICES ---- */
 .services-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
@@ -1383,6 +1480,7 @@ header + .hero-inner-page{
     padding: 26px 16px 26px;
   }
 }
+
 
 
 
