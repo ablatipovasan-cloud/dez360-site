@@ -166,8 +166,8 @@ header {
 /* === Mobile nav (фиксированная панель под шапкой) === */
 .mobile-nav{
   display:none;
-  position:fixed;              /* фиксируем поверх контента */
-  left:0; right:0; top:64px;   /* высота шапки ~64px */
+  position:fixed;
+  left:0; right:0; top:64px;
   background:#fff;
   box-shadow:0 10px 20px rgba(0,0,0,.08);
   z-index:1200;
@@ -209,7 +209,7 @@ header {
   backdrop-filter:blur(2px);
   opacity:0; pointer-events:none;
   transition:opacity .2s ease;
-  z-index:1199;                 /* на 1 меньше, чем .mobile-nav */
+  z-index:1199;
 }
 .nav-backdrop.is-open{ opacity:1; pointer-events:auto; }
 
@@ -227,7 +227,7 @@ header {
   .logo-sub{ display:none; }
   .logo-title{ font-size:20px; }
   .header-inner{ justify-content:space-between; }
-  .mobile-nav{ top:56px; }      /* если шапка стала ниже на мобилке */
+  .mobile-nav{ top:56px; }
 }
 
 
@@ -286,7 +286,7 @@ header {
 .hero-actions .btn-primary { font-size: 13px; padding: 8px 16px; }
 .hero-note { font-size: 11px; color: var(--text-secondary); }
 
-/* Hero photo / баннер: базово нейтрально */
+/* Hero photo / баннер для внутренних страниц */
 .hero-photo {
   position: relative;
   border-radius: var(--radius);
@@ -302,8 +302,8 @@ header {
 .hero-photo img,
 .hero-photo video {
   width: 100%;
-  height: auto;          /* по умолчанию — без жесткого кропа */
-  object-fit: cover;     /* если высота задана — кадрируем без искажений */
+  height: auto;
+  object-fit: cover;
   object-position: center;
   display: block;
 }
@@ -334,18 +334,54 @@ header {
 @media (min-width: 992px) {
   .hero-photo img,
   .hero-photo video {
-    height: 420px;       /* 380–460 по вкусу */
+    height: 420px;
   }
 }
+
+/* картинка для главного hero */
 .hero--main{
-  --hero-img: url('/media/banner-dezshield360.jpg'); /* твой файл */
+  --hero-img: url('/media/banner-dezshield360.jpg');
+}
+
+/* ===== HERO SPLIT: картинка справа (десктоп) и сверху (мобилка) с рассеиванием ===== */
+
+/* базово (мобилка first) */
+.hero--split{
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+
+/* верхняя полоса с фото + плавное затухание в фон */
+.hero--split::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:260px;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(230,245,247,0) 60%,
+      #E6F5F7 100%
+    ),
+    var(--hero-img);
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center top;
+}
+
+/* смещаем контент ниже изображения */
+.hero--split .hero-inner{
+  position:relative;
+  z-index:1;
+  padding-top:280px;
 }
 
 /* ---- ТОЛЬКО страницы бизнеса (body.biz …) ---- */
-/* скрываем подпись, чтобы не было чёрного прямоугольника */
 body.biz .hero-photo figcaption { display: none; }
 
-/* можно добавить пропорцию для бизнеса на узких */
 @media (max-width: 480px) {
   body.biz .hero-photo { aspect-ratio: 4 / 3; }
 }
@@ -483,10 +519,7 @@ body.biz .hero-photo figcaption { display: none; }
 
 
 
-
-
 /* ===== MEDIA CARDS (photo/video) ===== */
-/* Карточка медиа: по умолчанию 16:9, вертикальные — 9:16 */
 .media-card .media-ratio{
   aspect-ratio:16/9;
   position:relative;
@@ -543,7 +576,7 @@ body.biz .hero-photo figcaption { display: none; }
 /* Чуть мягче анимация и без «подпрыгивания» на тач-устройствах */
 .page-nav-link { transition: color .2s ease, transform .15s ease; }
 @media (hover: none) {
-  .page-nav-link:hover { transform: none; } /* на телефонах без срабатывания hover */
+  .page-nav-link:hover { transform: none; }
 }
 
 /* Учитываем настройку «уменьшить анимацию» */
@@ -580,7 +613,6 @@ footer {
 .footer-legal { color: #C4D6E5; font-size: 9px; line-height: 1.4; }
 
 /* ---- RESPONSIVE ---- */
-/* Планшеты и ниже: сетки в одну колонку */
 @media (max-width: 992px) {
   .services-grid,
   .clients-grid,
@@ -593,9 +625,6 @@ footer {
     grid-template-columns: 1fr;
   }
 }
-
-/* Мобильные: компактный хедер и блоки */
-
 
 /* ===== FLOAT BACK BUTTON ===== */
 .float-back{
@@ -637,15 +666,9 @@ footer {
 .biz-item h3{ margin:0 0 6px; font-size:18px; color:#0b2748; }
 .biz-item p{ margin:0; color:#667885; font-size:14px; }
 
+/* --- HERO (внутренние страницы): не навязываем 16:9 --- */
+.hero-inner-page .hero-photo { aspect-ratio: auto; }
 
-/* --- HERO (дезодорация): не навязываем 16:9, убираем подпись/оверлей --- */
-.hero-inner-page .hero-photo {            /* только для hero на внутренних страницах */
-  aspect-ratio: auto;                     /* отменяем принудительное 16/9 */
-}
-
-
-
-/* гарантируем аккуратное заполнение баннера */
 .hero-inner-page .hero-photo img,
 .hero-inner-page .hero-photo video {
   width: 100%;
@@ -656,58 +679,52 @@ footer {
 @media (min-width: 992px) {
   .hero-inner-page .hero-photo img,
   .hero-inner-page .hero-photo video {
-    height: 420px;                        /* общая высота баннера */
-    object-fit: cover;                    /* без чёрных полей */
+    height: 420px;
+    object-fit: cover;
   }
 }
-/* только для внутренних (hero-inner-page) */
+
+/* скрываем подписи у внутренних hero */
 .hero-inner-page .hero-photo figcaption,
 .hero-inner-page .hero-photo .hero-photo-caption { display:none !important; }
-/* ====== COMPACT HEADER FIX (главная и вообще на десктопе) ====== */
 
-/* 1) Во избежание разъезда из-за дублирующихся правил .top-bar — оставляем одно,
-      а здесь принудительно задаём компактные отступы и размер шрифта. */
+/* ====== COMPACT HEADER FIX ====== */
 .top-bar{
   padding: 4px 0 !important;
   line-height: 1.1;
   font-size: 11px !important;
 }
 
-/* 2) Сам хедер делаем компактнее */
 header{
-  padding: 0 !important;            /* убираем возможные внешние паддинги */
+  padding: 0 !important;
   box-shadow: 0 4px 14px rgba(0,0,0,0.03);
 }
 
-/* Внутренности шапки */
 .header-inner{
   max-width: 1200px;
   margin: 0 auto;
-  padding: 8px 14px !important;     /* было щедрее — делаем компактнее */
-  min-height: 64px;                 /* устойчивая высота без «болтания» */
+  padding: 8px 14px !important;
+  min-height: 64px;
   display: flex;
   align-items: center;
-  gap: 16px;                        /* было 24px — уменьшаем */
+  gap: 16px;
 }
 
-/* Логотип уменьшаем, чтобы шапка не «росла» по высоте */
 .logo-icon-img{
-  height: 48px !important;          /* было 56px */
+  height: 48px !important;
   width: auto;
   display: block;
 }
 
-/* Навигация — чуть плотнее */
 .header-nav{
-  gap: 8px;                         /* было 10px+ */
+  gap: 8px;
   font-size: 15px;
 }
 .header-nav a{
-  padding: 6px 10px;                /* было 6px 14px — делаем компактнее */
+  padding: 6px 10px;
   border-radius: 999px;
 }
 
-/* Блок с телефонами/кнопкой — плотнее по вертикали */
 .header-actions{
   gap: 4px;
   font-size: 12px;
@@ -716,21 +733,15 @@ header{
   padding: 6px 12px;
 }
 
-/* 3) Устраняем лишнюю «белую полосу» между шапкой и первым блоком */
 header + .hero,
 header + .hero-inner-page{
   margin-top: 0 !important;
 }
 
-/* 4) На очень широких экранах слегка ужмём ещё отступы,
-      чтобы визуально не казалось, что шапка «толще» контента */
 @media (min-width: 1280px){
   .header-inner{ padding: 8px 10px !important; }
 }
 
-/* 5) Если где-то осталось второе объявление .top-bar (у тебя оно действительно
-      встречалось дважды) — этим правилом мы гарантированно перекроем
-      любые расхождения высоты/отступов: */
 .top-bar-inner{
   max-width: 1200px;
   margin: 0 auto;
@@ -740,16 +751,13 @@ header + .hero-inner-page{
 
 /* ===== FIX: бургер не виден на мобилке ===== */
 @media (max-width: 768px) {
-  /* даём контейнеру шапки «растолкать» контент по краям */
   .header-inner{ justify-content: space-between; }
 
-  /* чтобы текст логотипа не распирал строку */
   .logo{ min-width: 0; }
   .logo-text{ overflow: hidden; text-overflow: ellipsis; }
-  .logo-sub{ display: none; }         /* убираем подзаголовок на узких */
-  .logo-title{ font-size: 20px; }     /* компактнее заголовок */
+  .logo-sub{ display: none; }
+  .logo-title{ font-size: 20px; }
 
-  /* страхуемся: бургер утапливаем вправо */
   .burger{ display: flex; margin-left: auto; }
 }
 
@@ -762,22 +770,17 @@ header + .hero-inner-page{
   opacity: 0;
   pointer-events: none;
   transition: opacity .2s ease;
-  z-index: 1199;           /* подложка ниже меню (у меню z-index:1200) */
+  z-index: 1199;
 }
 .nav-backdrop.is-open{ opacity: 1; pointer-events: auto; }
 
-/* Блокировка прокрутки фона при открытом меню */
 .body-lock{ overflow:hidden; touch-action:none; }
 
-/* служебное */
 [hidden]{ display:none !important; }
 
-/* подсветка пункта «Для бизнеса» (по желанию) */
 .mobile-nav a[href="/biz/"]{ font-weight:600; }
 
 /* ===== Mobile nav: внутреннее оформление ===== */
-
-/* Верхушка меню: мини-бренд + крестик */
 .mobile-nav-head{
   display:flex;
   align-items:center;
@@ -796,16 +799,12 @@ header + .hero-inner-page{
 }
 .mobile-nav-close:hover{ filter:brightness(0.97); }
 
-/* Секции и заголовки секций */
 .mobile-section{ padding:6px 0; }
 .mobile-section-title{
   font-size:12px; color:#6b7b8d; text-transform:uppercase;
   letter-spacing:.04em; margin:4px 2px 8px;
 }
 
-/* Ссылки-пункты (a) уже оформлены выше — оставляем. */
-
-/* Кнопки-аккордеоны */
 .mobile-link{
   display:block; width:100%; text-align:left;
   padding:10px 14px; font-size:15px; color:#37515f;
@@ -813,11 +812,9 @@ header + .hero-inner-page{
 }
 .mobile-link:hover{ background:#f3f7f9; }
 
-/* Стрелочка у раскрывашки */
 .mobile-link .chev{ margin-left:6px; transition:transform .2s ease; }
 .mobile-link[aria-expanded="true"] .chev{ transform:rotate(180deg); }
 
-/* Подменю */
 .mobile-sub{
   margin:6px 0 2px;
   padding-left:10px;
@@ -829,7 +826,6 @@ header + .hero-inner-page{
 }
 .mobile-sublink:hover{ background:#F8FBFD; }
 
-/* Телефоны в блоке «Связаться» */
 .mobile-phone{
   display:block; padding:10px 12px; font-size:16px;
   color:#173B57; font-weight:600; border-radius:10px;
@@ -838,26 +834,27 @@ header + .hero-inner-page{
 
 .mobile-nav{ background:#fff !important; }
 .nav-backdrop{ background:rgba(0,0,0,.35) !important; }
-/* === HERO: мобильная правка (фикс "чёрного квадрата") === */
+
+/* геро: мобильная сетка (для всех) + порядок только для hero с картинкой */
 @media (max-width: 768px) {
   .hero-inner {
     grid-template-columns: 1fr;
     gap: 14px;
   }
-  .hero-left { order: 2; }
-  .hero-photo {
-    order: 1;
-    min-height: 260px;           /* контейнер с фиксированной минимальной высотой */
-  }
-  .hero-photo img,
-  .hero-photo video {
-    height: 100%;                /* <— ключ: заполняем контейнер по высоте */
-    width: 100%;
-    object-fit: cover;           /* без искажений */
-  }
-}
 
-@media (max-width: 768px) {
+  .hero:not(.hero--split) .hero-left { order: 2; }
+  .hero:not(.hero--split) .hero-photo {
+    order: 1;
+    min-height: 260px;
+  }
+
+  .hero:not(.hero--split) .hero-photo img,
+  .hero:not(.hero--split) .hero-photo video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
   .hero-photo-overlay {
     background: linear-gradient(
       to top right,
@@ -888,9 +885,9 @@ header + .hero-inner-page{
 .mobile-caret:hover{ filter:brightness(0.97); }
 .mobile-caret[aria-expanded="true"]{ transform:rotate(180deg); }
 
-/* ===== Mobile shortcut: "Для бизнеса" всегда под рукой ===== */
+/* ===== Mobile shortcut: "Для бизнеса" ===== */
 .for-biz-shortcut{
-  display:none;                 /* на десктопе скрыта */
+  display:none;
   font-weight:600;
   color:#0B3954;
   background:#E6F5F7;
@@ -904,34 +901,32 @@ header + .hero-inner-page{
 
 @media (max-width:768px){
   .for-biz-shortcut{
-    display:inline-block;       /* показать на мобилке */
-    margin-left:auto;           /* уводим вправо от логотипа */
-    margin-right:8px;           /* немного места перед бургером */
+    display:inline-block;
+    margin-left:auto;
+    margin-right:8px;
     font-size:14px;
   }
-  /* чтобы бургер встал после ярлычка и не прилипал к краю */
   .burger{ margin-left:0; }
 }
 
-/* ===== Объёмные карточки услуг + ховер-эффект ===== */
+/* ===== Объёмные карточки услуг + tilt/hover ===== */
 .services-grid{ gap: 18px; }
 
 .service-card{
   position: relative;
-  border-radius: 16px;                     /* чуть круглее */
-  background: linear-gradient(180deg,#ffffff 0%, #f9fbfc 100%); /* лёгкий градиент */
-  border: 1px solid rgba(11,57,84,.06);    /* тонкий контур */
+  border-radius: 16px;
+  background: linear-gradient(180deg,#ffffff 0%, #f9fbfc 100%);
+  border: 1px solid rgba(11,57,84,.06);
   box-shadow:
-    0 1px 0 rgba(255,255,255,.8) inset,    /* внутренний блик */
+    0 1px 0 rgba(255,255,255,.8) inset,
     0 8px 20px rgba(0,0,0,.06),
-    0 20px 40px rgba(0,0,0,.05);           /* «глубина» */
-  transform: translateZ(0);                /* сгладить рендер */
+    0 20px 40px rgba(0,0,0,.05);
+  transform: translateZ(0);
   transform-origin: center;
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
   will-change: transform, box-shadow;
 }
 
-/* небольшая верхняя «кромка» для объёма */
 .service-card::before{
   content:"";
   position:absolute; inset:0;
@@ -940,7 +935,6 @@ header + .hero-inner-page{
   box-shadow: 0 2px 0 rgba(255,255,255,.9) inset;
 }
 
-/* hover/focus — увеличиваем и усиливаем тень */
 @media (hover:hover){
   .service-card:hover{
     transform: translateY(-4px) scale(1.02);
@@ -952,16 +946,14 @@ header + .hero-inner-page{
   }
 }
 
-/* доступность: фокус с клавиатуры */
 .service-card:focus-within{
   outline: none;
   box-shadow:
-    0 0 0 3px rgba(0,122,140,.16),         /* подсветка фокуса */
+    0 0 0 3px rgba(0,122,140,.16),
     0 8px 20px rgba(0,0,0,.06),
     0 20px 40px rgba(0,0,0,.05);
 }
 
-/* на тач-устройствах — эффект по тапу */
 @media (hover:none){
   .service-card:active{
     transform: translateY(-2px) scale(1.01);
@@ -972,25 +964,22 @@ header + .hero-inner-page{
   }
 }
 
-/* немного воздуха внутри карточки */
 .service-title{ font-size: 15px; }
 .service-card{ padding: 14px 12px 12px; }
 
-/* уважение системной настройке «меньше анимации» */
 @media (prefers-reduced-motion: reduce){
   .service-card{ transition: none; }
   .service-card:hover,
   .service-card:active{ transform: none; }
 }
-/* ===== 3D tilt + spotlight для .service-card ===== */
-.services-grid{ perspective: 900px; } /* сцена */
+
+/* 3D tilt + spotlight */
+.services-grid{ perspective: 900px; }
 
 .service-card{
   transform-style: preserve-3d;
   will-change: transform, box-shadow;
   transition: transform .18s ease, box-shadow .18s ease;
-  /* то, что мы добавляли раньше: объём + тени */
-  border-radius: 16px;
   background: linear-gradient(180deg,#ffffff 0%, #f9fbfc 100%);
   border: 1px solid rgba(11,57,84,.06);
   box-shadow:
@@ -999,7 +988,6 @@ header + .hero-inner-page{
     0 20px 40px rgba(0,0,0,.05);
 }
 
-/* «подсветка» курсором — управляется переменными из JS */
 .service-card::after{
   content:"";
   position:absolute; inset:-2px;
@@ -1012,7 +1000,6 @@ header + .hero-inner-page{
   transition: opacity .18s ease;
 }
 
-/* активное состояние: чуть сильнее тени */
 @media (hover:hover){
   .service-card.is-tilting{
     box-shadow:
@@ -1022,12 +1009,10 @@ header + .hero-inner-page{
   }
 }
 
-/* тач — лёгкий «прыжок» */
 @media (hover:none){
   .service-card:active{ transform: translateY(-2px) scale(1.01); }
 }
 
-/* доступность */
 .service-card:focus-within{
   outline: none;
   box-shadow:
@@ -1035,12 +1020,12 @@ header + .hero-inner-page{
     0 10px 24px rgba(0,0,0,.08);
 }
 
-/* уважаем prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce){
   .service-card,
   .service-card::after{ transition: none !important; }
 }
-/* ===== Карточный блок секции ===== */
+
+/* Карточный блок секции */
 .section-card{
   position: relative;
   padding: 18px 16px;
@@ -1053,11 +1038,9 @@ header + .hero-inner-page{
     0 28px 56px rgba(0,0,0,.05);
 }
 
-/* компактнее заголовки внутри карточки */
 .section-card .section-title{ margin-bottom: 8px; }
 .section-card .section-subtitle{ margin-bottom: 14px; }
 
-/* Акцентная обводка и мягкое свечение (для важного блока) */
 .section-card--accent::before{
   content:"";
   position:absolute; inset: -1px;
@@ -1070,7 +1053,7 @@ header + .hero-inner-page{
      linear-gradient(#fff 0 0) border-box;
   -webkit-mask-composite: xor;
           mask-composite: exclude;
-  border: 2px solid transparent; /* “видимый” градиентный кант */
+  border: 2px solid transparent;
 }
 .section-card--accent::after{
   content:"";
@@ -1080,7 +1063,6 @@ header + .hero-inner-page{
   pointer-events:none;
 }
 
-/* на больших — чуть больше “воздуха” */
 @media (min-width: 768px){
   .section-card{ padding: 22px 22px; }
 }
@@ -1088,68 +1070,13 @@ header + .hero-inner-page{
   .section-card{ padding: 26px 28px; }
 }
 
-/* уважение prefers-reduced-motion — тени/градиенты статичны */
 @media (prefers-reduced-motion: reduce){
   .section-card, .section-card--accent::before, .section-card--accent::after{
     transition: none !important;
   }
 }
-/* ===== Карточный блок секции ===== */
-.section-card{
-  position: relative;
-  padding: 18px 16px;
-  background: #fff;
-  border-radius: 18px;
-  border: 1px solid rgba(11,57,84,.08);
-  box-shadow:
-    0 2px 0 rgba(255,255,255,.8) inset,
-    0 10px 24px rgba(0,0,0,.06),
-    0 28px 56px rgba(0,0,0,.05);
-}
 
-/* компактнее заголовки внутри карточки */
-.section-card .section-title{ margin-bottom: 8px; }
-.section-card .section-subtitle{ margin-bottom: 14px; }
-
-/* Акцентная обводка и мягкое свечение (для важного блока) */
-.section-card--accent::before{
-  content:"";
-  position:absolute; inset: -1px;
-  border-radius: 20px;
-  pointer-events:none;
-  background:
-    linear-gradient(180deg, rgba(0,122,140,.16), rgba(0,122,140,0)) border-box;
-  -webkit-mask:
-     linear-gradient(#fff 0 0) padding-box, 
-     linear-gradient(#fff 0 0) border-box;
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  border: 2px solid transparent; /* “видимый” градиентный кант */
-}
-.section-card--accent::after{
-  content:"";
-  position:absolute; inset:-12px;
-  border-radius: 26px;
-  box-shadow: 0 30px 60px rgba(0,122,140,.10);
-  pointer-events:none;
-}
-
-/* на больших — чуть больше “воздуха” */
-@media (min-width: 768px){
-  .section-card{ padding: 22px 22px; }
-}
-@media (min-width: 1024px){
-  .section-card{ padding: 26px 28px; }
-}
-
-/* уважение prefers-reduced-motion — тени/градиенты статичны */
-@media (prefers-reduced-motion: reduce){
-  .section-card, .section-card--accent::before, .section-card--accent::after{
-    transition: none !important;
-  }
-}
-/* === Карточный вид для всех секций ===
-   Работает для .section > .container И/ИЛИ для явной .section-card */
+/* Карточный вид для секций */
 .section > .container,
 .section-card{
   position: relative;
@@ -1161,14 +1088,11 @@ header + .hero-inner-page{
     0 10px 24px rgba(0,0,0,.06),
     0 28px 56px rgba(0,0,0,.05);
   padding: 18px 16px;
-
-  /* подготовка к анимации */
-  transform: translateZ(0);              /* аптайм и без сдвига лэйаута */
+  transform: translateZ(0);
   transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
   will-change: transform;
 }
 
-/* Акцентная «аура» — по умолчанию мягкая; для .section-card--accent — ярче */
 .section > .container::before,
 .section-card::before{
   content:"";
@@ -1188,8 +1112,6 @@ header + .hero-inner-page{
     linear-gradient(180deg, rgba(0,122,140,.2), rgba(0,122,140,0)) border-box;
 }
 
-/* Ховер/фокус: лёгкое увеличение и усиление тени.
-   Включаем только там, где есть hover (мышь), и на клавиатуре по focus-within. */
 @media (hover:hover){
   .section > .container:hover,
   .section-card:hover{
@@ -1210,7 +1132,6 @@ header + .hero-inner-page{
   outline: none;
 }
 
-/* На больших экранах — чуть больше «воздуха» внутри карточек */
 @media (min-width:768px){
   .section > .container, .section-card{ padding:22px 22px; }
 }
@@ -1218,253 +1139,26 @@ header + .hero-inner-page{
   .section > .container, .section-card{ padding:26px 28px; }
 }
 
-/* Если какой-то раздел не нужно превращать в карточку, повесь класс .section--flat */
 .section.section--flat > .container{
   background: transparent; border:0; box-shadow:none; padding:0;
 }
 .section.section--flat > .container::before{ content:none; }
 
-/* Уважение prefers-reduced-motion: отключаем анимации */
 @media (prefers-reduced-motion: reduce){
   .section > .container,
   .section-card{ transition: none !important; }
 }
 
-/* === УСИЛЯЕМ КАРТОЧКИ УСЛУГ === */
-.services-grid { gap: 18px; } /* чуть больше воздуха между карточками */
-
-.service-card{
-  position: relative;
-  background:#fff;
-  border:1px solid rgba(11,57,84,.06);
-  box-shadow:
-    0 2px 0 rgba(255,255,255,.9) inset,
-    0 8px 22px rgba(0,0,0,.05),
-    0 24px 40px rgba(0,0,0,.04);
-  border-radius: var(--radius);
-  padding: 14px 12px 12px;
-
-  /* плавные анимации и идеальная отрисовка */
-  transform: translateZ(0);
-  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
-  will-change: transform;
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* тонкий «ореол» по периметру для глубины */
-.service-card::before{
-  content:"";
-  position:absolute; inset:-1px;
-  border-radius: calc(var(--radius) + 2px);
-  pointer-events:none;
-  background:
-    linear-gradient(180deg, rgba(0,122,140,.10), rgba(0,122,140,0)) border-box;
-  -webkit-mask:
-     linear-gradient(#fff 0 0) padding-box,
-     linear-gradient(#fff 0 0) border-box;
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  border:2px solid transparent;
-  opacity:.85;
-}
-
-/* эффект наведения/фокуса: лёгкое увеличение + усиленная тень */
-@media (hover:hover){
-  .service-card:hover{
-    transform: translateY(-4px) scale(1.02);
-    box-shadow:
-      0 14px 28px rgba(0,0,0,.10),
-      0 36px 64px rgba(0,0,0,.06);
-    border-color: rgba(11,57,84,.16);
-    background:#fff;
-  }
-}
-
-/* клавиатура/тач: когда внутри карточки есть фокус (ссылки/кнопки) */
-.service-card:focus-within{
-  transform: translateY(-4px) scale(1.02);
-  box-shadow:
-    0 14px 28px rgba(0,0,0,.10),
-    0 36px 64px rgba(0,0,0,.06);
-  border-color: rgba(11,57,84,.18);
-  outline: none;
-}
-
-/* компактные улучшения внутри карточек на hover */
-@media (hover:hover){
-  .service-card:hover .service-title{ color: var(--primary); }
-  .service-card:hover .service-order-btn{ filter: saturate(1.05) brightness(1.03); }
-}
-
-/* уважаем prefers-reduced-motion */
-@media (prefers-reduced-motion: reduce){
-  .service-card{ transition: none !important; }
-}
-
-/* маленькие экраны — помягче поднятие, чтобы не «дёргалось» */
-@media (max-width:560px){
-  .service-card{ padding: 12px 10px; }
-  .service-card:focus-within{ transform: translateY(-2px) scale(1.01); }
-}
-
-/* ===========================================
-   ЕДИНАЯ ОБЪЁМНАЯ КАРТОЧКА ДЛЯ ВСЕХ БЛОКОВ
-   (клиенты, гарантии, кейсы, FAQ, about, контакты,
-    таблица цен и пр.)
-   =========================================== */
-
-/* 1) Базовый стиль «карточки» — применим сразу к нужным селекторам */
-.client-card,
-.guarantee-card,
-.case-card,
-.faq-item,
-.about-card,
-.contacts-form,
-.map-placeholder,
-#prices .price-table {
-  position: relative;
-  background: #fff;
-  border: 1px solid rgba(11,57,84,.06);
-  border-radius: var(--radius);
-  box-shadow:
-    0 2px 0 rgba(255,255,255,.9) inset,
-    0 8px 22px rgba(0,0,0,.05),
-    0 24px 40px rgba(0,0,0,.04);
-  transform: translateZ(0);
-  transform-origin: center center;
-  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease, filter .22s ease;
-  will-change: transform;
-}
-
-/* таблица цен изначально «плоская», делаем мягче углы и убираем артефакты */
-#prices .price-table {
-  overflow: hidden;               /* чтобы радиус работал и для шапки */
-  border-radius: var(--radius);
-}
-
-/* 2) Тонкий градиентный «ореол» по периметру */
-.client-card::before,
-.guarantee-card::before,
-.case-card::before,
-.faq-item::before,
-.about-card::before,
-.contacts-form::before,
-.map-placeholder::before,
-#prices .price-table::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: calc(var(--radius) + 2px);
-  pointer-events: none;
-  background: linear-gradient(180deg, rgba(0,122,140,.10), rgba(0,122,140,0)) border-box;
-  -webkit-mask:
-     linear-gradient(#fff 0 0) padding-box,
-     linear-gradient(#fff 0 0) border-box;
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  border: 2px solid transparent;
-  opacity: .85;
-}
-
-/* 3) Наведение: лёгкое увеличение + усиленная тень */
-@media (hover:hover){
-  .client-card:hover,
-  .guarantee-card:hover,
-  .case-card:hover,
-  .faq-item:hover,
-  .about-card:hover,
-  .contacts-form:hover,
-  .map-placeholder:hover,
-  #prices .price-table:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow:
-      0 14px 28px rgba(0,0,0,.10),
-      0 36px 64px rgba(0,0,0,.06);
-    border-color: rgba(11,57,84,.16);
-    background:#fff;
-  }
-}
-
-/* 4) Клавиатура/тач — когда внутри блока попал фокус */
-.client-card:focus-within,
-.guarantee-card:focus-within,
-.case-card:focus-within,
-.faq-item:focus-within,
-.about-card:focus-within,
-.contacts-form:focus-within,
-.map-placeholder:focus-within,
-#prices .price-table:focus-within {
-  transform: translateY(-3px) scale(1.015);
-  box-shadow:
-    0 12px 24px rgba(0,0,0,.10),
-    0 30px 52px rgba(0,0,0,.06);
-  border-color: rgba(11,57,84,.18);
-  outline: none;
-}
-
-/* 5) Небольшие «приятности» внутри блоков при hover */
-@media (hover:hover){
-  .client-card:hover .client-title,
-  .guarantee-card:hover .guarantee-title,
-  .case-card:hover .case-title {
-    color: var(--primary);
-    filter: saturate(1.05);
-  }
-}
-
-/* 6) Мобилки — чуть мягче, чтобы не «дёргалось» при касании */
-@media (max-width: 560px){
-  .client-card:hover,
-  .guarantee-card:hover,
-  .case-card:hover,
-  .faq-item:hover,
-  .about-card:hover,
-  .contacts-form:hover,
-  .map-placeholder:hover,
-  #prices .price-table:hover {
-    transform: translateY(-2px) scale(1.01);
-  }
-  .client-card:focus-within,
-  .guarantee-card:focus-within,
-  .case-card:focus-within,
-  .faq-item:focus-within,
-  .about-card:focus-within,
-  .contacts-form:focus-within,
-  .map-placeholder:focus-within,
-  #prices .price-table:focus-within {
-    transform: translateY(-2px) scale(1.01);
-  }
-}
-
-/* 7) Уважаем системную настройку «уменьшить анимацию» */
-@media (prefers-reduced-motion: reduce){
-  .client-card,
-  .guarantee-card,
-  .case-card,
-  .faq-item,
-  .about-card,
-  .contacts-form,
-  .map-placeholder,
-  #prices .price-table {
-    transition: none !important;
-  }
-}
-/* ===========================================
-   МЯГКИЕ ФОНЫ СЕКЦИЙ + ЕДИНЫЙ АКЦЕНТНЫЙ СТИЛЬ БЛОКОВ
-   =========================================== */
-
-/* Палитра поверх текущих переменных */
+/* Единый акцентный стиль */
 :root{
-  --surface:        #F6FAFB;       /* мягкий фон секций */
-  --surface-alt:    #F2F7F9;       /* чередование секций */
-  --ring-accent:    rgba(0,122,140,.22);  /* цвет «рамки» */
-  --ring-accent-2:  rgba(0,122,140,.10);  /* тон «ореола» */
+  --surface:        #F6FAFB;
+  --surface-alt:    #F2F7F9;
+  --ring-accent:    rgba(0,122,140,.22);
+  --ring-accent-2:  rgba(0,122,140,.10);
 }
 
-/* Базовый контейнер (если где-то не задан) */
 .container{ max-width:1200px; margin:0 auto; padding:0 16px; }
 
-/* Секции: мягкая «карточка» внутри ширины контейнера */
 .section{ padding: 42px 16px; }
 .section > .container{
   background: var(--surface);
@@ -1473,21 +1167,18 @@ header + .hero-inner-page{
   box-shadow: 0 10px 28px rgba(0,0,0,.04);
   padding: 18px 16px;
   position: relative;
-  overflow: hidden; /* чтобы внутренний ореол не вылезал */
+  overflow: hidden;
 }
 
-/* Альтернативная секция для чередования */
 .section.section-alt > .container{
   background: var(--surface-alt);
 }
 
-/* На очень узких — чуть компактнее */
 @media (max-width: 560px){
   .section{ padding: 32px 12px; }
   .section > .container{ padding:14px 12px; }
 }
 
-/* Единый «акцентный ореол» по краям секции */
 .section > .container::before{
   content:"";
   position:absolute; inset: -1px;
@@ -1499,11 +1190,6 @@ header + .hero-inner-page{
   border: 2px solid transparent;
   opacity:.9;
 }
-
-/* ===========================================
-   ЕДИНЫЙ АКЦЕНТНЫЙ СТИЛЬ ДЛЯ ВСЕХ БЛОКОВ
-   (включая услуги и таблицу цен)
-   =========================================== */
 
 .service-card,
 .client-card,
@@ -1528,7 +1214,6 @@ header + .hero-inner-page{
   will-change: transform;
 }
 
-/* Акцентная рамка (тонкая) на всех перечисленных блоках */
 .service-card::before,
 .client-card::before,
 .guarantee-card::before,
@@ -1549,10 +1234,8 @@ header + .hero-inner-page{
   opacity:.85;
 }
 
-/* Таблица цен как карточка: сглаживаем края */
 #prices .price-table{ overflow:hidden; }
 
-/* Наведение: мягкое увеличение + усиленная тень — ЕДИНО для всех */
 @media (hover:hover){
   .service-card:hover,
   .client-card:hover,
@@ -1571,7 +1254,6 @@ header + .hero-inner-page{
   }
 }
 
-/* Фокус клавиатурой/тач */
 .service-card:focus-within,
 .client-card:focus-within,
 .guarantee-card:focus-within,
@@ -1589,7 +1271,6 @@ header + .hero-inner-page{
   outline: none;
 }
 
-/* Мобильные — сглаживаем «скачок» */
 @media (max-width:560px){
   .service-card:hover,
   .client-card:hover,
@@ -1613,7 +1294,6 @@ header + .hero-inner-page{
   }
 }
 
-/* Уважаем «уменьшить анимацию» */
 @media (prefers-reduced-motion: reduce){
   .section > .container,
   .service-card,
@@ -1628,45 +1308,8 @@ header + .hero-inner-page{
     transition: none !important;
   }
 }
-/* ===== HERO: картинка справа плавно переходит в фон ===== */
-/* ===== HERO: картинка справа плавно переходит в фон ===== */
 
-/* по умолчанию (мобилка): картинка сверху отдельной полосой */
-.hero--split{
-  position: relative;
-  overflow: hidden;
-  background: var(--bg-soft);
-}
-
-/* верхний баннер с фото */
-.hero--split::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  height: 260px;                 /* высота фото на мобиле */
-  background-image: var(--hero-img);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center top;
-}
-
-/* смещаем контент ниже картинки */
-.hero--split .hero-inner{
-  position: relative;
-  z-index: 1;
-  padding-top: 280px;            /* чуть больше, чем height у ::before */
-}
-
-/* на мобиле — одна колонка, как было */
-@media (max-width: 768px){
-  .hero-inner{
-    grid-template-columns: 1fr;
-    gap: 14px;
-    padding: 24px 16px 20px;
-  }
-}
-
-/* десктоп: возвращаем фон справа, убираем ::before */
+/* ===== HERO десктоп: картинка справа + рассеивание влево ===== */
 @media (min-width: 992px){
   .hero--split{
     background:
@@ -1677,19 +1320,22 @@ header + .hero-inner-page{
         rgba(230,245,247,0) 75%
       ),
       var(--hero-img);
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: auto 115%;
+    background-repeat:no-repeat;
+    background-position:right center;
+    background-size:auto 115%;
   }
 
   .hero--split::before{
-    content: none;
+    content:none;
   }
 
   .hero--split .hero-inner{
-    padding-top: 26px;          /* возвращаем нормальный отступ */
+    padding-top:26px;
   }
 }
+
+
+
 
 
 
