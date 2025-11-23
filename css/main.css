@@ -337,6 +337,9 @@ header {
     height: 420px;       /* 380–460 по вкусу */
   }
 }
+.hero--main{
+  --hero-img: url('/media/banner-dezshield360.jpg'); /* твой файл */
+}
 
 /* ---- ТОЛЬКО страницы бизнеса (body.biz …) ---- */
 /* скрываем подпись, чтобы не было чёрного прямоугольника */
@@ -1626,128 +1629,72 @@ header + .hero-inner-page{
   }
 }
 /* ===== HERO: картинка справа плавно переходит в фон ===== */
+/* ===== HERO: картинка справа плавно переходит в фон ===== */
 
-/* сам блок hero с фоновым изображением и градиентом */
+/* по умолчанию (мобилка): картинка сверху отдельной полосой */
 .hero--split{
   position: relative;
   overflow: hidden;
-
-  /* 2 слоя:
-     1) слева — чистый фон, к середине плавно становится прозрачным
-     2) справа под ним — сама картинка (var(--hero-img)) */
-  background:
-    linear-gradient(
-      to right,
-      #E6F5F7 0%,          /* слева сплошной фон */
-      #E6F5F7 48%,         /* текстовая зона */
-      rgba(230,245,247,0) 75% /* тут уже чистая картинка */
-    ),
-    var(--hero-img);
-
-  background-repeat: no-repeat;
-  background-position: right center;  /* люди смещены вправо */
-  background-size: auto 115%;         /* картинка чуть выше блока по высоте */
+  background: var(--bg-soft);
 }
 
-/* контент hero поверх фона */
+/* верхний баннер с фото */
+.hero--split::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  height: 260px;                 /* высота фото на мобиле */
+  background-image: var(--hero-img);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+}
+
+/* смещаем контент ниже картинки */
 .hero--split .hero-inner{
   position: relative;
   z-index: 1;
+  padding-top: 280px;            /* чуть больше, чем height у ::before */
 }
 
-/* Мобилка: тот же фон, но "картинка + лёгкая дымка" */
+/* на мобиле — одна колонка, как было */
 @media (max-width: 768px){
-  .hero--split{
-    background:
-      radial-gradient(70vw 45vw at 50% 0%, rgba(0,122,140,0.10), transparent 60%),
-      linear-gradient(to bottom,
-        rgba(230,245,247,0.96) 55%,
-        #E6F5F7 100%
-      ),
-      var(--hero-img);
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: cover;
-  }
-
   .hero-inner{
     grid-template-columns: 1fr;
     gap: 14px;
     padding: 24px 16px 20px;
   }
-
-  .hero-left{
-    background: rgba(246,250,251,0.94);
-    border-radius: 16px;
-    padding: 14px 12px;
-  }
 }
 
-
-/* У кого включено "уменьшить анимацию" — без плавностей */
-@media (prefers-reduced-motion: reduce){
-  .hero--split::after{ transition: none; }
-}
-/* === FIX HERO BACKGROUND (desktop + mobile) === */
-
-/* Десктоп / планшет */
-.hero.hero--split{
-  position: relative;
-  overflow: hidden;
-
-  /* цвет фона под картинкой */
-  background-color: #E6F5F7;
-
-  /* 2 слоя:
-     1) слева — сплошной фон
-     2) справа — картинка из переменной --hero-img */
-  background-image:
-    linear-gradient(
-      to right,
-      #E6F5F7 0%,
-      #E6F5F7 48%,
-      rgba(230,245,247,0) 75%
-    ),
-    var(--hero-img);
-
-  background-repeat: no-repeat;
-  background-position: right center;
-  background-size: auto 115%;
-
-  /* на всякий случай перебиваем всё старое */
-  background-blend-mode: normal;
-}
-
-/* Мобилка */
-@media (max-width: 768px){
-  .hero.hero--split{
-    background-color: #E6F5F7;
-
-    background-image:
-      radial-gradient(70vw 45vw at 50% 0%, rgba(0,122,140,0.10), transparent 60%),
+/* десктоп: возвращаем фон справа, убираем ::before */
+@media (min-width: 992px){
+  .hero--split{
+    background:
+      linear-gradient(
+        to right,
+        #E6F5F7 0%,
+        #E6F5F7 48%,
+        rgba(230,245,247,0) 75%
+      ),
       var(--hero-img);
-
     background-repeat: no-repeat;
-    background-position: center top;
-    background-size: cover;
+    background-position: right center;
+    background-size: auto 115%;
   }
 
-  .hero.hero--split .hero-inner{
-    grid-template-columns: 1fr;
-    gap: 14px;
-    padding: 24px 16px 20px;
+  .hero--split::before{
+    content: none;
   }
 
-  .hero.hero--split .hero-left{
-    background: rgba(246,250,251,0.94);
-    border-radius: 16px;
-    padding: 14px 12px;
+  .hero--split .hero-inner{
+    padding-top: 26px;          /* возвращаем нормальный отступ */
   }
 }
 
 .hero--main{
   --hero-img: url('/media/works/foto-fon.png'); /* путь к твоему баннеру */
 }
+
 
 
 
