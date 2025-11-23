@@ -376,78 +376,35 @@ header {
   --hero-img: url('/media/banner-dezshield360.jpg');
 }
 
-/* ===== HERO (главная): фото + рассеивание ===== */
+/* ===== HERO: единый фон с фото + рассеивание (главная) ===== */
 
-/* базовый вариант (мобилка first) */
 .hero.hero--split{
   position: relative;
   overflow: hidden;
+
+  /* фото + вертикальное рассеивание к низу */
   background:
-    /* плавное выбеливание к низу */
     linear-gradient(
       to bottom,
       rgba(230,245,247,0) 0%,
-      rgba(230,245,247,0.80) 55%,
+      rgba(230,245,247,0.75) 52%,
+      #E6F5F7 80%,
       #E6F5F7 100%
     ),
     var(--hero-img);
+
   background-repeat: no-repeat;
-  background-position: center top;
   background-size: cover;
+  background-position: right center; /* люди смещены вправо на десктопе */
 }
 
-/* МОБИЛЬНАЯ ВЕРСИЯ hero--split */
+/* На мобиле чуть выше центрируем картинку */
 @media (max-width: 768px){
-  /* одна колонка */
-  .hero.hero--split .hero-inner{
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 24px 16px 24px;
-  }
-
-  /* под текстом лёгкая “карточка”, чтобы не терялся на фото */
-  .hero.hero--split .hero-left{
-    background: rgba(246,250,251,0.94);
-    border-radius: 16px;
-    padding: 14px 12px;
-  }
-
-  /* правый столбец на мобиле не нужен */
-  .hero.hero--split .hero-right-spacer{
-    display: none;
-  }
-}
-
-/* ДЕСКТОП hero--split: фото справа, слева рассеивание в фон */
-@media (min-width: 992px){
   .hero.hero--split{
-    background:
-      /* плавный переход слева от однотонного к прозрачному */
-      linear-gradient(
-        to right,
-        #E6F5F7 0%,
-        #E6F5F7 42%,
-        rgba(230,245,247,0.94) 58%,
-        rgba(230,245,247,0) 78%,
-        rgba(230,245,247,0) 100%
-      ),
-      /* лёгкое выбеливание снизу вверх */
-      linear-gradient(
-        to bottom,
-        rgba(230,245,247,0) 0%,
-        rgba(230,245,247,0.90) 55%,
-        #E6F5F7 100%
-      ),
-      var(--hero-img);
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: auto 118%, cover;
-  }
-
-  .hero.hero--split .hero-inner{
-    padding: 26px 16px 26px;
+    background-position: center top;
   }
 }
+
 
 /* ОБЩИЕ мобильные правки hero (для всех, где есть .hero-photo) */
 @media (max-width: 768px) {
@@ -1480,6 +1437,7 @@ header + .hero-inner-page{
     padding: 26px 16px 26px;
   }
 }
+
 
 
 
