@@ -1745,6 +1745,10 @@ header + .hero-inner-page{
   }
 }
 
+.hero--main{
+  --hero-img: url('/media/works/foto-fon.png'); /* путь к твоему баннеру */
+}
+
 
 
 
