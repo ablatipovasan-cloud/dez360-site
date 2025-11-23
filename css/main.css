@@ -1309,30 +1309,71 @@ header + .hero-inner-page{
   }
 }
 
-/* ===== HERO десктоп: картинка справа + рассеивание влево ===== */
+/* ===== HERO: картинка справа плавно переходит в фон ===== */
+
+/* по умолчанию (мобилка): картинка сверху отдельной полосой */
+.hero--split{
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+
+/* верхний баннер с фото на мобиле */
+.hero--split::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  height: 260px;
+  background-image: var(--hero-img);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+}
+
+.hero--split .hero-inner{
+  position: relative;
+  z-index: 1;
+  padding-top: 280px; /* чуть больше, чем высота фото */
+}
+
+/* мобилка — одна колонка */
+@media (max-width: 768px){
+  .hero-inner{
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 24px 16px 20px;
+  }
+}
+
+/* ===== ДЕСКТОПНАЯ ВЕРСИЯ HERO ===== */
 @media (min-width: 992px){
   .hero--split{
+    /* слева мягкий фон, справа — картинка, которая уходит под градиент */
     background:
       linear-gradient(
         to right,
         #E6F5F7 0%,
-        #E6F5F7 48%,
-        rgba(230,245,247,0) 75%
+        #E6F5F7 40%,
+        rgba(230,245,247,0.96) 55%,
+        rgba(230,245,247,0) 78%,
+        rgba(230,245,247,0) 100%
       ),
       var(--hero-img);
-    background-repeat:no-repeat;
-    background-position:right center;
-    background-size:auto 115%;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover;
   }
 
+  /* на десктопе отдельный верхний баннер не нужен */
   .hero--split::before{
-    content:none;
+    content: none;
   }
 
   .hero--split .hero-inner{
-    padding-top:26px;
+    padding-top: 26px; /* нормальный отступ сверху */
   }
 }
+
 
 
 
