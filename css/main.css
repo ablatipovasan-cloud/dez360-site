@@ -1626,6 +1626,46 @@ header + .hero-inner-page{
   }
 }
 
+/* === МЯГКИЙ ФОН С КАРТИНКОЙ СПРАВА (общая утилита) === */
+.section-bgfade{
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(1200px 600px at 85% 12%, rgba(0,122,140,.06), transparent 60%),
+    var(--bg-soft);
+}
+.section-bgfade::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: var(--bgfade-image) right center / auto 100% no-repeat;
+  opacity: var(--bgfade-opacity, .95);
+  pointer-events:none;
+  z-index:0;
+  /* плавное затухание картинки влево */
+  -webkit-mask-image: linear-gradient(to left, #000 40%, rgba(0,0,0,0) 80%);
+          mask-image: linear-gradient(to left, #000 40%, rgba(0,0,0,0) 80%);
+}
+/* контент поверх декора */
+.section-bgfade > *{ position:relative; z-index:1; }
+
+/* адаптация на мобилке: картинку делаем компактнее и мягче растворяем */
+@media (max-width: 768px){
+  .section-bgfade::after{
+    background-size: auto 75%;
+    background-position: 115% 8%;
+    -webkit-mask-image: linear-gradient(to left, #000 22%, rgba(0,0,0,0) 55%);
+            mask-image: linear-gradient(to left, #000 22%, rgba(0,0,0,0) 55%);
+    opacity:.9;
+  }
+}
+
+/* чтобы не было «двойной» картинки: в hero скрываем правый блок-фото на широких */
+@media (min-width: 992px){
+  .hero.section-bgfade .hero-photo{ display:none; }
+}
+
 
 
 
