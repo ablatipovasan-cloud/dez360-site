@@ -1625,48 +1625,68 @@ header + .hero-inner-page{
     transition: none !important;
   }
 }
-/* ====== HERO: мягкий фон с картинкой справа и плавным растворением ====== */
-.section-bgfade{
+/* ===== HERO with right image fade ===== */
+.hero--split{
   position: relative;
   background: var(--bg-soft);
-  overflow: hidden;
+  overflow: hidden;         /* чтобы псевдослой не вылезал */
+  isolation: isolate;       /* гарантируем корректные слои */
 }
 
-/* картинка + градиент, который «съедает» её слева направо */
-.section-bgfade::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  /* два слоя: 1) градиент-подложка, 2) сама картинка */
-  background-image:
-    linear-gradient(to left, rgba(255,255,255,0) 35%, var(--bg-soft) 70%),
-    var(--hero-img);
-  background-repeat: no-repeat, no-repeat;
-  background-position: right center, right center;
-  background-size: auto 100%, auto 100%; /* картинка по высоте секции */
-  z-index:0;
-  opacity: 1;
+/* фон-картинка + лёгкая "аура" вокруг, маска растворяет влево */
+.hero--split::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(900px 520px at 85% 10%, rgba(0,122,140,0.08), transparent 60%),
+    var(--hero-img) right center / auto 110% no-repeat;
+  opacity: .95;
+
+  /* только картинку растворяем влево (маска применяется к ::after целиком) */
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 42%, rgba(0,0,0,0) 68%);
+          mask-image: linear-gradient(to left, rgba(0,0,0,1) 42%, rgba(0,0,0,0) 68%);
 }
 
-/* контент поверх фона */
-.section-bgfade > .hero-inner{ position:relative; z-index:1; }
-
-/* На широких экранах скрываем «правую» колонку с img во избежание дублирования */
-@media (min-width: 992px){
-  .section-bgfade .hero-photo{ display:none; }
+/* весь реальный контент поверх */
+.hero--split > *{
+  position: relative;
+  z-index: 1;
 }
 
-/* На телефонах делаем фон деликатным и центрируем */
+/* сетка hero как была (если у тебя уже есть — можно не дублировать) */
+.hero-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0,1.6fr) minmax(260px,1.4fr); /* текст слева, справа оставляем "воздух" под фон */
+  gap: 26px;
+  align-items: center;
+  padding: 26px 16px;
+}
+
+/* ——— Мобилки: фон становится cover, без сильной маски ——— */
 @media (max-width: 768px){
-  .section-bgfade::after{
-    /* без «жёсткого» фейда — просто приглушённая подложка */
-    background-image: var(--hero-img);
-    background-position: center top;
-    background-size: cover;
-    opacity: .18;      /* можно 0.15–0.25 по вкусу */
+  .hero-inner{
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
-  .section-bgfade .hero-photo{ display:block; }  /* показываем обычное изображение блока */
+  .hero--split::after{
+    background:
+      radial-gradient(70vw 45vw at 50% 0%, rgba(0,122,140,0.10), transparent 60%),
+      var(--hero-img) center / cover no-repeat;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
+    opacity: .9;
+  }
 }
+
+/* У кого включено "уменьшить анимацию" — без плавностей */
+@media (prefers-reduced-motion: reduce){
+  .hero--split::after{ transition: none; }
+}
+
 
 
 
