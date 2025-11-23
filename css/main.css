@@ -1625,46 +1625,50 @@ header + .hero-inner-page{
     transition: none !important;
   }
 }
-
-/* === МЯГКИЙ ФОН С КАРТИНКОЙ СПРАВА (общая утилита) === */
+/* ====== HERO: мягкий фон с картинкой справа и плавным растворением ====== */
 .section-bgfade{
   position: relative;
+  background: var(--bg-soft);
   overflow: hidden;
-  isolation: isolate;
-  background:
-    radial-gradient(1200px 600px at 85% 12%, rgba(0,122,140,.06), transparent 60%),
-    var(--bg-soft);
 }
+
+/* картинка + градиент, который «съедает» её слева направо */
 .section-bgfade::after{
   content:"";
   position:absolute;
   inset:0;
-  background: var(--bgfade-image) right center / auto 100% no-repeat;
-  opacity: var(--bgfade-opacity, .95);
-  pointer-events:none;
+  /* два слоя: 1) градиент-подложка, 2) сама картинка */
+  background-image:
+    linear-gradient(to left, rgba(255,255,255,0) 35%, var(--bg-soft) 70%),
+    var(--hero-img);
+  background-repeat: no-repeat, no-repeat;
+  background-position: right center, right center;
+  background-size: auto 100%, auto 100%; /* картинка по высоте секции */
   z-index:0;
-  /* плавное затухание картинки влево */
-  -webkit-mask-image: linear-gradient(to left, #000 40%, rgba(0,0,0,0) 80%);
-          mask-image: linear-gradient(to left, #000 40%, rgba(0,0,0,0) 80%);
+  opacity: 1;
 }
-/* контент поверх декора */
-.section-bgfade > *{ position:relative; z-index:1; }
 
-/* адаптация на мобилке: картинку делаем компактнее и мягче растворяем */
+/* контент поверх фона */
+.section-bgfade > .hero-inner{ position:relative; z-index:1; }
+
+/* На широких экранах скрываем «правую» колонку с img во избежание дублирования */
+@media (min-width: 992px){
+  .section-bgfade .hero-photo{ display:none; }
+}
+
+/* На телефонах делаем фон деликатным и центрируем */
 @media (max-width: 768px){
   .section-bgfade::after{
-    background-size: auto 75%;
-    background-position: 115% 8%;
-    -webkit-mask-image: linear-gradient(to left, #000 22%, rgba(0,0,0,0) 55%);
-            mask-image: linear-gradient(to left, #000 22%, rgba(0,0,0,0) 55%);
-    opacity:.9;
+    /* без «жёсткого» фейда — просто приглушённая подложка */
+    background-image: var(--hero-img);
+    background-position: center top;
+    background-size: cover;
+    opacity: .18;      /* можно 0.15–0.25 по вкусу */
   }
+  .section-bgfade .hero-photo{ display:block; }  /* показываем обычное изображение блока */
 }
 
-/* чтобы не было «двойной» картинки: в hero скрываем правый блок-фото на широких */
-@media (min-width: 992px){
-  .hero.section-bgfade .hero-photo{ display:none; }
-}
+
 
 
 
