@@ -1626,6 +1626,10 @@ header + .hero-inner-page{
   }
 }
 /* ===== HERO with right image fade ===== */
+/* Фон для главного баннера */
+.hero--main{
+  --hero-img: url('/media/banner-dezshield360.jpg');
+}
 .hero--split{
   position: relative;
   background: var(--bg-soft);
@@ -1686,6 +1690,7 @@ header + .hero-inner-page{
 @media (prefers-reduced-motion: reduce){
   .hero--split::after{ transition: none; }
 }
+
 
 
 
