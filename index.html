@@ -24,15 +24,15 @@
 <header>
   <div class="header-inner">
     <!-- Логотип -->
-    <a href="/index.html" class="logo" aria-label="На главную">
-     <!-- СРАЗУ ПОСЛЕ ЛОГОТИПА -->
+  <a href="/index.html" class="logo" aria-label="На главную">
+  <img src="/media/logo-360.png" alt="Дез щит 360" class="logo-icon-img">
+  <div class="logo-text">
+    <div class="logo-title">Дез щит 360</div>
+    <div class="logo-sub">Центр дезинфектологии · Симферополь · Крым</div>
+  </div>
+</a>
 <a href="/biz/" class="for-biz-shortcut" aria-label="Для бизнеса (раздел)">Для бизнеса</a>
- <img src="/media/logo-360.png" alt="Дез щит 360" class="logo-icon-img">
-      <div class="logo-text">
-        <div class="logo-title">Дез щит 360</div>
-        <div class="logo-sub">Центр дезинфектологии · Симферополь · Крым</div>
-      </div>
-    </a>
+
 
     <!-- Десктоп-меню -->
     <nav class="header-nav" aria-label="Основное меню">
@@ -112,7 +112,7 @@
 <!-- ===== /HEADER ===== -->
 
 <!-- ===== HERO ===== -->
-<section class="hero section-bgfade" style="--hero-img: url('/media/works/foto-fon.png');">
+<section class="hero hero--split" style="--hero-img: url('/media/banner-dezshield360.jpg');">
   <div class="hero-inner">
     <div class="hero-left">
       <h1 class="hero-title">
@@ -139,21 +139,13 @@
         Представьте помещение без насекомых, грызунов, плесени и запахов. «Дез щит 360» берёт ответственность за результат.
       </div>
     </div>
- <div class="hero-photo">
-      <img src="/media/banner-dezshield360.jpg">
-           alt="Команда центра дезинфектологии «Дез щит 360» — дезинфекция и дезинсекция в Симферополе, Севастополе и Крыму">
-      <div class="hero-photo-overlay"></div>
-      <div class="hero-photo-caption">
-        <div class="hero-badge-inline">
-          <span>Профессиональная команда</span>
-        </div>
-        <strong>Работаем открыто и официально.</strong>
-        Каждый выезд — в защитной форме, с сертифицированными препаратами и чётким регламентом обработки.
-      </div>
-    </div>
+
+    <!-- Правая колонка — просто "воздух" под фон -->
+    <div class="hero-right-spacer" aria-hidden="true"></div>
   </div>
-   
 </section>
+
+
 <section id="services" class="section">
   <div class="container">
     <h2 class="section-title">Услуги центра дезинфектологии «Дез щит 360»</h2>
@@ -422,12 +414,6 @@
   </div>
 </section>
 
-<section id="prices" class="section section-alt">  
-</section>
-    
-    </div>
-  </div>
-</section>
 
 <section id="guarantees" class="section">
   <div class="container">
@@ -714,7 +700,7 @@
     });
   }
 })();
-  
+  </script>
 <script>
 (function(){
   // отключаем на системах с "reduce motion"
@@ -836,6 +822,7 @@
 
 </body>
 </html>
+
 
 
 
