@@ -1309,26 +1309,30 @@ header + .hero-inner-page{
   }
 }
 
-/* ===== HERO: картинка справа плавно переходит в фон ===== */
+//* ===== HERO: фон с фото и рассеиванием (главная) ===== */
 
-/* ===== HERO: фон с фото и рассеиванием ===== */
+/* картинка задаётся переменной на .hero--main */
+.hero--main{
+  --hero-img: url('/media/banner-dezshield360.jpg');
+}
 
-.hero--split{
+/* базовый фон секции hero */
+.hero.hero--split{
   position: relative;
   overflow: hidden;
   background: var(--bg-soft);
 }
 
-/* Мобилка: фото за текстом + мягкое “рассеивание” вниз */
+/* --- МОБИЛЬНАЯ ВЕРСИЯ: фото + рассеивание вниз --- */
 @media (max-width: 768px){
-  .hero--split{
+  .hero.hero--split{
     background:
-      /* лёгкое подсвеченное пятно сверху */
-      radial-gradient(70vw 45vw at 50% 0%, rgba(0,122,140,0.10), transparent 60%),
-      /* плавный переход к однотонному низу */
+      /* плавное выбеливание к низу */
       linear-gradient(
         to bottom,
-        rgba(230,245,247,0.96) 55%,
+        rgba(230,245,247,0) 0%,
+        rgba(230,245,247,0.70) 50%,
+        #E6F5F7 80%,
         #E6F5F7 100%
       ),
       var(--hero-img);
@@ -1337,49 +1341,48 @@ header + .hero-inner-page{
     background-size: cover;
   }
 
-  .hero--split .hero-inner{
+  /* одна колонка */
+  .hero.hero--split .hero-inner{
     grid-template-columns: 1fr;
-    gap: 14px;
-    padding: 24px 16px 20px;
+    gap: 16px;
+    padding: 24px 16px 24px;
   }
 
-  /* сам текст в мягкой “карточке” поверх фото */
-  .hero--split .hero-left{
+  /* убираем «карточку» под текстом — пускай текст лежит прямо на рассеянном фоне */
+  .hero.hero--split .hero-left{
     order: 1;
-    background: rgba(246,250,251,0.94);
-    border-radius: 16px;
-    padding: 14px 12px;
+    background: transparent;
+    padding: 0;
   }
 
-  /* пустой правый столбец на мобиле не нужен */
-  .hero--split .hero-right-spacer{
+  /* правый столбец на мобиле не нужен */
+  .hero.hero--split .hero-right-spacer{
     display: none;
   }
 }
 
-/* Десктоп: фото справа, плавно переходит в фон слева */
+/* --- ДЕСКТОП: фото справа, плавный переход слева --- */
 @media (min-width: 992px){
-  .hero--split{
+  .hero.hero--split{
     background:
       linear-gradient(
         to right,
         #E6F5F7 0%,
-        #E6F5F7 40%,
-        rgba(230,245,247,0.96) 55%,
+        #E6F5F7 45%,
+        rgba(230,245,247,0.96) 60%,
         rgba(230,245,247,0) 78%,
         rgba(230,245,247,0) 100%
       ),
       var(--hero-img);
     background-repeat: no-repeat;
     background-position: right center;
-    background-size: cover;
+    background-size: auto 115%;
   }
 
-  .hero--split .hero-inner{
-    padding: 26px 16px 26px; /* как у .hero */
+  .hero.hero--split .hero-inner{
+    padding: 26px 16px 26px;
   }
 }
-
 
 
 
