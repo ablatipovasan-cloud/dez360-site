@@ -774,9 +774,69 @@
   });
 })();
 </script>
+<script>
+  // FAQ: аккордеон — открыт только один пункт
+  (function () {
+    var items = Array.from(document.querySelectorAll('.faq-item'));
+    if (!items.length) return;
+
+    // Хелперы
+    function isOpen(item){ return !item.classList.contains('collapsed'); }
+    function setState(item, open){
+      var q = item.querySelector('.faq-question');
+      var t = item.querySelector('.faq-toggle');
+      item.classList.toggle('collapsed', !open);
+      if (q) q.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (t) t.textContent = open ? '−' : '+';
+    }
+    function closeAllExcept(except){
+      items.forEach(function(it){ if (it !== except) setState(it, false); });
+    }
+
+    // Инициализация ARIA и состояний на основе текущих классов
+    items.forEach(function(item){
+      var q = item.querySelector('.faq-question');
+      var t = item.querySelector('.faq-toggle');
+      if (!q) return;
+
+      q.setAttribute('role', 'button');
+      q.setAttribute('tabindex', '0');
+      q.setAttribute('aria-expanded', isOpen(item) ? 'true' : 'false');
+      if (t) t.textContent = isOpen(item) ? '−' : '+';
+
+      function activate(){
+        var willOpen = !isOpen(item);
+        // Открываем текущий — закрываем остальные
+        if (willOpen) {
+          closeAllExcept(item);
+          setState(item, true);
+        } else {
+          // Разрешаем закрывать последний открытый (если хочешь запрещать — просто убери эту ветку)
+          setState(item, false);
+        }
+      }
+
+      q.addEventListener('click', activate);
+      q.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+        // Стрелки: вверх/вниз — навигация по вопросам (по желанию)
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          var idx = items.indexOf(item);
+          var next = (e.key === 'ArrowDown')
+            ? items[(idx + 1) % items.length]
+            : items[(idx - 1 + items.length) % items.length];
+          var nq = next && next.querySelector('.faq-question');
+          if (nq) nq.focus();
+        }
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
+
 
 
 
