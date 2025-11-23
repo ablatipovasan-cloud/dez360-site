@@ -1446,6 +1446,186 @@ header + .hero-inner-page{
     transition: none !important;
   }
 }
+/* ===========================================
+   МЯГКИЕ ФОНЫ СЕКЦИЙ + ЕДИНЫЙ АКЦЕНТНЫЙ СТИЛЬ БЛОКОВ
+   =========================================== */
+
+/* Палитра поверх текущих переменных */
+:root{
+  --surface:        #F6FAFB;       /* мягкий фон секций */
+  --surface-alt:    #F2F7F9;       /* чередование секций */
+  --ring-accent:    rgba(0,122,140,.22);  /* цвет «рамки» */
+  --ring-accent-2:  rgba(0,122,140,.10);  /* тон «ореола» */
+}
+
+/* Базовый контейнер (если где-то не задан) */
+.container{ max-width:1200px; margin:0 auto; padding:0 16px; }
+
+/* Секции: мягкая «карточка» внутри ширины контейнера */
+.section{ padding: 42px 16px; }
+.section > .container{
+  background: var(--surface);
+  border: 1px solid rgba(11,57,84,.06);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 28px rgba(0,0,0,.04);
+  padding: 18px 16px;
+  position: relative;
+  overflow: hidden; /* чтобы внутренний ореол не вылезал */
+}
+
+/* Альтернативная секция для чередования */
+.section.section-alt > .container{
+  background: var(--surface-alt);
+}
+
+/* На очень узких — чуть компактнее */
+@media (max-width: 560px){
+  .section{ padding: 32px 12px; }
+  .section > .container{ padding:14px 12px; }
+}
+
+/* Единый «акцентный ореол» по краям секции */
+.section > .container::before{
+  content:"";
+  position:absolute; inset: -1px;
+  border-radius: calc(var(--radius) + 2px);
+  pointer-events:none;
+  background: linear-gradient(180deg, var(--ring-accent-2), rgba(0,0,0,0)) border-box;
+  -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  border: 2px solid transparent;
+  opacity:.9;
+}
+
+/* ===========================================
+   ЕДИНЫЙ АКЦЕНТНЫЙ СТИЛЬ ДЛЯ ВСЕХ БЛОКОВ
+   (включая услуги и таблицу цен)
+   =========================================== */
+
+.service-card,
+.client-card,
+.guarantee-card,
+.case-card,
+.faq-item,
+.about-card,
+.contacts-form,
+.map-placeholder,
+#prices .price-table {
+  position: relative;
+  background:#fff;
+  border: 1px solid rgba(11,57,84,.08);
+  border-radius: var(--radius);
+  box-shadow:
+    0 2px 0 rgba(255,255,255,.9) inset,
+    0 8px 22px rgba(0,0,0,.05),
+    0 24px 40px rgba(0,0,0,.04);
+  transform: translateZ(0);
+  transform-origin: center;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, filter .22s ease;
+  will-change: transform;
+}
+
+/* Акцентная рамка (тонкая) на всех перечисленных блоках */
+.service-card::before,
+.client-card::before,
+.guarantee-card::before,
+.case-card::before,
+.faq-item::before,
+.about-card::before,
+.contacts-form::before,
+.map-placeholder::before,
+#prices .price-table::before{
+  content:"";
+  position:absolute; inset:-1px;
+  border-radius: calc(var(--radius) + 2px);
+  pointer-events:none;
+  background: linear-gradient(180deg, var(--ring-accent), rgba(0,0,0,0)) border-box;
+  -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  border: 2px solid transparent;
+  opacity:.85;
+}
+
+/* Таблица цен как карточка: сглаживаем края */
+#prices .price-table{ overflow:hidden; }
+
+/* Наведение: мягкое увеличение + усиленная тень — ЕДИНО для всех */
+@media (hover:hover){
+  .service-card:hover,
+  .client-card:hover,
+  .guarantee-card:hover,
+  .case-card:hover,
+  .faq-item:hover,
+  .about-card:hover,
+  .contacts-form:hover,
+  .map-placeholder:hover,
+  #prices .price-table:hover{
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+      0 14px 28px rgba(0,0,0,.10),
+      0 36px 64px rgba(0,0,0,.06);
+    border-color: rgba(11,57,84,.16);
+  }
+}
+
+/* Фокус клавиатурой/тач */
+.service-card:focus-within,
+.client-card:focus-within,
+.guarantee-card:focus-within,
+.case-card:focus-within,
+.faq-item:focus-within,
+.about-card:focus-within,
+.contacts-form:focus-within,
+.map-placeholder:focus-within,
+#prices .price-table:focus-within{
+  transform: translateY(-3px) scale(1.015);
+  box-shadow:
+    0 12px 24px rgba(0,0,0,.10),
+    0 30px 52px rgba(0,0,0,.06);
+  border-color: rgba(11,57,84,.18);
+  outline: none;
+}
+
+/* Мобильные — сглаживаем «скачок» */
+@media (max-width:560px){
+  .service-card:hover,
+  .client-card:hover,
+  .guarantee-card:hover,
+  .case-card:hover,
+  .faq-item:hover,
+  .about-card:hover,
+  .contacts-form:hover,
+  .map-placeholder:hover,
+  #prices .price-table:hover,
+  .service-card:focus-within,
+  .client-card:focus-within,
+  .guarantee-card:focus-within,
+  .case-card:focus-within,
+  .faq-item:focus-within,
+  .about-card:focus-within,
+  .contacts-form:focus-within,
+  .map-placeholder:focus-within,
+  #prices .price-table:focus-within{
+    transform: translateY(-2px) scale(1.01);
+  }
+}
+
+/* Уважаем «уменьшить анимацию» */
+@media (prefers-reduced-motion: reduce){
+  .section > .container,
+  .service-card,
+  .client-card,
+  .guarantee-card,
+  .case-card,
+  .faq-item,
+  .about-card,
+  .contacts-form,
+  .map-placeholder,
+  #prices .price-table{
+    transition: none !important;
+  }
+}
+
 
 
 
