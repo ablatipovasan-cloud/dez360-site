@@ -1688,6 +1688,63 @@ header + .hero-inner-page{
 @media (prefers-reduced-motion: reduce){
   .hero--split::after{ transition: none; }
 }
+/* === FIX HERO BACKGROUND (desktop + mobile) === */
+
+/* Десктоп / планшет */
+.hero.hero--split{
+  position: relative;
+  overflow: hidden;
+
+  /* цвет фона под картинкой */
+  background-color: #E6F5F7;
+
+  /* 2 слоя:
+     1) слева — сплошной фон
+     2) справа — картинка из переменной --hero-img */
+  background-image:
+    linear-gradient(
+      to right,
+      #E6F5F7 0%,
+      #E6F5F7 48%,
+      rgba(230,245,247,0) 75%
+    ),
+    var(--hero-img);
+
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: auto 115%;
+
+  /* на всякий случай перебиваем всё старое */
+  background-blend-mode: normal;
+}
+
+/* Мобилка */
+@media (max-width: 768px){
+  .hero.hero--split{
+    background-color: #E6F5F7;
+
+    background-image:
+      radial-gradient(70vw 45vw at 50% 0%, rgba(0,122,140,0.10), transparent 60%),
+      var(--hero-img);
+
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+  }
+
+  .hero.hero--split .hero-inner{
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 24px 16px 20px;
+  }
+
+  .hero.hero--split .hero-left{
+    background: rgba(246,250,251,0.94);
+    border-radius: 16px;
+    padding: 14px 12px;
+  }
+}
+
 
 
 
