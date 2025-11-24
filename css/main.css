@@ -371,76 +371,93 @@ header {
   }
 }
 
-/* картинка для главного hero */
+/* ===== HERO: главная, фото + рассеивание ===== */
+
+/* картинка задаётся переменной на .hero--main */
 .hero--main{
   --hero-img: url('/media/banner-dezshield360.jpg');
 }
 
-/* ===== HERO: единый фон с фото + рассеивание (главная) ===== */
-
+/* базовый фон для всех экранов — фото на фоне + лёгкое рассеивание вниз */
 .hero.hero--split{
   position: relative;
   overflow: hidden;
-
-  /* фото + вертикальное рассеивание к низу */
   background:
     linear-gradient(
       to bottom,
       rgba(230,245,247,0) 0%,
-      rgba(230,245,247,0.75) 52%,
-      #E6F5F7 80%,
+      rgba(230,245,247,0.78) 55%,
+      #E6F5F7 82%,
       #E6F5F7 100%
     ),
     var(--hero-img);
-
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: right center; /* люди смещены вправо на десктопе */
+  background-position: right center;
 }
 
-/* На мобиле чуть выше центрируем картинку */
+/* сетка внутри hero остаётся как была */
+.hero.hero--split .hero-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0,1.6fr) minmax(260px,1.4fr);
+  gap: 26px;
+  align-items: stretch;
+}
+
+/* простой «пустой» столбец справа, если он есть в вёрстке */
+.hero.hero--split .hero-right-spacer{
+  min-height: 340px;
+}
+
+/* МОБИЛА: одна колонка + текст в мягкой карточке поверх фото */
 @media (max-width: 768px){
   .hero.hero--split{
     background-position: center top;
   }
-}
 
-
-
-/* ОБЩИЕ мобильные правки hero (для всех, где есть .hero-photo) */
-@media (max-width: 768px) {
-  .hero-inner {
+  .hero.hero--split .hero-inner{
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 16px;
+    padding: 24px 16px 24px;
   }
 
-  /* для hero с отдельным .hero-photo (внутренние страницы) */
-  .hero:not(.hero--split) .hero-left {
-    order: 2;
-  }
-  .hero:not(.hero--split) .hero-photo {
+  .hero.hero--split .hero-left{
     order: 1;
-    min-height: 260px;
+    background: rgba(246,250,251,0.94);
+    border-radius: 16px;
+    padding: 14px 12px;
   }
 
-  .hero:not(.hero--split) .hero-photo img,
-  .hero:not(.hero--split) .hero-photo video {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
-
-  .hero-photo-overlay {
-    background: linear-gradient(
-      to top right,
-      rgba(11,57,84,0.55),
-      rgba(0,122,140,0.12),
-      rgba(0,0,0,0)
-    );
+  .hero.hero--split .hero-right-spacer{
+    display: none;
   }
 }
 
-/* ---- SERVICES ---- */
+/* ДЕСКТОП: чуть сильнее «подчищаем» фото слева, чтобы переход был мягким */
+@media (min-width: 992px){
+  .hero.hero--split{
+    background:
+      linear-gradient(
+        to right,
+        #E6F5F7 0%,
+        #E6F5F7 38%,
+        rgba(230,245,247,0.96) 56%,
+        rgba(230,245,247,0) 80%,
+        rgba(230,245,247,0) 100%
+      ),
+      var(--hero-img);
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover;
+  }
+
+  .hero.hero--split .hero-inner{
+    padding: 26px 16px 26px;
+  }
+}
+
 
 /* ---- SERVICES ---- */
 .services-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
@@ -890,35 +907,6 @@ header + .hero-inner-page{
 .mobile-nav{ background:#fff !important; }
 .nav-backdrop{ background:rgba(0,0,0,.35) !important; }
 
-/* геро: мобильная сетка (для всех) + порядок только для hero с картинкой */
-@media (max-width: 768px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .hero:not(.hero--split) .hero-left { order: 2; }
-  .hero:not(.hero--split) .hero-photo {
-    order: 1;
-    min-height: 260px;
-  }
-
-  .hero:not(.hero--split) .hero-photo img,
-  .hero:not(.hero--split) .hero-photo video {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
-
-  .hero-photo-overlay {
-    background: linear-gradient(
-      to top right,
-      rgba(11,57,84,0.55),
-      rgba(0,122,140,0.12),
-      rgba(0,0,0,0)
-    );
-  }
-}
 
 /* Мобильное меню: строка со ссылкой и отдельной кнопкой-стрелкой */
 .mobile-link-split{
@@ -1365,66 +1353,7 @@ header + .hero-inner-page{
 }
 
 
-/* --- МОБИЛЬНАЯ ВЕРСИЯ: фото + рассеивание вниз --- */
-@media (max-width: 768px){
-  .hero.hero--split{
-    background:
-      /* плавное выбеливание к низу */
-      linear-gradient(
-        to bottom,
-        rgba(230,245,247,0) 0%,
-        rgba(230,245,247,0.70) 50%,
-        #E6F5F7 80%,
-        #E6F5F7 100%
-      ),
-      var(--hero-img);
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: cover;
-  }
 
-  /* одна колонка */
-  .hero.hero--split .hero-inner{
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 24px 16px 24px;
-  }
-
-  /* убираем «карточку» под текстом — пускай текст лежит прямо на рассеянном фоне */
-  .hero.hero--split .hero-left{
-    order: 1;
-    background: transparent;
-    padding: 0;
-  }
-
-  /* правый столбец на мобиле не нужен */
-  .hero.hero--split .hero-right-spacer{
-    display: none;
-  }
-}
-
-/* --- ДЕСКТОП: фото справа, плавный переход слева --- */
-@media (min-width: 992px){
-  .hero.hero--split{
-    background:
-      linear-gradient(
-        to right,
-        #E6F5F7 0%,
-        #E6F5F7 45%,
-        rgba(230,245,247,0.96) 60%,
-        rgba(230,245,247,0) 78%,
-        rgba(230,245,247,0) 100%
-      ),
-      var(--hero-img);
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: auto 115%;
-  }
-
-  .hero.hero--split .hero-inner{
-    padding: 26px 16px 26px;
-  }
-}
 
 
 
