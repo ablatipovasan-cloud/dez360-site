@@ -404,34 +404,7 @@ header {
     background-position: center top;
   }
 }
-/* ===== HERO: единый фон с фото + рассеивание (главная) ===== */
 
-.hero.hero--split{
-  position: relative;
-  overflow: hidden;
-
-  /* фото + вертикальное рассеивание к низу */
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(230,245,247,0) 0%,
-      rgba(230,245,247,0.75) 52%,
-      #E6F5F7 80%,
-      #E6F5F7 100%
-    ),
-    var(--hero-img);
-
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: right center; /* люди смещены вправо на десктопе */
-}
-
-/* На мобиле чуть выше центрируем картинку */
-@media (max-width: 768px){
-  .hero.hero--split{
-    background-position: center top;
-  }
-}
 
 
 /* ОБЩИЕ мобильные правки hero (для всех, где есть .hero-photo) */
@@ -1391,19 +1364,6 @@ header + .hero-inner-page{
   }
 }
 
-//* ===== HERO: фон с фото и рассеиванием (главная) ===== */
-
-/* картинка задаётся переменной на .hero--main */
-.hero--main{
-  --hero-img: url('/media/banner-dezshield360.jpg');
-}
-
-/* базовый фон секции hero */
-.hero.hero--split{
-  position: relative;
-  overflow: hidden;
-  background: var(--bg-soft);
-}
 
 /* --- МОБИЛЬНАЯ ВЕРСИЯ: фото + рассеивание вниз --- */
 @media (max-width: 768px){
@@ -1465,6 +1425,7 @@ header + .hero-inner-page{
     padding: 26px 16px 26px;
   }
 }
+
 
 
 
