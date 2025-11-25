@@ -1461,9 +1461,14 @@ body {
   background-color: #E6F5F7;
 }
 
-/* только главная страница */
-body.home {
-  /* градиент + второе изображение */
+body.home::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;          /* фон всегда под страницей */
+  pointer-events: none;
+
+  /* ДВА слоя: 1 — градиент, 2 — картинка-логотип */
   background-image:
     linear-gradient(
       to bottom,
@@ -1472,11 +1477,18 @@ body.home {
       #E6F5F7 100%
     ),
     url("/media/works/Logo-best1.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center top;
-  /* можно оставить эффект «параллакса»; если будет дёргаться на мобилке — убери эту строку */
-  background-attachment: fixed;
+
+  /* чтобы градиент растягивался на весь экран,
+     а картинка была поменьше и по центру сверху */
+  background-repeat: no-repeat, no-repeat;
+  background-position: center top, center 80px;
+  background-size: 100% 100%, 1100px auto;  /* ← настроим масштаб логотипа */
+}
+@media (max-width: 768px){
+  body.home::before{
+    background-position: center 40px, center 40px;
+    background-size: 100% 100%, 520px auto;
+  }
 }
 
 /* чтобы контент был поверх ::before */
@@ -1484,6 +1496,7 @@ body.home > *{
   position: relative;
   z-index: 1;
 }
+
 
 
 
