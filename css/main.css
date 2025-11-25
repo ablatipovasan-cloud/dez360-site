@@ -1456,52 +1456,55 @@ header + .hero-inner-page{
 
 /* ==== ГЛАВНАЯ: второе фоновое изображение под блоками ==== */
 
-/* базовый цвет на всякий случай */
-body {
-  background: #E6F5F7;
+/* ==== ГЛАВНАЯ: второе изображение под всеми блоками ==== */
+
+/* общий фон, если картинка не загрузится */
+body{
+  background:#E6F5F7;
 }
 
-/* только для главной */
-body.home {
-  position: relative;
+/* только главная */
+body.home{
+  position:relative;
 }
 
-/* второе фоновое фото: РАСТЯГИВАЕМ + МЕНЬШЕ РАССЕИВАНИЯ */
-body.home::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 1500px;   /* растягиваем фон ниже блоков на десктопе */
-  z-index: -1;
-  pointer-events: none;
+/* большое внутреннее изображение, тянущееся до низа окна */
+body.home::before{
+  content:"";
+  position:fixed;   /* сидит под всей страницей при скролле */
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
 
+  /* меньше тумана, картинка виднее и «тянется» вниз */
   background:
-    /* более лёгкий туман сверху вниз */
     linear-gradient(
       to bottom,
-      rgba(230,245,247,0.00) 20%,    /* практически нет тумана сверху */
-      rgba(230,245,247,0.30) 55%,   /* стало ПРОЗРАЧНЕЕ (было больше) */
-      #E6F5F7 100%
+      rgba(230,245,247,0.0) 0%,
+      rgba(230,245,247,0.45) 78%,
+      rgba(230,245,247,0.85) 100%
     ),
-    url("/media/works/Logo-best1.png") center top / cover no-repeat;
-    /* cover — картинка РАСТЯНУТА по ширине экрана */
+    url("/media/works/Logo-best1.png") center top / 1400px auto no-repeat;
 }
 
-/* Мобильная версия: тоже растянуто, но чуть ниже и с тем же лёгким туманом */
-@media (max-width: 768px) {
-  body.home::before {
-    height: 1200px;  /* сколько фона нужно под первыми секциями на телефоне */
+/* чуть растягиваем на очень широких экранах */
+@media (min-width: 1440px){
+  body.home::before{
+    background-size: 1600px auto;
+  }
+}
 
+/* мобилка: картинку делаем поменьше и тоже тянем до низа */
+@media (max-width: 768px){
+  body.home::before{
     background:
       linear-gradient(
         to bottom,
-        rgba(230,245,247,0.00) 0%,
-        rgba(230,245,247,0.30) 60%,
-        #E6F5F7 100%
+        rgba(230,245,247,0.0) 0%,
+        rgba(230,245,247,0.55) 82%,
+        rgba(230,245,247,0.92) 100%
       ),
-      url("/media/works/Logo-best1.png") center top / cover no-repeat;
+      url("/media/works/Logo-best1.png") center top / 1100px auto no-repeat;
   }
 }
 
@@ -1522,6 +1525,7 @@ body.home::before {
     display: none !important;
   }
 }
+
 
 
 
