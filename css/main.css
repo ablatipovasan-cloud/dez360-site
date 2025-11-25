@@ -1585,6 +1585,51 @@ body.home::before{
   }
 }
 
+/* ============================
+   FIX: hero на внутренних страницах
+   отключаем split-фон и дубликат баннера
+   ============================ */
+
+/* 1. Любой hero на внутренней странице НЕ должен рисовать split-фон */
+.hero-inner-page.hero--split,
+.hero-inner-page.hero.hero--split {
+  background: var(--bg-soft) !important; /* обычный голубой фон */
+}
+
+/* 2. Убираем псевдо-слой с картинкой (тот, что даёт «второй баннер») */
+.hero-inner-page.hero--split::before,
+.hero-inner-page.hero.hero--split::before {
+  content: none !important;
+}
+
+/* 3. Картинка внутри hero всегда ведёт себя как нормальная карточка */
+.hero-inner-page .hero-photo {
+  position: relative;
+  display: block;
+  min-height: 0 !important;
+  padding: 0 !important;
+  background: #ffffff;            /* белая «карточка» под фото */
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+/* 4. Само изображение/видео занимает всю ширину и задаёт высоту */
+.hero-inner-page .hero-photo img,
+.hero-inner-page .hero-photo video {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain;            /* видно фото целиком, без обрезки */
+}
+
+/* 5. На мобиле видео прячем, чтобы не появлялись чёрные блоки */
+@media (max-width: 768px) {
+  .hero-inner-page .hero-photo video {
+    display: none !important;
+  }
+}
+
 
 
 
