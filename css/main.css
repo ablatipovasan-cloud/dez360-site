@@ -1639,43 +1639,47 @@ body {
 /* только для главной (body.home) вешаем большое фото с рассеиванием */
 body.home {
   position: relative;
+  background: #E6F5F7; /* запасной фон */
 }
 
 body.home::before {
   content: "";
-  position: fixed;
-  inset: 0;
-  height: 1400px;              /* сколько тянется баннер вниз – можно подправить */
-  pointer-events: none;
-  z-index: -1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  /* вместо фиксированной высоты… */
+  min-height: calc(100vh + 400px);  /* высота экрана + кусок под следующими секциями */
 
   background:
-    /* плавное рассеивание к низу */
     linear-gradient(
       to bottom,
       rgba(230,245,247,0) 0%,
-      rgba(230,245,247,0.85) 50%,
-      #E6F5F7 85%,
+      rgba(230,245,247,0.85) 60%,
       #E6F5F7 100%
     ),
     url("/media/works/Logo-best1.png") no-repeat;
 
-  background-size: cover;
-  background-position: center top;
+   z-index: -1;
 }
-
-/* на десктопе смещаем картинку вправо, как было */
 @media (min-width: 992px) {
   body.home::before {
-    background-position: right center;
-    background-size: auto 130%;
+    min-height: calc(100vh + 450px);
   }
 }
+
+@media (max-width: 991.98px) {
+  body.home::before {
+    min-height: calc(100vh + 250px);
+  }
+}
+
 
 /* hero на главной больше НЕ рисует свой фон, только контент */
 body.home .hero.hero--split.hero--main {
   background: transparent !important;
 }
+
 
 
 
