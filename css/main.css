@@ -1629,6 +1629,59 @@ body.home::before{
     display: none !important;
   }
 }
+/* === HOME: подложка с логотипом — выше и поярче === */
+
+/* Десктоп и планшеты */
+body.home::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  /* меньше тумана + картинка чуть выше и крупнее */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(230,245,247,0.0) 22%,  /* дольше остаётся прозрачной */
+      rgba(230,245,247,0.14) 60%,
+      rgba(230,245,247,0.32) 100%
+    ),
+    url("/media/works/Logo-best1.png") center -40px / 1500px auto no-repeat;
+
+  /* чуть повышаем общую яркость картинки */
+  filter: brightness(1.06);
+}
+
+/* Очень широкие экраны */
+@media (min-width: 1440px){
+  body.home::before{
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(230,245,247,0.0) 22%,
+        rgba(230,245,247,0.14) 60%,
+        rgba(230,245,247,0.32) 100%
+      ),
+      url("/media/works/Logo-best1.png") center -60px / 1650px auto no-repeat;
+  }
+}
+
+/* Мобилка: тоже немного выше и поярче */
+@media (max-width: 768px){
+  body.home::before{
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(230,245,247,0.0) 15%,
+        rgba(230,245,247,0.22) 78%,
+        rgba(230,245,247,0.55) 100%
+      ),
+      url("/media/works/Logo-best1.png") center -25px / 1200px auto no-repeat;
+    filter: brightness(1.06);
+  }
+}
+
 
 
 
