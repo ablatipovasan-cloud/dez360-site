@@ -1404,7 +1404,7 @@ header + .hero-inner-page{
   background-repeat: no-repeat;
   background-size: cover;
   /* смещаем кверху, чтобы на десктопе головы не обрезались */
-  background-position: right top;
+  background-position: right 8%;
 }
 
 /* сам текст выше слоя с фото */
@@ -1452,20 +1452,8 @@ header + .hero-inner-page{
   }
 }
 
-/* Десктоп */
-@media (min-width: 992px){
-  .hero.hero--split.hero--main{
-    min-height: 420px;
-  }
 
-  .hero.hero--split.hero--main .hero-inner{
-    padding: 26px 16px 26px;
-  }
-}
 
-/* ==== ГЛАВНАЯ: большой фон-баннер за всеми блоками ==== */
-
-/* базовый фон на всякий случай */
 /* ==== ГЛАВНАЯ: второе изображение за блоками ==== */
 
 /* общий фон (если картинка не загрузится) */
@@ -1495,6 +1483,7 @@ body.home::before{
     ),
     url("/media/works/Logo-best1.png") center top / cover no-repeat;
 }
+
 
 
 
