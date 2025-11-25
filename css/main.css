@@ -1352,45 +1352,73 @@ header + .hero-inner-page{
   }
 }
 
-/* 1. Картинка для hero на главной */
-.hero--main{
-  --hero-img: url('/media/banner-dezshield360.jpg');
-}
+/* === HERO ГЛАВНОЙ: баннер с людьми справа === */
 
-/* 2. Общий hero для главной */
 .hero.hero--split.hero--main{
+  /* картинка баннера */
+  --hero-img: url('/media/banner-dezshield360.jpg');
+
   position: relative;
   overflow: hidden;
+  background: #E6F5F7;
+  padding: 26px 0 32px;
 }
 
-/* 3. Фон hero: градиент + баннер справа */
+/* сетка внутри hero */
+.hero.hero--split.hero--main .hero-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0,1.6fr) minmax(260px,1.4fr);
+  gap: 26px;
+  align-items: center;
+  padding: 0 16px;
+}
+
+/* делаем слой с фото под текстом */
 .hero.hero--split.hero--main::before{
   content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
+  pointer-events: none;
+
   background-image:
+    /* вертикальное рассеивание вниз */
+    linear-gradient(
+      to bottom,
+      rgba(230,245,247,0.00) 10%,
+      rgba(230,245,247,0.80) 70%,
+      #E6F5F7 100%
+    ),
+    /* горизонтальное рассеивание слева направо */
     linear-gradient(
       to right,
       #E6F5F7 0%,
-      rgba(230,245,247,0.96) 35%,
-      rgba(230,245,247,0.65) 60%,
+      rgba(230,245,247,0.94) 40%,
+      rgba(230,245,247,0.55) 65%,
       rgba(230,245,247,0.00) 100%
     ),
     var(--hero-img);
+
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: right center;
-  pointer-events: none;
+  /* смещаем кверху, чтобы на десктопе головы не обрезались */
+  background-position: right top;
 }
 
-/* Контент поверх фона */
-.hero.hero--split.hero--main .hero-inner{
+/* сам текст выше слоя с фото */
+.hero.hero--split.hero--main .hero-left{
   position: relative;
   z-index: 1;
 }
 
-/* Мобилка */
+/* правый столбец можно оставить пустым как “спейсер” */
+.hero.hero--split.hero--main .hero-right-spacer{
+  min-height: 340px;
+}
+
+/* мобилка: одна колонка, без белой карты */
 @media (max-width: 768px){
   .hero.hero--split.hero--main .hero-inner{
     grid-template-columns: 1fr;
@@ -1415,7 +1443,7 @@ header + .hero-inner-page{
       linear-gradient(
         to bottom,
         rgba(230,245,247,0.00) 0%,
-        rgba(230,245,247,0.85) 60%,
+        rgba(230,245,247,0.85) 65%,
         #E6F5F7 100%
       ),
       var(--hero-img);
@@ -1435,35 +1463,40 @@ header + .hero-inner-page{
   }
 }
 
-/* общий фон страницы (цвет) */
+/* ==== ГЛАВНАЯ: большой фон-баннер за всеми блоками ==== */
+
+/* базовый фон на всякий случай */
+/* ==== ГЛАВНАЯ: второе изображение за блоками ==== */
+
+/* общий фон (если картинка не загрузится) */
 body{
   background: #E6F5F7;
 }
 
-/* только на главной странице (добавь класc home в <body>) */
+/* только главная */
 body.home{
-  position: relative;
-  background: #E6F5F7; /* запасной цвет */
+  position: relative; /* чтобы pseudo-элемент “цеплялся” к body */
 }
 
-/* большое изображение за всеми блоками */
+/* большое второе изображение под всеми верхними секциями */
 body.home::before{
   content: "";
-  position: fixed;   /* остаётся за блоками, а страница прокручивается */
+  position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: -1;          /* фон всегда под страницей */
   pointer-events: none;
 
   background:
-    /* мягкое выбеливание сверху вниз, чтобы текст читался */
     linear-gradient(
       to bottom,
-      rgba(230,245,247,0.0) 0%,
-      rgba(230,245,247,0.85) 65%,
+      rgba(230,245,247,0) 0%,
+      rgba(230,245,247,0.85) 60%,
       #E6F5F7 100%
     ),
     url("/media/works/Logo-best1.png") center top / cover no-repeat;
 }
+
+
 
 
 
