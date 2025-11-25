@@ -1457,39 +1457,26 @@ header + .hero-inner-page{
 /* ==== ГЛАВНАЯ: второе изображение за блоками ==== */
 
 /* общий фон (если картинка не загрузится) */
-body{
-  background: #E6F5F7;
+body {
+  background-color: #E6F5F7;
 }
 
-/* только главная */
-body.home{
-  position: relative; /* чтобы pseudo-элемент “цеплялся” к body */
-}
-
-/* большое второе изображение под всеми верхними секциями */
-body.home::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-
-  /* сколько вниз тянем фон (под hero + несколько секций) */
-  height: 900px;        /* при необходимости подрегулируй */
-
-  pointer-events: none;
-
-  /* ВАЖНО: не используем z-index:-1, чтобы не уйти под фон html */
-  z-index: 0;
-
-  background:
+/* только главная страница */
+body.home {
+  /* градиент + второе изображение */
+  background-image:
     linear-gradient(
       to bottom,
       rgba(230,245,247,0) 0%,
       rgba(230,245,247,0.85) 60%,
       #E6F5F7 100%
     ),
-    url("/media/works/Logo-best1.png") center top / cover no-repeat;
+    url("/media/works/Logo-best1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  /* можно оставить эффект «параллакса»; если будет дёргаться на мобилке — убери эту строку */
+  background-attachment: fixed;
 }
 
 /* чтобы контент был поверх ::before */
@@ -1497,6 +1484,7 @@ body.home > *{
   position: relative;
   z-index: 1;
 }
+
 
 
 
