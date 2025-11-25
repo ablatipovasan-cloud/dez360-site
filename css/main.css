@@ -1522,31 +1522,44 @@ body.home::before{
 /* ==== HERO-фото: убираем чёрные блоки на всех страницах ==== */
 
 /* общий контейнер с баннерным фото/видео */
-.hero-photo{
-  /* оставляем закругления и тени, если они были заданы выше —
-     здесь переопределяем только проблемные свойства */
-  display: block !important;          /* вместо flex */
-  min-height: 0 !important;           /* без фиксированной высоты */
-  background: transparent !important; /* убираем чёрный фон */
-  padding: 0 !important;
+./* ==== HERO-фото на внутренних страницах (без чёрных блоков и обрезания) ==== */
+
+.hero-inner-page .hero-photo{
+  position: relative;
+  display: block;
+  /* убираем принудительную высоту и чёрный фон из базового .hero-photo */
+  min-height: 0 !important;
+  background: transparent !important;
+
+  padding: 0;
   overflow: hidden;
+
+  /* чтобы картинка выглядела как карточка, как и раньше */
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
 }
 
-/* само изображение / видео */
-.hero-photo img,
-.hero-photo video{
+/* само изображение / видео внутри hero */
+.hero-inner-page .hero-photo img,
+.hero-inner-page .hero-photo video{
   display: block !important;
   width: 100% !important;
-  height: auto !important;            /* высота по содержимому */
-  object-fit: cover;                  /* если надо чуть обрезать края */
+  height: auto !important;
+
+  /* ВАЖНО:
+     contain — показывает картинку целиком, без обрезки (вентиляция перестанет резаться).
+     Если захочешь обратно «на весь блок» с подрезкой краёв — поменяй на cover.
+  */
+  object-fit: contain;
 }
 
-/* Мобилка: видео прячем, чтобы не было чёрных экранов от video-элемента */
+/* на мобильных видео скрываем, чтобы не давали чёрный экран */
 @media (max-width: 768px){
-  .hero-photo video{
+  .hero-inner-page .hero-photo video{
     display: none !important;
   }
 }
+
 
 
 
