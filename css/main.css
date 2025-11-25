@@ -1352,225 +1352,52 @@ header + .hero-inner-page{
   }
 }
 
-/* === HERO MAIN: ФИНАЛЬНАЯ НАСТРОЙКА === */
-
-/* убираем «карточку» у героя (общий стиль .section > .container её включал) */
-.hero.hero--split > .container{
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-  padding: 26px 16px 26px; /* чтоб отступы остались аккуратными */
-}
-.hero.hero--split > .container::before{
-  content: none;
+/* 1. Картинка для hero на главной */
+.hero--main{
+  --hero-img: url('/media/banner-dezshield360.jpg');
 }
 
-/* Десктоп: фото справа, целиком видно, мягко уходит под фон */
-@media (min-width: 992px){
-  .hero.hero--split{
-    background:
-      linear-gradient(
-        to right,
-        #E6F5F7 0%,
-        #E6F5F7 45%,
-        rgba(230,245,247,0.96) 60%,
-        rgba(230,245,247,0.0) 85%,
-        rgba(230,245,247,0.0) 100%
-      ),
-      var(--hero-img);
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: auto 90%; /* было auto 115% — из-за этого обрезало */
-  }
-}
-
-/* Мобилка: фото с рассеиванием вниз, без отдельной карточки */
-@media (max-width: 768px){
-  .hero.hero--split{
-    background:
-      linear-gradient(
-        to bottom,
-        rgba(230,245,247,0) 0%,
-        rgba(230,245,247,0.70) 52%,
-        #E6F5F7 80%,
-        #E6F5F7 100%
-      ),
-      var(--hero-img);
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: cover;
-  }
-
-  .hero.hero--split > .container{
-    padding: 22px 16px 24px; /* чуть компактнее на телефоне */
-  }
-}
-
-/* === HERO ГЛАВНОЙ: ФОТО + РАССЕИВАНИЕ БЕЗ БЕЛОЙ КАРТЫ === */
-
-/* общий слой фона */
-.hero.hero--split{
-  position: relative;
-  overflow: hidden;
-  background: #E6F5F7;
-}
-
-/* чтобы контент лежал поверх фона */
-.hero.hero--split .hero-inner{
-  position: relative;
-  z-index: 1;
-}
-
-/* фон рисуем отдельным слоем */
-.hero.hero--split::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background:
-    /* лёгкий подсвет снизу */
-    linear-gradient(
-      to bottom,
-      rgba(230,245,247,0.0) 0%,
-      rgba(230,245,247,0.85) 65%,
-      #E6F5F7 100%
-    ),
-    url("/media/banner-dezshield360.jpg") center top / cover no-repeat;
-}
-
-/* МОБИЛА: одна колонка, без карточки под текстом */
-@media (max-width: 768px){
-  .hero.hero--split .hero-inner{
-    grid-template-columns: 1fr;
-    gap: 14px;
-    padding: 22px 16px 26px;
-  }
-
-  .hero.hero--split .hero-left{
-    order: 1;
-    background: none;       /* белую карту убираем */
-    padding: 0;
-    border-radius: 0;
-  }
-
-  .hero.hero--split .hero-right-spacer{
-    display: none;          /* пустой столбец справа прячем */
-  }
-
-  .hero.hero--split::before{
-    background:
-      linear-gradient(
-        to bottom,
-        rgba(230,245,247,0.0) 0%,
-        rgba(230,245,247,0.85) 55%,
-        #E6F5F7 100%
-      ),
-      url("/media/banner-dezshield360.jpg") center top / cover no-repeat;
-  }
-}
-
-/* ДЕСКТОП: фото справа, но рассеивание тянется под всеми блоками */
-@media (min-width: 992px){
-  .hero.hero--split .hero-inner{
-    grid-template-columns: minmax(0,1.6fr) minmax(260px,1.4fr);
-    padding: 26px 16px 26px;
-  }
-
-  .hero.hero--split::before{
-    background:
-      /* мягкий «туман» по всей ширине */
-      linear-gradient(
-        to right,
-        #E6F5F7 0%,
-        rgba(230,245,247,0.96) 20%,
-        rgba(230,245,247,0.90) 50%,
-        rgba(230,245,247,0.70) 70%,
-        rgba(230,245,247,0.45) 85%,
-        rgba(230,245,247,0.10) 100%
-      ),
-      url("/media/banner-dezshield360.jpg") right center / cover no-repeat;
-  }
-}
-
-/* === ВНУТРЕННИЕ СТРАНИЦЫ: НЕ РЕЖЕМ ФОТО В HERO === */
-
-.hero-inner-page .hero-photo{
-  background: #000;      /* как и было, на всякий случай */
-}
-
-.hero-inner-page .hero-photo img,
-.hero-inner-page .hero-photo video{
-  width: 100%;
-  height: auto;          /* важно: авто, а не 420px */
-  object-fit: cover;
-  display: block;
-}
-
-/* перебиваем старое правило с height: 420px, если оно где-то выше осталось */
-@media (min-width: 992px){
-  .hero-inner-page .hero-photo img,
-  .hero-inner-page .hero-photo video{
-    height: auto;
-  }
-}
-
-/* =========================
-   HERO главной: фото под всеми блоками
-   ========================== */
-
-/* Базовый слой hero для главной */
+/* 2. Общий hero для главной */
 .hero.hero--split.hero--main{
   position: relative;
   overflow: hidden;
-  background: #E6F5F7; /* запасной цвет */
 }
 
-/* Контент всегда поверх фона */
-.hero.hero--split.hero--main .hero-inner{
-  position: relative;
-  z-index: 1;
-}
-
-/* Фото + рассеивание по всей ширине hero */
+/* 3. Фон hero: градиент + баннер справа */
 .hero.hero--split.hero--main::before{
   content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
-
-  /* горизонтальное + лёгкое вертикальное рассеивание */
   background-image:
-    linear-gradient(
-      to bottom,
-      rgba(230,245,247,0.00) 10%,
-      rgba(230,245,247,0.80) 70%,
-      #E6F5F7 100%
-    ),
     linear-gradient(
       to right,
       #E6F5F7 0%,
-      rgba(230,245,247,0.94) 40%,
-      rgba(230,245,247,0.55) 65%,
+      rgba(230,245,247,0.96) 35%,
+      rgba(230,245,247,0.65) 60%,
       rgba(230,245,247,0.00) 100%
     ),
     var(--hero-img);
-
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: right center; /* люди справа */
+  background-position: right center;
   pointer-events: none;
 }
 
-/* --- МОБИЛЬНАЯ ВЕРСИЯ --- */
+/* Контент поверх фона */
+.hero.hero--split.hero--main .hero-inner{
+  position: relative;
+  z-index: 1;
+}
+
+/* Мобилка */
 @media (max-width: 768px){
-  /* одна колонка */
   .hero.hero--split.hero--main .hero-inner{
     grid-template-columns: 1fr;
     gap: 14px;
     padding: 22px 16px 26px;
   }
 
-  /* убираем «белую карту» под текстом */
   .hero.hero--split.hero--main .hero-left{
     order: 1;
     background: transparent;
@@ -1583,13 +1410,12 @@ header + .hero-inner-page{
     display: none;
   }
 
-  /* фото центрируем, рассеивание сверху вниз */
   .hero.hero--split.hero--main::before{
     background-image:
       linear-gradient(
         to bottom,
         rgba(230,245,247,0.00) 0%,
-        rgba(230,245,247,0.85) 65%,
+        rgba(230,245,247,0.85) 60%,
         #E6F5F7 100%
       ),
       var(--hero-img);
@@ -1598,7 +1424,7 @@ header + .hero-inner-page{
   }
 }
 
-/* --- ДЕСКТОП (чуть выше, чтобы фото всегда заполняло блок) --- */
+/* Десктоп */
 @media (min-width: 992px){
   .hero.hero--split.hero--main{
     min-height: 420px;
@@ -1609,72 +1435,35 @@ header + .hero-inner-page{
   }
 }
 
-/* =========================
-   ВНУТРЕННИЕ HERO: чтобы не резало фото
-   ========================== */
-
-.hero-inner-page .hero-photo img,
-.hero-inner-page .hero-photo video{
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  display: block;
-}
-
-/* Перебиваем старое правило с фиксированной высотой */
-@media (min-width: 992px){
-  .hero-inner-page .hero-photo img,
-  .hero-inner-page .hero-photo video{
-    height: auto;
-  }
-}
-
-/* ==== ГЛАВНАЯ: большой фон-баннер за всеми блоками ==== */
-
-/* общий фон на всякий случай */
-body {
+/* общий фон страницы (цвет) */
+body{
   background: #E6F5F7;
 }
 
-/* только для главной (body.home) вешаем большое фото с рассеиванием */
-body.home {
+/* только на главной странице (добавь класc home в <body>) */
+body.home{
   position: relative;
-  background: #E6F5F7; /* запасной фон */
+  background: #E6F5F7; /* запасной цвет */
 }
 
-body.home::before {
+/* большое изображение за всеми блоками */
+body.home::before{
   content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  /* вместо фиксированной высоты… */
-  min-height: calc(100vh + 400px);  /* высота экрана + кусок под следующими секциями */
+  position: fixed;   /* остаётся за блоками, а страница прокручивается */
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
 
   background:
+    /* мягкое выбеливание сверху вниз, чтобы текст читался */
     linear-gradient(
       to bottom,
-      rgba(230,245,247,0) 0%,
-      rgba(230,245,247,0.85) 60%,
+      rgba(230,245,247,0.0) 0%,
+      rgba(230,245,247,0.85) 65%,
       #E6F5F7 100%
     ),
-    url("/media/works/Logo-best1.png") no-repeat;
-
-   z-index: -1;
+    url("/media/works/Logo-best1.png") center top / cover no-repeat;
 }
-@media (min-width: 992px) {
-  body.home::before {
-    min-height: calc(100vh + 450px);
-  }
-}
-
-
-
-/* hero на главной больше НЕ рисует свой фон, только контент */
-body.home .hero.hero--split.hero--main {
-  background: transparent !important;
-}
-
 
 
 
