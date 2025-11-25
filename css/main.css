@@ -1668,7 +1668,7 @@ body.home::before {
 @media (min-width: 992px) {
   body.home::before {
     background-position: right center;
-    background-size: auto 100%;
+    background-size: auto 120%;
   }
 }
 
@@ -1676,6 +1676,7 @@ body.home::before {
 body.home .hero.hero--split.hero--main {
   background: transparent !important;
 }
+
 
 
 
