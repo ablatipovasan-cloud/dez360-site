@@ -1489,9 +1489,9 @@ body.home::before{
   background:
     linear-gradient(
       to bottom,
-      rgba(230,245,247,0.0) 0%,
-      rgba(230,245,247,0.45) 78%,
-      rgba(230,245,247,0.85) 100%
+      rgba(230,245,247,0.0) 10%,
+      rgba(230,245,247,0.45) 48%,
+      rgba(230,245,247,0.85) 90%
     ),
     url("/media/works/Logo-best1.png") center top / 1400px auto no-repeat;
 }
@@ -1566,6 +1566,61 @@ body.home::before{
   height: auto;
   object-fit: cover;
   display: block;
+}
+
+/* ==== FIX: внутренние hero-баннеры без чёрных блоков ==== */
+
+/* сам контейнер с фото */
+.hero-inner-page .hero-photo{
+  position: relative;
+  display: block !important;      /* вместо flex */
+  min-height: 0 !important;       /* убираем принудительную высоту */
+  background: transparent !important; /* не чёрный фон */
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+/* картинка / видео внутри */
+.hero-inner-page .hero-photo img,
+.hero-inner-page .hero-photo video{
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;        /* высота по содержимому */
+  object-fit: cover;              /* аккуратное обрезание по краям, если нужно */
+}
+
+/* на мобильных видео вообще прячем, чтобы точно не было чёрных экранов */
+@media (max-width: 768px){
+  .hero-inner-page .hero-photo video{
+    display: none !important;
+  }
+}
+/* ==== FIX: внутренние hero-баннеры без чёрных блоков ==== */
+
+/* сам контейнер с фото */
+.hero-inner-page .hero-photo{
+  position: relative;
+  display: block !important;      /* вместо flex */
+  min-height: 0 !important;       /* убираем принудительную высоту */
+  background: transparent !important; /* не чёрный фон */
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+/* картинка / видео внутри */
+.hero-inner-page .hero-photo img,
+.hero-inner-page .hero-photo video{
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;        /* высота по содержимому */
+  object-fit: cover;              /* аккуратное обрезание по краям, если нужно */
+}
+
+/* на мобильных видео вообще прячем, чтобы точно не было чёрных экранов */
+@media (max-width: 768px){
+  .hero-inner-page .hero-photo video{
+    display: none !important;
+  }
 }
 
 
