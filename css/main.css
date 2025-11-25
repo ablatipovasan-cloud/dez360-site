@@ -1658,7 +1658,7 @@ body.home::before {
       #E6F5F7 85%,
       #E6F5F7 100%
     ),
-    url("/media/banner-dezshield360.jpg") no-repeat;
+    url("/media/works/Logo-best1.png") no-repeat;
 
   background-size: cover;
   background-position: center top;
@@ -1676,6 +1676,7 @@ body.home::before {
 body.home .hero.hero--split.hero--main {
   background: transparent !important;
 }
+
 
 
 
