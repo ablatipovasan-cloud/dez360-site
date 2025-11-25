@@ -322,6 +322,19 @@ header {
   align-items: flex-end;
   justify-content: flex-start;
   background: #000;
+}.hero-photo {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+
+  /* БЕЗ фиксированной высоты и без flex */
+  min-height: 0;
+  display: block;
+
+  /* запасной фон, но его уже не будет видно,
+     высоту задаёт сама картинка */
+  background: #000;
 }
 
 .hero-photo img,
@@ -1452,10 +1465,6 @@ header + .hero-inner-page{
   }
 }
 
-
-
-/* ==== ГЛАВНАЯ: второе фоновое изображение под блоками ==== */
-
 /* ==== ГЛАВНАЯ: второе изображение под всеми блоками ==== */
 
 /* общий фон, если картинка не загрузится */
@@ -1525,6 +1534,40 @@ body.home::before{
     display: none !important;
   }
 }
+/* ==== МОБИЛЬНЫЕ ВНУТРЕННИЕ БАННЕРЫ (исправление чёрных блоков) ==== */
+@media (max-width: 768px){
+  /* сам баннер */
+  .hero-inner-page .hero-photo{
+    display: block;        /* убираем flex */
+    min-height: auto;      /* убираем принудительную высоту */
+    background: transparent; /* вместо чёрного фона */
+    overflow: hidden;      /* на всякий случай */
+  }
+
+  /* картинка/видео внутри баннера */
+  .hero-inner-page .hero-photo img,
+  .hero-inner-page .hero-photo video{
+    width: 100%;
+    height: auto;          /* пускай задаёт высоту сама картинка */
+    object-fit: cover;     /* если что-то обрежется — аккуратно */
+    display: block;
+  }
+}
+/* Внутренние страницы: hero-картинка всегда по содержимому */
+.hero-inner-page .hero-photo{
+  display: block;
+  min-height: 0;
+  background: transparent; /* убираем чёрный фон совсем */
+}
+
+.hero-inner-page .hero-photo img,
+.hero-inner-page .hero-photo video{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
 
 
 
