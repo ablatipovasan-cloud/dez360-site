@@ -1462,8 +1462,8 @@ header + .hero-inner-page{
       linear-gradient(
         to bottom,
         rgba(230,245,247,0.0) 0%,
-        rgba(230,245,247,0.85) 65%,
-        #E6F5F7 100%
+        rgba(230,245,247,0.85) 55%,
+        #E6F5F7 90%
       ),
       url("/media/banner-dezshield360.jpg") center top / cover no-repeat;
   }
@@ -1482,7 +1482,7 @@ header + .hero-inner-page{
       linear-gradient(
         to right,
         #E6F5F7 0%,
-        rgba(230,245,247,0.96) 30%,
+        rgba(230,245,247,0.96) 20%,
         rgba(230,245,247,0.90) 50%,
         rgba(230,245,247,0.70) 70%,
         rgba(230,245,247,0.45) 85%,
@@ -1542,14 +1542,14 @@ header + .hero-inner-page{
   background-image:
     linear-gradient(
       to bottom,
-      rgba(230,245,247,0.00) 0%,
+      rgba(230,245,247,0.00) 10%,
       rgba(230,245,247,0.80) 70%,
-      #E6F5F7 90%
+      #E6F5F7 80%
     ),
     linear-gradient(
       to right,
       #E6F5F7 0%,
-      rgba(230,245,247,0.94) 30%,
+      rgba(230,245,247,0.94) 40%,
       rgba(230,245,247,0.55) 65%,
       rgba(230,245,247,0.00) 100%
     ),
@@ -1590,7 +1590,7 @@ header + .hero-inner-page{
         to bottom,
         rgba(230,245,247,0.00) 0%,
         rgba(230,245,247,0.85) 65%,
-        #E6F5F7 100%
+        #E6F5F7 90%
       ),
       var(--hero-img);
     background-size: cover;
@@ -1645,7 +1645,7 @@ body.home::before {
   content: "";
   position: fixed;
   inset: 0;
-  height: 2000px;              /* сколько тянется баннер вниз – можно подправить */
+  height: 1800px;              /* сколько тянется баннер вниз – можно подправить */
   pointer-events: none;
   z-index: -1;
 
@@ -1668,7 +1668,7 @@ body.home::before {
 @media (min-width: 992px) {
   body.home::before {
     background-position: right center;
-    background-size: auto 140%;
+    background-size: auto 120%;
   }
 }
 
@@ -1676,6 +1676,7 @@ body.home::before {
 body.home .hero.hero--split.hero--main {
   background: transparent !important;
 }
+
 
 
 
