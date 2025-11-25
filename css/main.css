@@ -718,27 +718,80 @@ footer {
 .biz-item h3{ margin:0 0 6px; font-size:18px; color:#0b2748; }
 .biz-item p{ margin:0; color:#667885; font-size:14px; }
 
-/* --- HERO (внутренние страницы): не навязываем 16:9 --- */
-.hero-inner-page .hero-photo { aspect-ratio: auto; }
+/* --- HERO (внутренние страницы) --- */
 
+/* фон внутренних страниц */
+.hero-inner-page{
+  background: var(--bg-soft);
+}
+
+/* сетка: текст + фото справа на десктопе */
+.hero-inner-page .hero-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0,1.6fr) minmax(260px,1.4fr);
+  gap: 26px;
+  align-items: center;
+}
+
+/* контейнер с фото/видео: без фиксированной высоты и без чёрных блоков */
+.hero-inner-page .hero-photo{
+  position: relative;
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+
+  min-height: 0;
+  padding: 0;
+  background: #000; /* запасной фон под видео/фото */
+}
+
+/* само изображение / видео */
 .hero-inner-page .hero-photo img,
-.hero-inner-page .hero-photo video {
+.hero-inner-page .hero-photo video{
   width: 100%;
   height: auto;
   display: block;
+  object-fit: cover;   /* заполняем карточку, без полос по краям */
 }
 
-@media (min-width: 992px) {
+/* ДЕСКТОП: не режем «вентиляцию» – картинка целиком */
+@media (min-width: 992px){
   .hero-inner-page .hero-photo img,
-  .hero-inner-page .hero-photo video {
-    height: 420px;
-    object-fit: cover;
+  .hero-inner-page .hero-photo video{
+    height: auto;
+    object-fit: contain;   /* показываем всю картинку */
   }
 }
 
-/* скрываем подписи у внутренних hero */
+/* МОБИЛЬНАЯ ВЕРСИЯ: одна колонка, фото под текстом */
+@media (max-width: 768px){
+  .hero-inner-page .hero-inner{
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .hero-inner-page .hero-left{
+    order: 1;
+  }
+
+  .hero-inner-page .hero-photo{
+    order: 2;
+  }
+
+  /* видео отключаем, чтобы точно не было чёрного экрана */
+  .hero-inner-page .hero-photo video{
+    display: none !important;
+  }
+}
+
+/* подписи/оверлеи в hero сейчас не используем */
 .hero-inner-page .hero-photo figcaption,
-.hero-inner-page .hero-photo .hero-photo-caption { display:none !important; }
+.hero-inner-page .hero-photo .hero-photo-caption{
+  display: none !important;
+}
 
 /* ====== COMPACT HEADER FIX ====== */
 .top-bar{
@@ -1531,6 +1584,7 @@ body.home::before{
     height: auto !important;
   }
 }
+
 
 
 
