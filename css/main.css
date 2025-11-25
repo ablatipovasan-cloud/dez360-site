@@ -312,39 +312,6 @@ header {
 }
 
 /* hero-photo для внутренних страниц */
-.hero-photo {
-  position: relative;
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  min-height: 260px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  background: #000;
-}.hero-photo {
-  position: relative;
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-
-  /* БЕЗ фиксированной высоты и без flex */
-  min-height: 0;
-  display: block;
-
-  /* запасной фон, но его уже не будет видно,
-     высоту задаёт сама картинка */
-  background: #000;
-}
-
-.hero-photo img,
-.hero-photo video {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
 
 .hero-photo-overlay {
   position: absolute;
@@ -1388,7 +1355,7 @@ header + .hero-inner-page{
   padding: 0 16px;
 }
 
-/* делаем слой с фото под текстом */
+/* слой с фото под текстом */
 .hero.hero--split.hero--main::before{
   content: "";
   position: absolute;
@@ -1416,17 +1383,16 @@ header + .hero-inner-page{
 
   background-repeat: no-repeat;
   background-size: cover;
-  /* смещаем кверху, чтобы на десктопе головы не обрезались */
   background-position: right 35%;
 }
 
-/* сам текст выше слоя с фото */
+/* текст выше слоя с фото */
 .hero.hero--split.hero--main .hero-left{
   position: relative;
   z-index: 1;
 }
 
-/* правый столбец можно оставить пустым как “спейсер” */
+/* правый столбец как “спейсер” */
 .hero.hero--split.hero--main .hero-right-spacer{
   min-height: 340px;
 }
@@ -1465,6 +1431,7 @@ header + .hero-inner-page{
   }
 }
 
+
 /* ==== ГЛАВНАЯ: второе изображение под всеми блоками ==== */
 
 /* общий фон, если картинка не загрузится */
@@ -1477,15 +1444,15 @@ body.home{
   position:relative;
 }
 
-/* большое внутреннее изображение, тянущееся до низа окна */
+/* большое внутреннее изображение за блоками */
 body.home::before{
   content:"";
-  position:fixed;   /* сидит под всей страницей при скролле */
+  position:fixed;           /* фон тянется при скролле */
   inset:0;
   z-index:-1;
   pointer-events:none;
 
-  /* меньше тумана, картинка виднее и «тянется» вниз */
+  /* более яркая картинка, меньше тумана */
   background:
     linear-gradient(
       to bottom,
@@ -1496,14 +1463,14 @@ body.home::before{
     url("/media/works/Logo-best1.png") center top / 1400px auto no-repeat;
 }
 
-/* чуть растягиваем на очень широких экранах */
+/* очень широкие экраны – чуть шире картинка */
 @media (min-width: 1440px){
   body.home::before{
     background-size: 1600px auto;
   }
 }
 
-/* мобилка: картинку делаем поменьше и тоже тянем до низа */
+/* мобилка: картинка поменьше, но тоже на весь экран */
 @media (max-width: 768px){
   body.home::before{
     background:
@@ -1518,47 +1485,53 @@ body.home::before{
 }
 
 
-/* ==== ВНУТРЕННИЕ HERO: фикс баннеров на мобильной ==== */
-/* ==== HERO-фото: убираем чёрные блоки на всех страницах ==== */
+/* ==== ВНУТРЕННИЕ HERO (все страницы, кроме главной) ==== */
 
-/* общий контейнер с баннерным фото/видео */
-./* ==== HERO-фото на внутренних страницах (без чёрных блоков и обрезания) ==== */
-
+/* контейнер с фото/видео – без чёрных блоков */
 .hero-inner-page .hero-photo{
   position: relative;
   display: block;
-  /* убираем принудительную высоту и чёрный фон из базового .hero-photo */
+
+  /* гасим базовые настройки .hero-photo */
   min-height: 0 !important;
+  padding: 0 !important;
   background: transparent !important;
 
-  padding: 0;
   overflow: hidden;
-
-  /* чтобы картинка выглядела как карточка, как и раньше */
   border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
 }
 
-/* само изображение / видео внутри hero */
+/* само изображение / видео */
 .hero-inner-page .hero-photo img,
 .hero-inner-page .hero-photo video{
   display: block !important;
   width: 100% !important;
   height: auto !important;
-
-  /* ВАЖНО:
-     contain — показывает картинку целиком, без обрезки (вентиляция перестанет резаться).
-     Если захочешь обратно «на весь блок» с подрезкой краёв — поменяй на cover.
-  */
-  object-fit: contain;
+  object-fit: contain;      /* ничего не обрезаем (вентиляция целиком) */
 }
 
-/* на мобильных видео скрываем, чтобы не давали чёрный экран */
+/* подписи внутри hero нам не нужны */
+.hero-inner-page .hero-photo figcaption,
+.hero-inner-page .hero-photo .hero-photo-caption{
+  display:none !important;
+}
+
+/* на мобильных видео убираем, чтобы не давало чёрный экран */
 @media (max-width: 768px){
   .hero-inner-page .hero-photo video{
     display: none !important;
   }
 }
+
+/* на десктопе тоже НЕ фиксируем высоту – картинка по своему размеру */
+@media (min-width: 992px){
+  .hero-inner-page .hero-photo img,
+  .hero-inner-page .hero-photo video{
+    height: auto !important;
+  }
+}
+
 
 
 
