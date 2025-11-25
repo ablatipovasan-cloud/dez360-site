@@ -1668,17 +1668,13 @@ body.home::before {
   }
 }
 
-@media (max-width: 991.98px) {
-  body.home::before {
-    min-height: calc(100vh + 250px);
-  }
-}
 
 
 /* hero на главной больше НЕ рисует свой фон, только контент */
 body.home .hero.hero--split.hero--main {
   background: transparent !important;
 }
+
 
 
 
