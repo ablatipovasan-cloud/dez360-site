@@ -1404,7 +1404,7 @@ header + .hero-inner-page{
   background-repeat: no-repeat;
   background-size: cover;
   /* смещаем кверху, чтобы на десктопе головы не обрезались */
-  background-position: right 8%;
+  background-position: right 35%;
 }
 
 /* сам текст выше слоя с фото */
@@ -1469,10 +1469,18 @@ body.home{
 /* большое второе изображение под всеми верхними секциями */
 body.home::before{
   content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;          /* фон всегда под страницей */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+
+  /* сколько вниз тянем фон (под hero + несколько секций) */
+  height: 900px;        /* при необходимости подрегулируй */
+
   pointer-events: none;
+
+  /* ВАЖНО: не используем z-index:-1, чтобы не уйти под фон html */
+  z-index: 0;
 
   background:
     linear-gradient(
@@ -1483,6 +1491,13 @@ body.home::before{
     ),
     url("/media/works/Logo-best1.png") center top / cover no-repeat;
 }
+
+/* чтобы контент был поверх ::before */
+body.home > *{
+  position: relative;
+  z-index: 1;
+}
+
 
 
 
