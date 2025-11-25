@@ -1489,9 +1489,9 @@ body.home::before{
   background:
     linear-gradient(
       to bottom,
-      rgba(230,245,247,0.0) 10%,
-      rgba(230,245,247,0.45) 48%,
-      rgba(230,245,247,0.85) 90%
+      rgba(230,245,247,0.0) 15%,
+      rgba(230,245,247,0.20) 55%,
+      rgba(230,245,247,0.50) 95%
     ),
     url("/media/works/Logo-best1.png") center top / 1400px auto no-repeat;
 }
@@ -1510,8 +1510,8 @@ body.home::before{
       linear-gradient(
         to bottom,
         rgba(230,245,247,0.0) 0%,
-        rgba(230,245,247,0.55) 82%,
-        rgba(230,245,247,0.92) 100%
+        rgba(230,245,247,0.30) 82%,
+        rgba(230,245,247,0.70) 100%
       ),
       url("/media/works/Logo-best1.png") center top / 1100px auto no-repeat;
   }
@@ -1519,109 +1519,37 @@ body.home::before{
 
 
 /* ==== ВНУТРЕННИЕ HERO: фикс баннеров на мобильной ==== */
+/* ==== HERO-фото: убираем чёрные блоки на всех страницах ==== */
 
-/* общее: картинка/видео занимают всю ширину блока */
-.hero-inner-page .hero-photo img,
-.hero-inner-page .hero-photo video {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* на телефонах скрываем видео, чтобы не было чёрного блока */
-@media (max-width: 768px) {
-  .hero-inner-page .hero-photo video {
-    display: none !important;
-  }
-}
-/* ==== МОБИЛЬНЫЕ ВНУТРЕННИЕ БАННЕРЫ (исправление чёрных блоков) ==== */
-@media (max-width: 768px){
-  /* сам баннер */
-  .hero-inner-page .hero-photo{
-    display: block;        /* убираем flex */
-    min-height: auto;      /* убираем принудительную высоту */
-    background: transparent; /* вместо чёрного фона */
-    overflow: hidden;      /* на всякий случай */
-  }
-
-  /* картинка/видео внутри баннера */
-  .hero-inner-page .hero-photo img,
-  .hero-inner-page .hero-photo video{
-    width: 100%;
-    height: auto;          /* пускай задаёт высоту сама картинка */
-    object-fit: cover;     /* если что-то обрежется — аккуратно */
-    display: block;
-  }
-}
-/* Внутренние страницы: hero-картинка всегда по содержимому */
-.hero-inner-page .hero-photo{
-  display: block;
-  min-height: 0;
-  background: transparent; /* убираем чёрный фон совсем */
-}
-
-.hero-inner-page .hero-photo img,
-.hero-inner-page .hero-photo video{
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  display: block;
-}
-
-/* ==== FIX: внутренние hero-баннеры без чёрных блоков ==== */
-
-/* сам контейнер с фото */
-.hero-inner-page .hero-photo{
-  position: relative;
-  display: block !important;      /* вместо flex */
-  min-height: 0 !important;       /* убираем принудительную высоту */
-  background: transparent !important; /* не чёрный фон */
+/* общий контейнер с баннерным фото/видео */
+.hero-photo{
+  /* оставляем закругления и тени, если они были заданы выше —
+     здесь переопределяем только проблемные свойства */
+  display: block !important;          /* вместо flex */
+  min-height: 0 !important;           /* без фиксированной высоты */
+  background: transparent !important; /* убираем чёрный фон */
   padding: 0 !important;
   overflow: hidden;
 }
 
-/* картинка / видео внутри */
-.hero-inner-page .hero-photo img,
-.hero-inner-page .hero-photo video{
+/* само изображение / видео */
+.hero-photo img,
+.hero-photo video{
   display: block !important;
   width: 100% !important;
-  height: auto !important;        /* высота по содержимому */
-  object-fit: cover;              /* аккуратное обрезание по краям, если нужно */
+  height: auto !important;            /* высота по содержимому */
+  object-fit: cover;                  /* если надо чуть обрезать края */
 }
 
-/* на мобильных видео вообще прячем, чтобы точно не было чёрных экранов */
+/* Мобилка: видео прячем, чтобы не было чёрных экранов от video-элемента */
 @media (max-width: 768px){
-  .hero-inner-page .hero-photo video{
+  .hero-photo video{
     display: none !important;
   }
 }
-/* ==== FIX: внутренние hero-баннеры без чёрных блоков ==== */
 
-/* сам контейнер с фото */
-.hero-inner-page .hero-photo{
-  position: relative;
-  display: block !important;      /* вместо flex */
-  min-height: 0 !important;       /* убираем принудительную высоту */
-  background: transparent !important; /* не чёрный фон */
-  padding: 0 !important;
-  overflow: hidden;
-}
 
-/* картинка / видео внутри */
-.hero-inner-page .hero-photo img,
-.hero-inner-page .hero-photo video{
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;        /* высота по содержимому */
-  object-fit: cover;              /* аккуратное обрезание по краям, если нужно */
-}
 
-/* на мобильных видео вообще прячем, чтобы точно не было чёрных экранов */
-@media (max-width: 768px){
-  .hero-inner-page .hero-photo video{
-    display: none !important;
-  }
-}
 
 
 
