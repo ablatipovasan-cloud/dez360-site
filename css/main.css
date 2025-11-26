@@ -1545,6 +1545,63 @@ body.home::before{
     filter: brightness(1.02);
   }
 }
+/* === DERATIZACIYA: подложка с изображением cristall-1.jpeg === */
+
+/* Десктоп и планшеты */
+body.deratizaciya-page{
+  position: relative;
+  background:#E6F5F7;
+}
+
+body.deratizaciya-page::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  /* мягкий градиент + картинка на фоне */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(230,245,247,0.0) 20%,   /* сверху почти прозрачный */
+      rgba(230,245,247,0.16) 60%,
+      rgba(230,245,247,0.34) 100%
+    ),
+    url("/media/works/cristall-1.jpeg") center -40px / 1500px auto no-repeat;
+
+  /* чуть ярче, чтобы картинка не была "тусклой" под блоками */
+  filter: brightness(1.04);
+}
+
+/* Очень широкие экраны */
+@media (min-width: 1440px){
+  body.deratizaciya-page::before{
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(230,245,247,0.0) 20%,
+        rgba(230,245,247,0.16) 60%,
+        rgba(230,245,247,0.34) 100%
+      ),
+      url("/media/works/cristall-1.jpeg") center -40px / 1700px auto no-repeat;
+  }
+}
+
+/* Мобилка: картинка чуть поменьше и немного ниже */
+@media (max-width: 768px){
+  body.deratizaciya-page::before{
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(230,245,247,0.0) 12%,
+        rgba(230,245,247,0.22) 75%,
+        rgba(230,245,247,0.55) 100%
+      ),
+      url("/media/works/cristall-1.jpeg") center -20px / 1200px auto no-repeat;
+    filter: brightness(1.04);
+  }
+}
 
 /* ==== ВНУТРЕННИЕ HERO (все страницы, кроме главной): единое поведение ==== */
 
@@ -1683,6 +1740,7 @@ body.home::before{
     display: none !important;
   }
 }
+
 
 
 
