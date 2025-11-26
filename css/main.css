@@ -1497,141 +1497,7 @@ body.home{
   position:relative;
 }
 
-/* большое внутреннее изображение за блоками */
-body.home::before{
-  content:"";
-  position:fixed;           /* фон тянется при скролле */
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-
-  /* более яркая картинка, меньше тумана */
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(230,245,247,0.0) 10%,
-      rgba(230,245,247,0.10) 18%,
-      rgba(230,245,247,0.30) 35%
-    ),
-    url("/media/works/Logo-best1.png") center top / 1200px auto no-repeat;
-}
-
-/* очень широкие экраны – чуть шире картинка */
-@media (min-width: 1440px){
-  body.home::before{
-    background-size: 1600px auto;
-  }
-}
-
-/* мобилка: картинка поменьше, но тоже на весь экран */
-@media (max-width: 768px){
-  body.home::before{
-    background:
-      linear-gradient(
-        to bottom,
-        rgba(230,245,247,0.0) 0%,
-        rgba(230,245,247,0.20) 52%,
-        rgba(230,245,247,0.50) 80%
-      ),
-      url("/media/works/Logo-best1.png") center top / 1100px auto no-repeat;
-  }
-}
-
-
-/* ==== ВНУТРЕННИЕ HERO (все страницы, кроме главной) ==== */
-
-/* контейнер с фото/видео – без чёрных блоков */
-.hero-inner-page .hero-photo{
-  position: relative;
-  display: block;
-
-  /* гасим базовые настройки .hero-photo */
-  min-height: 0 !important;
-  padding: 0 !important;
-  background: transparent !important;
-
-  overflow: hidden;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
-}
-
-/* само изображение / видео */
-.hero-inner-page .hero-photo img,
-.hero-inner-page .hero-photo video{
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;
-  object-fit: contain;      /* ничего не обрезаем (вентиляция целиком) */
-}
-
-/* подписи внутри hero нам не нужны */
-.hero-inner-page .hero-photo figcaption,
-.hero-inner-page .hero-photo .hero-photo-caption{
-  display:none !important;
-}
-
-/* на мобильных видео убираем, чтобы не давало чёрный экран */
-@media (max-width: 768px){
-  .hero-inner-page .hero-photo video{
-    display: none !important;
-  }
-}
-
-/* на десктопе тоже НЕ фиксируем высоту – картинка по своему размеру */
-@media (min-width: 992px){
-  .hero-inner-page .hero-photo img,
-  .hero-inner-page .hero-photo video{
-    height: auto !important;
-  }
-}
-
-/* ============================
-   FIX: hero на внутренних страницах
-   отключаем split-фон и дубликат баннера
-   ============================ */
-
-/* 1. Любой hero на внутренней странице НЕ должен рисовать split-фон */
-.hero-inner-page.hero--split,
-.hero-inner-page.hero.hero--split {
-  background: var(--bg-soft) !important; /* обычный голубой фон */
-}
-
-/* 2. Убираем псевдо-слой с картинкой (тот, что даёт «второй баннер») */
-.hero-inner-page.hero--split::before,
-.hero-inner-page.hero.hero--split::before {
-  content: none !important;
-}
-
-/* 3. Картинка внутри hero всегда ведёт себя как нормальная карточка */
-.hero-inner-page .hero-photo {
-  position: relative;
-  display: block;
-  min-height: 0 !important;
-  padding: 0 !important;
-  background: #ffffff;            /* белая «карточка» под фото */
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
-  overflow: hidden;
-}
-
-/* 4. Само изображение/видео занимает всю ширину и задаёт высоту */
-.hero-inner-page .hero-photo img,
-.hero-inner-page .hero-photo video {
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;
-  object-fit: contain;            /* видно фото целиком, без обрезки */
-}
-
-/* 5. На мобиле видео прячем, чтобы не появлялись чёрные блоки */
-@media (max-width: 768px) {
-  .hero-inner-page .hero-photo video {
-    display: none !important;
-  }
-}
-/* === HOME: подложка с логотипом — выше и поярче === */
-
-/* Десктоп и планшеты */
+/* подложка с логотипом: чуть выше и чуть поярче */
 body.home::before{
   content: "";
   position: fixed;
@@ -1639,21 +1505,19 @@ body.home::before{
   z-index: -1;
   pointer-events: none;
 
-  /* меньше тумана + картинка чуть выше и крупнее */
   background:
     linear-gradient(
       to bottom,
-      rgba(230,245,247,0.0) 22%,  /* дольше остаётся прозрачной */
+      rgba(230,245,247,0.0) 22%,
       rgba(230,245,247,0.14) 60%,
       rgba(230,245,247,0.32) 100%
     ),
     url("/media/works/Logo-best1.png") center -40px / 1500px auto no-repeat;
 
-  /* чуть повышаем общую яркость картинки */
   filter: brightness(1.02);
 }
 
-/* Очень широкие экраны */
+/* очень широкие экраны */
 @media (min-width: 1440px){
   body.home::before{
     background:
@@ -1667,7 +1531,7 @@ body.home::before{
   }
 }
 
-/* Мобилка: тоже немного выше и поярче */
+/* мобилка: тоже немного выше и поярче */
 @media (max-width: 768px){
   body.home::before{
     background:
@@ -1681,106 +1545,87 @@ body.home::before{
     filter: brightness(1.02);
   }
 }
-/* ==== 1. ВНУТРЕННИЕ HERO: выключаем split-фон ==== */
-/* У внутренних страниц есть класс .hero-inner-page.
-   Если одновременно стоит .hero--split — убираем фон, градиенты и «карточку» слева. */
-.hero-inner-page.hero.hero--split {
+
+/* ==== ВНУТРЕННИЕ HERO (все страницы, кроме главной): единое поведение ==== */
+
+/* если у внутреннего hero случайно стоит hero--split – глушим split-фон */
+.hero-inner-page.hero--split,
+.hero-inner-page.hero.hero--split{
   background: var(--bg-soft) !important;
   background-image: none !important;
 }
 
-.hero-inner-page.hero.hero--split .hero-left {
-  background: transparent !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
+.hero-inner-page.hero--split::before,
+.hero-inner-page.hero.hero--split::before{
+  content: none !important;
 }
 
-/* ==== 2. ВНУТРЕННИЕ КАРТОЧКИ-С ФОТО: единый размер ==== */
+/* сетка: текст + фото справа на десктопе */
+.hero-inner-page .hero-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0,1.6fr) minmax(260px,1.4fr);
+  gap: 26px;
+  align-items: center;
+}
 
-.hero-inner-page .hero-photo {
+/* карточка с фото/видео */
+.hero-inner-page .hero-photo{
   position: relative;
   display: block;
   min-height: 0;
   padding: 0;
-  background: transparent;
+  background: #ffffff;
   overflow: hidden;
   border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
 }
 
+/* само изображение/видео внутри карточки */
 .hero-inner-page .hero-photo img,
-.hero-inner-page .hero-photo video {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;      /* картинка заполняет карточку, без «сжатия» */
+.hero-inner-page .hero-photo video{
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover;      /* аккуратно заполняет карточку */
 }
 
-/* На широких делаем разумный максимум по высоте, чтобы карточки были похожи по размеру */
-@media (min-width: 992px) {
+/* на широких экранах – разумный максимум по высоте,
+   чтобы карточки были похожи по размеру */
+@media (min-width: 992px){
   .hero-inner-page .hero-photo img,
-  .hero-inner-page .hero-photo video {
+  .hero-inner-page .hero-photo video{
     max-height: 420px;
   }
 }
 
-/* На мобилке видео всё равно скрываем, чтобы не ловить чёрные экраны */
-@media (max-width: 768px) {
-  .hero-inner-page .hero-photo video {
+/* подписи/оверлеи в hero сейчас не используем */
+.hero-inner-page .hero-photo figcaption,
+.hero-inner-page .hero-photo .hero-photo-caption{
+  display: none !important;
+}
+
+/* мобилка: одна колонка, фото под текстом, видео убираем */
+@media (max-width: 768px){
+  .hero-inner-page .hero-inner{
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .hero-inner-page .hero-left{
+    order: 1;
+  }
+
+  .hero-inner-page .hero-photo{
+    order: 2;
+  }
+
+  .hero-inner-page .hero-photo video{
     display: none !important;
   }
 }
-/* ==== 1. ВНУТРЕННИЕ HERO: выключаем split-фон ==== */
-/* У внутренних страниц есть класс .hero-inner-page.
-   Если одновременно стоит .hero--split — убираем фон, градиенты и «карточку» слева. */
-.hero-inner-page.hero.hero--split {
-  background: var(--bg-soft) !important;
-  background-image: none !important;
-}
 
-.hero-inner-page.hero.hero--split .hero-left {
-  background: transparent !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-}
-
-/* ==== 2. ВНУТРЕННИЕ КАРТОЧКИ-С ФОТО: единый размер ==== */
-
-.hero-inner-page .hero-photo {
-  position: relative;
-  display: block;
-  min-height: 0;
-  padding: 0;
-  background: transparent;
-  overflow: hidden;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
-}
-
-.hero-inner-page .hero-photo img,
-.hero-inner-page .hero-photo video {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;      /* картинка заполняет карточку, без «сжатия» */
-}
-
-/* На широких делаем разумный максимум по высоте, чтобы карточки были похожи по размеру */
-@media (min-width: 992px) {
-  .hero-inner-page .hero-photo img,
-  .hero-inner-page .hero-photo video {
-    max-height: 420px;
-  }
-}
-
-/* На мобилке видео всё равно скрываем, чтобы не ловить чёрные экраны */
-@media (max-width: 768px) {
-  .hero-inner-page .hero-photo video {
-    display: none !important;
-  }
-}
 
 
 
