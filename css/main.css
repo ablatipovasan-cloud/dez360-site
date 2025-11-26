@@ -1643,14 +1643,14 @@ body.home::before{
   background:
     linear-gradient(
       to bottom,
-      rgba(230,245,247,0.0) 15%,  /* дольше остаётся прозрачной */
-      rgba(230,245,247,0.10) 50%,
-      rgba(230,245,247,0.22) 90%
+      rgba(230,245,247,0.0) 22%,  /* дольше остаётся прозрачной */
+      rgba(230,245,247,0.14) 60%,
+      rgba(230,245,247,0.32) 100%
     ),
-    url("/media/works/Logo-best1.png") center -10px / 1500px auto no-repeat;
+    url("/media/works/Logo-best1.png") center -40px / 1500px auto no-repeat;
 
   /* чуть повышаем общую яркость картинки */
-  filter: brightness(1.08);
+  filter: brightness(1.02);
 }
 
 /* Очень широкие экраны */
@@ -1678,9 +1678,10 @@ body.home::before{
         rgba(230,245,247,0.55) 100%
       ),
       url("/media/works/Logo-best1.png") center -25px / 1200px auto no-repeat;
-    filter: brightness(1.06);
+    filter: brightness(1.02);
   }
 }
+
 
 
 
