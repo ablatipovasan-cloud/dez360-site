@@ -1681,6 +1681,107 @@ body.home::before{
     filter: brightness(1.02);
   }
 }
+/* ==== 1. ВНУТРЕННИЕ HERO: выключаем split-фон ==== */
+/* У внутренних страниц есть класс .hero-inner-page.
+   Если одновременно стоит .hero--split — убираем фон, градиенты и «карточку» слева. */
+.hero-inner-page.hero.hero--split {
+  background: var(--bg-soft) !important;
+  background-image: none !important;
+}
+
+.hero-inner-page.hero.hero--split .hero-left {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ==== 2. ВНУТРЕННИЕ КАРТОЧКИ-С ФОТО: единый размер ==== */
+
+.hero-inner-page .hero-photo {
+  position: relative;
+  display: block;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.hero-inner-page .hero-photo img,
+.hero-inner-page .hero-photo video {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;      /* картинка заполняет карточку, без «сжатия» */
+}
+
+/* На широких делаем разумный максимум по высоте, чтобы карточки были похожи по размеру */
+@media (min-width: 992px) {
+  .hero-inner-page .hero-photo img,
+  .hero-inner-page .hero-photo video {
+    max-height: 420px;
+  }
+}
+
+/* На мобилке видео всё равно скрываем, чтобы не ловить чёрные экраны */
+@media (max-width: 768px) {
+  .hero-inner-page .hero-photo video {
+    display: none !important;
+  }
+}
+/* ==== 1. ВНУТРЕННИЕ HERO: выключаем split-фон ==== */
+/* У внутренних страниц есть класс .hero-inner-page.
+   Если одновременно стоит .hero--split — убираем фон, градиенты и «карточку» слева. */
+.hero-inner-page.hero.hero--split {
+  background: var(--bg-soft) !important;
+  background-image: none !important;
+}
+
+.hero-inner-page.hero.hero--split .hero-left {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ==== 2. ВНУТРЕННИЕ КАРТОЧКИ-С ФОТО: единый размер ==== */
+
+.hero-inner-page .hero-photo {
+  position: relative;
+  display: block;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.hero-inner-page .hero-photo img,
+.hero-inner-page .hero-photo video {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;      /* картинка заполняет карточку, без «сжатия» */
+}
+
+/* На широких делаем разумный максимум по высоте, чтобы карточки были похожи по размеру */
+@media (min-width: 992px) {
+  .hero-inner-page .hero-photo img,
+  .hero-inner-page .hero-photo video {
+    max-height: 420px;
+  }
+}
+
+/* На мобилке видео всё равно скрываем, чтобы не ловить чёрные экраны */
+@media (max-width: 768px) {
+  .hero-inner-page .hero-photo video {
+    display: none !important;
+  }
+}
+
 
 
 
