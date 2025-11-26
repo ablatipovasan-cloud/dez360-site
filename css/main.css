@@ -1602,6 +1602,58 @@ body.deratizaciya-page::before{
     filter: brightness(1.04);
   }
 }
+/* ОБЩИЙ ФОН ДЛЯ ВСЕХ СТРАНИЦ УСЛУГ */
+body.service-bg{
+  position: relative;
+  background:#E6F5F7;
+}
+
+body.service-bg::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  /* общий градиент, как на deratizaciya */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(230,245,247,0.0) 20%,
+      rgba(230,245,247,0.16) 60%,
+      rgba(230,245,247,0.34) 100%
+    ),
+    url("/media/works/cristall-1.jpeg") center -120px / 1500px auto no-repeat;
+
+  filter: brightness(1.04);
+}
+
+@media (min-width: 1440px){
+  body.service-bg::before{
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(230,245,247,0.0) 20%,
+        rgba(230,245,247,0.16) 60%,
+        rgba(230,245,247,0.34) 100%
+      ),
+      url("/media/works/defaultcristall-1.jpeg") center -140px / 1700px auto no-repeat;
+  }
+}
+
+@media (max-width: 768px){
+  body.service-bg::before{
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(230,245,247,0.0) 12%,
+        rgba(230,245,247,0.22) 75%,
+        rgba(230,245,247,0.55) 100%
+      ),
+      url("/media/works/cristall-1.jpeg") center -80px / 1200px auto no-repeat;
+    filter: brightness(1.04);
+  }
+}
 
 /* ==== ВНУТРЕННИЕ HERO (все страницы, кроме главной): единое поведение ==== */
 
@@ -1740,6 +1792,7 @@ body.deratizaciya-page::before{
     display: none !important;
   }
 }
+
 
 
 
