@@ -1625,6 +1625,65 @@ body.home::before{
     display: none !important;
   }
 }
+/* === FIX: hero для страниц типа "Дезинсекция" === */
+/* hero c .hero--split, но НЕ главная (.hero--main) */
+.hero.hero--split:not(.hero--main){
+  /* фон как у внутренних страниц */
+  background: var(--bg-soft) !important;
+  background-image: none !important;
+  padding: 26px 16px;
+}
+
+/* сетка: текст + фото справа на десктопе */
+.hero.hero--split:not(.hero--main) .hero-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0,1.6fr) minmax(260px,1.4fr);
+  gap: 26px;
+  align-items: center;
+}
+
+/* карточка с фото */
+.hero.hero--split:not(.hero--main) .hero-photo{
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  background: #ffffff;
+}
+
+/* само изображение / видео */
+.hero.hero--split:not(.hero--main) .hero-photo img,
+.hero.hero--split:not(.hero--main) .hero-photo video{
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;   /* картинка целиком, без обрезки */
+}
+
+/* Мобилка: одна колонка, фото под текстом */
+@media (max-width: 768px){
+  .hero.hero--split:not(.hero--main) .hero-inner{
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .hero.hero--split:not(.hero--main) .hero-left{
+    order: 1;
+  }
+
+  .hero.hero--split:not(.hero--main) .hero-photo{
+    order: 2;
+  }
+
+  /* видео прячем, чтобы не было чёрных экранов */
+  .hero.hero--split:not(.hero--main) .hero-photo video{
+    display: none !important;
+  }
+}
+
 
 
 
