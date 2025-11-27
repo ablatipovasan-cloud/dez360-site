@@ -1623,7 +1623,7 @@ body.service-bg::before{
       rgba(230,245,247,0.16) 60%,
       rgba(230,245,247,0.34) 100%
     ),
-    url("/media/works/cristall-1.jpeg") center -120px / 1500px auto no-repeat;
+    url("/media/works/cristall-1.jpeg") center -220px / 1500px auto no-repeat;
 
   filter: brightness(1.04);
 }
@@ -1637,7 +1637,7 @@ body.service-bg::before{
         rgba(230,245,247,0.16) 60%,
         rgba(230,245,247,0.34) 100%
       ),
-      url("/media/works/cristall-1.jpeg") center -140px / 1700px auto no-repeat;
+      url("/media/works/cristall-1.jpeg") center -260px / 1700px auto no-repeat;
   }
 }
 
@@ -1650,7 +1650,7 @@ body.service-bg::before{
         rgba(230,245,247,0.22) 75%,
         rgba(230,245,247,0.55) 100%
       ),
-      url("/media/works/cristall-1.jpeg") center -80px / 1200px auto no-repeat;
+      url("/media/works/cristall-1.jpeg") center -160px / 1200px auto no-repeat;
     filter: brightness(1.04);
   }
 }
@@ -1793,6 +1793,7 @@ body.service-bg::before{
     display: none !important;
   }
 }
+
 
 
 
