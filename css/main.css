@@ -792,6 +792,41 @@ footer {
 .hero-inner-page .hero-photo .hero-photo-caption{
   display: none !important;
 }
+/* ==== HERO внутренних страниц "Для бизнеса" ==== */
+
+/* Десктоп: просто ограничим высоту карточки с фото */
+body.biz.biz-inner .hero-photo{
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  max-height: 420px;
+}
+
+body.biz.biz-inner .hero-photo img,
+body.biz.biz-inner .hero-photo video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Мобилка: одна колонка, картинка под текстом и компактнее */
+@media (max-width: 768px){
+  body.biz.biz-inner .hero-inner{
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  body.biz.biz-inner .hero-left{
+    order: 1;
+  }
+
+  body.biz.biz-inner .hero-photo{
+    order: 2;
+    max-height: 360px;    /* чтобы не занимала весь экран */
+    margin: 0 auto;
+  }
+}
 
 /* ====== COMPACT HEADER FIX ====== */
 .top-bar{
@@ -1793,6 +1828,7 @@ body.service-bg::before{
     display: none !important;
   }
 }
+
 
 
 
