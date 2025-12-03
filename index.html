@@ -840,9 +840,53 @@
     });
   })();
 </script>
+<script>
+(function () {
+  const subtitle = document.getElementById('heroSubtitle');
+  const cta = document.getElementById('heroMainCta');
+  const tabs = document.querySelectorAll('.hero-tab');
+
+  if (!subtitle || !cta || !tabs.length) return;
+
+  const MODES = {
+    home: {
+      subtitle: 'Быстро убираем насекомых, грызунов, плесень и запахи. Безопасно для детей, животных и ваших вещей.',
+      button:  'Рассчитать обработку квартиры',
+      target:  '#contacts'
+    },
+    biz: {
+      subtitle: 'Выводим объект к требованиям СЭС и Роспотребнадзора. Документы, регламенты, пест-контроль под проверки.',
+      button:  'Рассчитать обработку объекта',
+      target:  '#contacts'   // потом можно заменить на квиз
+    }
+  };
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const mode = tab.dataset.mode;
+      if (!MODES[mode]) return;
+
+      tabs.forEach(t => t.classList.toggle('is-active', t === tab));
+      subtitle.textContent = MODES[mode].subtitle;
+      cta.textContent = MODES[mode].button;
+      cta.setAttribute('data-scroll', MODES[mode].target);
+    });
+  });
+})();
+</script>
+<div class="mobile-cta-bar">
+  <a class="mobile-cta-btn" href="tel:+79785500557">Позвонить</a>
+  <a class="mobile-cta-btn" href="https://wa.me/79785500557" target="_blank" rel="noopener">
+    WhatsApp
+  </a>
+  <button class="mobile-cta-btn" type="button" data-scroll="#contacts">
+    Заявка
+  </button>
+</div>
 
 </body>
 </html>
+
 
 
 
