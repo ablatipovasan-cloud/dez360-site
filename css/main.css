@@ -1904,6 +1904,112 @@ body.service-bg::before{
     transform:translateY(1px);
   }
 }
+/* ==== Услуги: карточка как мини-воронка ==== */
+
+.service-head{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+/* Кнопка "показать процесс" */
+.service-toggle{
+  margin-top:8px;
+  align-self:flex-start;
+  border:0;
+  background:rgba(0,122,140,0.08);
+  color:var(--primary-dark);
+  border-radius:999px;
+  padding:6px 12px;
+  font-size:11px;
+  cursor:pointer;
+  transition:background .15s ease, transform .15s ease;
+}
+.service-toggle:hover{
+  background:rgba(0,122,140,0.16);
+}
+.service-card.is-open .service-toggle{
+  background:#007A8C;
+  color:#fff;
+}
+
+/* Скрытый блок сценария */
+.service-more{
+  margin-top:10px;
+  padding-top:10px;
+  border-top:1px dashed rgba(11,57,84,0.18);
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transition:max-height .3s ease, opacity .25s ease;
+}
+
+/* Когда карточка раскрыта */
+.service-card.is-open .service-more{
+  max-height:460px; /* если контента больше — можно увеличить */
+  opacity:1;
+}
+
+/* Внутри – шаги и мета-инфа */
+.service-steps{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  font-size:11px;
+  color:var(--text-secondary);
+  margin-bottom:8px;
+}
+.service-step strong{
+  display:block;
+  font-size:11px;
+  color:var(--primary-dark);
+}
+
+.service-meta{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  font-size:10px;
+  color:var(--text-secondary);
+  margin-bottom:8px;
+}
+.service-meta-label{
+  display:block;
+  font-weight:600;
+  color:var(--primary-dark);
+}
+.service-meta-value{
+  display:block;
+}
+
+/* Метки под кейсом */
+.service-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:4px;
+}
+.service-tags span{
+  padding:3px 8px;
+  border-radius:999px;
+  background:rgba(0,122,140,0.06);
+  font-size:10px;
+  color:var(--primary-dark);
+}
+
+/* Кнопка внизу карточки */
+.service-cta{
+  width:100%;
+  font-size:12px;
+}
+
+/* На мобиле делаем раскрытый блок чуть свободнее */
+@media (max-width:560px){
+  .service-card.is-open .service-more{
+    max-height:600px;
+  }
+}
+
 
 
 
