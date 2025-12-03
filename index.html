@@ -973,9 +973,41 @@
     Заявка
   </button>
 </div>
+<script>
+(function () {
+  const cards = document.querySelectorAll('.js-service');
+  if (!cards.length) return;
+
+  cards.forEach(card => {
+    const toggle = card.querySelector('.service-toggle');
+    if (!toggle) return;
+
+    toggle.addEventListener('click', () => {
+      const isOpen = card.classList.toggle('is-open');
+
+      // Если хочешь, чтобы открывалась только одна карточка за раз — раскомментируй:
+      // if (isOpen) {
+      //   cards.forEach(other => {
+      //     if (other !== card) other.classList.remove('is-open');
+      //   });
+      // }
+
+      // Небольшой "пинок" для пересчёта высоты при плавном скролле
+      if (isOpen && 'scrollHeight' in card) {
+        const more = card.querySelector('.service-more');
+        if (more) {
+          more.style.maxHeight = more.scrollHeight + 'px';
+          setTimeout(() => { more.style.maxHeight = ''; }, 310);
+        }
+      }
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
+
 
 
 
