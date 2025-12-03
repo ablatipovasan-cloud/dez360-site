@@ -1829,6 +1829,43 @@ body.service-bg::before{
   }
 }
 
+/* ==== HERO: табы "Для дома / Для бизнеса" ==== */
+
+.hero-tabs{
+  display:inline-flex;
+  padding:2px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.86);
+  box-shadow:0 4px 12px rgba(0,0,0,0.04);
+  margin:10px 0;
+  gap:4px;
+}
+
+.hero-tab{
+  border:0;
+  background:transparent;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:13px;
+  cursor:pointer;
+  color:var(--text-secondary);
+  white-space:nowrap;
+}
+
+.hero-tab.is-active{
+  background:#ffffff;
+  color:var(--primary-dark);
+  font-weight:600;
+}
+
+@media (max-width:768px){
+  .hero-tabs{
+    width:100%;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+}
+
 
 
 
