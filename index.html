@@ -114,35 +114,54 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero hero--split hero--main">
-
   <div class="hero-inner">
     <div class="hero-left">
       <h1 class="hero-title">
         Дезинфекция, дезинсекция и дератизация в Симферополе, Севастополе и по всему Крыму
       </h1>
-      <p class="hero-subtitle">
-        Реальные специалисты, профессиональное оборудование и официальные документы.
-        Помогаем быстро и безопасно убрать вредителей, запахи и риски для проверок.
+
+      <!-- Табы -->
+      <div class="hero-tabs" role="tablist">
+        <button class="hero-tab is-active" type="button" data-mode="home">
+          Для квартиры и дома
+        </button>
+        <button class="hero-tab" type="button" data-mode="biz">
+          Для бизнеса и учреждений
+        </button>
+      </div>
+
+      <!-- Подзаголовок, будет меняться JS-ом -->
+      <p class="hero-subtitle" id="heroSubtitle">
+        Быстро убираем насекомых, грызунов, плесень и запахи.
+        Безопасно для детей, животных и ваших вещей.
       </p>
+
+      <!-- Преимущества можно оставить как были, только я чуть сменил текст -->
       <div class="hero-bullets">
         <div class="hero-badge">Лицензированный центр дезинфектологии</div>
         <div class="hero-badge">Выезд от 1 часа по всему Крыму</div>
         <div class="hero-badge">Безопасно для детей и животных</div>
         <div class="hero-badge">Документы для СЭС и проверок</div>
       </div>
+
       <div class="hero-actions">
-        <button class="btn btn-primary" data-scroll="#contacts">Получить расчет за 3 минуты</button>
-        <p class="form-note" style="margin:8px 0 0">
-          Нажимая кнопку, вы соглашаетесь с
-          <a href="policy.html" target="_blank">политикой конфиденциальности</a>.
-        </p>
+        <!-- основная кнопка, тоже будем менять текст -->
+        <button class="btn btn-primary" id="heroMainCta" data-scroll="#contacts">
+          Получить расчёт за 3 минуты
+        </button>
+        <span class="hero-note">
+          Или позвоните:
+          <a href="tel:+79785500557">+7 978 550 05 57</a>
+        </span>
       </div>
+
       <div class="hero-note">
-        Представьте помещение без насекомых, грызунов, плесени и запахов. «Дез щит 360» берёт ответственность за результат.
+        Нажимая кнопку, вы соглашаетесь с
+        <a href="/policy.html" target="_blank">политикой конфиденциальности</a>.
       </div>
     </div>
 
-    <!-- Правая колонка — просто "воздух" под фон -->
+    <!-- правый столбец оставляем как «спейсер» под фотку из CSS -->
     <div class="hero-right-spacer" aria-hidden="true"></div>
   </div>
 </section>
@@ -824,6 +843,7 @@
 
 </body>
 </html>
+
 
 
 
