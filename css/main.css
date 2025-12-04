@@ -1690,6 +1690,57 @@ body.service-bg::before{
   }
 }
 
+/* ОБЩИЙ ФОН ДЛЯ ВСЕХ СТРАНИЦ БИЗНЕСА */
+body.biz{
+  position: relative;
+  background:#E6F5F7;
+}
+
+body.biz::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(230,245,247,0.0) 18%,
+      rgba(230,245,247,0.18) 60%,
+      rgba(230,245,247,0.36) 100%
+    ),
+    url("/media/works/cristall-1.jpeg") center -80px / 1500px auto no-repeat;
+
+  filter: brightness(1.04);
+}
+
+@media (min-width: 1440px){
+  body.biz::before{
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(230,245,247,0.0) 18%,
+        rgba(230,245,247,0.18) 60%,
+        rgba(230,245,247,0.36) 100%
+      ),
+      url("/media/works/cristall-1.jpeg") center -100px / 1700px auto no-repeat;
+  }
+}
+
+@media (max-width: 768px){
+  body.biz::before{
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(230,245,247,0.0) 12%,
+        rgba(230,245,247,0.22) 75%,
+        rgba(230,245,247,0.55) 100%
+      ),
+      url("/media/works/cristall-1.jpeg") center -40px / 1200px auto no-repeat;
+    filter: brightness(1.04);
+  }
+}
 
 /* ==== ВНУТРЕННИЕ HERO (все страницы, кроме главной): единое поведение ==== */
 
@@ -1770,6 +1821,7 @@ body.service-bg::before{
     display: none !important;
   }
 }
+
 /* === FIX: hero для страниц типа "Дезинсекция" === */
 /* hero c .hero--split, но НЕ главная (.hero--main) */
 .hero.hero--split:not(.hero--main){
@@ -1777,6 +1829,55 @@ body.service-bg::before{
   background: var(--bg-soft) !important;
   background-image: none !important;
   padding: 26px 16px;
+}
+/* HERO НА СТРАНИЦАХ ДЛЯ БИЗНЕСА */
+body.biz .hero{
+  background: transparent;              /* фон снизу даёт body.biz::before */
+}
+
+/* Сетка, как на главной */
+body.biz .hero-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0,1.6fr) minmax(260px,1.4fr);
+  gap: 26px;
+  align-items: center;
+  padding: 26px 16px 32px;
+}
+
+/* Карточка с фото */
+body.biz .hero-photo{
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  max-height: 420px;        /* ограничиваем рост на десктопе */
+}
+
+/* Само изображение — заполняет карточку */
+body.biz .hero-photo img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;        /* аккуратно обрезаем края, без "простыни" */
+}
+
+/* Мобилка: одна колонка, картинка под текстом и ниже ростом */
+@media (max-width: 768px){
+  body.biz .hero-inner{
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  body.biz .hero-left{
+    order: 1;
+  }
+
+  body.biz .hero-photo{
+    order: 2;
+    max-height: 360px;      /* чтобы не занимала весь экран */
+    margin: 0 16px 8px;
+  }
 }
 
 /* сетка: текст + фото справа на десктопе */
@@ -2009,6 +2110,7 @@ body.service-bg::before{
     max-height:600px;
   }
 }
+
 
 
 
