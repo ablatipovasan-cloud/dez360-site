@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Акарицидная обработка (противоклещевая) — Дез щит 360</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Акарицидная обработка для бизнеса: санатории, базы отдыха, детские лагеря, гостиницы. Акты, журналы и безопасность.">
+  <link rel="stylesheet" href="/css/main.css?v=14">
+
+  <!-- Локальные правки: фон-подложка и поведение изображений на этой странице -->
+  <style>
+    /* --- Фон-подложка за блоками (поднять картинку выше и чуть поярче) --- */
+    body.biz.service-bg {
+      position: relative;
+      background: var(--bg-soft, #E6F5F7);
+    }
+
+    body.biz.service-bg::before{
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+
+      /* подняли изображение вверх (отрицательный offset по Y), чуть ярче */
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(230,245,247,0.00) 18%,
+          rgba(230,245,247,0.12) 52%,
+          rgba(230,245,247,0.30) 100%
+        ),
+        url("/media/works/cristall-1.jpeg") center -80px / 1500px auto no-repeat;
+
+      filter: brightness(1.06);
+      background-attachment: fixed;
+    }
+
+    @media (min-width: 1440px){
+      body.biz.service-bg::before{
+        background:
+          linear-gradient(
+            to bottom,
+            rgba(230,245,247,0.00) 18%,
+            rgba(230,245,247,0.12) 52%,
+            rgba(230,245,247,0.30) 100%
+          ),
+          url("/media/works/cristall-1.jpeg") center -120px / 1700px auto no-repeat;
+      }
+    }
+
+    /* Мобильные: чуть меньше и не сверхувеличиваем картинку */
+    @media (max-width: 768px){
+      body.biz.service-bg::before{
+        background:
+          linear-gradient(
+            to bottom,
+            rgba(230,245,247,0.0) 12%,
+            rgba(230,245,247,0.20) 60%,
+            rgba(230,245,247,0.50) 100%
+          ),
+          url("/media/works/cristall-1.jpeg") center -30px / 1000px auto no-repeat;
+        filter: brightness(1.06);
+      }
+    }
+
+    /* --- HERO: фиксируем максимальную высоту фото и поднимаем/обрезаем так, чтобы надпись была видна --- */
+    .hero .hero-photo{
+      border-radius: var(--radius, 14px);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft, 0 10px 28px rgba(0,0,0,0.06));
+      max-height: 420px;       /* десктопный предел */
+      display: block;
+    }
+    .hero .hero-photo img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;       /* заполняем карточку */
+      transform: translateY(-8%); /* смещаем картинку вверх, чтобы было видно заголовок/лoготип на изображении */
+      display: block;
+    }
+    @media (max-width: 768px){
+      .hero .hero-photo{
+        max-height: 320px;     /* мобильный предел */
+      }
+      .hero .hero-photo img{
+        transform: translateY(-12%); /* на мобилке ещё немного поднимем */
+      }
+    }
+
+    /* --- MEDIA GRID: ограничиваем высоту карточек и контролируем поведение на мобилке --- */
+    .media-grid .media-card .media-ratio{ aspect-ratio: 16/9; }
+    .media-grid .media-card{ max-height: 620px; overflow: hidden; }
+    .media-grid .media-card .media-obj{ object-fit: cover; width:100%; height:100%; }
+
+    @media (max-width: 900px){
+      .media-grid .media-card{ max-height: 420px; }
+    }
+
+    /* --- Блок "Что включено" (простая сетка) --- */
+    .what-includes{ display:flex; gap:12px; flex-wrap:wrap; margin-top:10px; }
+    .what-includes .item{ background:#fff; border-radius:10px; padding:10px 12px; box-shadow:var(--shadow-soft); flex:1 1 200px; font-size:13px; }
+
+    /* --- Мобильная CTA панель (фиксированная снизу) --- */
+    .mobile-cta-bar{
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 1600;
+      display:flex;
+      gap:8px;
+      justify-content:space-between;
+      align-items:center;
+      backdrop-filter: blur(6px);
+    }
+    .mobile-cta-btn{
+      background:#0B3954;
+      color:#fff;
+      padding:10px 12px;
+      border-radius:10px;
+      font-weight:600;
+      text-decoration:none;
+      display:inline-block;
+    }
+    .mobile-cta-btn[aria-hidden="true"]{ display:none; }
+
+    @media (min-width: 960px){ .mobile-cta-bar{ display:none; } }
+  </style>
+</head>
+<body class="biz service-bg">
+
+  <!-- top bar / header (удалил — предполагаю у вас общий header подключается) -->
+  <!-- Если у вас общий header в include, оставьте его. Ниже — основной контент страницы. -->
+
+  <div class="page-nav">
+    <a href="/index.html">На главную</a>
+    <a href="/biz/">Для бизнеса</a>
+    <span>Акарицидная обработка</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner container">
+      <div class="hero-left">
+        <h1 class="hero-title">Акарицидная обработка (противоклещевая) для бизнеса и учреждений</h1>
+        <p class="hero-subtitle">
+          Профилактическая и внеплановая обработка территорий санаториев, баз отдыха, детских лагерей и гостиниц.
+          Составляем акты, журналы и графики повторных обработок — для проверок Роспотребнадзора.
+        </p>
+
+        <div class="hero-bullets">
+          <div class="hero-badge">Препараты, разрешённые для детских и общественных зон</div>
+          <div class="hero-badge">Работаем рано утром и в вечерние окна</div>
+          <div class="hero-badge">Акты, журналы и рекомендации по уходу</div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/index.html#contacts">Получить расчёт</a>
+          <div class="hero-note">Нажимая кнопку, вы соглашаетесь с <a href="/policy.html" target="_blank">политикой конфиденциальности</a>.</div>
+        </div>
+      </div>
+
+      <figure class="hero-photo" aria-hidden="false">
+        <img src="/media/works/cristall-1.jpeg" alt="Акарицидная обработка территории — Дез щит 360" />
+        <figcaption class="hero-photo-caption">Плановая обработка перед сезоном — безопасные препараты и протокол.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Когда нужна услуга -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Кому нужна акарицидная обработка</h2>
+      <div class="about-grid">
+        <ul class="about-list">
+          <li>Санатории, базы отдыха и пансионаты</li>
+          <li>Детские лагеря и школы перед началом смен/сезона</li>
+          <li>Гостиницы и базовые зоны отдыха (территории и прилегающие зоны)</li>
+          <li>Пляжи, зоны BBQ и места массового отдыха</li>
+        </ul>
+
+        <div class="faq-item">
+          <div class="faq-question">Что входит в обработку для бизнеса</div>
+          <div class="faq-answer" style="display:block">
+            Осмотр территории, подбор препарата, обработка зон риска (тропинки, газоны, посадки), выдача акта и рекомендаций.
+            Включаем график повторных работ и инструкцию по безопасности для персонала.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Что включено -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Что включено для объектов</h2>
+      <div class="what-includes">
+        <div class="item"><strong>Акт выполненных работ</strong><div class="small">Документ для проверок</div></div>
+        <div class="item"><strong>Журнал обработки</strong><div class="small">Запись с дозировками и препаратами</div></div>
+        <div class="item"><strong>Сертифицированные препараты</strong><div class="small">С учётом требований для общественных зон</div></div>
+        <div class="item"><strong>График повторных обработок</strong><div class="small">Под клиента и сезон</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Примеры работ (media-grid) -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Примеры работ — акарицидная обработка</h2>
+      <p class="section-subtitle">Ниже — реальные объекты и краткие кейсы. Фото/видео можно заменить на ваши материалы.</p>
+
+      <div class="media-grid">
+        <!-- Кейс 1 -->
+        <figure class="media-card">
+          <div class="media-ratio">
+            <img class="media-obj" src="/media/works/cristall-1.jpeg" alt="Санаторий — акарицидная обработка">
+            <span class="media-badge">Санаторий, 2.5 га</span>
+          </div>
+          <figcaption>Плановая весенняя обработка прогулочных зон, выезды до рассвета, оформлен акт.</figcaption>
+        </figure>
+
+        <!-- Кейс 2 -->
+        <figure class="media-card">
+          <div class="media-ratio">
+            <img class="media-obj" src="/media/works/dezinfektor-gym.jpg" alt="База отдыха — обработка">
+            <span class="media-badge">База отдыха</span>
+          </div>
+          <figcaption>Обработали периметр и зоны активности гостей, дали рекомендации по уходу за территорией.</figcaption>
+        </figure>
+
+        <!-- Кейс 3 -->
+        <figure class="media-card">
+          <div class="media-ratio">
+            <img class="media-obj" src="/media/works/cristall-1.jpeg" alt="Детский лагерь — акарицидная обработка">
+            <span class="media-badge">Детский лагерь</span>
+          </div>
+          <figcaption>Комплексная обработка спортивных площадок и тропинок перед сменой. Препараты, разрешённые для детских зон.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Форма / заказ -->
+  <section id="contacts" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Запросить акарицидную обработку</h2>
+      <div class="contacts-grid">
+        <form class="contacts-form" action="/api/lead" method="post">
+          <label class="field-label" for="name">Контактное лицо</label>
+          <input id="name" name="name" class="field-input" type="text" placeholder="Имя / должность" />
+
+          <label class="field-label" for="phone">Телефон</label>
+          <input id="phone" name="phone" class="field-input" type="tel" placeholder="+7 ___ ___ __ __" required />
+
+          <label class="field-label" for="object">Тип объекта</label>
+          <select id="object" name="object" class="field-input">
+            <option>Санаторий / база отдыха</option>
+            <option>Детский лагерь</option>
+            <option>Гостиница</option>
+            <option>Другое</option>
+          </select>
+
+          <label class="field-label" for="desc">Коротко о задаче</label>
+          <textarea id="desc" name="desc" class="field-textarea" rows="3" placeholder="Площадь/зоны/срочность"></textarea>
+
+          <button type="submit" class="btn btn-primary">Отправить заявку</button>
+        </form>
+
+        <div class="contacts-list">
+          <div class="contacts-label">Позвонить</div>
+          <a href="tel:+79785500557" class="phone">+7 978 550 05 57</a>
+          <a href="tel:+79785732708" class="phone">+7 978 573 27 08</a>
+
+          <div class="contacts-label">Адрес / почта</div>
+          <div>г. Симферополь, ул. Екатерининская, 51</div>
+          <a class="email" href="mailto:dezschit360@gmail.ru">dezschit360@gmail.ru</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner container">
+      <div class="footer-brand">Дез щит 360</div>
+      <div class="footer-links">
+        <a href="/policy.html">Политика конфиденциальности</a>
+        <a href="tel:+79785500557">+7 978 550 05 57</a>
+      </div>
+      <div class="footer-copy">© 2025, Дез щит 360</div>
+    </div>
+  </footer>
+
+  <!-- Мобильная CTA панель -->
+  <div class="mobile-cta-bar" aria-hidden="false">
+    <a class="mobile-cta-btn" href="tel:+79785500557">Позвонить</a>
+    <a class="mobile-cta-btn" href="https://wa.me/79785500557" target="_blank" rel="noopener">WhatsApp</a>
+    <button class="mobile-cta-btn" type="button" data-scroll="#contacts">Заявка</button>
+  </div>
+
+  <!-- Мини JS: плавный скролл и бургер (если общий header у вас не делает это) -->
+  <script>
+    (function () {
+      // smooth scroll для [data-scroll]
+      document.querySelectorAll('[data-scroll]').forEach(el => {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          const id = this.getAttribute('data-scroll');
+          const t = document.querySelector(id);
+          if (!t) return;
+          const y = t.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        });
+      });
+
+      // делаем кнопку mobile-cta-bar скрываемой на десктопе (если нужен)
+      function adaptCTA(){
+        const bar = document.querySelector('.mobile-cta-bar');
+        if(!bar) return;
+        if(window.innerWidth >= 960) bar.setAttribute('aria-hidden','true');
+        else bar.setAttribute('aria-hidden','false');
+      }
+      adaptCTA();
+      window.addEventListener('resize', adaptCTA);
+    })();
+  </script>
+</body>
+</html>
