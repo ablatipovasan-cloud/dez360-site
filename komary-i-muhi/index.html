@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Комары и мухи — дачи и частный сектор — Дез щит 360</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Борьба с комарами и мухами на участках, террасах и открытых зонах. Примем меры для дач, коттеджей и частных территорий. Безопасно для людей и животных.">
+  <link rel="stylesheet" href="/css/main.css?v=14">
+
+  <!-- Локальные правки для этой страницы -->
+  <style>
+    /* применяйте класс service-bg к body, если нужен фон-подложка как на главной */
+    body.services-page { background: var(--bg-soft, #E6F5F7); }
+
+    body.services-page::before{
+      /* если хотите фон-подложку за блоками — раскомментируйте и подставьте путь */
+      /* content: ""; position: fixed; inset: 0; z-index: -1; pointer-events:none;
+         background:
+           linear-gradient(to bottom, rgba(230,245,247,0.0) 18%, rgba(230,245,247,0.12) 52%, rgba(230,245,247,0.30) 100%),
+           url("/media/works/cristall-1.jpeg") center -60px / 1500px auto no-repeat;
+         filter: brightness(1.04); background-attachment: fixed; */
+    }
+
+    /* HERO: ограничение высоты, сдвиг картинки вверх (чтобы надпись/фокус было видно) */
+    .hero .hero-photo { border-radius: var(--radius,14px); overflow:hidden; box-shadow:var(--shadow-soft); max-height:420px; }
+    .hero .hero-photo img { width:100%; height:100%; object-fit:cover; display:block; transform: translateY(-8%); }
+    @media (max-width:768px){ .hero .hero-photo{ max-height:320px } .hero .hero-photo img{ transform: translateY(-12%); } }
+
+    /* Медиа-карточки: стабильные пропорции */
+    .media-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
+    @media (max-width:1200px){ .media-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width:560px){ .media-grid{ grid-template-columns: 1fr; } }
+    .media-ratio{ aspect-ratio:16/9; position:relative; border-radius:12px; overflow:hidden; background:#000; }
+    .media-obj{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+
+    /* Что включено (простая сетка) */
+    .what-includes{ display:flex; gap:12px; flex-wrap:wrap; margin-top:12px; }
+    .what-includes .item{ background:#fff; border-radius:10px; padding:12px; box-shadow:var(--shadow-soft); flex:1 1 200px; }
+
+    /* Мобильная CTA-панель (фиксированная снизу) */
+    .mobile-cta-bar{ position:fixed; left:12px; right:12px; bottom:12px; z-index:1600; display:flex; gap:8px; justify-content:space-between; align-items:center; }
+    .mobile-cta-btn{ background:#0B3954; color:#fff; padding:10px 12px; border-radius:10px; font-weight:600; text-decoration:none; display:inline-block; }
+    @media (min-width:960px){ .mobile-cta-bar{ display:none; } }
+
+    /* Небольшие стилистические поправки к форме */
+    .contacts-grid{ display:grid; grid-template-columns: minmax(0,1.2fr) 320px; gap:18px; align-items:start; }
+    @media (max-width:992px){ .contacts-grid{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body class="services-page">
+
+  <!-- Верхняя плашка + header у вас, возможно, общий include. Если нет — добавьте. -->
+
+  <div class="page-nav">
+    <a href="/index.html">На главную</a>
+    <a href="/#services">Услуги</a>
+    <span>Комары и мухи</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner container">
+      <div class="hero-left">
+        <h1 class="hero-title">Защита от комаров и мух — дачные участки, террасы, частный сектор</h1>
+        <p class="hero-subtitle">
+          Обработка участков и открытых зон, мелкие профилактические работы, барьерная обработка при пиковой активности.
+          Безопасные препараты, работа по утрам/вечерам, инструкции для владельцев.
+        </p>
+
+        <div class="hero-bullets">
+          <div class="hero-badge">Безопасно для детей и домашних животных</div>
+          <div class="hero-badge">Выезд в вечерние часы</div>
+          <div class="hero-badge">Подготовка участка к отдыху на выходных</div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contacts">Получить быстрый расчёт</a>
+          <div class="hero-note">Или позвоните нам: <a href="tel:+79785500557">+7 978 550 05 57</a></div>
+        </div>
+      </div>
+
+      <figure class="hero-photo" aria-hidden="false">
+        <img src="/media/works/akaricid-vid-poster.jpg" alt="Обработка от комаров и мух — Дез щит 360">
+        <figcaption class="hero-photo-caption">Обработка периметра участка и террасы — быстро и безопасно.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Когда нужна услуга -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Когда нужна обработка от комаров и мух</h2>
+      <div class="about-grid">
+        <ul class="about-list">
+          <li>При массовом появлении комаров/мух на участке</li>
+          <li>Перед семейным мероприятием или сезоном пикников</li>
+          <li>Если гости жалуются на укусы и дискомфорт</li>
+          <li>Профилактическая обработка в начале сезона</li>
+        </ul>
+
+        <div class="faq-item">
+          <div class="faq-question">Как проходит обработка?</div>
+          <div class="faq-answer" style="display:block">
+            Выезд мастера, осмотр участка, выбор безопасной схемы обработки, обработка зон отдыха и мест скопления воды, выдача рекомендаций.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Что включено -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Что включено в работу</h2>
+      <div class="what-includes">
+        <div class="item"><strong>Выезд специалиста</strong><div class="small">Осмотр и рекомендации</div></div>
+        <div class="item"><strong>Обработка периметра</strong><div class="small">Террасы, беседки, кустарники</div></div>
+        <div class="item"><strong>Средства безопасные</strong><div class="small">Для детей и животных (по согласованию)</div></div>
+        <div class="item"><strong>Краткая инструкция</strong><div class="small">Что сделать после работы и как продлить эффект</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Примеры работ / фото-видео -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Примеры работ — комары и мухи</h2>
+      <p class="section-subtitle">Фотографии и короткие видео с наших выездов (можно подменить на ваши материалы).</p>
+
+      <div class="media-grid">
+        <figure class="media-card">
+          <div class="media-ratio">
+            <img class="media-obj" src="/media/works/foto-fon.png" alt="Обработка участка">
+          </div>
+          <figcaption>Обработка подбором барьера вокруг беседки.</figcaption>
+        </figure>
+
+        <figure class="media-card">
+          <div class="media-ratio">
+            <video class="media-obj" controls playsinline preload="metadata" poster="/media/works/foto-fon.png">
+              <source src="/media/works/komarpans1.mp4" type="video/mp4">
+              Ваш браузер не поддерживает видео.
+            </video>
+          </div>
+          <figcaption>Короткое видео — процесс обработки и рекомендации хозяевам.</figcaption>
+        </figure>
+
+        <figure class="media-card">
+          <div class="media-ratio">
+            <img class="media-obj" src="/media/works/hero-akaricid.jpg" alt="Обработка газона">
+          </div>
+          <figcaption>Профилактическая обработка газонов после дождей.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Форма заказа -->
+  <section id="contacts" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Заказать обработку от комаров и мух</h2>
+      <div class="contacts-grid">
+        <form class="contacts-form" action="/api/lead" method="post">
+          <label class="field-label" for="name">Как к вам обращаться</label>
+          <input id="name" name="name" class="field-input" type="text" placeholder="Имя" />
+
+          <label class="field-label" for="phone">Телефон</label>
+          <input id="phone" name="phone" class="field-input" type="tel" placeholder="+7 ___ ___ __ __" required />
+
+          <label class="field-label" for="addr">Адрес / населённый пункт</label>
+          <input id="addr" name="addr" class="field-input" type="text" placeholder="Город, улица, участок" />
+
+          <label class="field-label" for="desc">Коротко о задаче</label>
+          <textarea id="desc" name="desc" class="field-textarea" rows="3" placeholder="Площадь участка, где именно (терраса, беседка)"></textarea>
+
+          <button type="submit" class="btn btn-primary">Отправить заявку</button>
+        </form>
+
+        <div class="contacts-list">
+          <div class="contacts-label">Позвонить</div>
+          <a href="tel:+79785500557" class="phone">+7 978 550 05 57</a>
+          <a href="tel:+79785732708" class="phone">+7 978 573 27 08</a>
+
+          <div class="contacts-label">Внимание</div>
+          <div class="small">Обработки выполняются в вечерние или утренние окна для максимальной эффективности.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner container">
+      <div class="footer-brand">Дез щит 360</div>
+      <div class="footer-links">
+        <a href="/policy.html">Политика конфиденциальности</a>
+        <a href="tel:+79785500557">+7 978 550 05 57</a>
+      </div>
+      <div class="footer-copy">© 2025, Дез щит 360</div>
+    </div>
+  </footer>
+
+  <!-- Мобильная CTA панель -->
+  <div class="mobile-cta-bar" aria-hidden="false">
+    <a class="mobile-cta-btn" href="tel:+79785500557">Позвонить</a>
+    <a class="mobile-cta-btn" href="https://wa.me/79785500557" target="_blank" rel="noopener">WhatsApp</a>
+    <button class="mobile-cta-btn" type="button" data-scroll="#contacts">Заявка</button>
+  </div>
+
+  <!-- Мини JS: плавный скролл, адаптация мобильной панели -->
+  <script>
+    (function () {
+      document.querySelectorAll('[data-scroll]').forEach(el => {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          const id = this.getAttribute('data-scroll');
+          const t = document.querySelector(id);
+          if (!t) return;
+          const y = t.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        });
+      });
+
+      function adaptCTA() {
+        const bar = document.querySelector('.mobile-cta-bar');
+        if (!bar) return;
+        if (window.innerWidth >= 960) bar.style.display = 'none';
+        else bar.style.display = 'flex';
+      }
+      adaptCTA();
+      window.addEventListener('resize', adaptCTA);
+    })();
+  </script>
+
+</body>
+</html>
